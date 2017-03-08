@@ -1,0 +1,203 @@
+%-----------------------------------------------------------------------------%
+\chapter{\babLima}
+%-----------------------------------------------------------------------------%
+
+%-----------------------------------------------------------------------------%
+\section{Implementasi \f{Cluster}}
+%-----------------------------------------------------------------------------%
+
+%-----------------------------------------------------------------------------%
+\subsection{Instalasi \f{Frontend}}
+%-----------------------------------------------------------------------------%
+Tabel model lain, ditunjukkan pada tabel \ref{tab:infohasti}. 
+\begin{table}
+	\centering
+	\caption{Informasi \f{cluster} X}
+	\newcolumntype{g}{>{\columncolor{headertbl}}c}
+	\label{tab:infohasti}
+	\begin{tabular}{|g|c|}
+	\hline Host Name & X\\
+	\hline Cluster Name & X\\
+	\hline Certificate Organization & UI\\
+	\hline Certificate Locality & Depok\\
+	\hline Certificate State & West Java\\
+	\hline Certificate Country & ID\\
+	\hline Contact & X\\
+	\hline URL & http://grid.ui.ac.id\\
+	\hline
+	\end{tabular}
+\end{table}
+
+Ada pagebreak disini.
+%supaya rapih
+\pagebreak
+
+Another type of table
+\begin{table}
+	\centering
+	\caption{Perbandingan Partisi \f{default} dan manual}
+	\newcolumntype{g}{>{\columncolor{headertbl}}c}
+	\label{tab:partdisk}
+	\begin{tabular}{|g|c|c|}
+	\rowcolor{headertbl}
+	\hline & Partisi default & Partisi manual yang dilakukan\\
+	\hline / & 16 GB & 30 GB\\
+	\hline /var & 4 GB & 18 GB\\
+	\hline swap & 1 GB & 2 GB\\
+	\hline /export & 55 GB & 26 GB\\
+	\hline
+	\end{tabular}
+\end{table}
+
+Program menghasilkan keluaran seperti pada kode \ref{lst:raidready}. 
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[caption={Keluaran output},label={lst:raidready}]
+[root@nas-0-0 ~]# cat /proc/mdstat 
+Personalities : [raid1] 
+md0 : active raid1 sda4[0] sdb2[1]
+      1917672312 blocks super 1.2 [2/2] [UU]
+      
+unused devices: <none>
+[root@nas-0-0 ~]# mdadm --detail /dev/md0 
+/dev/md0:
+        Version : 1.2
+  Creation Time : Fri May  3 15:38:52 2013
+     Raid Level : raid1
+     Array Size : 1917672312 (1828.83 GiB 1963.70 GB)
+  Used Dev Size : 1917672312 (1828.83 GiB 1963.70 GB)
+   Raid Devices : 2
+  Total Devices : 2
+    Persistence : Superblock is persistent
+
+    Update Time : Tue May 28 11:27:49 2013
+          State : clean 
+ Active Devices : 2
+Working Devices : 2
+ Failed Devices : 0
+  Spare Devices : 0
+
+           Name : nas-0-0.local:0  (local to host nas-0-0.local)
+           UUID : 0754726d:3dfbd4b9:42b0f587:68631556
+         Events : 28
+
+    Number   Major   Minor   RaidDevice State
+       0       8        4        0      active sync   /dev/sda4
+       1       8       18        1      active sync   /dev/sdb2
+\end{lstlisting}
+\end{minipage}
+
+%-----------------------------------------------------------------------------%
+\subsection{Konfigurasi}\label{cha:confcluster}
+%-----------------------------------------------------------------------------%
+Contoh verbatim dalam itemize : 
+\begin{itemize}
+\item \bo{Bold ini}\\
+dijalankan perintah berikut : 
+\begin{Verbatim}[frame=single]
+# javac Ganteng.java
+# java Ganteng
+\end{Verbatim}
+\paragraph{}
+Perilaku sistem 
+\begin{Verbatim}[frame=single]
+# hai
+# enable
+# cd /export/rocks/install/
+# create distro
+# sh sesuatu.sh
+# reboot
+\end{Verbatim}
+\paragraph{}
+
+\item \bo{Menambahkan \f{package} pada \f{compute node}}\\
+Langkah yang dilakukan adalah sebagai berikut : 
+	\begin{enumerate}
+	\item Masuk ke dalam direktori \co{/procfs/}
+	\item Membuat/Mengubah berkas \co{xx.xml}. Jika tidak terdapat berkas tersebut, dapat disalin dari \co{skeleton.xml}.
+	\item Menambahkan \f{package} yang ingin dipasang pada \f{compute node} diantara \f{tag} \co{<package>} seperti berikut : \co{<package>[package yang akan dipasang]</package>}.
+	\item Menjalankan perintah berikut termasuk perintah untuk melakukan instalasi ulang seluruh \f{compute node}: 
+	\begin{Verbatim}[frame=single]
+# cd /export/somedir
+# create
+# run host
+	\end{Verbatim}
+	\end{enumerate}
+	\paragraph{}
+\end{itemize}
+%-----------------------------------------------------------------------------%
+\subsubsection{semakin ke dalam}
+%-----------------------------------------------------------------------------%
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[caption={Keluaran mentah untuk detail \f{job}}, label={lst:outqstatf},style=L]
+[ardhi@xx ~]$ qstat -f 138
+Job Id: 138.xx
+    Job_Name = cur-1000-1np
+    Job_Owner = ardhi@xx
+    resources_used.cput = 27:21:35
+    resources_used.mem = 86060kb
+    resources_used.vmem = 170440kb
+    resources_used.walltime = 27:24:50
+    job_state = R
+    queue = default
+    server = hastinapura.grid.ui.ac.id
+    Checkpoint = u
+    ctime = Fri May 31 10:27:37 2013
+    Error_Path = xx:/home/ardhi/xx/curcumin-1000/cur-1000-1np.e138
+    exec_host = compute-0-5/0
+    exec_port = 15003
+    Hold_Types = n
+    Join_Path = n
+    Keep_Files = n
+    Mail_Points = e
+    Mail_Users = ardhi.putra@ui.ac.id
+    mtime = Fri May 31 10:27:47 2013
+    Output_Path = xx:/home/ardhi/xx/curcumin-1000/cur-1000-1np.o138
+    Priority = 0
+    qtime = Fri May 31 10:27:37 2013
+    Rerunable = True
+    Resource_List.nodes = 1:ppn=1
+    session_id = 5768
+    etime = Fri May 31 10:27:37 2013
+    submit_args = cur-1000-1np.pbs
+    start_time = Fri May 31 10:27:47 2013
+    submit_host = xx
+    init_work_dir = /home/ardhi/xx/curcumin-1000   
+\end{lstlisting}
+\end{minipage}
+
+%-----------------------------------------------------------------------------%
+\section{Pengujian} %lebih ke gimana cara ujinya
+%-----------------------------------------------------------------------------%
+
+%-----------------------------------------------------------------------------%
+\subsection{Kasus Uji}
+%-----------------------------------------------------------------------------%
+Berwarna!
+\begin{lstlisting}[caption=Potongan skrip submisi \f{job} melalui torqace,label={lst:grotorqace},style=shell]
+# Go To working directory
+cd $PBS_O_WORKDIR
+
+#openMPI prerequisite
+. /opt/torque/etc/openmpi-setup.sh
+
+mpirun -np 5 -machinefile $PBS_NODEFILE mdrun -v -s \ 
+	curcum400ps.tpr -o md_prod_curcum400_5np.trr -c lox_pr.gro
+...
+\end{lstlisting}
+%-----------------------------------------------------------------------------%
+\subsection{Kasus Uji}
+%-----------------------------------------------------------------------------%
+Contoh skrip yang dimasukkan pada \f{form} yang disediakan dapat dilihat pada kode \ref{lst:makebzip}.
+\begin{lstlisting}[caption={Potongan \co{Makefile} \f{project}}, label={lst:makebzip},style=shell]
+# Make file for MPI
+SHELL=/bin/sh
+
+# Compiler to use
+# You may need to change CC to something like CC=mpiCC
+# openmpi : mpiCC
+# mpich2  : /opt/mpich2/gnu/bin/mpicxx
+CC=mpiCC
+...
+...
+\end{lstlisting}

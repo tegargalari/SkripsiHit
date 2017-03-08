@@ -1,0 +1,45 @@
+%-----------------------------------------------------------------------------%
+\chapter{\babEnam}
+%-----------------------------------------------------------------------------%
+
+%-----------------------------------------------------------------------------%
+\section{Hasil Pengujian}
+%-----------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
+\subsection{Hasil Pengujian Kasus Uji 1}
+%-----------------------------------------------------------------------------%
+Tabel lain. Hasil tersebut dapat dilihat pada tabel \ref{tab:hasilgrrd}.
+\begin{table}
+	\centering
+	\caption{Hasil pengujian menggunakan gromacs}
+	\label{tab:hasilgrrd}
+	\begin{tabular}{|c|l|*{3}{c|}}
+		\rowcolor{headertbl}
+  		\hline % create horizontal line
+  		No & \f{Timestep} & \multicolumn{3}{|>{\columncolor{headertbl}}c|}{Waktu eksekusi berdasar jumlah prosesor} \\
+		\hhline{|>{\arrayrulecolor{headertbl}}*{2}{-}>{\arrayrulecolor{black}}*{3}{|-|}}
+  		\rowcolor{headertbl} & & 1 & 2 & 5 \\
+  		\hline 1 & 200ps & 20h:27m:16s & 12h:59m:04s & 5h:07m:03s \\
+  		\hline 2 & 400ps & 1d:22h:40m:03s & 1d:02h:08m:47s & 10h:09m:39s \\
+  		\hline 3 & 600ps & 2d:23h:29m:21s & 1d:14h:52m:52s & 15h:25m:22s \\
+  		\hline 4 & 800ps & 4d:02h:05m:57s & 2d:03h:30m:07s & 20h:29m:38s \\
+  		\hline 5 & 1000ps & 5d:03h:29m:12s & 2d:16h:32m:22s & 1d:01h:34m:38s \\
+  		\hline
+	\end{tabular}
+\end{table}
+%-----------------------------------------------------------------------------%
+\section{Evaluasi Hasil Kasus Uji}
+%-----------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------%
+\subsection{Evaluasi Kasus Uji 1}
+%-----------------------------------------------------------------------------%
+Tabel \ref{tab:hasilgrrd} menunjukkan hasil uji coba pada penelitian ini.  Gambar \ref{fig:grafgro5} menunjukkan perbandingan waktu eksekusi pada aplikasi x dengan jumlah prosesor sebanyak 5 buah.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\textwidth]
+		{pics/5np-gromacs-chart.pdf}
+	\caption{Perbandingan waktu eksekusi x untuk 5 prosesor}
+	\label{fig:grafgro5}
+\end{figure}
+\paragraph{}

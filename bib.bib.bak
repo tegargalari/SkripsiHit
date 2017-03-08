@@ -1,0 +1,75 @@
+% This file was created with JabRef 2.9.2.
+% Encoding: UTF-8
+
+@BOOK{book.buyya,
+  title = {High Performance Cluster Computing: Architectures and systems},
+  publisher = {Prentice Hall PTR},
+  year = {1999},
+  author = {Buyya, R.},
+  series = {High Performance Cluster Computing},
+  isbn = {9780130137845},
+  lccn = {99017906},
+  url = {http://books.google.co.id/books?id=wrZQAAAAMAAJ}
+}
+
+@MISC{article.douglas,
+  author = {Douglas Eadline},
+  title = {The True Cost of HPC Cluster Ownership},
+  howpublished = {\url{http://www.clustermonkey.net/Opinions/the-true-cost-of-hpc-cluster-ownership.html}},
+  year = {2009},
+  note = {[Diakses 1 April 2013]}
+}
+
+@ARTICLE{paper.giancarlo,
+  author = {Giancarlo C. Mai and C{\'e}sar A. F. De Rose},
+  title = {Low Cost Cluster Architectures for Parallel and Distributed Processing},
+  journal = {CLEI Electron. J.},
+  year = {2000},
+  volume = {3},
+  number = {1},
+  bibsource = {DBLP, http://dblp.uni-trier.de},
+  ee = {http://www.clei.cl/cleiej/paper.php?id=43}
+}
+
+@MISC{ppt.ecmwf,
+  author = {George Mozdzynski},
+  title = {{Concepts of Parallel Computing}},
+  howpublished = {\url{http://www.ecmwf.int/services/computing/training/material/com_hpcf.html}},
+  year = {2012},
+  note = {[Diakses 20 Maret 2013]}
+}
+
+@MISC{article.rebecca,
+  author = {Rebecca Neal},
+  title = {Cloud computing brings savings in energy, maintenance costs},
+  howpublished = {\url{http://www.federaltimes.com/article/20100323/IT03/3230304/Cloud-computing-brings-savings-energy-maintenance-costs}},
+  year = {2010},
+  note = {[Diakses 1 April 2013]}
+}
+
+@BOOK{refBook.pfister,
+  title = {In search of clusters},
+  publisher = {Prentice Hall PTR},
+  year = {1998},
+  author = {Pfister, G.F.},
+  series = {Parallel programming computer architecture},
+  isbn = {9780138997090},
+  lccn = {98137730},
+  url = {http://books.google.co.id/books?id=XlUZAQAAIAAJ}
+}
+
+@MISC{article.tenni,
+  author = {Tenni Purwanti},
+  title = {{Efisien dengan 'Private Cloud On Demand'}},
+  howpublished = {\url{http://tekno.kompas.com/read/2011/05/10/21403529/Efisien.dengan.Private.Cloud.On.Demand}},
+  year = {2011},
+  note = {[Diakses 1 April 2013]}
+}
+
+@MISC{net.oxford,
+  title = {Oxford Dictionaries},
+  howpublished = {\url{http://oxforddictionaries.com/definition/english/parallel}},
+  year = {2010},
+  note = {[Diakses 1 April 2013]}
+}
+
