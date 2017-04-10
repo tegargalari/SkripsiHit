@@ -1,17 +1,19 @@
 %-----------------------------------------------------------------------------%
 \chapter{\babDua}
 %-----------------------------------------------------------------------------%
-Bab ini berisi .... Pada sub-bab \ref{cha:kompar} akan dijelaskan dasar-dasar ...
+Bab ini berisi dasar-dasar pemahaman yang diperlukan dalam membuat program logika. 
 %-----------------------------------------------------------------------------%
-\section{X si sesuatu}\label{cha:kompar}
+\section{Pendahuluan}
+Diberikan himpunan alfabet \( \mathcal{A} \) dari bahasa \( \mathcal{L} \), akan didefinisikan himpunan berhingga yang saling \f{disjoint} yaitu himpunan konstanta, himpunan simbol fungsi, dan himpunan simbol predikat. Selain itu, pada alfabet juga mengandung himpunan simbol variabel. Simbol \f{underscore} (\_) dikhususkan untuk menyatakan sebuah \f{anonymous} variabel. \f{Term} dari \( \mathcal{A} \) didefinisikan secara rekursif sebagai salah satu dari: variabel, konstanta, atau ekspresi dengan bentuk \f{f(t$_{1}$,...,t$_{n}$)} dengan \f{f} adalah simbol fungsi dari \( \mathcal{A} \) dan \f{t$_{i}$} adalah term. \f{Atom} dari \( \mathcal{A} \) adalah ekspresi dengan bentuk \f{p(t$_{1}$,...,t$_{n}$)} dengan \f{p} adalah simbol predikat dari \( \mathcal{A} \) dan \f{t$_{i}$} adalah term. Selanjutnya, notasi \f{p/n} digunakan untuk menyatakan predikat \f{p} memiliki arity \f{n}. \f{Literal} adalah sebuah atom \f{a} atau negasinya \f{not a}. Literal \f{not a} (seperti pada bentuk kedua) disebut \f{default} literal. Sebuah term (atom maupun literal) disebut \f{ground} jika term tersebut tidak memiliki variabel. Himpunan seluruh ground term dari \( \mathcal{A} \) disebut Herbrand Universe dari \( \mathcal{A} \).
+\section{Program Logika}\label{cha:kompar}
 %-----------------------------------------------------------------------------%
-Dokumen \latex~sangat mudah, seperti halnya membuat dokumen teks biasa. Ada beberapa perintah yang diawali dengan tanda '\bslash'. Seperti perintah \bslash\bslash~yang digunakan untuk memberi baris baru. 
-Perintah tersebut juga sama dengan perintah \bslash newline. Pada bagian ini akan sedikit dijelaskan cara manipulasi teks dan perintah-perintah \latex~yang mungkin akan sering digunakan. 
-Jika ingin belajar hal-hal dasar mengenai \latex, silahkan kunjungi: 
-\begin{itemize}
-	\item \url{http://frodo.elon.edu/tutorial/tutorial/}, atau
-	\item \url{http://www.maths.tcd.ie/~dwilkins/LaTeXPrimer/}
-\end{itemize}
+Program logika adalah himpunan berhingga dari \f{rule} dengan bentuk:
+\begin{displaymath}
+	H \leftarrow L_1,...,L_n
+\end{displaymath}
+dengan \f{H} adalah sebuah \f{atom}, $m \geq 0$, dan $L_i$ adalah \f{literal}. \f{H} dan $L_i$ berturut-turut disebut sebagai \f{head} dan \f{body} dari sebuah rule.
+
+Operator koma pada sebuah rule dibaca sebagai konjungsi. Sebuah program logika disebut \f{definit} jika pada program logika tersebut tidak mengandung default literal. Rule yang tidak memiliki body ditulis sebagai $H$ saja, alih-alih menuliskannya sebagai $H \leftarrow $ . Rule dengan bentuk seperti ini disebut sebagai sebuah \f{fakta}.
 %-----------------------------------------------------------------------------%
 \subsection{Pengertian X}
 %-----------------------------------------------------------------------------%
