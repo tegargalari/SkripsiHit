@@ -18,54 +18,54 @@
 \contentsline {section}{\numberline {2.1}Teori Perancangan Game}{6}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Definisi Game}{6}{subsection.2.1.1}
 \contentsline {subsection}{\numberline {2.1.2}Kategori Game}{6}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Element Game}{8}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.3}Elemen Game}{7}{subsection.2.1.3}
 \contentsline {section}{\numberline {2.2}Teori Pembelajaran}{8}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Definisi Pembelajaran}{8}{subsection.2.2.1}
 \contentsline {section}{\numberline {2.3}Pembelajaran Berbasis Game}{8}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Definisi Pembelajaran Berbasis Game}{8}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Prinsip dan Penggunaan Game Sebagai Pembelajaran}{9}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Karakteristik Desain Pembelajaran Berbasis Game}{9}{subsection.2.3.3}
-\contentsline {section}{\numberline {2.4}Fundamental Programming}{9}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Definisi Fundamental Programming}{9}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Tujuan dari Fundamental Programming}{9}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Topik Pengajaran Fundamental Programming}{9}{subsection.2.4.3}
-\contentsline {section}{\numberline {2.5}Proses Pengembangan Perangkat Lunak}{9}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Definisi Pengembangan Perangkat Lunak}{9}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Model Pengembangan Perangkat Lunak}{9}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}Waterfall Model}{9}{subsection.2.5.3}
-\contentsline {subsection}{\numberline {2.5.4}Data Flow Diagram}{9}{subsection.2.5.4}
-\contentsline {chapter}{\numberline {3}\uppercase {Aplikasi Yang Digunakan}}{10}{chapter.3}
-\contentsline {section}{\numberline {3.1}NPACI Rocks}{10}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}XZXX}{10}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Rocks Rolls}{10}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Mengubah Tampilan Teks}{11}{section.3.2}
-\contentsline {section}{\numberline {3.3}Memberikan Catatan}{11}{section.3.3}
-\contentsline {section}{\numberline {3.4}Menambah Isi Daftar Isi}{12}{section.3.4}
-\contentsline {chapter}{\numberline {4}\uppercase {Perancangan Implementasi dan Analisis}}{13}{chapter.4}
-\contentsline {section}{\numberline {4.1}Membuat Tabel}{13}{section.4.1}
-\contentsline {section}{\numberline {4.2}thesis.tex}{14}{section.4.2}
-\contentsline {section}{\numberline {4.3}laporan\_setting.tex}{14}{section.4.3}
-\contentsline {section}{\numberline {4.4}istilah.tex}{14}{section.4.4}
-\contentsline {section}{\numberline {4.5}hype.indonesia.tex}{14}{section.4.5}
-\contentsline {chapter}{\numberline {5}\uppercase {Implementasi dan Pengujian}}{15}{chapter.5}
-\contentsline {section}{\numberline {5.1}Implementasi \textit {Cluster}}{15}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Instalasi \textit {Frontend}}{15}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Konfigurasi}{17}{subsection.5.1.2}
-\contentsline {paragraph}{}{17}{section*.17}
-\contentsline {subsubsection}{\numberline {5.1.2.1}semakin ke dalam}{18}{subsubsection.5.1.2.1}
-\contentsline {section}{\numberline {5.2}Pengujian}{18}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Kasus Uji}{18}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Kasus Uji}{19}{subsection.5.2.2}
-\contentsline {chapter}{\numberline {6}\uppercase {Hasil Implementasi dan Evaluasi}}{20}{chapter.6}
-\contentsline {section}{\numberline {6.1}Hasil Pengujian}{20}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Hasil Pengujian Kasus Uji 1}{20}{subsection.6.1.1}
-\contentsline {section}{\numberline {6.2}Evaluasi Hasil Kasus Uji}{20}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Evaluasi Kasus Uji 1}{20}{subsection.6.2.1}
-\contentsline {paragraph}{}{21}{section*.22}
-\contentsline {chapter}{\numberline {7}\uppercase {Kesimpulan dan Saran}}{22}{chapter.7}
-\contentsline {section}{\numberline {7.1}Kesimpulan}{22}{section.7.1}
-\contentsline {section}{\numberline {7.2}Saran}{22}{section.7.2}
-\contentsline {chapter}{Daftar Referensi}{23}{section.7.2}
+\contentsline {subsection}{\numberline {2.3.2}Prinsip dan Penggunaan Game Sebagai Pembelajaran}{8}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Karakteristik Desain Pembelajaran Berbasis Game}{8}{subsection.2.3.3}
+\contentsline {section}{\numberline {2.4}Fundamental Programming}{8}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Definisi Fundamental Programming}{8}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Tujuan dari Fundamental Programming}{8}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Topik Pengajaran Fundamental Programming}{8}{subsection.2.4.3}
+\contentsline {section}{\numberline {2.5}Proses Pengembangan Perangkat Lunak}{8}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Definisi Pengembangan Perangkat Lunak}{8}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Model Pengembangan Perangkat Lunak}{8}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}Waterfall Model}{8}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.4}Data Flow Diagram}{8}{subsection.2.5.4}
+\contentsline {chapter}{\numberline {3}\uppercase {Aplikasi Yang Digunakan}}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}NPACI Rocks}{9}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}XZXX}{9}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Rocks Rolls}{9}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Mengubah Tampilan Teks}{10}{section.3.2}
+\contentsline {section}{\numberline {3.3}Memberikan Catatan}{10}{section.3.3}
+\contentsline {section}{\numberline {3.4}Menambah Isi Daftar Isi}{11}{section.3.4}
+\contentsline {chapter}{\numberline {4}\uppercase {Perancangan Implementasi dan Analisis}}{12}{chapter.4}
+\contentsline {section}{\numberline {4.1}Membuat Tabel}{12}{section.4.1}
+\contentsline {section}{\numberline {4.2}thesis.tex}{13}{section.4.2}
+\contentsline {section}{\numberline {4.3}laporan\_setting.tex}{13}{section.4.3}
+\contentsline {section}{\numberline {4.4}istilah.tex}{13}{section.4.4}
+\contentsline {section}{\numberline {4.5}hype.indonesia.tex}{13}{section.4.5}
+\contentsline {chapter}{\numberline {5}\uppercase {Implementasi dan Pengujian}}{14}{chapter.5}
+\contentsline {section}{\numberline {5.1}Implementasi \textit {Cluster}}{14}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Instalasi \textit {Frontend}}{14}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Konfigurasi}{16}{subsection.5.1.2}
+\contentsline {paragraph}{}{16}{section*.17}
+\contentsline {subsubsection}{\numberline {5.1.2.1}semakin ke dalam}{17}{subsubsection.5.1.2.1}
+\contentsline {section}{\numberline {5.2}Pengujian}{17}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Kasus Uji}{17}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Kasus Uji}{18}{subsection.5.2.2}
+\contentsline {chapter}{\numberline {6}\uppercase {Hasil Implementasi dan Evaluasi}}{19}{chapter.6}
+\contentsline {section}{\numberline {6.1}Hasil Pengujian}{19}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Hasil Pengujian Kasus Uji 1}{19}{subsection.6.1.1}
+\contentsline {section}{\numberline {6.2}Evaluasi Hasil Kasus Uji}{19}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Evaluasi Kasus Uji 1}{19}{subsection.6.2.1}
+\contentsline {paragraph}{}{20}{section*.22}
+\contentsline {chapter}{\numberline {7}\uppercase {Kesimpulan dan Saran}}{21}{chapter.7}
+\contentsline {section}{\numberline {7.1}Kesimpulan}{21}{section.7.1}
+\contentsline {section}{\numberline {7.2}Saran}{21}{section.7.2}
+\contentsline {chapter}{Daftar Referensi}{22}{section.7.2}
 \contentsline {chapter}{LAMPIRAN}{1}{section*.23}
 \contentsline {chapter}{Lampiran 1 : Kode Sumber}{2}{section*.24}
 \contentsline {chapter}{Lampiran 2 : Berkas Konfigurasi}{2}{section*.27}
