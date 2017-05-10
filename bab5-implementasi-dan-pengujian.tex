@@ -1,7 +1,38 @@
 %-----------------------------------------------------------------------------%
-\chapter{\babLima}
+\chapter{\babTiga}
 %-----------------------------------------------------------------------------%
+Pada bab ini penulis akan menjelaskan bagaimana implementasi \textit{tabling} pada \textit{contextual abduction} dengan \textit{answer subsumption} yang dibuat menggunakan bahasa pemrograman XSB Prolog.
 
+\section{Alur Program}
+
+Pertama akan dijelaskan alur dari program yang dibuat oleh penulis. Berikut ini adalah urutan langkah-langkah yang dilakukan oleh program:
+
+\begin{enumerate}
+	\item Melakukan transformasi program input \textsc{I} menjadi program output \textsc{O}.
+	\item Memuat program output \textsc{O} ke \textit{environtment} XSB
+	\item Memberikan query
+\end{enumerate}
+
+\section{Transformasi}
+
+Proses transformasi program input menjadi program output dilakukan oleh prosedur \textit{transform}(\textit{Filename}). Prosedur \textit{transform}(\textit{Filename}) akan mentransform program input \textit{Filename.ab} menjadi program output \textit{Filename.P}. Berikut ini definisi prosedur \textit{transform}(\textit{Filename}): \\
+
+\begin{lstlisting}[language=Prolog, caption=Prosedur \textit{transform}(\textit{Filename}),
+tabsize=2,
+frame=none,
+captionpos=b]
+transform(Filename) :-
+		clear,
+		see_input_file(Filename),
+		tell_output_file(Filename),
+		process_input_program,
+		seen,
+		told.
+\end{lstlisting}
+
+Hal yang pertama dilakukan sebelum melakukan transformasi yaitu membersihkan seluruh \textit{dynamic predicate} yang sudah tersimpan menggunakan prosedur \textit{clear}. 
+Prosedur \textit{see\_input\_file}(\textit{Filename}) dan \textit{see\_output\_file}(\textit{Filename}) akan membuka input dan output \textit{stream} selama proses transformasi, yaitu membuka input \textit{stream} pada berkas \textit{Filename.ab} untuk dibaca dan membuka output \textit{stream} pada berkas \textit{Filename.P} untuk dituliskan. 
+Proses transformasi dilakukan oleh prosedur \textit{process\_input\_program}. Setelah input program selesai ditransformasikan, prosedur \textit{seen} dan \textit{told} akan menutup kembali input dan output \textit{stream}.
 %-----------------------------------------------------------------------------%
 \section{Implementasi \f{Cluster}}
 %-----------------------------------------------------------------------------%
