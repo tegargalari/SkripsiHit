@@ -5,34 +5,100 @@ Pada bab ini penulis akan menjelaskan bagaimana implementasi \textit{tabling} pa
 
 \section{Alur Program}
 
-Pertama akan dijelaskan alur dari program yang dibuat oleh penulis. Berikut ini adalah urutan langkah-langkah yang dilakukan oleh program:
+Pertama akan dijelaskan alur dari program yang dibuat oleh penulis. Secara garis besar, berikut adalah urutan tahap-tahap yang dilakukan oleh program:
 
 \begin{enumerate}
-	\item Melakukan transformasi program input \textsc{I} menjadi program output \textsc{O}.
-	\item Memuat program output \textsc{O} ke \textit{environtment} XSB
-	\item Memberikan query
+	\item Melakukan transformasi program input \textit{P} menjadi program output \textit{P'}.
+	\item Me-\textit{load} program output \textit{P'} ke \textit{environtment} XSB.
+	\item Melakukan proses \textit{abduction} dengan memberikan query yang dapat disertai dengan \textit{abductive context}.
 \end{enumerate}
+
+Penjelasan lebih detil mengenai setiap langkah penulis jabarkan pada subbab-subbab berikutnya.
+
+\section{Terminologi}
+
+Pada subbab ini penulis menjelaskan arti dari simbol-simbol yang akan digunakan pada subbab-subbab berikutnya. Secara umum, variabel diawali dengan huruf kapital. Term dan predikat diawali dengan huruf non-kapital.
+
+\begin{itemize}
+	\item \textit{X} menyatakan sebuah variabel \textit{X}.
+	\item \_ menyatakan sebuah variabel \textit{anonymous}.
+	\item \textit{a} menyatakan sebuah atom \textit{a}.
+	\item \textit{f/}\textit{n} menyatakan sebuah simbol fungsi \textit{p} dengan arity \textit{n}.
+	\item \textit{p/}\textit{m} menyatakan sebuah simbol predikat \textit{p} dengan arity \textit{m}.
+	\item $\bot$ menyatakan predikat \textit{false}.
+	\item $\bot \leftarrow L_1,...,L_m$ menyatakan sebuah \textit{integrity constraint}.
+	\item $\mathcal{F} = \big \langle \mathcal{P}, \mathcal{AB}, \mathcal{IC} \big \rangle$ menyatakan \textit{abductive framework} $\mathcal{F}$ dengan $\mathcal{AB}$ merupakan himpunan predikat \textit{abducible}, $\mathcal{P}$ merupakan sebuah program logika sedemikian sehingga tidak terdapat \textit{rule} di $\mathcal{P}$ dengan \textit{head} yang dibentuk oleh predikat pada $\mathcal{AB}$, dan $\mathcal{IC}$ merupakan himpunan \textit{integrity constraint}.
+	\item \textit{P} menyatakan sebuah program input \textit{P}.
+\end{itemize}
 
 \section{Transformasi}
 
-Proses transformasi program input menjadi program output dilakukan oleh prosedur \textit{transform}(\textit{Filename}). Prosedur \textit{transform}(\textit{Filename}) akan mentransform program input \textit{Filename.ab} menjadi program output \textit{Filename.P}. Berikut ini definisi prosedur \textit{transform}(\textit{Filename}): \\
+Proses transformasi program input menjadi program output dilakukan oleh predikat \textit{transform/}1. Predikat \textit{transform/}1 akan melakukan transformasi pada program input \textit{P}, menghasilkan program output \textit{P$'$}. Berikut ini definisi predikat \textit{transform/}1: \\
 
-\begin{lstlisting}[language=Prolog, caption=Prosedur \textit{transform}(\textit{Filename}),
-tabsize=2,
+\begin{lstlisting}[language=Prolog, caption=Definisi predikat \textit{transform}(\textit{Filename}),
+tabsize=4,
 frame=none,
 captionpos=b]
 transform(Filename) :-
-		clear,
-		see_input_file(Filename),
-		tell_output_file(Filename),
-		process_input_program,
-		seen,
-		told.
+	clear,
+	see_input_file(Filename),
+	tell_output_file(Filename),
+	transform_input_program,
+	seen,
+	told.
 \end{lstlisting}
 
-Hal yang pertama dilakukan sebelum melakukan transformasi yaitu membersihkan seluruh \textit{dynamic predicate} yang sudah tersimpan menggunakan prosedur \textit{clear}. 
-Prosedur \textit{see\_input\_file}(\textit{Filename}) dan \textit{see\_output\_file}(\textit{Filename}) akan membuka input dan output \textit{stream} selama proses transformasi, yaitu membuka input \textit{stream} pada berkas \textit{Filename.ab} untuk dibaca dan membuka output \textit{stream} pada berkas \textit{Filename.P} untuk dituliskan. 
-Proses transformasi dilakukan oleh prosedur \textit{process\_input\_program}. Setelah input program selesai ditransformasikan, prosedur \textit{seen} dan \textit{told} akan menutup kembali input dan output \textit{stream}.
+Predikat \textit{transform/}1 memiliki 6 buah predikat sebagai \textit{goal-goal}-nya. Predikat \textit{clear/}0 menghapus dan mendefinisikan ulang seluruh informasi yang mungkin tersisa dari proses transformasi sebelumnya. Informasi-informasi yang perlu dihapus dan didefinisikan ulang yaitu predikat-predikat dinamis yang tersimpan serta \textit{trie} dan \textit{table} yang sudah terbuat. Selanjutnya, predikat \textit{see\_input\_file/}1 dan \textit{see\_output\_file/}1 menentukan (membuka) input dan output \textit{stream} selama proses transformasi, yaitu menjadikan berkas \textit{Filename.ab} sebagai input \textit{stream} untuk dibaca dan berkas \textit{Filename.P} sebagai output \textit{stream} untuk dituliskan. 
+Proses transformasi itu sendiri dibungkus dalam predikat \textit{transform\_input\_program/}0. Setelah input program \textit{P} selesai ditransformasikan menjadi output program \textit{P$'$}, stream yang sudah dibuka sebelumnya ditutup kembali oleh predikat \textit{seen/}0 dan \textit{told/}0.
+\\ \\
+Berikut ini definisi predikat \textit{transform\_input\_program/}0: \\
+
+\begin{lstlisting}[language=Prolog, caption=Definisi predikat \textit{transform\_input\_program/}0,
+tabsize=4,
+frame=none,
+captionpos=b]
+transform_input_program :- 
+	load_rules,
+	add_indices,
+	transform_per_rule,
+	transform_if_no_ic,
+	transform_abducibles.
+\end{lstlisting}
+
+Predikat \textit{transform\_input\_program/}1 memiliki 5 buah predikat sebagai \textit{goal-goal}-nya. Predikat \textit{load\_rules/}0 membaca program input \textit{P} baris demi baris kemudian mengelompokkan sekaligus menyimpan \textit{rule-rule} yang terdapat pada \textit{P} dalam bentuk predikat dinamis \textit{has\_rule/}1 dan \textit{rule/}2. Predikat \textit{has\_rule/}1 memiliki sebuah argumen \textit{R}, menyatakan bahwa pada \textit{P} terdapat definisi/\textit{rule} mengenai \textit{R}. Predikat \textit{rule/}2 menyatakan definisi mengenai sebuah \textit{rule}. Argumen pertama dan kedua dari \textit{rule/}2 berturut-turut menyatakan \textit{head} dan \textit{body} dari \textit{rule} tersebut. Selain itu, \textit{load\_rules/}0 juga sekaligus melakukan transformasi terhadap predikat-predikat pada \textit{P} yang tidak memiliki definisi/\textit{rule}, dengan kata lain, predikat-predikat yang hanya berupa fakta saja. Selanjutnya, predikat \textit{add\_indices/}0 mengubah setiap predikat dinamis \textit{rule/}2 yang sudah tersimpan menjadi predikat dinamis yang baru \textit{rule/}3. Predikat \textit{rule/}3 menyatakan definisi mengenai sebuah \textit{rule} beserta urutan pendefinisiannya pada \textit{P}. Sebagai contoh, jika pada \textit{P} terdapat \textit{N} buah definisi/\textit{rule} berbeda mengenai \textit{Head}, maka akan terdapat \textit{N} buah predikat dinamis \textit{rule/}3: \textit{rule}(\textit{Head}, \textit{$Body_1$}, \textit{1}) yang menyatakan \textit{rule} pertama mengenai \textit{Head}, \textit{rule}(\textit{Head}, \textit{$Body_2$}, \textit{2}) yang menyatakan \textit{rule} kedua mengenai \textit{Head}, dan seterusnya hingga \textit{rule}(\textit{Head}, \textit{$Body_N$}, \textit{N}) yang menyatakan \textit{rule} ke-\textit{N} mengenai \textit{Head}. Tiga predikat berikutnya yaitu \textit{transform\_per\_rule/}0, \textit{transform\_if\_no\_ic/}0, dan \textit{transform\_abducibles/}0 merupakan predikat yang menangani proses transformasi. Detil mengenai ketiga predikat ini akan dijelaskan satu persatu.
+\\ \\
+Pertama, penulis akan menjelaskan detil dari predikat \textit{transform\_per\_rule/}0. Berikut ini definisi predikat \textit{transform\_per\_rule/}0: \\
+
+\begin{lstlisting}[language=Prolog, caption=Definisi predikat \textit{transform\_per\_rule/}0,
+tabsize=4,
+frame=none,
+captionpos=b]
+transform_per_rule :-
+	retract(has_rules(H)),
+	find_rules(H, R),
+	generate_apostrophe_rules(R),
+	generate_positive_rules(H),
+	generate_negative_rules(H, R),
+	transform_per_rule.
+\end{lstlisting}
+
+Predikat \textit{transform\_per\_rule/}0 memiliki 6 buah predikat sebagai \textit{goal-goal}-nya. Predikat \textit{retract/}1 menghapus sebuah predikat dinamis \textit{has\_rules}(\textit{H}) yang tersimpan pada \textit{database}. Informasi mengenai \textit{rule} yang dihapus, yaitu rule mengenai \textit{H}, digunakan oleh predikat \textit{find\_rules/}2 untuk menghasilkan \textit{R}, yaitu semua \textit{rule} mengenai \textit{H}. Selanjutnya, \textit{H} dan \textit{R} digunakan oleh predikat \textit{generate\_apostrophe\_rules/}1, \textit{generate\_positive\_rules/}1, dan \textit{generate\_negative\_rules/}2 untuk membentuk berturut-turut $\tau'(\textit{P})$, $\tau^+(\textit{P})$, dan $\tau^-(\textit{P})$ dan $\tau^*(\textit{P})$. \textit{Goal} terakhir yaitu predikat \textit{transform\_per\_rule/}0 merupakan pemanggilan rekursif yang akan berakhir ketika sudah tidak terdapat lagi predikat dinamis \textit{has\_rules}(\textit{H}) pada \textit{database}.
+\\ \\
+Kedua, penulis akan menjelaskan detil dari predikat \textit{transform\_if\_no\_ic/}0. Berikut ini definisi predikat \textit{transform\_if\_no\_ic/}0: \\
+
+\begin{lstlisting}[language=Prolog, caption=Definisi predikat \textit{transform\_if\_no\_ic/}0,
+tabsize=4,
+frame=none,
+captionpos=b]
+transform_if_no_ic :-
+	find_rules(false, R),
+	length(R, 0),
+	generate_negative_rule_no_ic(NF).
+transform_if_no_ic.
+\end{lstlisting}
+
+Predikat \textit{transform\_if\_no\_ic/}0 akan membentuk $\tau^-(\textit{P})$ jika ditemukan bahwa $\mathcal{IC} = \emptyset$. Untuk melakukannya, predikat \textit{transform\_per\_rule/}0 membutuhkan 2 definisi. Pada definisi yang pertama, \textit{transform\_if\_no\_ic/}0 memiliki 3 buah predikat sebagai \textit{goal-goal}nya. Predikat \textit{find\_rules/}2 menghasilkan \textit{R}, yaitu semua \textit{rule} mengenai $\bot$. Dengan kata lain, \textit{find\_rules/}2 menghasilkan himpunan \textit{integrity\_constraint} pada \textit{P}, yaitu $\mathcal{IC}$ yang di-\textit{unify} dengan R. Pada implementasi yang dibuat, himpunan \textit{integrity\_constraint} direpresentasikan sebagai sebuah \textit{list}. Predikat \textit{length/}2 merupakan predikat \textit{built-in} yang argumen pertama dan keduanya berturut-turut adalah sebuah \textit{list} dan sebuah bilangan bulat \textit{N}, bernilai benar jika \textit{N} merupakan panjang \textit{list} tersebut. Pada predikat \textit{transform\_if\_no\_ic/}0, \textit{length/}2 melakukan pengecekan apakah \textit{R} $ = \emptyset$, yaitu apakah $\mathcal{IC} = \emptyset$. Jika ya, maka predikat berikutnya yaitu \textit{generate\_negative\_rule\_no\_ic/}0 akan membentuk $\tau^-(\textit{P})$:  $not\_\bot$($I, I$) yang di-\textit{unify} dengan \textit{NF}. Jika tidak, maka \textit{length/}2 gagal dan beralih ke definisi \textit{transform\_if\_no\_ic/}0 yang kedua dan selalu sukses.
+
 %-----------------------------------------------------------------------------%
 \section{Implementasi \f{Cluster}}
 %-----------------------------------------------------------------------------%
