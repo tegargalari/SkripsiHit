@@ -188,6 +188,11 @@
                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
                                   {2.3ex \@plus.2ex}%
                                   {\normalsize\bfseries}}
+                                
+\renewcommand\subsubsection{\@startsection {subsubsection}{3}{\z@}%
+	{-3.5ex \@plus -1ex \@minus -.2ex}%
+	{2.3ex \@plus.2ex}%
+	{\normalsize\bfseries}}
 
 \makeatother
 
@@ -291,6 +296,20 @@
          framexbottommargin=0pt,
          backgroundcolor=\color{verylightblue},
          showstringspaces=false
+}
+
+\usepackage{color}
+\definecolor{codegray}{rgb}{0.93,0.97,0.97}
+
+\lstdefinestyle{prolog}
+{
+	backgroundcolor = \color{codegray},
+	tabsize=4,
+	frame=none,
+	captionpos=b,
+	xleftmargin=2em,
+	xrightmargin=2em,
+	abovecaptionskip=1em
 }
 %\DeclareCaptionFont{white}{\color{white}}
 %\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{\hspace{-0.2cm}#1#2#3}}
