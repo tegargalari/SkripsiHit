@@ -1,60 +1,61 @@
 %-----------------------------------------------------------------------------%
 \chapter{\babTiga}
 %-----------------------------------------------------------------------------%
-Pada bab ini penulis akan menjelaskan bagaimana implementasi \textit{tabling} pada \textit{contextual abduction} dengan memanfaatkan fitur \textit{answer subsumption} yang dibuat menggunakan bahasa pemrograman \textbf{XSB Prolog}. Pada bagian-bagian selanjutnya, program implementasi ini disebut sebagai \textsc{Tabdual}
+Pada bab ini penulis akan menjelaskan bagaimana implementasi \textit{tabling} pada \textit{contextual abduction} dengan memanfaatkan fitur \textit{answer subsumption} yang dibuat menggunakan salah satu distribusi bahasa pemrograman Prolog, yaitu \textbf{XSB}. Pada bagian-bagian selanjutnya, program implementasi ini disebut sebagai \textsc{Tabdual}.
 
 \section{Terminologi}
 
-Pada bagian ini penulis menjelaskan arti dari simbol-simbol/istilah-istilah yang akan digunakan pada bagian-bagian berikutnya. 
+Pada bagian ini penulis menjelaskan beberapa ketentuan dan istilah yang digunakan pada bagian-bagian berikutnya, yaitu:
 
 \begin{itemize}
-	\item Secara umum, variabel diawali dengan huruf kapital sedangkan term dan predikat diawali dengan huruf non-kapital.
-	\item \textit{consult} berarti melakukan kompilasi program Prolog dan memuat hasil kompilasi program tersebut ke dalam \textit{database} XSB Prolog sehingga program tersebut menjadi \textit{knowledge base}.
-	\item \textit{database} berarti kumpulan predikat-predikat yang disimpan pada \textit{environment} XSB Prolog dan dijadikan sebagai \textit{knowledge base} selama eksekusi. Predikat-predikat yang ada pada \textit{database} dapat berasal dari program yang di-\textit{consult} (membentuk \textit{database} statis) ataupun ditambahkan selama eksekusi suatu program (membentuk \textit{database} dinamis). Selama eksekusi, predikat yang sudah ditambahkan ke dalam \textit{database} dinamis dapat dimanipulasi sesuai kebutuhan program.
-	\item \textit{dual transformation by need} mengacu pada proses transformasi dual \textit{by need} yang sudah dijelaskan pada bagian ???.
+	\item Pada prolog, variabel diawali dengan huruf kapital sedangkan term dan predikat diawali dengan huruf non-kapital.
+	\item \textit{Consult} berarti melakukan kompilasi program Prolog dan memuat hasil kompilasi program tersebut ke dalam \textit{database} XSB sehingga program tersebut menjadi \textit{knowledge base}.
+	\item \textit{Database} berarti kumpulan predikat-predikat yang disimpan pada \textit{environment} XSB dan dijadikan sebagai \textit{knowledge base} selama eksekusi. Predikat-predikat yang ada pada \textit{database} dapat berasal dari program yang di-\textit{consult} (membentuk \textit{database} statis) ataupun ditambahkan selama eksekusi suatu program (membentuk \textit{database} dinamis). Selama eksekusi, predikat yang sudah ditambahkan ke dalam \textit{database} dinamis dapat dimanipulasi sesuai kebutuhan program.
+	\item \textit{Dual transformation by need} mengacu pada proses transformasi dual \textit{by need} yang sudah dijelaskan pada bagian ???.
 \end{itemize}
 
 \section{Spesifikasi \textsc{Tabdual}}
 
-\subsection{Fase pada \textsc{Tabdual}}
+\subsection{Tahapan \textsc{Tabdual}}
 
 Secara garis besar, \textsc{Tabdual} terbagi menjadi 2 fase:
 
 \begin{enumerate}
-	\item \textbf{Transformasi}. Pada fase ini, \textsc{Tabdual} akan melakukan transformasi program input \textit{P} menjadi program output \textit{P$'$} yang dapat mengaplikasikan \textit{contextual abduction}. Transformasi dilakukan sesuai dengan aturan-aturan transformasi yang sudah dijelaskan pada \hyperref[bab2]{\textcolor{blue}{bab 2}}.
-	\item \textbf{Abduction}. \textit{Contextual abduction} dapat dilakukan setelah program input \textit{P} berhasil ditransformasikan menjadi program output \textit{P$'$}. Praktis, \textit{P$'$} harus di-\textit{consult} terlebih dahulu sebelum kita dapat memberikan \textit{query} dan melakukan \textit{contextual abduction}.
-	
-	Penjelasan lebih detil mengenai setiap fase akan penulis jabarkan pada bagian-bagian berikutnya.
+	\item \textbf{Transformasi}. Pada fase ini, \textsc{Tabdual} akan melakukan transformasi program \textit{input} \textit{P} menjadi program \textit{output} \textit{P$'$} yang dapat mengaplikasikan \textit{contextual abduction}. Transformasi dilakukan sesuai dengan aturan-aturan transformasi yang sudah dijelaskan pada \hyperref[bab2]{\textcolor{blue}{bagian 2}}.
+	\item \textbf{Abduction}. \textit{Contextual abduction} dapat dilakukan setelah program \textit{input} \textit{P} berhasil di-\textit{transform} menjadi program \textit{output} \textit{P$'$}. Praktis, \textit{P$'$} harus di-\textit{consult} terlebih dahulu sebelum kita dapat memberikan \textit{query} dan melakukan \textit{contextual abduction}.
 \end{enumerate}
+
+Penjelasan lebih detil mengenai setiap fase akan penulis jabarkan pada bagian-bagian berikutnya.
 
 \subsection{Berkas Implementasi \textsc{Tabdual}}
 Agar dapat digunakan secara modular, implementasi \textsc{Tabdual} dipecah ke dalam empat buah berkas yang berbeda. Keeempat berkas tersebut yaitu:
 
 \begin{itemize}
-	\item \textit{tabdual.P}. Berkas ini berisi implementasi utama dari \textsc{Tabdual}, baik implementasi untuk fase transformasi maupun implementsai untuk fase \textit{abduction}. Berkas ini adalah berkas yang harus di-\textit{consult} untuk dapat menggunakan \textsc{Tabdual}. Berkas-berkas lain yang diperlukan selama menggunakan \textsc{Tabdual} akan di-\textit{consult} melalui berkas ini.
-	\item \textit{system.P}. Berkas ini berisi predikat-predikat bantuan dan predikat-predikat yang didefinisikan secara khusus yang akan digunakan  oleh \textsc{Tabdual} ketika melakukan \textit{tabling}, \textit{contextual abduction}, dan \textit{answer subsumption}. 
-	\item \textit{read\_clause.P} Berkas ini berisi predikat-predikat yang dikhususkan untuk membaca program input agar dapat diproses dan ditransformasikan menggunakan \textsc{Tabdual}.
-	\item \textit{write\_clause.P}. Berkas ini berisi predikat-predikat yang dikhususkan untuk menulis transformasi dari program input yang dihasilkan menggunakan \textsc{Tabdual} ke program output.
+	\item \textit{tabdual.p}. Berkas ini berisi implementasi utama dari \textsc{Tabdual}, baik implementasi untuk fase transformasi maupun implementsai untuk fase \textit{abduction}. Berkas ini adalah berkas yang harus di-\textit{consult} untuk dapat menggunakan \textsc{Tabdual}. Berkas-berkas lain yang diperlukan selama menggunakan \textsc{Tabdual} akan di-\textit{consult} melalui berkas ini.
+	\item \textit{system.p}. Berkas ini berisi predikat-predikat bantuan dan predikat-predikat yang didefinisikan secara khusus yang akan digunakan  oleh \textsc{Tabdual} ketika melakukan \textit{tabling}, \textit{contextual abduction}, dan \textit{answer subsumption}. 
+	\item \textit{read\_clause.p} Berkas ini berisi predikat-predikat yang dikhususkan untuk membaca program \textit{input} agar dapat diproses dan ditransformasikan menggunakan \textsc{Tabdual}.
+	\item \textit{write\_clause.p}. Berkas ini berisi predikat-predikat yang dikhususkan untuk menulis transformasi dari program \textit{input} yang dihasilkan menggunakan \textsc{Tabdual} ke program \textit{output}.
 \end{itemize}
 
-\subsection{Program Input}
-Program input yang ingin ditransformasikan menggunakan \textsc{Tabdual} harus memenuhi kriteria-kriteria berikut:
+\subsection{Program \textit{Input} \textsc{Tabdual}}
+Program \textit{input} yang ingin di-\textit{transform} menggunakan \textsc{Tabdual} harus memenuhi kriteria-kriteria berikut:
 
 \begin{itemize}
 	\item \textit{Rule} ditulis dalam bentuk \textit{H $\leftarrow B_1, \textellipsis,B_n.$}, dengan operator $\leftarrow$ ditulis sebagai "<-" (tanda lebih kecil dari dari lalu \textit{dash}).
 	\item Fakta ditulis dalam bentuk \textit{H}. saja tanpa operator $\leftarrow$.
-	\item \textit{Abducible} ditulis sebagai fakta menggunakan predikat \textit{abds$/$}1 dengan argumennya yaitu himpunan \textit{abducible} yang direpresentasikan sebagai sebuah \textit{list} beserta dengan \textit{arity}-nya.
-	\item Predikat-predikat yang hanya berupa fakta dan \textit{rule-rule} yang tidak ingin ditransformasikan ditulis terpisah di paling atas program input di antara predikat \textit{beginProlog} dan \textit{endProlog}. 
-	\item Setiap \textit{rule} dan fakta yang ditulis diakhiri dengan tanda titik ".".
+	\item \textit{Abducible} pada program ditulis sebagai fakta menggunakan predikat \textit{abds$/$}1. Argumen dari predikat ini yaitu himpunan \textit{abducible} yang ada pada program beserta dengan \textit{arity}-nya, direpresentasikan sebagai sebuah \textit{list}.
+	\item Predikat-predikat yang hanya berupa fakta dan \textit{rule-rule} yang tidak ingin di-\textit{transform} ditulis terpisah di bagian paling atas program \textit{input}, di antara predikat \textit{beginProlog} dan \textit{endProlog}. 
+	\item Setiap \textit{rule} dan fakta yang ditulis diakhiri dengan tanda titik (".").
 \end{itemize}
 
-\noindent Agar lebih jelas, berikut ini merupakan contoh program yang diterima sebagai program input untuk \textsc{Tabdual},
+\noindent Agar lebih jelas, berikut ini merupakan contoh program yang diterima sebagai program \textit{input} untuk \textsc{Tabdual}.
 \\
 
 \begin{lstlisting}[
-caption=Contoh program input yang diterima \textsc{Tabdual},
+caption=Contoh program \textit{input} yang diterima \textsc{Tabdual},
 style=prolog,
-numbers=left
+numbers=left,
+xleftmargin=3em
 ]
 beginProlog.
 q(1).
@@ -69,13 +70,14 @@ s(X) <- b(X).
 <- q(X), r(X), s(X).
 \end{lstlisting}
 
-\noindent dan berikut ini merupakan contoh yang tidak diterima.
+\noindent Dan berikut ini merupakan contoh yang tidak diterima.
 \\
 
 \begin{lstlisting}[language=Prolog,
-caption=Contoh program input yang tidak diterima \textsc{Tabdual},
+caption=Contoh program \textit{input} yang tidak diterima \textsc{Tabdual},
 style=prolog,
-numbers=left
+numbers=left,
+xleftmargin=3em
 ].
 abds(a/1,b/1).			% argumen tidak berupa list
 
@@ -92,15 +94,15 @@ endProlog
 
 \section{Pra Transformasi}
 
-Bagian ini menjelaskan bagian implementasi \textsc{Tabdual} yang berkaitan sebelum fase transformasi dilakukan.
+Bagian ini menjelaskan bagian implementasi \textsc{Tabdual} yang berkaitan dengan sebelum fase transformasi.
 
 \subsection{\textit{Directive}}
 
-Pada Prolog, \textit{directive} merupakan anotasi dan predikat pada program Prolog yang akan dieksekusi langsung oleh \textit{compiler} ketika program tersebut di-\textit{consult}. Berbeda dengan predikat biasa pada program, \textit{directive} tidak akan disimpan sebagai ke \textit{database}, melainkan langsung dieksekusi. Pada \textsc{Tabdual}, \textit{directive-directive} yang ada dapat dikelompokkan menjadi beberapa kelompok.
+Pada Prolog, \textit{directive} merupakan anotasi dan predikat pada program yang akan dieksekusi langsung oleh \textit{compiler} ketika program tersebut di-\textit{consult}. Berbeda dengan predikat biasa pada program, \textit{directive} tidak akan disimpan sebagai \textit{knowledge base} di \textit{database}, melainkan langsung dieksekusi. Pada \textsc{Tabdual}, \textit{directive-directive} yang ada dapat dikelompokkan menjadi beberapa kelompok.
 
 \subsubsection{\textit{Import}}
 
-Untuk mempermudah pengguna, XSB Prolog sudah menyediakan predikat-predikat \textit{built-in} yang dapat digunakan langsung. Predikat \textit{built-in} tersebut dikelompokkan ke dalam modul-modul yang berbeda sesuai dengan kategori penggunaannya. \textit{Directive} berikut ini akan meng-\textit{import} beberapa predikat \textit{built-in} yang diperlukan oleh \textsc{Tabdual}.
+Untuk mempermudah pengguna, XSB Prolog sudah menyediakan predikat-predikat \textit{built-in} yang dapat digunakan. Predikat \textit{built-in} tersebut dikelompokkan ke dalam modul-modul yang berbeda sesuai dengan kategori penggunaannya. \textit{Directive} berikut ini akan meng-\textit{import} beberapa predikat \textit{built-in} yang diperlukan oleh \textsc{Tabdual}.
 \\
 
 \begin{lstlisting}[
@@ -116,7 +118,9 @@ Predikat \textit{append$/$}3, \textit{member$/$}2, dan \textit{length$/$}2 yang 
 
 \subsubsection{Deklarasi Operator}
 
-Pada Prolog, operator logika baru dapat didefinisikan menggunakan predikat \textit{built-in} \textit{op$/$}3. Predikat \textit{op$/$}3 memiliki tiga buah argumen. Argumen pertama menyatakan presedensi operator, argumen kedua menyatakan tipe operator, dan argumen ketiga menyatakan nama operator. Presedensi dari operator dinyatakan sebagai sebuah bilangan bulat antara 1 sampai 1200 (presedensi sebuah term adalah 1), semakin kecil nilainya semakin kuat presedensinya. Tipe operator menentukan apakah operator tersebut merupakan operator \textit{prefix}, \textit{infix}, atau \textit{suffix}, sekaligus menyatakan sifat assosiatif yang dimilikinya, apakah assosiatif kanan, assosiatif kiri, atau tidak assosiatif. Tipe operator yang dapat digunakan untuk operator \textit{prefix} yaitu \textit{fx} dan \textit{fy}. Tipe operator yang dapat digunakan untuk operator \textit{infix} yaitu \textit{yfx}, \textit{xfy}, dan \textit{xfx}. Tipe operator yang dapat digunakan untuk operator \textit{suffix} yaitu \textit{xf} dan \textit{yf}. Simbol \textit{f} pada tipe operator merepresentasikan posisi operator sedangkan simbol \textit{x} dan \textit{y} merepresentasikan argumen-argumennya. Simbol \textit{x} menyatakan bahwa argumen tersebut harus memiliki presedensi kurang dari presedensi operator \textit{f}, sedangkan simbol \textit{y} menyatakan bahwa argumen tersebut harus memiliki presedensi kurang dari atau sama dengan presedensi operator \textit{f}. Dengan kata lain, simbol \textit{y} menyatakan bahwa operator tersebut bersifat assosiatif, sedangkan simbol \textit{x} menyatakan bahwa operator tersebut bersifat tidak assosiatif. \textsc{Tabdual} mendeklarasikan dua buah operator baru yaitu \textit{not} dan $\leftarrow$ seperti di bawah ini.
+Pada Prolog, pengguna dapat mendefinisikan operator logika baru menggunakan predikat \textit{built-in} \textit{op$/$}3. Predikat \textit{op$/$}3 memiliki tiga buah argumen. Argumen pertama menyatakan presedensi, argumen kedua menyatakan tipe, dan argumen ketiga menyatakan nama dari operator tersebut. Presedensi dari operator dinyatakan sebagai sebuah bilangan bulat antara 1 sampai 1200 (1 adalah presedensi dari sebuah term), semakin kecil nilainya semakin kuat presedensinya. Tipe operator menentukan apakah operator tersebut merupakan operator \textit{prefix}, \textit{infix}, atau \textit{suffix}, sekaligus menyatakan sifat assosiatif yang dimilikinya, apakah assosiatif kanan, assosiatif kiri, atau tidak assosiatif. Tipe operator yang dapat digunakan untuk operator \textit{prefix} yaitu \textit{fx} dan \textit{fy}, tipe operator yang dapat digunakan untuk operator \textit{infix} yaitu \textit{yfx}, \textit{xfy}, dan \textit{xfx}, dan tipe operator yang dapat digunakan untuk operator \textit{suffix} yaitu \textit{xf} dan \textit{yf}. Simbol \textit{f} pada tipe operator merepresentasikan posisi operator sedangkan simbol \textit{x} dan \textit{y} merepresentasikan argumen-argumennya. Simbol \textit{x} menyatakan bahwa argumen tersebut harus memiliki presedensi kurang dari presedensi operator \textit{f}, sedangkan simbol \textit{y} menyatakan bahwa argumen tersebut harus memiliki presedensi kurang dari atau sama dengan presedensi operator \textit{f}. Dengan kata lain, simbol \textit{y} menyatakan bahwa operator tersebut bersifat assosiatif, sedangkan simbol \textit{x} menyatakan bahwa operator tersebut bersifat tidak assosiatif. 
+\\ \\
+\textsc{Tabdual} mendeklarasikan dua buah operator baru yaitu \textit{not} dan $\leftarrow$ seperti di bawah ini.
 \\
 
 \begin{lstlisting}[
@@ -128,11 +132,11 @@ style=prolog
 :- op(1110, xfy, '<-').
 \end{lstlisting}
 
-Operator \textit{not} digunakan untuk menyatakan negasi dari sebuah predikat sehingga tipe operatornya adalah \textit{fy}. Operator $\leftarrow$ digunakan untuk menyatakan implikasi yang dibalik untuk digunakan ketika mendefinisikan sebuah \textit{rule-rule} pada program input. Operator $\leftarrow$ memiliki dua tipe operator untuk dua penggunaan yang berbeda. Tipe operator yang pertama yaitu \textit{fy} digunakan untuk membentuk \textit{integrity constraint}, sedangkan tipe operator yang kedua yaitu \textit{xfy} digunakan untuk membentuk \textit{rule}.
+Operator \textit{not} digunakan untuk menyatakan negasi dari sebuah predikat sehingga tipe operatornya adalah \textit{fy}. Operator $\leftarrow$ digunakan untuk menyatakan implikasi yang dibalik untuk digunakan ketika mendefinisikan sebuah \textit{rule-rule} pada program input. Operator $\leftarrow$ memiliki dua tipe operator untuk dua penggunaan yang berbeda. Tipe operator $\leftarrow$ yang pertama yaitu \textit{fy} digunakan untuk membentuk \textit{integrity constraint}, sedangkan tipe operator $\leftarrow$ yang kedua yaitu \textit{xfy} digunakan untuk membentuk \textit{rule}.
 
 \subsubsection{Deklarasi Predikat Dinamis}
 
-Predikat dinamis adalah predikat yang definisinya bisa berubah-ubah. Predikat dinamis digunakan untuk memanipulasi \textit{database} selama eksekusi. \textsc{Tabdual} mendeklarasikan empat buah predikat dinamis yang digunakan selama fase transformasi dan fase \textit{abduction}. \textit{Directive} berikut ini mendeklarasikan keempat predikat dinamis yang digunakan. 
+Predikat dinamis adalah predikat yang definisi atau nilainya dapat berubah-ubah. Predikat dinamis digunakan untuk memanipulasi \textit{database} dinamis XSB selama eksekusi. \textsc{Tabdual} mendeklarasikan empat buah predikat dinamis yang digunakan selama fase transformasi dan fase \textit{abduction}. \textit{Directive} berikut ini mendeklarasikan keempat predikat dinamis yang digunakan. 
 \\
 
 \begin{lstlisting}[
@@ -142,11 +146,11 @@ style=prolog
 :- dynamic has_rules/1, rule/2, rule/3, abds/1.
 \end{lstlisting}
 
-Predikat \textit{has\_rules$/$}1 digunakan untuk menyimpan informasi mengenai predikat yang memiliki \textit{rule}, dengan kata lain, predikat-predikat yang menjadi \textit{head} pada program. Argumen dari \textit{has\_rules$/$}1 yaitu \textit{R} yang menyatakan \textit{head} yang ada pada program. \textit{Head-head} ini disimpan pada \textit{database} menggunakan predikat dinamis \textit{has\_rules$/$}1 secara \textit{distinct}. Predikat \textit{rule$/$}2 dan \textit{rule$/$}3 digunakan untuk menyimpan informasi mengenai \textit{rule-rule} yang ada pada program. Dua buah argumen pertama dari \textit{rule$/$}2 dan \textit{rule$/$}3 yaitu \textit{H} dan \textit{B}, berturut-turut menyatakan \textit{head} dan \textit{body} dari \textit{rule} tersebut. Argumen ketiga dari \textit{rule$/$}3 yaitu sebuah bilangan \textit{N} yang menyatakan \textit{$H \leftarrow B$} adalah definisi ke-\textit{N} untuk \textit{rule} mengenai \textit{H}.\label{rule2to3} Penjelasan mengapa diperlukan dua buah predikat dinamis untuk menyimpan \textit{rule-rule} pada program input akan dijelaskan pada \hyperref[subsec:add_indices]{\textcolor{blue}{bagian 3.4.7}}. Predikat \textit{abds$/$}1 digunakan untuk menyimpan informasi mengenai himpunan \textit{abducible} yang direpresentasikan sebagai sebuah \textit{list}. Predikat \textit{abds$/$}1 memiliki satu buah argumen yaitu \textit{list} \textit{abducible} itu sendiri.
+Predikat \textit{has\_rules$/$}1 digunakan untuk menyimpan informasi mengenai predikat yang memiliki \textit{rule}, dengan kata lain, predikat-predikat yang menjadi \textit{head} pada program. Argumen dari \textit{has\_rules$/$}1 yaitu \textit{R} yang menyatakan \textit{head} yang ada pada program. \textit{Head-head} ini disimpan pada \textit{database} menggunakan predikat dinamis \textit{has\_rules$/$}1 secara \textit{distinct}. Predikat \textit{rule$/$}2 dan \textit{rule$/$}3 digunakan untuk menyimpan informasi mengenai sebuah \textit{rule} yang ada pada program. Dua buah argumen pertama dari \textit{rule$/$}2 dan \textit{rule$/$}3 yaitu \textit{H} dan \textit{B}, berturut-turut menyatakan \textit{head} dan \textit{body} dari \textit{rule} tersebut. Argumen ketiga dari \textit{rule$/$}3 yaitu sebuah bilangan \textit{N} yang menyatakan bahwa \textit{$H \leftarrow B$} adalah \textit{rule} ke-\textit{N} mengenai \textit{H}.\label{rule2to3} Penjelasan mengapa diperlukan dua buah predikat dinamis untuk menyimpan \textit{rule-rule} pada program input akan dijelaskan pada \hyperref[subsec:add_indices]{\textcolor{blue}{bagian 3.4.7}}. Predikat \textit{abds$/$}1 digunakan untuk menyimpan informasi mengenai himpunan \textit{abducible} yang direpresentasikan sebagai sebuah \textit{list}. Predikat \textit{abds$/$}1 memiliki satu buah argumen yaitu \textit{list} \textit{abducible} itu sendiri.
 
 \subsubsection{\textit{Directive} Lainnya}
 
-Karena dibutuhkan untuk fase transformasi dan \textit{contextual abduction}, beberapa predikat berikut ini perlu dijadikan sebagai \textit{directive} agar dieksekusi langsung ketika men-\textit{consult} \textsc{Tabdual}.
+Karena dibutuhkan untuk fase transformasi dan \textit{contextual abduction}, beberapa predikat berikut ini perlu dijadikan sebagai \textit{directive} agar dieksekusi langsung ketika \textsc{Tabdual} di-\textit{consult}.
 \\
 
 \begin{lstlisting}[
@@ -156,11 +160,11 @@ style=prolog
 :- consult_files, retractall(mode/1), assert(mode(normal)).
 \end{lstlisting}
 
-Predikat \textit{consult\_files$/$}0 digunakan untuk men-\textit{consult} berkas-berkas implementasi \textsc{Tabdual} lainnya yang terdapat pada berkas \textit{system.P}, \textit{read\_clause.P}, dan \textit{write\_clause.P}. Predikat \textit{retractall}(\textit{mode$/$}1) dan \textit{assert}(\textit{mode}(\textit{normal})) digunakan untuk me-inisialisasi ulang mode yang digunakan untuk transformasi. Penjelasan mengenai mode transformasi akan dijelaskan lebih jauh pada \hyperref[subsec:mode]{\textcolor{blue}{bagian 3.4.8}}.
+Predikat \textit{consult\_files$/$}0 digunakan untuk men-\textit{consult} berkas-berkas implementasi \textsc{Tabdual} lainnya, yaitu berkas \textit{system.p}, \textit{read\_clause.p}, dan \textit{write\_clause.p}. Predikat \textit{retractall}(\textit{mode$/$}1) dan \textit{assert}(\textit{mode}(\textit{normal})) digunakan untuk me-inisialisasi ulang mode yang digunakan untuk transformasi. Penjelasan mengenai mode transformasi akan dijelaskan lebih jauh pada \hyperref[subsec:mode]{\textcolor{blue}{bagian 3.4.8}}.
 
 \subsection{Predikat \textit{wrapper} \textit{transform$/$}1}
 
-Fase transformasi yang dilakukan \textsc{Tabdual} di-\textit{wrap} ke dalam satu buah predikat yaitu \textit{transform$/$}1. Predikat \textit{transform$/$}1 memiliki sebuah argumen yang menyatakan nama program input yang ingin ditransformasikan. Berikut definisi dari predikat \textit{transform$/$}1
+Fase transformasi yang dilakukan \textsc{Tabdual} di-\textit{wrap} ke dalam satu buah predikat yaitu \textit{transform$/$}1. Predikat \textit{transform$/$}1 memiliki sebuah argumen yang menyatakan nama program \textit{input} yang ingin di-\textit{transform}. Berikut definisi dari predikat \textit{transform$/$}1.
 \\
 
 \begin{lstlisting}[
@@ -176,7 +180,7 @@ transform(Filename) :-
 	told.
 \end{lstlisting}
 
-Terdapat enam buah \textit{goal} yang harus dieksekusi pada predikat \textit{transform$/$}1. Predikat \textit{see\_input\_file$/$}1 menentukan input \textit{stream} untuk fase transformasi \textsc{Tabdual} yaitu program input yang ingin ditransformasikan. Predikat \textit{tell\_output\_file$/$}1 menentukan output \textit{stream} untuk fase transformasi \textsc{Tabdual} yaitu program output yang akan dihasilkan. Program input harus memiliki ekstensi \textit{.ab} dan program output yang dihasilkan akan memiliki nama yang sama dengan program input namun dengan ekstensi \textit{.P}. Predikat \textit{pre\_transform$/$}0 melakukan beberapa hal yang harus dilakukan sebelum memulai transformasi (akan dijelaskan pada \hyperref[subsec:pre_transform]{\textcolor{blue}{bagian 3.4.3}} dan predikat \textit{transform$/$}0 adalah predikat yang akan melakukan transformasi (akan dijelaskan pada \hyperref[transform]{\textcolor{blue}{bagian 3.4}}). Predikat \textit{seen$/$}0 dan \textit{told$/$}0 berturut-turut mengembalikan input \textit{stream} dan output \textit{stream} menjadi seperti semula yaitu \textit{prompt} Prolog.
+Terdapat enam buah \textit{goal} yang harus dieksekusi pada predikat \textit{transform$/$}1. Predikat \textit{see\_input\_file$/$}1 menentukan \textit{input stream} untuk fase transformasi \textsc{Tabdual} yaitu program \textit{input} yang ingin di-\textit{transform}. Predikat \textit{tell\_output\_file$/$}1 menentukan \textit{output stream} untuk fase transformasi \textsc{Tabdual}, yaitu program \textit{output} yang akan dihasilkan. Program \textit{input} harus memiliki ekstensi \textit{.ab} dan program \textit{output} yang dihasilkan akan memiliki nama yang sama namun dengan ekstensi \textit{.p}. Predikat \textit{pre\_transform$/$}0 melakukan beberapa hal yang harus dilakukan sebelum memulai transformasi (akan dijelaskan pada \hyperref[subsec:pre_transform]{\textcolor{blue}{bagian 3.4.3}}) dan predikat \textit{transform$/$}0 adalah predikat yang akan melakukan  transformasi (akan dijelaskan pada \hyperref[transform]{\textcolor{blue}{bagian 3.4}}). Predikat \textit{seen$/$}0 dan \textit{told$/$}0 berturut-turut mengembalikan input \textit{stream} dan output \textit{stream} menjadi seperti semula yaitu \textit{prompt} Prolog.
 
 \subsection{Predikat \textit{pre\_transform/}0}
 \label{subsec:pre_transform}
@@ -334,7 +338,7 @@ transform_per_rule :-
 	transform_per_rule.
 \end{lstlisting}
 
-Predikat \textit{retract$/$}1 menghapus informasi mengenai \textit{rule H} dari \textit{database}. Predikat \textit{find\_rules$/$}2 menggunakan \textit{H} untuk mengoleksikan semua rule mengenai \textit{H} yang terdapat di \textit{database}. Koleksi tersebut dikumpulkan ke dalam list \textit{R} yang kemudian digunakan oleh predikat \textit{generate\_apostrophe\_rules$/$}1, \textit{generate\_positive\_rules$/$}1, dan (disertai dengan \textit{H} juga digunakan oleh) \textit{generate\_dual\_rules$/$}2. Predikat \textit{generate\_apostrophe\_rules$/$}1 digunakan untuk membentuk transformasi $\tau'$. Predikat \textit{generate\_positive\_rules$/$}1 digunakan untuk membentuk $\tau^+$. Predikat \textit{generate\_dual\_rules$/$}1 digunakan untuk membentuk $\tau^-$ yang sudah disesuaikan agar dapat menerapkan \textit{dual transformation by need}.
+Predikat \textit{retract$/$}1 menghapus informasi mengenai \textit{rule H} dari \textit{database}. Predikat \textit{find\_rules$/$}2 menggunakan \textit{H} untuk mengoleksikan semua rule mengenai \textit{H} yang terdapat di \textit{database}. Koleksi tersebut dikumpulkan ke dalam list \textit{R} yang kemudian digunakan oleh predikat \textit{generate\_apostrophe\_rules$/$}1, \textit{generate\_positive\_rules$/$}1, dan (disertai dengan \textit{H} juga digunakan oleh) \textit{generate\_dual\_rules$/$}2. Predikat \textit{generate\_apostrophe\_rules$/$}1 digunakan untuk membentuk transformasi $\tau'$. Predikat \textit{generate\_positive\_rules$/$}1 digunakan untuk membentuk $\tau^+$ dan membentuk \textit{directive} untuk mendefinisikan \textit{tabled predicate}, predikat yang akan di-\textit{table} pada fase \textit{abduction}. Predikat \textit{generate\_dual\_rules$/$}1 digunakan untuk membentuk $\tau^-$ yang sudah disesuaikan agar dapat menerapkan \textit{dual transformation by need}.
 
 \subsection{Predikat \textit{transform\_if\_no\_ic$/$}0}
 
@@ -413,7 +417,27 @@ ask(Q, I, O) :-
 
 Terlihat bahwa predikat \textit{ask$/$}2 akan mengeksekusi predikat \textit{ask$/$}3 tanpa \textit{input context} apapun. Selanjutnya, predikat \textit{transform\_and\_call\_query$/$}3 melakukan transformasi sekaligus melakukan eksekusi terhadap \textit{query Q} yang diberikan.
 
- \section{Predikat Sistem dari \textsc{Tabdual}}
+\section{\textit{Answer Subsumption}}
+
+Bagian ini menjelaskan bagaimana \textsc{Tabdual} mengimplementasikan fitur \textit{answer subsumption} yang disediakan oleh XSB.
+
+\subsection{\textit{Answer Subsumption} pada XSB}
+Secara \textit{default}, XSB melakukan \textit{tabling} dengan cara seperti berikut: XSB menambahkan sebuah \textit{answer A} ke dalam \textit{table T} hanya jika \textit{A} bukan merupakan \textit{variant} dari suatu \textit{answer} lain yang sudah ada pada \textit{T}. Walaupun begitu, XSB memberikan pilihan untuk dapat melakukan \textit{tabling} dengan cara yang berbeda, salah satunya yaitu dengan memanfaatkan fitur \textit{answer subsumption}. Pada XSB, terdapat dua jenis penggunaan fitur \textit{answer subsumption}, yaitu \textit{partial order answer subsumption} dan \textit{lattice answer subsumption}. Pada \textit{partial order answer subsumption}, \textit{A} ditambahkan ke dalam \textit{T} hanya jika \textit{A} adalah maksimal dibandingkan dengan \textit{answer} lainnya yang sudah terdapat pada \textit{T} berdasarkan sebuah relasi terurut parsial \textit{P} yang diberikan. Selanjutnya, jika \textit{A} ditambahkan ke dalam \textit{T}, \textit{answer} lainnya yang menurut relasi \textit{P} lebih kecil akan dihapus dari \textit{T}. Sementara, jika menggunakan \textit{lattice answer subsumption}, yang akan ditambahkan ke \textit{T} mungkin saja bukan \textit{A} melainkan gabungan yang diambil dari \textit{A} dan suatu \textit{answer} lainnya \textit{A$'$} pada \textit{T} (\textit{A$'$} tetap dihapus dari \textit{T}). Meskipun terlihat sederhana, fitur \textit{answer subsumption} ini dapat memberikan efek yang besar terhadap teknik \textit{tabling} itu sendiri.
+
+\subsection{\textit{Answer Subsumption} pada \textsc{Tabdual}}
+Untuk mendapat penjelasan yang minimal saat melakukan \textit{abduction}, \textsc{Tabdual} mengimplementasikan \textit{tabling} menggunakan \textit{partial order answer subsumption} dengan relasi \textit{subset} pada himpunan sebagai relasi terurut parsial yang digunakan. Untuk menggunakan \textit{partial order answer subsumption}, \textit{directive} yang digunakan untuk mendefinisikan \textit{tabled predicate} harus diubah. Sebagai contoh, untuk \textit{tabled predicate} \textit{$t\_ab/$}3, \textit{directive} yang digunakan diubah menjadi seperti berikut ini.
+\\
+
+\begin{lstlisting}[
+caption=\textit{Directive} untuk \textit{$t\_ab/$}3 menggunakan \textit{answer subsumption},
+style=prolog
+]
+:- table t_ab(_,_,po(subset/2)).
+\end{lstlisting}
+
+Predikat \textit{po}(\textit{subset$/$}2) ditambahkan sebagai argumen pada \textit{directive} yang mendefinisikan \textit{tabled predicate}, bersesuaian dengan argumen yang menyatakan \textit{output context} dari \textit{tabled predikat} tersebut. Predikat \textit{po}(\textit{subset$/$}2) menyatakan bahwa \textit{tabled predicate} tersebut akan di-\textit{tabling} menggunakan \textit{partial order answer subsumption} dengan predikat \textit{subset$/$}2 sebagai relasi terurut parsial yang digunakan. Definisi predikat \textit{subset$/$}2 akan dijelaskan pada \hyperref[subset]{\textcolor{blue}{bagian 3.7.4}}
+
+\section{Predikat Sistem}
 
 Bagian ini menjelaskan predikat-predikat yang didefinisikan secara khusus untuk digunakan oleh \textsc{Tabdual} dalam melakukan transformasi ataupun dalam melakukan \textit{contextual abduction}.
 
@@ -500,6 +524,7 @@ find_rules(H, R) :-
 	\end{lstlisting}
 	
 	Predikat \textit{find\_rules$/$} menggunakan predikat \textit{built-in} \textit{findall$/$}3 yang dapat mengoleksikan sebuah predikat yang terdapat pada \textit{database}. Predikat \textit{findall$/$}3 memiliki tiga argumen yaitu \textit{Template}, \textit{Goal}, dan \textit{List}. \textit{Template} menyatakan template yang digunakan untuk menyimpan hasil koleksi, \textit{Goal} menyatakan predikat yang ingin dikoleksikan dari \textit{database}, dan \textit{List} menyatakan himpunan hasil koleksi yang didapat yang direpresentasikan sebagai sebuah \textit{list}. Predikat \textit{clause$/$}2 yang digunakan sebagai \textit{Goal} menyatakan bahwa \textit{find\_rules$/$}2 hanya mengoleksikan dari \textit{database} dinamis.
+	
 	\item \textit{negate$/$}2 yang digunakan untuk membentuk negasi dari suatu predikat, didefinisikan sebagai berikut.
 	\\
 	
@@ -512,6 +537,7 @@ negate(A,(not A)).
 \end{lstlisting}
 	
 	Predikat \textit{negate$/$}2 cukup menambahkan operator \textit{not} untuk membentuk negasi dari literal positif, atau menghilangkan operator \textit{not} yang sudah ada untuk membentuk negasi dari literal negatif.
+	
 	\item \textit{get\_abducibles$/$}1 yang digunakan untuk mengoleksikan \textit{abducible} yang sudah disimpan pada predikat dinamis, didefinisikan sebagai berikut.
 	\\
 \begin{lstlisting}[
@@ -525,171 +551,23 @@ get_abducibles([]).
 	
 	Predikat \textit{get\_abducibles$/$}1 cukup melakukan unifikasi argumennya, \textit{A}, dengan \textit{list abducible} yang sudah tersimpan pada \textit{database}. Jika \textit{abducible} tidak ditemukan, maka \textit{get\_abducibles$/$}1 memberikan \textit{list} kosong.
 	
+	\item \label{subset} \textit{subset$/$}2 yang digunakan untuk melakukan pengecekan apakah suatu \textit{list} merupakan \textit{subset} dari \textit{list} yang lain, didefinisikan sebagai berikut.
+	\\
+	
+\begin{lstlisting}[
+caption=Definisi predikat \textit{subset$/$}2,
+style=prolog
+]
+subset([], _).
+subset([L|L1], L2):-
+	member(L, L2),
+	subset(L1, L2).
+\end{lstlisting}
+	
+	Predikat \textit{subset$/$}2 melakukan pengecekan apakah \textit{list} pada argumen pertama \textit{L1} merupakan \textit{subset} dari \textit{list} pada argumen kedua \textit{L2} dengan cara melakukan pengecekan apakah setiap elemen pada \textit{L1} merupakan elemen dari \textit{L2}. Predikat \textit{subset$/$}2 digunakan sebagai relasi terurut parsial pada \textit{partial order answer subsumption} yang diimplementasikan oleh \textsc{Tabdual}.
+	
 \end{itemize}
 %-----------------------------------------------------------------------------%
-\section{Implementasi \f{Cluster}}
-%-----------------------------------------------------------------------------%
-
-%-----------------------------------------------------------------------------%
-\subsection{Instalasi \f{Frontend}}
-%-----------------------------------------------------------------------------%
-Tabel model lain, ditunjukkan pada tabel \ref{tab:infohasti}. 
-\begin{table}
-	\centering
-	\caption{Informasi \f{cluster} X}
-	\newcolumntype{g}{>{\columncolor{headertbl}}c}
-	\label{tab:infohasti}
-	\begin{tabular}{|g|c|}
-	\hline Host Name & X\\
-	\hline Cluster Name & X\\
-	\hline Certificate Organization & UI\\
-	\hline Certificate Locality & Depok\\
-	\hline Certificate State & West Java\\
-	\hline Certificate Country & ID\\
-	\hline Contact & X\\
-	\hline URL & http://grid.ui.ac.id\\
-	\hline
-	\end{tabular}
-\end{table}
-
-Ada pagebreak disini.
-%supaya rapih
-\pagebreak
-
-Another type of table
-\begin{table}
-	\centering
-	\caption{Perbandingan Partisi \f{default} dan manual}
-	\newcolumntype{g}{>{\columncolor{headertbl}}c}
-	\label{tab:partdisk}
-	\begin{tabular}{|g|c|c|}
-	\rowcolor{headertbl}
-	\hline & Partisi default & Partisi manual yang dilakukan\\
-	\hline / & 16 GB & 30 GB\\
-	\hline /var & 4 GB & 18 GB\\
-	\hline swap & 1 GB & 2 GB\\
-	\hline /export & 55 GB & 26 GB\\
-	\hline
-	\end{tabular}
-\end{table}
-
-Program menghasilkan keluaran seperti pada kode \ref{lst:raidready}. 
-
-\begin{minipage}{\linewidth}
-\begin{lstlisting}[caption={Keluaran output},label={lst:raidready}]
-[root@nas-0-0 ~]# cat /proc/mdstat 
-Personalities : [raid1] 
-md0 : active raid1 sda4[0] sdb2[1]
-      1917672312 blocks super 1.2 [2/2] [UU]
-      
-unused devices: <none>
-[root@nas-0-0 ~]# mdadm --detail /dev/md0 
-/dev/md0:
-        Version : 1.2
-  Creation Time : Fri May  3 15:38:52 2013
-     Raid Level : raid1
-     Array Size : 1917672312 (1828.83 GiB 1963.70 GB)
-  Used Dev Size : 1917672312 (1828.83 GiB 1963.70 GB)
-   Raid Devices : 2
-  Total Devices : 2
-    Persistence : Superblock is persistent
-
-    Update Time : Tue May 28 11:27:49 2013
-          State : clean 
- Active Devices : 2
-Working Devices : 2
- Failed Devices : 0
-  Spare Devices : 0
-
-           Name : nas-0-0.local:0  (local to host nas-0-0.local)
-           UUID : 0754726d:3dfbd4b9:42b0f587:68631556
-         Events : 28
-
-    Number   Major   Minor   RaidDevice State
-       0       8        4        0      active sync   /dev/sda4
-       1       8       18        1      active sync   /dev/sdb2
-\end{lstlisting}
-\end{minipage}
-
-%-----------------------------------------------------------------------------%
-\subsection{Konfigurasi}\label{cha:confcluster}
-%-----------------------------------------------------------------------------%
-Contoh verbatim dalam itemize : 
-\begin{itemize}
-\item \bo{Bold ini}\\
-dijalankan perintah berikut : 
-\begin{Verbatim}[frame=single]
-# javac Ganteng.java
-# java Ganteng
-\end{Verbatim}
-\paragraph{}
-Perilaku sistem 
-\begin{Verbatim}[frame=single]
-# hai
-# enable
-# cd /export/rocks/install/
-# create distro
-# sh sesuatu.sh
-# reboot
-\end{Verbatim}
-\paragraph{}
-
-\item \bo{Menambahkan \f{package} pada \f{compute node}}\\
-Langkah yang dilakukan adalah sebagai berikut : 
-	\begin{enumerate}
-	\item Masuk ke dalam direktori \co{/procfs/}
-	\item Membuat/Mengubah berkas \co{xx.xml}. Jika tidak terdapat berkas tersebut, dapat disalin dari \co{skeleton.xml}.
-	\item Menambahkan \f{package} yang ingin dipasang pada \f{compute node} diantara \f{tag} \co{<package>} seperti berikut : \co{<package>[package yang akan dipasang]</package>}.
-	\item Menjalankan perintah berikut termasuk perintah untuk melakukan instalasi ulang seluruh \f{compute node}: 
-	\begin{Verbatim}[frame=single]
-# cd /export/somedir
-# create
-# run host
-	\end{Verbatim}
-	\end{enumerate}
-	\paragraph{}
-\end{itemize}
-%-----------------------------------------------------------------------------%
-\subsubsection{semakin ke dalam}
-%-----------------------------------------------------------------------------%
-\begin{minipage}{\linewidth}
-\begin{lstlisting}[caption={Keluaran mentah untuk detail \f{job}}, label={lst:outqstatf},style=L]
-[ardhi@xx ~]$ qstat -f 138
-Job Id: 138.xx
-    Job_Name = cur-1000-1np
-    Job_Owner = ardhi@xx
-    resources_used.cput = 27:21:35
-    resources_used.mem = 86060kb
-    resources_used.vmem = 170440kb
-    resources_used.walltime = 27:24:50
-    job_state = R
-    queue = default
-    server = hastinapura.grid.ui.ac.id
-    Checkpoint = u
-    ctime = Fri May 31 10:27:37 2013
-    Error_Path = xx:/home/ardhi/xx/curcumin-1000/cur-1000-1np.e138
-    exec_host = compute-0-5/0
-    exec_port = 15003
-    Hold_Types = n
-    Join_Path = n
-    Keep_Files = n
-    Mail_Points = e
-    Mail_Users = ardhi.putra@ui.ac.id
-    mtime = Fri May 31 10:27:47 2013
-    Output_Path = xx:/home/ardhi/xx/curcumin-1000/cur-1000-1np.o138
-    Priority = 0
-    qtime = Fri May 31 10:27:37 2013
-    Rerunable = True
-    Resource_List.nodes = 1:ppn=1
-    session_id = 5768
-    etime = Fri May 31 10:27:37 2013
-    submit_args = cur-1000-1np.pbs
-    start_time = Fri May 31 10:27:47 2013
-    submit_host = xx
-    init_work_dir = /home/ardhi/xx/curcumin-1000   
-\end{lstlisting}
-\end{minipage}
-
 %-----------------------------------------------------------------------------%
 \section{Pengujian} %lebih ke gimana cara ujinya
 %-----------------------------------------------------------------------------%
