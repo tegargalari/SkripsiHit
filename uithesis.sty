@@ -300,6 +300,14 @@
 
 \usepackage{color}
 \definecolor{codegray}{rgb}{0.93,0.97,0.97}
+\definecolor{white}{rgb}{1,1,1}
+
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}
+{\colorbox{white}
+	{\parbox{\dimexpr\textwidth-2\fboxsep}{\centering #1#2#3}}}
+\captionsetup[lstlisting]{
+	format=listing}
 
 \lstdefinestyle{prolog}
 {

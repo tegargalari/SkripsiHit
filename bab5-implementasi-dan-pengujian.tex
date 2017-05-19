@@ -10,7 +10,7 @@ Pada bagian ini penulis menjelaskan arti dari simbol-simbol/istilah-istilah yang
 \begin{itemize}
 	\item Secara umum, variabel diawali dengan huruf kapital sedangkan term dan predikat diawali dengan huruf non-kapital.
 	\item \textit{consult} berarti melakukan kompilasi program Prolog dan memuat hasil kompilasi program tersebut ke dalam \textit{database} XSB Prolog sehingga program tersebut menjadi \textit{knowledge base}.
-	\item \textit{database} berarti kumpulan predikat-predikat yang disimpan pada \textit{environment} XSB Prolog dan dijadikan sebagai \textit{knowledge base}. Predikat-predikat yang ada pada \textit{database} dapat berasal dari program yang di-\textit{consult} (membentuk \textit{database} statis) ataupun ditambahkan selama eksekusi suatu program (membentuk \textit{database} dinamis). Selama eksekusi, predikat yang sudah ditambahkan ke dalam \textit{database} dinamis dapat dimanipulasi sesuai kebutuhan program.
+	\item \textit{database} berarti kumpulan predikat-predikat yang disimpan pada \textit{environment} XSB Prolog dan dijadikan sebagai \textit{knowledge base} selama eksekusi. Predikat-predikat yang ada pada \textit{database} dapat berasal dari program yang di-\textit{consult} (membentuk \textit{database} statis) ataupun ditambahkan selama eksekusi suatu program (membentuk \textit{database} dinamis). Selama eksekusi, predikat yang sudah ditambahkan ke dalam \textit{database} dinamis dapat dimanipulasi sesuai kebutuhan program.
 	\item \textit{dual transformation by need} mengacu pada proses transformasi dual \textit{by need} yang sudah dijelaskan pada bagian ???.
 \end{itemize}
 
@@ -28,7 +28,7 @@ Secara garis besar, \textsc{Tabdual} terbagi menjadi 2 fase:
 \end{enumerate}
 
 \subsection{Berkas Implementasi \textsc{Tabdual}}
-Implementasi \textsc{Tabdual} dipecah ke dalam empat buah berkas yang berbeda agar dapat digunakan secara modular. Keeempat berkas tersebut yaitu:
+Agar dapat digunakan secara modular, implementasi \textsc{Tabdual} dipecah ke dalam empat buah berkas yang berbeda. Keeempat berkas tersebut yaitu:
 
 \begin{itemize}
 	\item \textit{tabdual.P}. Berkas ini berisi implementasi utama dari \textsc{Tabdual}, baik implementasi untuk fase transformasi maupun implementsai untuk fase \textit{abduction}. Berkas ini adalah berkas yang harus di-\textit{consult} untuk dapat menggunakan \textsc{Tabdual}. Berkas-berkas lain yang diperlukan selama menggunakan \textsc{Tabdual} akan di-\textit{consult} melalui berkas ini.
@@ -96,7 +96,7 @@ Bagian ini menjelaskan bagian implementasi \textsc{Tabdual} yang berkaitan sebel
 
 \subsection{\textit{Directive}}
 
-Pada Prolog, \textit{directive} merupakan anotasi dan predikat pada program Prolog yang akan dieksekusi langsung oleh \textit{compiler} ketika program tersebut di-\textit{consult}. Berbeda dengan predikat biasa pada program, \textit{directive} tidak akan disimpan sebagai \textit{knowledge base}, melainkan langsung dieksekusi. Pada \textsc{Tabdual}, \textit{directive-directive} yang ada dapat dikelompokkan menjadi beberapa kelompok.
+Pada Prolog, \textit{directive} merupakan anotasi dan predikat pada program Prolog yang akan dieksekusi langsung oleh \textit{compiler} ketika program tersebut di-\textit{consult}. Berbeda dengan predikat biasa pada program, \textit{directive} tidak akan disimpan sebagai ke \textit{database}, melainkan langsung dieksekusi. Pada \textsc{Tabdual}, \textit{directive-directive} yang ada dapat dikelompokkan menjadi beberapa kelompok.
 
 \subsubsection{\textit{Import}}
 
@@ -114,7 +114,7 @@ style=prolog,
 
 Predikat \textit{append$/$}3, \textit{member$/$}2, dan \textit{length$/$}2 yang sudah disediakan dalam modul \textit{basics} berturut-turut digunakan untuk menggabungkan dua buah \textit{list}, mengecek presensi suatu elemen pada sebuah \textit{list}, dan menentukan panjang sebuah \textit{list}. Predikat \textit{concat\_atom$/$}2 yang sudah disediakan dalam modul \textit{string} digunakan untuk melakukan konkatenasi atom-atom untuk membentuk suatu atom baru. Predikat \textit{trie\_create$/$}2 dan \textit{trie\_drop$/$}1 yang sudah disediakan dalam modul \textit{intern} masing-masing digunakan untuk membuat dan menghapus \textit{trie} yang digunakan oleh \textit{dual transformation by need}.
 
-\subsubsection{Operator}
+\subsubsection{Deklarasi Operator}
 
 Pada Prolog, operator logika baru dapat didefinisikan menggunakan predikat \textit{built-in} \textit{op$/$}3. Predikat \textit{op$/$}3 memiliki tiga buah argumen. Argumen pertama menyatakan presedensi operator, argumen kedua menyatakan tipe operator, dan argumen ketiga menyatakan nama operator. Presedensi dari operator dinyatakan sebagai sebuah bilangan bulat antara 1 sampai 1200 (presedensi sebuah term adalah 1), semakin kecil nilainya semakin kuat presedensinya. Tipe operator menentukan apakah operator tersebut merupakan operator \textit{prefix}, \textit{infix}, atau \textit{suffix}, sekaligus menyatakan sifat assosiatif yang dimilikinya, apakah assosiatif kanan, assosiatif kiri, atau tidak assosiatif. Tipe operator yang dapat digunakan untuk operator \textit{prefix} yaitu \textit{fx} dan \textit{fy}. Tipe operator yang dapat digunakan untuk operator \textit{infix} yaitu \textit{yfx}, \textit{xfy}, dan \textit{xfx}. Tipe operator yang dapat digunakan untuk operator \textit{suffix} yaitu \textit{xf} dan \textit{yf}. Simbol \textit{f} pada tipe operator merepresentasikan posisi operator sedangkan simbol \textit{x} dan \textit{y} merepresentasikan argumen-argumennya. Simbol \textit{x} menyatakan bahwa argumen tersebut harus memiliki presedensi kurang dari presedensi operator \textit{f}, sedangkan simbol \textit{y} menyatakan bahwa argumen tersebut harus memiliki presedensi kurang dari atau sama dengan presedensi operator \textit{f}. Dengan kata lain, simbol \textit{y} menyatakan bahwa operator tersebut bersifat assosiatif, sedangkan simbol \textit{x} menyatakan bahwa operator tersebut bersifat tidak assosiatif. \textsc{Tabdual} mendeklarasikan dua buah operator baru yaitu \textit{not} dan $\leftarrow$ seperti di bawah ini.
 \\
@@ -130,9 +130,9 @@ style=prolog
 
 Operator \textit{not} digunakan untuk menyatakan negasi dari sebuah predikat sehingga tipe operatornya adalah \textit{fy}. Operator $\leftarrow$ digunakan untuk menyatakan implikasi yang dibalik untuk digunakan ketika mendefinisikan sebuah \textit{rule-rule} pada program input. Operator $\leftarrow$ memiliki dua tipe operator untuk dua penggunaan yang berbeda. Tipe operator yang pertama yaitu \textit{fy} digunakan untuk membentuk \textit{integrity constraint}, sedangkan tipe operator yang kedua yaitu \textit{xfy} digunakan untuk membentuk \textit{rule}.
 
-\subsubsection{Predikat Dinamis}
+\subsubsection{Deklarasi Predikat Dinamis}
 
-Predikat dinamis adalah predikat yang definisinya bisa berubah-ubah. Predikat dinamis berguna untuk memanipulasi \textit{database} yang digunakan selama menjalankan sebuah program. \textsc{Tabdual} mendeklarasikan empat buah predikat dinamis yang digunakan sebagai domain-domain dari \textit{database} selama fase transformasi dan fase \textit{contextual abduction}. \textit{Directive} berikut ini mendeklarasikan keempat predikat dinamis yang digunakan. 
+Predikat dinamis adalah predikat yang definisinya bisa berubah-ubah. Predikat dinamis digunakan untuk memanipulasi \textit{database} selama eksekusi. \textsc{Tabdual} mendeklarasikan empat buah predikat dinamis yang digunakan selama fase transformasi dan fase \textit{abduction}. \textit{Directive} berikut ini mendeklarasikan keempat predikat dinamis yang digunakan. 
 \\
 
 \begin{lstlisting}[
@@ -276,7 +276,7 @@ Sama seperti predikat \textit{load\_rules$/$}0, \textit{goal} pertama yang dieks
 \subsection{Predikat \textit{add\_indices/}0}
 \label{subsec:add_indices}
 
-Pada \hyperref[rule2to3]{\textcolor{blue}{bagian sebelumnya}} telah dijelaskan bahwa diperlukan dua buah predikat dinamis untuk menyimpan \textit{rule-rule} pada program input, yaitu predikat dinamis \textit{rule$/$}2 dan \textit{rule$/$}3. Predikat dinamis \textit{rule$/$}3 merupakan ekstensi dari predikat dinamis \textit{rule$/$}2 dengan penambahan satu buah argumen yang menyatakan urutan definisi mengenai \textit{rule} tersebut. Informasi mengenai urutan ini diperlukan untuk mengimplementasikan \textit{dual transformation by need}. Predikat \textit{add\_indices$/$}0 memanfaatkan \textit{rule$/$}2 yang sudah tersimpan pada \textit{database} untuk membentuk \textit{rule$/$}3 yang sesuai. Berikut ini definisi dari predikat \textit{add\_indices$/$}0 pada \textsc{Tabdual}.
+Pada \hyperref[rule2to3]{\textcolor{blue}{bagian sebelumnya}} telah dijelaskan bahwa diperlukan dua buah predikat dinamis untuk menyimpan \textit{rule-rule} pada program input, yaitu predikat dinamis \textit{rule$/$}2 dan \textit{rule$/$}3. Predikat dinamis \textit{rule$/$}3 merupakan ekstensi dari predikat dinamis \textit{rule$/$}2 dengan penambahan satu buah argumen yang menyatakan urutan definisi mengenai \textit{rule} tersebut. Informasi mengenai urutan ini diperlukan untuk mengimplementasikan \textit{dual transformation by need}. Predikat \textit{add\_indices$/$}0 memanfaatkan \textit{rule$/$}2 yang sudah disimpan pada \textit{database} untuk membentuk \textit{rule$/$}3 yang sesuai. Berikut ini definisi dari predikat \textit{add\_indices$/$}0 pada \textsc{Tabdual}.
 \\
 
 \begin{lstlisting}[
@@ -291,7 +291,7 @@ add_indices :-
 	assert(has_rules(H)).
 \end{lstlisting}
 
-Terdapat lima buah \textit{goal} yang harus dieksekusi pada predikat \textit{add\_indices$/$}0. Predikat \textit{retract}(\textit{has\_rules$/$}1) menghapus informasi mengenai adanya \textit{rule H} dari \textit{database}. Dengan memanfaatkan \textit{rule$/$}2 yang sudah disimpan di \textit{database}, predikat \textit{find\_rules$/$}2 mengoleksikan seluruh \textit{rule} mengenai \textit{H} ke dalam sebuah \textit{list R}. Predikat \textit{add\_indices\_to\_rule$/$}1 menggunakan \textit{R} untuk membentuk sekaligus menyimpan \textit{rule$/$}3 yang sesuai. Selanjutnya terjadi pemanggilan rekursif terhadap predikat \textit{add\_indices$/$}0. Pemanggilan rekursif ini akan terus dilakukan hingga tidak ada lagi \textit{has\_rules$/$}1 pada \textit{database}. Setelah pemanggilan rekursif selesai dilakukan, setiap \textit{has\_rules$/$}1 yang baru saja dihapus ditambahkan kembali ke dalam \textit{database} untuk dapat dipergunakan kembali.
+Terdapat lima buah \textit{goal} yang harus dieksekusi pada predikat \textit{add\_indices$/$}0. Predikat \textit{retract}(\textit{has\_rules$/$}1) menghapus informasi mengenai adanya \textit{rule H} dari \textit{database}. Dengan memanfaatkan \textit{rule$/$}2 yang sudah disimpan di \textit{database}, predikat \textit{find\_rules$/$}2 mengoleksikan seluruh \textit{rule} mengenai \textit{H} ke dalam sebuah \textit{list R}. Predikat \textit{add\_indices\_to\_rule$/$}1 menggunakan \textit{R} untuk membentuk sekaligus menyimpan \textit{rule$/$}3 yang sesuai. Selanjutnya terjadi pemanggilan rekursif terhadap predikat \textit{add\_indices$/$}0. Pemanggilan rekursif ini akan terus dilakukan hingga tidak ada lagi \textit{has\_rules$/$}1 pada \textit{database}. Setelah pemanggilan rekursif selesai dilakukan, setiap \textit{has\_rules$/$}1 yang baru saja dihapus ditambahkan kembali ke dalam \textit{database} untuk dapat dipergunakan lagi.
 
 \label{subsec:mode}
 \subsection{Predikat \textit{switch\_mode/}1}
@@ -390,22 +390,142 @@ Predikat \textit{retract$/$}1 menghapus informasi mengenai \textit{rule F} dari 
 
 \section{\textit{Abduction}}
 
-\subsection{\textit{Consulting} Program Output}
+Bagian ini menjelaskan implementasi \textsc{Tabdual} yang berkaitan dengan fase \textit{abduction}. Pada fase ini, konsep \textit{abduction} digunakan untuk memberikan jawaban terhadap suatu \textit{query} yang diberikan. Seperti yang sudah dijelaskan pada bagian ???, \textsc{Tabdual} juga melakukan transformasi terhadap \textit{query} yang diberikan sehingga \textit{contextual abduction} dapat diterapkan pada \textit{query} tersebut. Selain itu, sebelum dapat memberikan \textit{query}, program output yang dihasilkan oleh fase transformasi perlu di-\textit{consult} terlebih dahulu.
+
+\subsection{Men-\textit{consult} Program Output}
+
+Agar dimuat ke dalam \textit{database}, program output yang dihasilkan dari transformasi perlu untuk di-\textit{consult} terlebih dahulu. \textsc{Tabdual} mendefinisikan predikat \textit{load$/$}1 untuk men-\textit{consult} program output yang dihasilkan. Argumen dari predikat \textit{load$/$}1 yaitu nama program input yang ditransformasikan. Predikat \textit{load$/$}1 dapat menggunakan nama program input sebagai argumennya karena \textsc{Tabdual} menyimpan hasil transformasi ke program output dengan nama berkas yang sama dengan program input, hanya berbeda pada ekstensi berkasnya saja. Sebagai contoh, jika ingin men-\textit{consult} program output hasil dari transformasi program input yang nama berkasnya adalah \textit{in.ab}, maka cukup gunakan \textit{load}(\textit{in}).
 
 \subsection{Transformasi \textit{Query}}
 
-\section{Predikat Sistem dari \textsc{Tabdual}}
+Pada bagian ??? telah dijelaskan bahwa agar dapat mengaplikasikan \textit{contextual abduction}, \textit{query} yang diberikan juga perlu ditransformasikan. \textsc{Tabdual} mendefinisikan predikat \textit{ask$/$}2 yang dapat digunakan untuk memberikan \textit{query}. Argumen pertama dari predikat \textit{ask$/$}2 adalah \textit{query} yang ingin dieksekusi dan argumen keduanya adalah jawaban yang diberikan \textsc{Tabdual} atas \textit{query} tersebut. Sebelum \textit{query} yang diberikan dieksekusi, predikat \textit{ask$/$}2 melakukan transformasi terhadap \textit{query} tersebut sesuai dengan aturan transformasi yang sudah dijelaskan pada bagian ???. Selain predikat \textit{ask$/$}2, \textsc{Tabdual} juga mendefinisikan predikat \textit{ask$/$}3 yang dapat digunakan untuk memberikan \textit{query} dengan \textit{input context} tertentu. Argumen pertama dari \textit{ask$/$}3 yaitu \textit{query} yang ingin dieksekusi, argumen keduanya yaitu \textit{input context} yang ingin diberikan dan direpresentasikan sebagai sebuah \textit{list}, dan argumen ketiganya yaitu jawaban yang diberikan \textsc{Tabdual} atas \textit{query} tersebut. Berikut ini merupakan definisi dari predikat \textit{ask$/$}2 dan \textit{ask$/$}3 yang didefinisikan oleh \textsc{Tabdual}.
+\\
 
-Bagian ini menjelaskan predikat-predikat yang didefinisikan secara khusus untuk digunakan oleh \textsc{Tabdual} dalam melakukan transformasi program ataupun dalam melakukan \textit{contextual abduction}.
+\begin{lstlisting}[
+caption=Definisi predikat \textit{ask$/$}2 dan \textit{ask$/$}3,
+style=prolog
+]
+ask(Q, O) :- 
+	ask(Q, [], O).
+ask(Q, I, O) :-
+	transform_and_call_query(Q, I, O).
+\end{lstlisting}
 
-\subsection{Predikat \textit{produce\_context}/3}
+Terlihat bahwa predikat \textit{ask$/$}2 akan mengeksekusi predikat \textit{ask$/$}3 tanpa \textit{input context} apapun. Selanjutnya, predikat \textit{transform\_and\_call\_query$/$}3 melakukan transformasi sekaligus melakukan eksekusi terhadap \textit{query Q} yang diberikan.
 
-\subsection{Predikat \textit{insert\_abducible}/3}
+ \section{Predikat Sistem dari \textsc{Tabdual}}
+
+Bagian ini menjelaskan predikat-predikat yang didefinisikan secara khusus untuk digunakan oleh \textsc{Tabdual} dalam melakukan transformasi ataupun dalam melakukan \textit{contextual abduction}.
+
+\subsection{Predikat \textit{produce\_context$/$}/3}
+
+Predikat \textit{produce\_context$/$}3 digunakan untuk menggabungkan himpunan \textit{input context} dan \textit{tabled context} (\textit{context} yang didapatkan dari \textit{table}) untuk menghasilkan \textit{output context}. Argumen-argumen dari predikat \textit{produce\_context$/$}3 secara berturut-turut yaitu \textit{output context O}, \textit{input context I}, dan \textit{tabled context E}, ketiganya direpresentasikan sebagai \textit{list}. Selain menggabungkan, predikat \textit{produce\_context$/$}3 juga melakukan pengecekan apakah \textit{I} konsisten dengan \textit{E}, yaitu apakah terdapat dua literal yang saling berlawanan pada \textit{I} dan \textit{E}. Berikut ini definisi predikat \textit{produce\_context$/$}3 pada \textsc{Tabdual} yang didefinisikan secara rekursif untuk menambahkan \textit{E} satu per satu ke dalam \textit{I} dengan memperhatikan konsistensinya.
+\\
+
+\begin{lstlisting}[
+caption=Definisi predikat \textit{produce\_context$/$}3,
+style=prolog
+]
+produce_context(I, I, []).
+produce_context(E, [], E).
+produce_context(O, I, [E|EE]) :-
+	member(E, I), !,
+	produce_context(O, I, EE).
+produce_context(O, I, [E|EE]) :-
+	negate(E, NE),
+	\+ member(NE, I),
+	append(I, [E], IE),
+	produce_context(O, IE, EE).
+\end{lstlisting}
+
+Terdapat empat definisi untuk predikat \textit{produce\_context$/$}3. Definisi pertama dan kedua digunakan untuk mengatasi berturut-turut jika tidak ada \textit{input context} yang diberikan dan tidak ada \textit{tabled context} yang didapatkan. Definisi ketiga digunakan untuk mengatasi kasus ketika sebuah \textit{abducible E} pada \textit{tabled context} sudah terdapat pada \textit{input context I}. Definisi keempat digunakan untuk menambahkan suatu \textit{abducible E} pada \textit{tabled context} yang tidak terdapat pada \textit{input context I}, tentu dengan memperhatikan konsistensinya. Predikat \textit{produce\_context$/$}3 akan gagal ketika ditemukan inkonsistensi antara \textit{input context} dengan \textit{tabled context}.
+
+\subsection{Predikat \textit{insert\_abducible$/$}/3}
+
+Predikat \textit{insert\_abducible$/$}3 digunakan untuk menambahkan sebuah \textit{abducible} pada suatu \textit{input context}. Argumen-argumen dari predikat \textit{insert\_abducible$/$}3 secara berturut-turut yaitu \textit{abducible} yang ingin ditambahkan, \textit{input context} yang ingin ditambahkan dengan \textit{abducible} pada argumen pertama, dan \textit{context} yang dihasilkan dari penambahan tersebut. Sama halnya dengan predikat \textit{produce\_context$/$}3, predikat \textit{insert\_abducbile$/$}3 juga memperhatikan konsistensi saat melakukan penambahan. Predikat \textit{insert\_abducible$/$}3 didefinisikan pada \textsc{Tabdual} seperti di bawah ini.
+\\
+
+\begin{lstlisting}[
+caption=Definisi predikat \textit{insert\_abducible$/$}3,
+style=prolog
+]
+insert_abducible(A, I, I) :-
+	member(A, I), !.
+insert_abducible(A, I, O) :-
+	negate(A, NA),
+	\+ member(NA, I),
+	append(I, [A], O).
+\end{lstlisting}
+
+Terdapat dua buah definisi untuk predikat \textit{insert\_abducible$/$}3. Definisi pertama digunakan untuk mengatasi kasus ketika \textit{abducible} yang ingin ditambahkan, \textit{A}, sudah terdapat pada \textit{input context I}. Definisi kedua digunakan untuk mengatasi kasus ketika \textit{abducible} yang ingin ditambahkan, \textit{A}, belum terdapat pada \textit{input context I}. Predikat \textit{insert\_abducible$/$}3 akan gagal ketika ditemukan inkonsistensi pada \textit{output context O} setelah menambahkan \textit{abducible A} pada \textit{input context I}.
 
 \subsection{Predikat \textit{dual}/4}
 
+Predikat \textit{dual$/$}4 digunakan untuk melakukan \textit{dual transformation by need} yang telah dijelaskan pada bagian ???, yaitu dengan membuat transformasi $\tau^*$ secara \textit{on-the-fly} ketika memang \textit{rule} spesifik dari $\tau^*$ diperlukan saat fase \textit{abduction} dan menyimpan $\tau^*$ yang sudah ditransformasikan ke dalam \textit{trie} agar dapat dipergunakan kembali. \textit{Dual rule} yang disimpan pada \textit{trie} direpresentasikan secara \textit{generic} menggunakan predikat \textit{d}(\textit{N}, \textit{P}, \textit{Dual}, \textit{Pos}), menyimpan informasi bahwa \textit{Dual} adalah \textit{dual rule} ke-\textit{N} dari \textit{rule P} disertai dengan \textit{Pos} yang menyimpan informasi mengenai posisi \textit{goal} mana pada \textit{P} yang sedang dan belum di-\textit{dual}-kan. \textsc{Tabdual} memberikan definisi untuk predikat \textit{dual$/$}4 sebagai berikut.
+\\
+
+\begin{lstlisting}[
+caption=Definisi predikat \textit{dual$/$}4,
+style=prolog
+]
+dual(N, P, I, O) :-
+	trie_property(T, alias(dual)),
+	dual(T, N, P, I, O).
+	
+dual(T, N, P, I, O) :-
+	trie_interned(d(N, P, Dual, _), T),
+	call_dual(P, I, O, Dual).
+dual(T, N, P, I, O) :-
+	current_pos(T, N, P, Pos),
+	dualize(Pos, Dual, NextPos),
+	store_dual(T, N, P, Dual, NextPos),
+	call_dual(P, I, O, Dual).
+\end{lstlisting}
+
+Dengan asumsi bahwa sudah dibuat \textit{trie T} dengan alias \textit{dual}, predikat \textit{dual$/$}4 menggunakan predikat bantu \textit{dual$/$}5 yang mendapatkan akses ke \textit{trie T} dari penggunaan predikat \textit{trie\_property$/$}2. Selanjutnya, terdapat dua definisi untuk predikat \textit{dual$/$}5. Definisi pertama digunakan ketika \textit{dual rule} yang ingin dieksekusi sudah ada tersimpan di dalam \textit{trie} sehingga dapat langsung digunakan tanpa harus membentuk ulang \textit{dual rule} tersebut. \textit{Dual rule} yang tersimpan di dalam \textit{trie} diambil menggunakan predikat \textit{trie\_interned$/$}2. Setelah berhasil didapatkan, maka predikat \textit{call\_dual$/$}4 melakukan instansiasi \textit{Dual} dengan argumen-argumen yang terdapat pada \textit{P} beserta \textit{input context I}, kemudian melakukan eksekusi \textit{Dual} yang sudah terinstansiasi dan memberikan jawabannya pada \textit{output context} O. Sementara itu, definisi kedua dari \textit{dual$/$}5 digunakan untuk terlebih dahulu membentuk \textit{dual rule} yang ingin dieksekusi, baru setelah itu \textit{dual rule} tersebut disimpan ke dalam \textit{trie} dan dieksekusi. Predikat \textit{current\_pos$/$}4 digunakan untuk menentukan \textit{Pos}, yaitu posisi \textit{goal} pada \textit{rule} ke-\textit{N} dari \textit{P} yang ingin di-\textit{dual}-kan, yang dapat ditentukan berdasarkan argumen keempat dari predikat \textit{d$/$}4 yang sudah tersimpan di dalam \textit{trie}. Predikat \textit{dualize$/$}3 memanfaatkan informasi yang terdapat pada \textit{Pos} untuk membentuk \textit{dual rule Dual} serta membentuk \textit{NextPos } yang memperbarui informasi pada \textit{Pos} sehingga dapat digunakan kembali untuk proses pembentukan \textit{dual rule} berikutnya. Predikat \textit{store\_dual$/$}4 menyimpan \textit{Dual} yang baru saja dibentuk beserta informasi mengenai \textit{N}, \textit{P}, dan \textit{NextPos} ke dalam \textit{trie T} agar dapat dipergunakan kembali. Dengan cara yang sama, \textit{call\_dual$/$}4 melakukan instansiasi dan eksekusi dari \textit{dual rule Dual}.
+
 \subsection{Predikat Sistem Lainnya}
 
+Selain \textit{produce\_context$/$}3, \textit{insert\_abducible$/$}3, dan \textit{dual$/$}4, \textsc{Tabdual} mendefiniskan beberapa predikat bantu lainnya, beberapa diantaranya yaitu:
+
+\begin{itemize}
+	\item \textit{find\_rules$/$}2 yang digunakan untuk mengoleksikan seluruh \textit{rule} mengenai suatu predikat yang tersimpan pada \textit{database}, didefinisikan sebagai berikut.
+	\\
+	\begin{lstlisting}[
+	caption=Definisi predikat \textit{find\_rules$/$}2,
+	style=prolog
+	]
+find_rules(H, R) :-
+	findall(rule(H, B), clause(rule(H, B), true), R).
+	\end{lstlisting}
+	
+	Predikat \textit{find\_rules$/$} menggunakan predikat \textit{built-in} \textit{findall$/$}3 yang dapat mengoleksikan sebuah predikat yang terdapat pada \textit{database}. Predikat \textit{findall$/$}3 memiliki tiga argumen yaitu \textit{Template}, \textit{Goal}, dan \textit{List}. \textit{Template} menyatakan template yang digunakan untuk menyimpan hasil koleksi, \textit{Goal} menyatakan predikat yang ingin dikoleksikan dari \textit{database}, dan \textit{List} menyatakan himpunan hasil koleksi yang didapat yang direpresentasikan sebagai sebuah \textit{list}. Predikat \textit{clause$/$}2 yang digunakan sebagai \textit{Goal} menyatakan bahwa \textit{find\_rules$/$}2 hanya mengoleksikan dari \textit{database} dinamis.
+	\item \textit{negate$/$}2 yang digunakan untuk membentuk negasi dari suatu predikat, didefinisikan sebagai berikut.
+	\\
+	
+\begin{lstlisting}[
+caption=Definisi predikat \textit{negate$/$}2,
+style=prolog
+]
+negate((not A),A).
+negate(A,(not A)).
+\end{lstlisting}
+	
+	Predikat \textit{negate$/$}2 cukup menambahkan operator \textit{not} untuk membentuk negasi dari literal positif, atau menghilangkan operator \textit{not} yang sudah ada untuk membentuk negasi dari literal negatif.
+	\item \textit{get\_abducibles$/$}1 yang digunakan untuk mengoleksikan \textit{abducible} yang sudah disimpan pada predikat dinamis, didefinisikan sebagai berikut.
+	\\
+\begin{lstlisting}[
+caption=Definisi predikat \textit{get\_abducibles$/$}1,
+style=prolog
+]
+get_abducibles(A) :-
+	abds(A).
+get_abducibles([]).
+\end{lstlisting}	
+	
+	Predikat \textit{get\_abducibles$/$}1 cukup melakukan unifikasi argumennya, \textit{A}, dengan \textit{list abducible} yang sudah tersimpan pada \textit{database}. Jika \textit{abducible} tidak ditemukan, maka \textit{get\_abducibles$/$}1 memberikan \textit{list} kosong.
+	
+\end{itemize}
 %-----------------------------------------------------------------------------%
 \section{Implementasi \f{Cluster}}
 %-----------------------------------------------------------------------------%
