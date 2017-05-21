@@ -1,14 +1,14 @@
 %-----------------------------------------------------------------------------%
-\chapter{\babTiga}
+\chapter{\babEmpat}
 %-----------------------------------------------------------------------------%
-Pada bab ini penulis akan menjelaskan bagaimana implementasi \textit{tabling} pada \textit{contextual abduction} dengan memanfaatkan fitur \textit{answer subsumption} yang dibuat menggunakan salah satu distribusi bahasa pemrograman Prolog, yaitu \textbf{XSB}. Pada bagian-bagian selanjutnya, program implementasi ini disebut sebagai \textsc{Tabdual}.
+Pada bab ini penulis akan menjelaskan implementasi \textsc{Tabdual} yang dibuat oleh penulis.
 
 \section{Terminologi}
 
 Pada bagian ini penulis menjelaskan beberapa ketentuan dan istilah yang digunakan pada bagian-bagian berikutnya, yaitu:
 
 \begin{itemize}
-	\item Pada prolog, variabel diawali dengan huruf kapital sedangkan term dan predikat diawali dengan huruf non-kapital.
+	\item Pada Prolog, variabel diawali dengan huruf kapital sedangkan term dan predikat diawali dengan huruf non-kapital.
 	\item \textit{Consult} berarti melakukan kompilasi program Prolog dan memuat hasil kompilasi program tersebut ke dalam \textit{database} XSB sehingga program tersebut menjadi \textit{knowledge base}.
 	\item \textit{Database} berarti kumpulan predikat-predikat yang disimpan pada \textit{environment} XSB dan dijadikan sebagai \textit{knowledge base} selama eksekusi. Predikat-predikat yang ada pada \textit{database} dapat berasal dari program yang di-\textit{consult} (membentuk \textit{database} statis) ataupun ditambahkan selama eksekusi suatu program (membentuk \textit{database} dinamis). Selama eksekusi, predikat yang sudah ditambahkan ke dalam \textit{database} dinamis dapat dimanipulasi sesuai kebutuhan program.
 	\item \textit{Dual transformation by need} mengacu pada proses transformasi dual \textit{by need} yang sudah dijelaskan pada bagian ???.
@@ -18,7 +18,7 @@ Pada bagian ini penulis menjelaskan beberapa ketentuan dan istilah yang digunaka
 
 \subsection{Tahapan \textsc{Tabdual}}
 
-Secara garis besar, \textsc{Tabdual} terbagi menjadi 2 fase:
+Seperti yang sudah dijelaskan pada \hyperref[fase]{\textcolor{blue}{bagian 3.1}}, secara garis besar, \textsc{Tabdual} terbagi menjadi 2 fase:
 
 \begin{enumerate}
 	\item \textbf{Transformasi}. Pada fase ini, \textsc{Tabdual} akan melakukan transformasi program \textit{input} \textit{P} menjadi program \textit{output} \textit{P$'$} yang dapat mengaplikasikan \textit{contextual abduction}. Transformasi dilakukan sesuai dengan aturan-aturan transformasi yang sudah dijelaskan pada \hyperref[bab2]{\textcolor{blue}{bagian 2}}.
@@ -116,7 +116,7 @@ style=prolog,
 
 Predikat \textit{append$/$}3, \textit{member$/$}2, dan \textit{length$/$}2 yang sudah disediakan dalam modul \textit{basics} berturut-turut digunakan untuk menggabungkan dua buah \textit{list}, mengecek presensi suatu elemen pada sebuah \textit{list}, dan menentukan panjang sebuah \textit{list}. Predikat \textit{concat\_atom$/$}2 yang sudah disediakan dalam modul \textit{string} digunakan untuk melakukan konkatenasi atom-atom untuk membentuk suatu atom baru. Predikat \textit{trie\_create$/$}2 dan \textit{trie\_drop$/$}1 yang sudah disediakan dalam modul \textit{intern} masing-masing digunakan untuk membuat dan menghapus \textit{trie} yang digunakan oleh \textit{dual transformation by need}.
 
-\subsubsection{Deklarasi Operator}
+\subsubsection{Operator}
 
 Pada Prolog, pengguna dapat mendefinisikan operator logika baru menggunakan predikat \textit{built-in} \textit{op$/$}3. Predikat \textit{op$/$}3 memiliki tiga buah argumen. Argumen pertama menyatakan presedensi, argumen kedua menyatakan tipe, dan argumen ketiga menyatakan nama dari operator tersebut. Presedensi dari operator dinyatakan sebagai sebuah bilangan bulat antara 1 sampai 1200 (1 adalah presedensi dari sebuah term), semakin kecil nilainya semakin kuat presedensinya. Tipe operator menentukan apakah operator tersebut merupakan operator \textit{prefix}, \textit{infix}, atau \textit{suffix}, sekaligus menyatakan sifat assosiatif yang dimilikinya, apakah assosiatif kanan, assosiatif kiri, atau tidak assosiatif. Tipe operator yang dapat digunakan untuk operator \textit{prefix} yaitu \textit{fx} dan \textit{fy}, tipe operator yang dapat digunakan untuk operator \textit{infix} yaitu \textit{yfx}, \textit{xfy}, dan \textit{xfx}, dan tipe operator yang dapat digunakan untuk operator \textit{suffix} yaitu \textit{xf} dan \textit{yf}. Simbol \textit{f} pada tipe operator merepresentasikan posisi operator sedangkan simbol \textit{x} dan \textit{y} merepresentasikan argumen-argumennya. Simbol \textit{x} menyatakan bahwa argumen tersebut harus memiliki presedensi kurang dari presedensi operator \textit{f}, sedangkan simbol \textit{y} menyatakan bahwa argumen tersebut harus memiliki presedensi kurang dari atau sama dengan presedensi operator \textit{f}. Dengan kata lain, simbol \textit{y} menyatakan bahwa operator tersebut bersifat assosiatif, sedangkan simbol \textit{x} menyatakan bahwa operator tersebut bersifat tidak assosiatif. 
 \\ \\
@@ -134,7 +134,7 @@ style=prolog
 
 Operator \textit{not} digunakan untuk menyatakan negasi dari sebuah predikat sehingga tipe operatornya adalah \textit{fy}. Operator $\leftarrow$ digunakan untuk menyatakan implikasi yang dibalik untuk digunakan ketika mendefinisikan sebuah \textit{rule-rule} pada program input. Operator $\leftarrow$ memiliki dua tipe operator untuk dua penggunaan yang berbeda. Tipe operator $\leftarrow$ yang pertama yaitu \textit{fy} digunakan untuk membentuk \textit{integrity constraint}, sedangkan tipe operator $\leftarrow$ yang kedua yaitu \textit{xfy} digunakan untuk membentuk \textit{rule}.
 
-\subsubsection{Deklarasi Predikat Dinamis}
+\subsubsection{Predikat Dinamis}
 
 Predikat dinamis adalah predikat yang definisi atau nilainya dapat berubah-ubah. Predikat dinamis digunakan untuk memanipulasi \textit{database} dinamis XSB selama eksekusi. \textsc{Tabdual} mendeklarasikan empat buah predikat dinamis yang digunakan selama fase transformasi dan fase \textit{abduction}. \textit{Directive} berikut ini mendeklarasikan keempat predikat dinamis yang digunakan. 
 \\
@@ -402,7 +402,7 @@ Agar dimuat ke dalam \textit{database}, program output yang dihasilkan dari tran
 
 \subsection{Transformasi \textit{Query}}
 
-Pada bagian ??? telah dijelaskan bahwa agar dapat mengaplikasikan \textit{contextual abduction}, \textit{query} yang diberikan juga perlu ditransformasikan. \textsc{Tabdual} mendefinisikan predikat \textit{ask$/$}2 yang dapat digunakan untuk memberikan \textit{query}. Argumen pertama dari predikat \textit{ask$/$}2 adalah \textit{query} yang ingin dieksekusi dan argumen keduanya adalah jawaban yang diberikan \textsc{Tabdual} atas \textit{query} tersebut. Sebelum \textit{query} yang diberikan dieksekusi, predikat \textit{ask$/$}2 melakukan transformasi terhadap \textit{query} tersebut sesuai dengan aturan transformasi yang sudah dijelaskan pada bagian ???. Selain predikat \textit{ask$/$}2, \textsc{Tabdual} juga mendefinisikan predikat \textit{ask$/$}3 yang dapat digunakan untuk memberikan \textit{query} dengan \textit{input context} tertentu. Argumen pertama dari \textit{ask$/$}3 yaitu \textit{query} yang ingin dieksekusi, argumen keduanya yaitu \textit{input context} yang ingin diberikan dan direpresentasikan sebagai sebuah \textit{list}, dan argumen ketiganya yaitu jawaban yang diberikan \textsc{Tabdual} atas \textit{query} tersebut. Berikut ini merupakan definisi dari predikat \textit{ask$/$}2 dan \textit{ask$/$}3 yang didefinisikan oleh \textsc{Tabdual}.
+Pada bagian ??? telah dijelaskan bahwa \textit{query} yang diberikan juga perlu ditransformasikan. \textsc{Tabdual} mendefinisikan predikat \textit{ask$/$}2 yang dapat digunakan untuk memberikan \textit{query}. Argumen pertama dari predikat \textit{ask$/$}2 adalah \textit{query} yang ingin dieksekusi dan argumen keduanya adalah jawaban yang diberikan \textsc{Tabdual} atas \textit{query} tersebut. Sebelum \textit{query} yang diberikan dieksekusi, predikat \textit{ask$/$}2 melakukan transformasi terhadap \textit{query} tersebut sesuai dengan aturan transformasi yang sudah dijelaskan pada bagian ???. Selain predikat \textit{ask$/$}2, \textsc{Tabdual} juga mendefinisikan predikat \textit{ask$/$}3 yang dapat digunakan untuk memberikan \textit{query} dengan \textit{input context} tertentu. Argumen pertama dari \textit{ask$/$}3 yaitu \textit{query} yang ingin dieksekusi, argumen keduanya yaitu \textit{input context} yang ingin diberikan dan direpresentasikan sebagai sebuah \textit{list}, dan argumen ketiganya yaitu jawaban yang diberikan \textsc{Tabdual} atas \textit{query} tersebut. Berikut ini merupakan definisi dari predikat \textit{ask$/$}2 dan \textit{ask$/$}3 yang didefinisikan oleh \textsc{Tabdual}.
 \\
 
 \begin{lstlisting}[
@@ -420,9 +420,6 @@ Terlihat bahwa predikat \textit{ask$/$}2 akan mengeksekusi predikat \textit{ask$
 \section{\textit{Answer Subsumption}}
 
 Bagian ini menjelaskan bagaimana \textsc{Tabdual} mengimplementasikan fitur \textit{answer subsumption} yang disediakan oleh XSB.
-
-\subsection{\textit{Answer Subsumption} pada XSB}
-Secara \textit{default}, XSB melakukan \textit{tabling} dengan cara seperti berikut: XSB menambahkan sebuah \textit{answer A} ke dalam \textit{table T} hanya jika \textit{A} bukan merupakan \textit{variant} dari suatu \textit{answer} lain yang sudah ada pada \textit{T}. Walaupun begitu, XSB memberikan pilihan untuk dapat melakukan \textit{tabling} dengan cara yang berbeda, salah satunya yaitu dengan memanfaatkan fitur \textit{answer subsumption}. Pada XSB, terdapat dua jenis penggunaan fitur \textit{answer subsumption}, yaitu \textit{partial order answer subsumption} dan \textit{lattice answer subsumption}. Pada \textit{partial order answer subsumption}, \textit{A} ditambahkan ke dalam \textit{T} hanya jika \textit{A} adalah maksimal dibandingkan dengan \textit{answer} lainnya yang sudah terdapat pada \textit{T} berdasarkan sebuah relasi terurut parsial \textit{P} yang diberikan. Selanjutnya, jika \textit{A} ditambahkan ke dalam \textit{T}, \textit{answer} lainnya yang menurut relasi \textit{P} lebih kecil akan dihapus dari \textit{T}. Sementara, jika menggunakan \textit{lattice answer subsumption}, yang akan ditambahkan ke \textit{T} mungkin saja bukan \textit{A} melainkan gabungan yang diambil dari \textit{A} dan suatu \textit{answer} lainnya \textit{A$'$} pada \textit{T} (\textit{A$'$} tetap dihapus dari \textit{T}). Meskipun terlihat sederhana, fitur \textit{answer subsumption} ini dapat memberikan efek yang besar terhadap teknik \textit{tabling} itu sendiri.
 
 \subsection{\textit{Answer Subsumption} pada \textsc{Tabdual}}
 Untuk mendapat penjelasan yang minimal saat melakukan \textit{abduction}, \textsc{Tabdual} mengimplementasikan \textit{tabling} menggunakan \textit{partial order answer subsumption} dengan relasi \textit{subset} pada himpunan sebagai relasi terurut parsial yang digunakan. Untuk menggunakan \textit{partial order answer subsumption}, \textit{directive} yang digunakan untuk mendefinisikan \textit{tabled predicate} harus diubah. Sebagai contoh, untuk \textit{tabled predicate} \textit{$t\_ab/$}3, \textit{directive} yang digunakan diubah menjadi seperti berikut ini.
@@ -573,7 +570,7 @@ subset([L|L1], L2):-
 %-----------------------------------------------------------------------------%
 
 %-----------------------------------------------------------------------------%
-\subsection{Kasus Uji}
+\subsection{INI BELOM}
 %-----------------------------------------------------------------------------%
 Berwarna!
 \begin{lstlisting}[caption=Potongan skrip submisi \f{job} melalui torqace,label={lst:grotorqace},style=shell]
@@ -588,7 +585,7 @@ mpirun -np 5 -machinefile $PBS_NODEFILE mdrun -v -s \
 ...
 \end{lstlisting}
 %-----------------------------------------------------------------------------%
-\subsection{Kasus Uji}
+\subsection{INI JUG BELOM}
 %-----------------------------------------------------------------------------%
 Contoh skrip yang dimasukkan pada \f{form} yang disediakan dapat dilihat pada kode \ref{lst:makebzip}.
 \begin{lstlisting}[caption={Potongan \co{Makefile} \f{project}}, label={lst:makebzip},style=shell]

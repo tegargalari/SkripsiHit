@@ -17,10 +17,10 @@
 
 % Load konfigurasi LaTeX untuk tipe laporan thesis
 \usepackage{uithesis}
-\usepackage{natbib}
+\usepackage{bm}
+\usepackage[numbers]{natbib}
 \usepackage{import}
 \usepackage{hyperref}
-\usepackage{amsmath}
 \usepackage{xcolor}
 % Load konfigurasi khusus untuk laporan yang sedang dibuat
 \input{laporan_setting}
@@ -103,9 +103,10 @@
 \onehalfspacing
 \include{bab1-pendahuluan}
 \include{bab2-landasan-teori}
-\include{bab5-implementasi-dan-pengujian}
-\include{bab6-hasil-dan-evaluasi}
-\include{bab7-kesimpulan}
+\include{bab3-tabling}
+\include{bab4-implementasi-dan-pengujian}
+\include{bab5-hasil-dan-evaluasi}
+\include{bab6-kesimpulan}
 
 %\printbibliography
 %
@@ -115,9 +116,8 @@
 \bibliography{bib}{}
 %\bibliography{references}{}
 %biblama (bukan biblatex)
-\bibliographystyle{apalikerd}
-%\bibliographystyle{ieeetr} 
-
+%\bibliographystyle{apalikerd}
+\bibliographystyle{unsrtnat} 
 %
 % Lampiran 
 %

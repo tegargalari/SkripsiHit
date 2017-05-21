@@ -1,125 +1,265 @@
 %-----------------------------------------------------------------------------%
 \chapter{\babDua}
 \label{bab2}
+
+\newcounter{babDuaNum}
+\newcounter{defBabDua}
+\newcounter{contohBabDua}
+
+\addtocounter{babDuaNum}{2}
 %-----------------------------------------------------------------------------%
-Bab ini berisi dasar-dasar pemahaman yang diperlukan dalam membuat program logika. 
+Pada bab ini penulis menjelaskan hal, teori, dan konsep yang berkaitan dengan implementasi \textit{tabling} pada \textit{contextual abduction} menggunakan \textit{answer subsumption}. Penulis mengawali penjelasan dengan konsep dasar-dasar yang diperlukan dalam pemrograman logika, dilanjutkan dengan konsep mengenai \textit{abduction}, \textit{tabling}, lalu yang terakhir yaitu \textit{answer subsumption}.
 %-----------------------------------------------------------------------------%
 \section{Pendahuluan}
-Diberikan himpunan alfabet \( \mathcal{A} \) dari bahasa \( \mathcal{L} \), akan didefinisikan himpunan berhingga yang saling \f{disjoint} yaitu himpunan konstanta, himpunan simbol fungsi, dan himpunan simbol predikat. Selain itu, pada alfabet juga mengandung himpunan simbol variabel. Simbol \f{underscore} (\_) dikhususkan untuk menyatakan sebuah \f{anonymous} variabel. \f{Term} dari \( \mathcal{A} \) didefinisikan secara rekursif sebagai salah satu dari: variabel, konstanta, atau ekspresi dengan bentuk \f{f(t$_{1}$,...,t$_{n}$)} dengan \f{f} adalah simbol fungsi dari \( \mathcal{A} \) dan \f{t$_{i}$} adalah term. \f{Atom} dari \( \mathcal{A} \) adalah ekspresi dengan bentuk \f{p(t$_{1}$,...,t$_{n}$)} dengan \f{p} adalah simbol predikat dari \( \mathcal{A} \) dan \f{t$_{i}$} adalah term. Selanjutnya, notasi \f{p/n} digunakan untuk menyatakan predikat \f{p} memiliki arity \f{n}. \f{Literal} adalah sebuah atom \f{a} atau negasinya \f{not a}. Literal \f{not a} (seperti pada bentuk kedua) disebut \f{default} literal. Sebuah term (atom maupun literal) disebut \f{ground} jika term tersebut tidak memiliki variabel. Himpunan seluruh ground term dari \( \mathcal{A} \) disebut Herbrand Universe dari \( \mathcal{A} \).
-\section{Program Logika}\label{cha:kompar}
+Diberikan himpunan alfabet $\mathcal{A}$ dari bahasa $\mathcal{L}$, dapat dibentuk himpunan berhingga yang saling \f{disjoint} yaitu himpunan konstanta, himpunan simbol fungsi, dan himpunan simbol predikat. Selain itu, diasumsikan pada himpunan alfabet juga mengandung himpunan simbol variabel. Simbol \f{underscore} (\_) secara khusus untuk menyatakan sebuah variabel \f{anonymous}. Sebuah term pada $\mathcal{A}$ didefinisikan secara rekursif sebagai salah satu dari variabel, konstanta, atau ekspresi dengan bentuk \f{f}(\textit{$t_{1}$}$, \textellipsis,$ \textit{$t_{n}$}) dengan \f{f} adalah sebuah simbol fungsi pada $\mathcal{A}$ dan \f{t$_{i}$} adalah term. Sebuah \f{atom} pada $\mathcal{A}$ adalah ekspresi dengan bentuk \f{p}(\textit{$t_{1}$}$, \textellipsis,$ \textit{$t_{n}$}) dengan \textit{p} adalah sebuah simbol predikat pada $\mathcal{A}$ dan \f{$t_{i}$} adalah term. Pada tulisan ini, notasi \f{p$/$n} digunakan untuk menyatakan sebuah simbol \f{p} yang memiliki arity \f{n}. Sebuah \f{literal} yaitu sebuah atom \f{a} atau negasinya \f{not a}. Literal negatif (misalnya \textit{not a}) disebut juga sebagai \f{default} literal. 
+
+Sebuah term (atom maupun literal) dikatakan \f{ground} jika term tersebut tidak mengandung variabel. Himpunan seluruh \textit{ground} term (yaitu \textit{ground} atom) pada \( \mathcal{A} \) disebut sebagai \textit{Herbrand universe} (atau \textit{Herbrand base}) dari \( \mathcal{A} \).
+\\
+
 %-----------------------------------------------------------------------------%
-Program logika adalah himpunan berhingga dari \f{rule} dengan bentuk:
+\noindent\textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: Program Logika}. Program logika (normal) adalah himpunan berhingga dari \f{rule} yang memiliki bentuk:
 \begin{displaymath}
-	H \leftarrow L_1,...,L_n
+	H \leftarrow L_1,\textellipsis,L_n
 \end{displaymath}
-dengan \f{H} adalah sebuah \f{atom}, $m \geq 0$, dan $L_i$ adalah \f{literal}. \f{H} dan $L_i$ berturut-turut disebut sebagai \f{head} dan \f{body} dari sebuah rule.
+dengan \f{H} adalah sebuah atom, $m \geq 0$, dan $L_i$ adalah literal.
+\\
 
-Operator koma pada sebuah rule dibaca sebagai konjungsi. Sebuah program logika disebut \f{definit} jika pada program logika tersebut tidak mengandung default literal. Rule yang tidak memiliki body ditulis sebagai $H$ saja, alih-alih menuliskannya sebagai $H \leftarrow $ . Rule dengan bentuk seperti ini disebut sebagai sebuah \f{fakta}.
-%-----------------------------------------------------------------------------%
-\subsection{Pengertian X}
-%-----------------------------------------------------------------------------%
-Setiap gambar dapat diberikan caption dan diberikan label. Label dapat digunakan untuk menunjuk gambar tertentu. Jika posisi gambar berubah, maka nomor gambar juga akan diubah secara 
-otomatis. Begitu juga dengan seluruh referensi yang menunjuk pada gambar tersebut.
+Operator koma pada sebuah \textit{rule} dibaca sebagai konjungsi. Sebuah program logika dikatakan \f{definit}  jika tidak terdapat \textit{rule} yang mengandung \textit{default} literal. Agar menyesuaikan dengan standar yang ada, \textit{rule} yang memiliki bentuk $H \leftarrow $ cukup ditulis sebagai $H$. \textit{Rule} yang memiliki bentuk seperti ini disebut sebagai sebuah \f{fakta}.
 
-Contoh sederhana adalah \pic~\ref{fig:exmasalahparalel}. Silahkan lihat code \latex~dengan nama bab2-landasan-teori.tex untuk melihat kode lengkapnya. Harap diingat bahwa caption untuk gambar selalu terletak dibawah gambar.
-Dibawah adda figure, jangn lupa dimention dengan \ref{fig:exmasalahparalel}. 
+Himpunan alfabet $\mathcal{A}$ yang membentuk program logika \textit{P} diasumsikan mencakup seluruh konstanta, serta simbol fungsi dan simbol predikat yang muncul pada \textit{P}. Herbrand \textit{universe} (atau \textit{base}) dari \textit{P} dapat diartikan sebagai Herbrand \textit{universe} (atau \textit{base}) dari $\mathcal{A}$. Herbrand \textit{base} dari \textit{P} dinyatakan sebagai $\mathcal{H}_P$. Diberikan program logika yang \textit{ground}, dapat dibentuk himpunan \textit{ground rule} pada \textit{P} dengan melakukan substitusi terhadap variabel-variabel pada \textit{P} dengan setiap elemen pada Herbrand \textit{universe}-nya.
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\textwidth]
-		{pics/parallelProblem.png}
-	\caption{Contoh masalah yang dikerjakan secara paralel}
-	\label{fig:exmasalahparalel}
-\end{figure}
-\vspace{-0.8cm}
-\begin{center}
-{\small Sumber gambar: \citep{net.oxford}}
-\end{center}
+Selanjutnya akan didefinisikan interpretasi \textit{two-valued} dan \textit{three-valued} serta model dari sebuah program logika. Misal \textit{F} adalah sebuah himpunan atom, $F = \{a_1,\textellipsis,a_n\}$. Himpunan \textit{not F} dapat didefinisikan sebagai $\{not \ a_1,\textellipsis,not \ a_n\}$.
+\\
 
-%-----------------------------------------------------------------------------%
-\subsection{Klasifikasi X}
-%-----------------------------------------------------------------------------%
-Figure dalam enum dan dua sitasi sekaligus \citep{book.buyya,book.sterling-jones} :  
-\begin{enumerate}
-\item \bi{Bold Italic} \\
-Penjelasan....... Untuk gambarannya dapat dilihat di Gambar \ref{fig:neumann}.
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: Interpretasi \textit{Two-valued}}. Interpretasi \textit{two-valued I} terhadap suatu program logika \textit{P} yaitu himpunan literal
+\begin{displaymath}
+I = T \cup not \ F
+\end{displaymath}
+sedemikan sehingga $T \cup F = \mathcal{H}_P$ dan $T \cap F = \emptyset$.
+\\
 
-\begin{figure}
-	\centering
-	\includegraphics[height=0.65\textwidth,width=0.6\textwidth]
-		{pics/neumann.pdf}
-	\caption{Arsitektur klasik \f{von Neumann}}
-	\label{fig:neumann}
-\end{figure}
-\vspace{-1.2cm}
-\begin{center}
-{\small Sumber gambar terinspirasi dari: \citep{buku.pressman}}
-\end{center} 
+\noindent Himpunan \textit{T} merupakan himpunan atom-atom yang bernilai \textit{true} pada \textit{I}, sedangkan himpunan \textit{F} merupakan himpunan atom-atom yang bernilai \textit{false} pada \textit{I}. Interpretasi \textit{I} dikatakan \textit{two-valued} karena nilai kebenaran dari sebuah atom hanya memiliki dua kemungkinan, yaitu \textit{true} atau \textit{false}. 
 
-\item \bi{Sesuatu banget} \\
-Penjelasan.......
-\end{enumerate}
-\paragraph{}
-%-----------------------------------------------------------------------------%
-\section{\f{Section in Eng}}
-%-----------------------------------------------------------------------------%
-Hal pertama yang mungkin ditanyakan adalah bagaimana membuat huruf tercetak tebal, miring, atau memiliki garis bawah. 
-Pada Texmaker, Anda bisa melakukan hal ini seperti halnya saat mengubah dokumen dengan LO Writer. 
-Namun jika tetap masih tertarik dengan cara lain, ini dia: 
+Sebagai alternatif, interpretasi \textit{three-valued} memperkenalkan nilai kebenaran yang baru selain \textit{true} dan \textit{false}, yaitu \textit{undefined}, sehingga dapat digunakan untuk merepresentasikan \textit{incomplete knowledge}.
+\\
+
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: Interpretasi \textit{Three-valued}}. Interpretasi \textit{three-valued I} terhadap suatu program logika \textit{P} yaitu himpunan literal
+\begin{displaymath}
+I = T \cup not \ F
+\end{displaymath}
+sedemikan sehingga $T \subseteq \mathcal{H}_P$, $F \subseteq \mathcal{H}_P$, dan $T \cap F = \emptyset$.
+\\
+
+\noindent Pada interpretasi \textit{three-valued}, himpunan \textit{T} merupakan himpunan atom-atom yang bernilai \textit{true} pada \textit{I}, himpunan \textit{F} merupakan himpunan atom-atom yang bernilai \textit{false} pada \textit{I}, sedangkan atom-atom yang tidak terdapat pada \textit{T} maupun \textit{F} dinyatakan bernilai \textit{undefined}.
+
+Interpretasi \textit{I} pada program logika \textit{P} juga dapat dilihat sebagai sebuah fungsi $I : \mathcal{H}_P \rightarrow \mathcal{V}$, dengan $\mathcal{V} = \{0,0.5,1\}$, didefinisikan sebagai:
+\begin{displaymath}
+	I(A) = 
+	\begin{cases}
+		0 & \text{jika $not \ A \in I$} \\
+		1 & \text{jika $A \in I$} \\
+		0.5 & \text{lainnya}
+	\end{cases}
+\end{displaymath}
+Dapat dilihat bahwa pada interpretasi \textit{two-valued} tidak terdapat atom \textit{A} sedemikian sehingga $I(A) = 0.5$.
+
+Model didefinisikan seperti biasanya, yaitu dengan menggunakan fungsi \textit{truth valuation}.
+\\
+
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: \textit{Truth Valuation}}. Jika \textit{I} adalah sebuah interpretasi, \textit{truth valuation} $\hat{I}$ terhadap \textit{I} adalah sebuah fungsi $\hat{I} : \mathcal{F} \rightarrow \mathcal{V}$, dengan $\mathcal{F}$ adalah himpunan \textit{ground} literal, konjungsi dari literal-literal, dan \textit{rule} yang dibentuk dari $\mathcal{L}$. $\hat{I}$ didefinisikan sebagai berikut:
 
 \begin{itemize}
-	\item \bo{Bold} \\
-		Gunakan perintah \bslash textbf$\lbrace\rbrace$ atau 
-		\bslash bo$\lbrace\rbrace$. 
-	\item \f{Italic} \\
-		Gunakan perintah \bslash textit$\lbrace\rbrace$ atau 
-		\bslash f$\lbrace\rbrace$. 
-	\item \underline{Underline} \\
-		Gunakan perintah \bslash underline$\lbrace\rbrace$.
-	\item $\overline{Overline}$ \\
-		Gunakan perintah \bslash overline. 
-	\item $^{superscript}$ \\
-		Gunakan perintah \bslash $\lbrace\rbrace$. 
-	\item $_{subscript}$ \\
-		Gunakan perintah \bslash \_$\lbrace\rbrace$. 
+	\item Jika \textit{L} merupakan \textit{ground} atom, maka $\hat{I}(L) = I(L)$.
+	\item Jika \textit{L} merupakan \textit{default} literal, yaitu $L = not \ A$, maka $\hat{I}(L) = 1 - \hat{I}(A)$.
+	\item Jika \textit{S} dan \textit{T} merupakan konjungsi dari literal, maka $\hat{I}(S,T)=min(\hat{I}(S),\hat{I}(T))$
+	\item Jika $H \leftarrow B$ merupakan sebuah rule, dengan \textit{B} merupakan konjungsi dari literal, maka:
+	\begin{displaymath}
+	I(H \leftarrow B) = 
+	\begin{cases}
+	1 & \text{jika $\hat{I}(B) \leq \hat{I}(H)$} \\
+	0 & \text{lainnya} \\
+	\end{cases}
+	\end{displaymath}
 \end{itemize}
 
-Perintah \bslash f dan \bslash bo hanya dapat digunakan jika package 
-uithesis digunakan. 
-%-----------------------------------------------------------------------------%
-\subsection{Pengertian \f{Section in Eng}}
-%-----------------------------------------------------------------------------%
+\noindent Untuk setiap $F \in \mathcal{F}$, nilai 0, 0.5, dan 1 dari $\hat{I}(F)$ secara berturut-turut menyatakan nilai \textit{false}, \textit{undefined}, dan \textit{true}. Dapat dituliskan $I \models F$, untuk $F \in \mathcal{F}$, jika dan hanya jika $\hat{I}(F) = 1$.
+\\
 
-%-----------------------------------------------------------------------------%
-\subsection{Next Subsection \f{Section in Eng}}
-%-----------------------------------------------------------------------------%
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: Model}. Sebuah interpretasi \textit{I} (\textit{two-valued} ataupun \textit{three-valued}) dikatakan sebagai model dari program \textit{P} jika dan hanya jika untuk setiap \textit{ground instance} $H \leftarrow B$ dari sebuah rule pada program \textit{P}, $\hat{I}(H \leftarrow B) = 1$.  
+\\
 
-%-----------------------------------------------------------------------------%
-\section{\f{Keatas lagi}}
-%-----------------------------------------------------------------------------%
-Contoh cite yang ga ada \cite{gaib}. Cite author \citeauthor{article.rebecca},cite tahun \citeyear{article.treese}, cite mention \cite{adin.experiment}, dan cite di akhir kalimat \citep{techreport.nist}.
-%-----------------------------------------------------------------------------%
-\subsection{\f{Masuk lagi}}
-%-----------------------------------------------------------------------------%
-Footnote example nih : MPICH \footnote{\url{http://www.mpich.org/}}, LAM/MPI \footnote{\url{http://www.lam-mpi.org/}}, dan OpenMPI \footnote{\url{www.open-mpi.org}} \citep{article.mcguire}. MPI-3 sedang dalam tahap perencanaan \footnote{\url{http://meetings.mpi-forum.org/MPI_3.0_main_page.php}}. Fungsi-fungsi tersebut berada di tabel \ref{tab:mpifund}. (Contoh tabel).
+Selanjutnya didefinisikan pengurutan (\textit{ordering}) terhadap interpretasi dan model seperti berikut.
+\\
 
-\begin{table}
-	\centering
-	\caption{Fungsi fundamental MPI}
-	\label{tab:mpifund}
-	\begin{tabular}{|c|c|c|}
-	\hline
-	\rowcolor{headertbl}	
-	\hline No. & Nama Fungsi & Penjelasan \\ 
-	\hline 1 & MPI\_Init & Memulai kode MPI \\ 
-	\hline 2 & MPI\_Finalize & Mengakhiri kode MPI \\ 
-	\hline 3 & MPI\_Comm\_size & Menentukan jumlah proses \\ 
-	\hline 4 & MPI\_Comm\_rank & Menentukan label proses \\ 
-	\hline 5 & MPI\_Send & Mengirim pesan \\ 
-	\hline 6 & MPI\_Recv & Menerima pesan \\ 
-	\hline
-	\end{tabular}
-\end{table}
-\begin{center}
-{\small Sumber tabel: taro sitasi disini, if i were u}
-\end{center}
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: \textit{Classical Ordering}}. Jika \textit{I} dan \textit{J} merupakan interpretasi maka dapat dikatakan bahwa $I \preceq J$ jika $I(A) \leq J(A)$ untuk setiap atom \textit{ground A}. Jika $\mathcal{I}$ merupakan kumpulan interpretasi, maka suatu interpretasi $I \in \mathcal{I}$ dikatakan \textit{minimal} di $\mathcal{I}$ jika tidak terdapat interpretasi $J \in \mathcal{I}$ sedemikian sehingga $J \preceq I$ dan $J \neq I$. Suatu interpretasi \textit{I} dikatakan \textit{least} di $\mathcal{I}$ jika $I \preceq J$ untuk setiap interpretasi lainnya $J \in \mathcal{I}$. Suatu model \textit{M} disebut sebagai \textit{minimal} model jika model tersebut \textit{minimal} di antara seluruh model untuk \textit{P}. Suatu model \textit{M} disebut sebagai \textit{least} model jika model tersebut \textit{least} di antara seluruh model untuk \textit{P}.
+\\
+
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: \textit{Fitting Ordering}}. Jika \textit{I} dan \textit{J} merupakan interpretasi maka dapat dikatakan bahwa $I \preceq_F J$ jika dan hanya jika $I \subseteq J$. Jika $\mathcal{I}$ merupakan kumpulan interpretasi, maka suatu interpretasi $I \in \mathcal{I}$ dikatakan \textit{F-minimal} di $\mathcal{I}$ jika tidak terdapat interpretasi $J \in \mathcal{I}$ sedemikian sehingga $J \preceq_F I$ dan $J \neq I$. Suatu interpretasi \textit{I} dikatakan \textit{F-least} di $\mathcal{I}$ jika $I \preceq_F J$ untuk setiap interpretasi lainnya $J \in \mathcal{I}$. Suatu model \textit{M} disebut sebagai \textit{F-minimal} model jika model tersebut \textit{F-minimal} di antara seluruh model untuk \textit{P}. Suatu model \textit{M} disebut sebagai \textit{F-least} model jika model tersebut \textit{F-least} di antara seluruh model untuk \textit{P}.
+\\
+
+Dapat dilihat bahwa \textit{classical ordering} berkaitan dengan derajat kebenaran (\textit{degree of truth}) mengenai \textit{I}, sedangkan \textit{fitting ordering} berkaitan dengan derajat informasi (degree of information). Pada \textit{fitting ordering}, \textit{undefined} bernilai lebih kecil dibandingkan dengan \textit{true} ataupun dengan \textit{false}, menyebabkan nilai \textit{true} dan \textit{false} tidak dapat dibandingkan.
+
+Pada \citep{van1976semantics} telah ditunjukkan bahwa setiap program definit memiliki tepat satu buah \textit{least model}, yang memberikan semantik pada program definit tersebut, disebut sebagai \textit{least model semantic}. Semantik untuk program yang tidak definit, yaitu program yang memperbolehkan terdapatnya \textit{default} literal pada \textit{body} dari sebuah rule, juga telah diperkenalkan pada \citep{gelfond1988stable} sebagai \textit{Stable Model Semantic}. Sebelumnya, akan dijelaskan terlebih dahulu operator Gelfond-Lifschitz $\Gamma$ yang dapat digunakan pada interpretasi \textit{two-values} dari suatu program \textit{P}.
+\\
+
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: Operator Gelfond-Lifschitz}. Misal \textit{P} merupakan sebuah program logika dan \textit{I} merupakan interpretasi \textit{two-valued} terhadap \textit{P}. \textit{GL Transformation} dari \textit{P modulo I} yaitu program $\frac{P}{I}$ yang didapat dari \textit{P} dengan melakukan operasi-operasi berikut:
+
+\begin{enumerate}
+	\item Hapus \textit{rule} pada \textit{P} yang mengandung \textit{default} literal $L = not \ A$ sedemikian sehingga $\hat{I}(L) = 0$.
+	\item Hapus dari \textit{rule-rule} yang tersisa \textit{default} literal $L = not \ A$ yang memenuhi $\hat{I}(A) = 1$.
+\end{enumerate} 
+
+Karena program $\frac{P}{I}$ yang dihasilkan merupakan program \textit{definit}, $\frac{P}{I}$ memiliki tepat satu \textit{least model} \textit{J}, dituliskan sebagai $\Gamma(I) = J$.
+
+Pada \citep{gelfond1988stable} telah ditunjukkan bahwa \textit{fixed point} dari operator Gelfond-Lifschitz $\Gamma$ terhadap program \textit{P} merupakan \textit{minimal model} dari \textit{P}.
+\\
+
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: Stable Model Semantics}. Suatu interpretasi \textit{two-valued I} terhadap program logika \textit{P} merupakan \textit{stable model} dari \textit{P} jika $\Gamma(I) = I$.
+\\
+
+\noindent \textit{Contoh 1.} Sebagai ilustrasi, program \textit{P}:
+\begin{flalign*}
+& a \leftarrow not \ b.  \\
+& b \leftarrow not \ a. \\
+& c \leftarrow not \ d. \\
+& d \leftarrow not \ e. \\
+& p \leftarrow a. \\
+& p \leftarrow b.
+\end{flalign*}
+memiliki dua \textit{stable model}:
+\begin{displaymath}
+	I_1 = \{a,d,p,not \ b,not \ c, not \ e\} \ \text{dan} \ I_2 = \{b,d,p,not \ a, not \ c,not \ e\}
+\end{displaymath}
+dengan program $\frac{P}{I_1}$:
+\begin{flalign*}
+& a \leftarrow . \\
+& d \leftarrow . \\
+& p \leftarrow a. \\
+& p \leftarrow b.
+\end{flalign*}
+dan program $\frac{P}{I_2}$:
+\begin{flalign*}
+& b \leftarrow . \\
+& d \leftarrow . \\
+& p \leftarrow a. \\
+& p \leftarrow b.
+\end{flalign*}
+
+\noindent Seperti yang sudah dijelaskan sebelumnya, Stable Model Semantics dapat memberikan makna pada program yang memperbolehkan terdapatnya \textit{default} literal pada \textit{body} dari sebuah \textit{rule}. Namun, untuk beberapa program yang cukup "unik", Stable Model Semantics tetap tidak dapat menemukan \textit{stable model}-nya, misalnya program $p \leftarrow not \ p$. Selain itu, beberapa program yang memiliki \textit{stable model}, semantiknya terkadang tidak sesuai dengan semantik yang sesungguhnya diharapkan (lihat \citep{alferes1996reasoning}).
+
+Pada \citep{van1991well}, \textit{Well-Founded Semantics} diperkenalkan untuk mengatasi masalah yang ditemukan pada Stable Model Semantics. Well-Founded Semantics dapat dilihat sebagai \textit{three-valued Stable Model Semantics} \cite{przymusinska1990semantic}. Agar dapat memberikan formalisasi terhadap ide mengenai \textit{three-valued stable model}, pada bahasa $\mathcal{L}$ yang digunakan oleh program ditambahkan konstanta proposisi \textit{\textbf{u}} yang menyatakan nilai \textit{undefined} untuk interpretasi manapun. Oleh karena itu, setiap interpretasi memenuhi:
+\begin{displaymath}
+\hat{I}(\mathbf{u}) = \hat{I}(not \ \mathbf{u}) = 0.5
+\end{displaymath}
+Program \textit{non-negative} merupakan program yang \textit{body} pada \textit{rule-rule}-nya hanya dibentuk oleh atom atau \textit{\textbf{u}}. Telah dibuktikan di \citep{przymusinska1990semantic} bahwa setiap program logika \textit{non-negative} pasti memliki tepat satu \textit{least three-valued model}.
+
+Selanjutnya akan didefinisikan operator $\Gamma^*$, yaitu perluasan dari operator Gelfond-Lifschitz terhadap interpretasi \textit{three-valued}.
+\\
+
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: Operator \textit{Extended} Gelfond-Lifschitz}. Misal \textit{P} merupakan sebuah program logika dan \textit{I} merupakan interpretasi \textit{three-valued} terhadap \textit{P}. \textit{Extended GL Transformation} dari \textit{P modulo I} yaitu program $\frac{P}{I}$ yang didapat dari \textit{P} dengan melakukan operasi=operasi berikut:
+\begin{enumerate}
+	\item Hapus \textit{rule} pada \textit{P} yang mengandung \textit{default} literal $L = not \ A$ sedemikian sehingga $\hat{I}(L) = 0$.
+	\item Dari \textit{rule-rule} yang tersisa, ganti \textit{default} literal $L = not \ A$ yang memenuhi $\hat{I}(A) = 0.5$ dengan \textit{\textbf{u}}.
+	\item Hapus dari \textit{rule-rule} yang tersisa \textit{default} literal $L = not \ A$ yang memenuhi $\hat{I}(A) = 1$.
+\end{enumerate}
+
+Karena program $\frac{P}{I}$ yang dihasilkan merupakan program \textit{non-negative}, $\frac{P}{I}$ memiliki tepat satu \textit{three-valued least model} \textit{J}, dituliskan sebagai $\Gamma^*(I) = J$.
+\\
+
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: Well-Founded Semantic}. Suatu interpretasi \textit{three-valued I} terhadap program logika \textit{P} merupakan \textit{three-valued stable model} dari \textit{P} jika $\Gamma^*(I) = I$. Well-Founded Semantics dari \textit{P} ditentukan oleh \textit{F-least three-valued stable model} dari \textit{P}, dan bisa didapatkan dengan melakukan iterasi pada $\Gamma^*$ dimulai dari interpretasi kosong.
+\\
+
+\noindent \textit{Contoh 2.} Sebagai ilustrasi, akan digunakan program pada Contoh 1. Misal $I_0$ adalah interpretasi kosong.
+
+\begin{itemize}
+	\item \textit{Least three-valued model} dari $\frac{P}{I_0}$:
+	\begin{flalign*}
+	& a \leftarrow \bm{u}. \\
+	& b \leftarrow \bm{u}. \\
+	& c \leftarrow \bm{u}. \\
+	& d \leftarrow \bm{u}. \\
+	& p \leftarrow a. \\
+	& p \leftarrow b.
+	\end{flalign*}
+	yaitu $\Gamma^*(I_0) = \{not \ e\}$.
+	\item Misal $I_1 = \Gamma^*(I_0)$. \textit{Least three-valued model} dari $\frac{P}{I_1}$:
+	\begin{flalign*}
+	& a \leftarrow \bm{u}. \\
+	& b \leftarrow \bm{u}. \\
+	& c \leftarrow \bm{u}. \\
+	& d \leftarrow . \\
+	& p \leftarrow a. \\
+	& p \leftarrow b.
+	\end{flalign*}
+	yaitu $\Gamma^*(I_1) = \{d,not \ e\}$.
+	\item Misal $I_2 = \Gamma^*(I_1)$. \textit{Least three-valued model} dari $\frac{P}{I_2}$:
+	\begin{flalign*}
+	& a \leftarrow \bm{u}. \\
+	& b \leftarrow \bm{u}. \\
+	& d \leftarrow . \\
+	& p \leftarrow a. \\
+	& p \leftarrow b.
+	\end{flalign*}
+	yaitu $\Gamma^*(I_2) = \{d,not \ c,not \ e\}$.
+	\item Misal $I_3 = \Gamma^*(I_2)$. \textit{Least three-valued model} dari $\frac{P}{I_3}$:
+	\begin{flalign*}
+	& a \leftarrow \bm{u}. \\
+	& b \leftarrow \bm{u}. \\
+	& d \leftarrow . \\
+	& p \leftarrow a. \\
+	& p \leftarrow b.
+	\end{flalign*}
+	yaitu $\Gamma^*(I_3) = \{d,not \ c,not \ e\}$.
+\end{itemize}
+
+Didapatkan \textit{well-founded model} dari \textit{P} yaitu $I_3 = \{d,not \ c,not \ e \}$, yaitu \textit{d} bernilai \textit{true}, \textit{c} dan \textit{e} bernilai \textit{false}, dan \textit{a}, \textit{b}, dan \textit{p} bernilai \textit{undefined}. Selanjutnya, \textit{well-founded model} dari program \textit{P} dituliskan sebagai \textit{WFM}(\textit{P}).
+
+\section{\textit{Abduction}}
+
+Istilah \textit{abduction} pertama kali diperkenalkan oleh Peirce \citep{quine1933collected}, yaitu suatu bentuk penalaran logika yang berawal dengan diberikan observasi lalu mencari penjelasan yang paling baik berdasarkan hipotesis-hipotesis yang ada. Pada pemrograman logika, proses \textit{abduction} diwujudkan dengan menambahkan \textit{abduction hypotheses} sebagai elemen baru pada pemrogaman logika, disebut sebagai \textit{abducible}. Sebuah \textit{abducible} dinyatakan sebagai sebuah atom \textit{Ab}, disebut sebagai \textit{positive abducible}, atau negasinya $Ab^*$, disebut sebagai \textit{negative abducible}.
+
+Selanjutnya, akan dijelaskan mengenai \textit{abductive framework} pada pemrograman logika \citep{kakas1992abductive} yang didalamnya terdapat \textit{integrity constraint} yang digunakan untuk membatasi \textit{abduction}. Definisi-definisi yang diberikan mengacu kepada \citep{alferes2004abduction}.
+\\
+
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: \textit{Integrity Constraint}}. Sebuah \textit{Integrity constraint} pada dasarnya merupakan sebuah \textit{rule} yang berbentuk penyangkalan:
+\begin{displaymath}
+\bot \leftarrow L_1, \textellipsis , L_m.
+\end{displaymath}
+dengan $\bot$ merupakan simbol predikat pada $\mathcal{L}$ yang menyatakan \textit{false}, $m \geq 1$, dan $L_i (1 \leq i \leq m)$ merupakan literal.
+\\
+
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: \textit{Abductive Framework}}. Sebuah tripel $\langle P, \mathcal{AB}, \mathcal{IC} \rangle$ dikatakan sebagai sebuah \textit{abductive framework}, dengan $\mathcal{AB}$ merupakan himpunan predikat \textit{abducible} (beserta \textit{arity}-nya), \textit{P} merupakan program logika pada bahasa $\mathcal{L} \backslash \{\bot \}$ sedemikian sehingga tidak terdapat \textit{rule} pada \textit{P} yang \textit{head}-nya adalah predikat pada $\mathcal{AB}$, dan $\mathcal{IC}$ merupakan himpunan \textit{integrity constraint}.
+
+Diberikan suatu \textit{abductive framework} $\langle P, \mathcal{AB}, \mathcal{IC} \rangle$, $\mathcal{AB}_{gL}$ menyatakan himpunan berhingga \textit{abducible} yang \textit{ground} yang dapat dibentuk dari $\mathcal{AB}$. Secara khusus, $\mathcal{AB}_{gL} = \mathcal{AB}$ jika seluruh predikat \textit{abducible} pada $\mathcal{AB}$ adalah proposisi (predikat dengan \textit{arity} 0).
+\\
+
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: \textit{Abductive Scenario}}. Misal \textit{F} merupakan \textit{abductive framework} $\langle P, \mathcal{AB}, \mathcal{IC} \rangle$.  Sebuah \textit{abductive scenario} pada \textit{F} merupakan tupel $\langle P, \mathcal{AB}, \mathcal{S}, \mathcal{IC} \rangle$, dengan $\mathcal{S} \subseteq \mathcal{AB}_{gL}$ dan tidak terdapat $A \in \mathcal{S}$ sedemikian sehingga $not \ A \in \mathcal{S}$, dengan kata lain, $\mathcal{S}$ harus konsisten. Konsistensi dari \textit{abductive scenario} dapat dipertahankan dengan memberikan \textit{integrity constraint} $\bot \leftarrow Ab,Ab^*$.
+
+Misalkan terdapat observasi \textit{O} yaitu sebuah himpunan literal, analog dengan sebuah query pada pemrograman logika. \textit{Abduction} terhadap \textit{O} yaitu menemukan \textit{abductive solution} yang konsisten terhadap tiap \textit{goal} pada \textit{O} yang tetap mempertahankan \textit{integrity constraint}, dengan \textit{abductive solution} yang terdapat pada semantik dari program \textit{P} didapatkan dengan cara mengganti pada program \textit{P} seluruh \textit{abducible} pada $\mathcal{S}$ dengan nilai kebenaran masing-masing. Selanjutnya akan didefinisikan secara formal \textit{abductive solution} pada Well-Founded Semantic.
+
+Diberikan \textit{abductive scenario} $\langle P, \mathcal{AB}, \mathcal{S}, \mathcal{IC} \rangle$ pada \textit{abductive framework} $\langle P, \mathcal{AB}, \mathcal{IC} \rangle$, didefinisikan $P_{\mathcal{S}}$ sebagai himpunan terkecil dari \textit{rule} pada \textit{P} yang   untuk setiap $A \in \mathcal{AB}_{gL}$ mengandung fakta \textit{A} jika $A \in \mathcal{S}$, atau $A \leftarrow \bm{u}$ jika $A \notin \mathcal{S}$. Secara ekivalen, alih-alih menambahkan rule $A \leftarrow \bm{u}$ ke $P_{\mathcal{S}}$, \textit{A} yang bersesuaian pada \textit{P} dan $\mathcal{IC}$ dapat digantikan dengan $\bm{u}$.
+\\
+
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: \textit{Abductive Solutions}}. Misal \textit{F} merupakan \textit{abductive framework} $\langle P, \mathcal{AB}, \mathcal{IC} \rangle$ dan $\langle P, \mathcal{AB}, \mathcal{S}, \mathcal{IC} \rangle$ merupakan \textit{abductive scenario} pada \textit{F}. Himpunan \textit{abducible} (yang konsisten) $\mathcal{S}$ merupakan \textit{abductive solution} dari \textit{F} jika $\bot$ bernilai \textit{false} pada $M_s = $ \textit{WFM}$(P \cup P_\mathcal{S} \cup \mathcal{IC})$. $\mathcal{S}$ dapat dikatakan sebagai \textit{abductive solution} untuk \textit{query Q} jika \textit{Q} bernilai \textit{true} pada $M_s$, ditulis sebagai $M_s \models Q$.
+\\
+
+\textit{Abduction} pada pemrograman logika dapat diselesaikan dengan melakukan pencarian solusi terhadap \textit{query} yang diberikan. Pencarian dilakukan secara \textit{top-down} melalui suatu komputasi yang melakukan eksekusi (\textit{call}) terhadap predikat-predikat logika yang ada pada program. \textit{Correctness} dari komputasi ini membutuhkan semantik yang relevan, sehingga dalam mencari solusi dari sebuah \textit{query} komputasi tidak dilakukan pada seluruh model yang ada, melainkan hanya dilakukan pada \textit{rule-rule} pada program yang relevan dengan \textit{query} tersebut. Well-Founded Semantic memiliki properti yang relevan, yaitu dapat menemukan \textit{abducible} mana saja yang menjadi solusi  beserta nilai yang didapatkan dengan melakukan komputasi \textit{top-down} seperti yang disebutkan sebelumnya. \textit{Abducible} yang tidak terdapat pada solusi dapat dianggap tidak relevan dengan \textit{query} yang diberikan.
+
+\section{\textit{Tabling}}
+
+Pada pemrograman logika, \textit{tabling} merupakan teknik menggunakan kembali solusi yang sudah didapat, tanpa melakukan komputasi ulang, dengan menyimpan pasangan \textit{goal} dan \textit{answer} dari sebuah \textit{query}, yang didapatkan setelah melakukan ekseskusi \textit{query} tersebut. \textit{Tabling} sudah disediakan sebagai sebuah fitur pada beberapa distribusi Prolog, misalnya XSB Prolog, YAP Prolog, B-Prolog, Ciao, Mercury, dan ALS Prolog. Meskipun dikembangankan dari ide yang sangat sederhana, penggunaan \textit{tabling} memiliki pengaruh yang cukup besar \citep{swift2012xsb}:
+
+\begin{itemize}
+	\item \textit{Tabling} memiliki properti \textit{bounded term-size} yang memastikan bahwa suatu program selalu \textit{terminate}, yaitu dengan membatasi jumlah \textit{subgoal} dan \textit{answer} yang dapat dibentuk.
+	\item \textit{Tabling} dapat dipergunakan untuk melakukan evaluasi terhadap program yang mengandung negasi menurut Well-Founded Semantic.
+	\item Untuk program berskala besar, penggunaan \textit{tabling} menyebabkan evaluasi terhadap \textit{query} menjadi jauh lebih optimal.
+	\item \textit{Tabling} dapat dengan mudah diintegrasikan dengan Prolog, sehingga beberapa implementasi yang sudah terdapat pada Prolog dapat dipergunakan, serta menyebabkan tidak diperlukannya penggunaan bahasa pemrograman lain untuk membentuk sistem yang utuh.
+\end{itemize}
+
+\section{\textit{Answer Subsumption}}
+
+Pada bagian sebelumnya telah dijelaskan bahwa \textit{tabling} disediakan sebagai sebuah fitur pada beberapa distribusi Prolog. Namun, terdapat fitur tambahan yang dapat digunakan pada \textit{tabling} yang tidak disediakan pada beberapa distribusi Prolog yang sudah disebutkan, yaitu fitur yang disebut sebagai \textit{answer subsumption}. 
+
+Pada sebagian besar distribusi Prolog, \textit{tabling} dilakukan dengan menggunakan teknik \textit{answer variance}: sebuah \textit{answer A} akan ditambahkan ke dalam \textit{table T} hanya jika \textit{A} bukan merupakan \textit{variant} dari suatu \textit{answer} lain yang sudah ada pada \textit{T}. Meskipun dengan menggunakan \textit{answer variance} sudah cukup agar \textit{tabling} dapat melakukan komputasi terhadap Well-Founded Semantic, ataupun untuk memastikan terminasi pada program dengan memanfaatkan properti \textit{bounded term-size}, beberapa teknik lain dalam menentukan kapan dan bagaimana suatu \textit{answer} ditambahkan ke dalam \textit{table} dapat dibuat. Dengan menggunakan \textit{partial order answer subsumption}, \textit{A} ditambahkan ke dalam \textit{T} hanya jika \textit{A} adalah maksimal dibandingkan dengan \textit{answer} lainnya yang sudah terdapat pada \textit{T} berdasarkan sebuah relasi terurut parsial \textit{po} yang diberikan. Selanjutnya, jika \textit{A} ditambahkan ke dalam \textit{T}, \textit{answer} lainnya yang menurut relasi \textit{po} lebih kecil akan dihapus dari \textit{T}. Sementara itu, dengan menggunakan \textit{lattice answer subsumption}, yang akan ditambahkan ke \textit{T} mungkin saja bukan \textit{A}, melainkan gabungan yang diambil dari \textit{A} dan suatu \textit{answer} lainnya \textit{A$'$} pada \textit{T}, dengan \textit{A$'$} tetap dihapus dari \textit{T}. 
+
+Meskipun terlihat sederhana, fitur \textit{answer subsumption} ini dapat memberikan efek yang besar terhadap teknik \textit{tabling} itu sendiri. \textit{Partial order answer subsumption} memungkinkan \textit{table} untuk menyimpan hanya \textit{answer-answer} yang dianggap maksimal berdasarkan preferensi tertentu, sedangkan \textit{lattice answer subsumption} dapat digunakan untuk membentuk fondasi untuk \textit{multi-valued logics}, \textit{quantitative logics}, dan interpretasi abstrak untuk proses dan program logika \citep{swift2010tabling}.
