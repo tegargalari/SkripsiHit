@@ -1,0 +1,291 @@
+%-----------------------------------------------------------------------------%
+\chapter{\babTiga}
+\newcounter{babTigaNum}
+\newcounter{defBabTiga}
+\newcounter{contohBabTiga}
+
+\addtocounter{babTigaNum}{3}
+
+\label{bab3}
+
+Pada \textit{abduction}, sering kali ditemukan bahwa \textit{abductive solution} yang didapatkan pada suatu proses \textit{abduction} ternyata memiliki relevansi dengan proses \textit{abduction} lainnya, menyebabkan bahwa sebenarnya \textit{abductive solution} tersebut dapat dipergunakan kembali. Seperti yang sudah dijelaskan pada bagian sebelumnya, teknik \textit{tabling}, terlepas dari \textit{abduction}, dapat dipergunakan untuk mempergunakan kembali solusi yang sudah didapatkan \citep{swift1999tabling}. Secara konsep, \textit{tabling} tampaknya juga dapat diterapkan pada \textit{abduction}, yaitu untuk mempergunakan kembali \textit{abductive solution} yang sudah didapat. Namun praktisnya, \textit{abductive solution} dari \textit{goal G} tidak serta-merta dapat di-\textit{tabling} karena solusi tersebut secara khusus terkait dengan konteks pada proses \textit{abduction} jika diberikan \textit{goal G}. \textit{Abductive context} dari \textit{goal G} dapat diartikan sebagai himpunan \textit{abducible} yang memberikan informasi mengenai konteks dari proses \textit{abduction} yang digunakan untuk mencari \textit{abductive solution} dari \textit{goal G}.
+
+Pada bagian ini, penulis akan menjelaskan teknik untuk mempergunakan kembali \textit{abductive solution} yang didapat dari suatu \textit{abductive context} pada \textit{abductive context} lainnya dengan memanfaatkan \textit{tabling}. Teknik melakukan \textit{tabling abductive solution} pada \textit{contextual abduction} ini disebut sebagai \textsc{Tabdual} \citep{saptawijaya2015tabdual}. Teknik ini didasari oleh \textsc{Abdual} \citep{alferes2004abduction}, yaitu suatu pendekatan yang dapat digunakan untuk melakukan komputasi terhadap \textit{abduction} pada Well-Founded Semantic. \textsc{Tabdual} merealisasikan teori transformasi program yang diberikan pada \textsc{Abdual} yaitu \textit{dual program transformation}, ditambah dengan adanya  \textit{tabling} untuk menyimpan \textit{abductive solution}, sekaligus mengatasi permasalahan yang ditemukan ketika melakukan \textit{abduction} pada \textit{goal} negatif. 
+
+Penulis akan memulai menjelaskan dengan memberikan motivasi dan ide dasar diperlukannya \textit{tabling} dan \textit{abduction}, kemudian menunjukkan bagaimana konsep dan realisasi \textit{tabling} dan \textit{abduction} pada transformasi program yang dilakukan \textsc{Tabdual}.
+
+\section{Motivasi dan Ide}
+
+\textit{Contoh \thebabTigaNum.\stepcounter{contohBabTiga}\thecontohBabTiga}. Misal terdapat sebuah \textit{abductive framework} $\langle P_1, \{a/0,b/0 \},\emptyset \rangle$ dengan program $P_1$ sebagai berikut:
+\begin{flalign*}
+	& q \leftarrow a. \\
+	& s \leftarrow q,b. \\
+	& t \leftarrow s,q.
+\end{flalign*}
+Misal akan diberikan tiga buah \textit{query} untuk memberikan penjelasan dari \textit{q}, \textit{s}, dan \textit{t} secara berturut-turut.
+
+\begin{itemize}
+	\item \textit{Query} yang pertama, \textit{q}, terpenuhi hanya dengan memberikan $[a]$ sebagai \textit{abductive solution} untuk \textit{q} lalu menyimpannya ke \textit{table}.
+	\item \textit{Query} berikutnya, \textit{s}, harus memenuhi dua \textit{subgoal} pada \textit{body}-nya, yaitu dengan mengeksekusi \textit{q} dan \textit{b}. Karena \textit{q} sudah pernah dieksekusi, solusi yang dihasilkan pada eksekusi \textit{q} sebelumnya dapat digunakan kembali, menghasilkan \textit{abductive context} $[a]$. Selanjutnya, $[a]$ yang dihasilkan dari \textit{subgoal q} ditambahkan dengan \textit{subgoal} berikutnya yaitu $[b]$ yang merupakan \textit{abducible}, menghasilkan \textit{abductive solution} $[a,b]$.
+	\item Tidak jauh berbeda dengan \textit{query} sebelumnya, \textit{query t} akan mengekesekusi \textit{s} dan \textit{q}. Eksekusi dari \textit{subgoal s} menghasilkan \textit{abductive solution} yang sudah disimpan pada \textit{table} yaitu  $[a,b]$, sementara eksekusi dari \textit{q} mengahasilkan \textit{abductive solution} $[a]$ yang juga sudah disimpan pada \textit{table}. Karena $[a] \subseteq [a,b]$, maka \textit{query t} cukup  memberikan jawaban $[a,b]$ sebagai \textit{abductive solution}-nya.
+\end{itemize}
+Ilustrasi di atas menunjukkan bahwa $[a]$ sebagai \textit{abductive solution} yang didapatkan dari \textit{query} yang pertama \textit{q} dapat digunakan pada \textit{abductive context} dari dua \textit{query} lainnya berikutnya (dicontohkan dengan $[b]$ pada \textit{query s} dan $[a,b]$ pada \textit{query t}). Dapat dibayangkan jika \textit{q} memiliki \textit{subgoal} dengan jumlah yang sangat besar, tanpa \textit{tabling}, \textit{cost} yang diperlukan baik dari segi ruang dan waktu akan menjadi sangat mahal.
+
+\label{fase}
+\textsc{Tabdual} terdiri dari dua fase. Fase pertama yaitu \textit{program tansformation}, menghasilkan program \textit{output} yang dapat digunakan pada fase berikutnya, yaitu \textit{abduction} itu sendiri yang dapat dilakukan dengan memberikan \textit{query}.
+
+\section{Transformasi Program}
+Pada Contoh \thebabTigaNum.1 telah ditunjukkan dua unsur utama pada transformasi \textsc{Tabdual}:
+
+\begin{itemize}
+	\item \textit{Abductive context}, membawa informasi mengenai \textit{abductive solution} dari satu \textit{subgoal} ke \textit{subgoal} berikutnya pada \textit{body} dari sebuah \textit{rule}, juga dari \textit{head} dari sebuah \textit{rule} ke \textit{body}-nya, melalui \textit{input context} dan \textit{output context}.
+	\item \textit{Tabled predicate}, menyimpan \textit{abductive solution} dari predikat yang muncul sebagai sebuah \textit{head} pada program untuk disimpan pada \textit{table}, sehingga \textit{abductive solution} yang sudah disimpan dapat dipergunakan kembali pada \textit{abductive context} yang berbeda.
+\end{itemize}
+
+Transformasi program pada \textsc{Tabdual} terdiri dari beberapa bagian, yaitu transformasi untuk melakukan \textit{tabling} terhadap \textit{abductive solution} (bagian 3.2.1), untuk melakukan \textit{abduction} pada \textit{goal} negatif (bagian 3.2.2), untuk menambahkan \textit{abducible} pada suatu \textit{abductive context} (bagian 3.2.3), dan untuk melakukan transformasi pada \textit{query} (bagian 3.2.4).
+
+\subsection{\textit{Tabling Abductive Solution}}
+
+Untuk merealisasikan ide yang ditunjukkan pada Contoh 3.1, \textsc{Tabdual} melakukan transformasi terhadap setiap \textit{rule} yang terdapat pada program menjadi dua buah \textit{rule}. \textit{Rule} pertama mendefinisikan \textit{tabled predikat} yang digunakan untuk memperoleh \textit{abductive solution}, dengan membawa \textit{abducible} pada \textit{rule} tersebut sebagai \textit{input context} untuk melakukan \textit{abduction} mulai dari \textit{subgoal} pertama, satu per satu hingga ke \textit{subgoal} terakhir, lalu menyimpan \textit{abductive solution} yang didapat ke dalam \textit{table}. Sementara itu, \textit{rule} kedua hasil transformasi digunakan untuk mendapatkan \textit{abductive solution} yang sudah disimpan pada \textit{table} sehingga dapat dipergunakan kembali pada \textit{abductive context} yang berbeda.
+
+Transformasi untuk membentuk kedua \textit{rule} di atas didefinisikan secara formal sebagai pada Definisi \thebabTigaNum.1.
+\\
+
+Untuk selanjutnya, $\bar{t}$ digunakan untuk menyatakan $[t_1, \textellipsis ,t_n]$, $n \geq 0$. Untuk sebuah predikat $p/n$, $p(\bar{t})$ digunakan untuk menyatakan $p(t_1, \textellipsis , t_n)$. Secara khusus, $\bar{X}$ digunakan untuk menyatakan $[X_1, \textellipsis , X_n]$, $p(\bar{X})$ untuk menyatakan $p(X_1, \textellipsis , X_n)$, dan $p(\bar{X},Y,Z)$ untuk menyatakan $p(X_1, \textellipsis , X_n,Y,Z)$, dengan seluruh variabel yang disebutkan merupakan variabel yang berbeda-beda.
+\\
+
+\noindent \textbf{Definisi \thebabTigaNum.\stepcounter{defBabTiga}\thedefBabTiga: Transformasi untuk \textit{tabling abductive solution}.} Diberikan sebuah \textit{abductive framework} $\langle  P,\mathcal{AB},\mathcal{IC} \rangle$. $H_r$ dan $\mathcal{B}_r$ berturut-turut menunjukkan \textit{head} dan \textit{body} dari sebuah \textit{rule} $r \in P$. Himpunan $\mathcal{A}_r \subseteq \mathcal{B}_r$ menunjukkan himpunan \textit{abducible} (positif ataupun negatif) pada $r \in P$, dan $r'$ menunjukkan \textit{rule} sedemikian sehingga $H_{r'} = H_r$ dan $\mathcal{B}_{r'} = \mathcal{B}_r \backslash \mathcal{A}_r$.
+
+\begin{enumerate}
+	\item Untuk setiap $rule \ r \in P$ dengan $r'$ yaitu $l(\hat{t}) \leftarrow L_1, \textellipsis , L_M$, didefinisikan $\tau'(r)$:
+	\begin{displaymath}
+		l_{ab}(\bar{t},E_m) \leftarrow \alpha(L_1), \textellipsis , \alpha(L_m).
+	\end{displaymath}
+	dengan $\alpha$ didefinisikan sebagai:
+	\begin{displaymath}
+	\alpha(L_i) = 
+	\begin{cases}
+	l_i(\bar{t}_i,E_{i-1},E_i) & \text{untuk $L_i = l_i(\bar{t}_i)$} \\
+	not\_l_i(\bar{t}_i,E_{i-1},E_i) & \text{untuk $L_i = not \ l_i(\bar{t}_i)$}
+	\end{cases}
+	\end{displaymath}
+	dengan $1 \leq i \leq m$, $E_1$ adalah variabel baru, dan $E_0 = \mathcal{A}_r$. Dapat dilihat bahwa $E_i$ disediakan \textit{abductive context}.
+	
+	\item Untuk setiap predikat $p/n$ yang menjadi \textit{head} dari sebuah \textit{rule} pada \textit{P}, didefinisikan $\tau^+(p)$:
+	\begin{displaymath}
+		p(\bar{X},I,O) \leftarrow p_{ab}(\bar{X},E), produce\_context(O,I,E).
+	\end{displaymath}
+	dengan $produce\_context(O,I,E)$ adalah predikat sistem \textsc{Tabdual} yang digunakan untuk membentuk \textit{O} dengan menambahkan setiap $e \in E$ pada $I$, sekaligus melakukan pengecekan apakah \textit{I} konsisten dengan \textit{E}, yaitu apakah terdapat dua literal yang saling berlawanan pada \textit{I} dan \textit{E}.
+\end{enumerate}
+
+\subsection{\textit{Abduction} pada \textit{Goal} Negatif}
+
+Untuk melakukan \textit{abduction} pada \textit{goal} negatif, transformasi pada \textsc{Tabdual} menerapkan \textit{dual program transformation} pada \textsc{Abdual} \citep{alferes2004abduction}. Tujuan utama dari menggunakan \textit{dual program transformation} yaitu untuk dapat memperoleh solusi dari \textit{goal} negatif \textit{not G} tanpa harus menegasikan seluruh \textit{abductive solution} dari \textit{G}.
+
+Ide dari \textit{dual program transformation} yaitu mendefinisikan, untuk setiap atom \textit{A} dan himpunan \textit{rule} mengenai \textit{A} $\mathcal{R}_A$ pada program \textit{P}, himpunan \textit{dual rule} yang \textit{head}-nya adalah \textit{not\_A}, sedemikian sehingga \textit{not\_A} bernilai \textit{true} jika dan hanya jika \textit{A} bernilai \textit{false} sesuai dengan $\mathcal{R}_A$ menurut semantik yang digunakan oleh program \textit{P}. Alih-alih menggunakan \textit{goal} negatif \textit{not A}, \textit{dual program transformation} menggunakan atom \textit{not\_A} yang bersesuaian. 
+
+\textit{Dual program transformation} membentuk dua buah jenis \textit{rule} (\textit{atau layer}) yang berbeda. \textit{First layer} dari \textit{dual program transformation}, atau \textit{first layer dual rule}, dari sebuah predikat \textit{p} pada program \textit{P} merupakan \textit{rule} $not\_p$ yang didefinisikan untuk mem-\textit{falsify} negasi dari \textit{p}, yaitu $not \ p$, sekaligus dengan membawa \textit{input context} yang diberikan untuk melakukan \textit{abduction} pada setiap \textit{subgoal-subgoal}-nya sehingga menghasilkan \textit{abductive solution} dari \textit{p}. \textit{Subgoal-subgoal} dari \textit{first layer dual rule} itu sendiri merupakan \textit{second layer dual rule} $p^{*i}$ yang didefinisikan berdasarkan \textit{rule-rule} mengenai \textit{p} yang terdapat pada program, digunakan untuk mem-\textit{falsify} tiap \textit{rule} pada \textit{body} dari \textit{rule} mengenai \textit{p}, tentunya setelah dinegasikan.
+
+Tranformasi yang membentuk kedua \textit{layer} dari \textit{dual rule} didefinisikan secara formal pada Definisi \thebabTigaNum.2.
+\\
+
+\noindent \textbf{Definisi \thebabTigaNum.\stepcounter{defBabTiga}\thedefBabTiga: Transformasi untuk membentuk \textit{dual rule}.} Diberikan sebuah \textit{abductive framework} $\langle  P,\mathcal{AB},\mathcal{IC} \rangle$. Misal $P^+ = P \cup \mathcal{IC}$.
+
+\begin{enumerate}
+	\item Untuk setiap predikat $p/n$ yang memiliki \textit{rule} pada $P^+$ seperti berikut:
+	\begin{flalign*}
+		p(\bar{t}_1) 	& \leftarrow L_{11}, \textellipsis , L_{1n_1}. \\
+						& \vdots \\
+		p(\bar{t}_m) 	& \leftarrow L_{m1}, \textellipsis , L_{mn_m}. \\
+	\end{flalign*}
+	dengan $n_i \geq 0, 1 \leq i \leq m$:
+	\begin{enumerate}
+		\item \textit{First layer dual rule} didefinisikan sebagai $\tau^-(p)$:
+		\begin{displaymath}
+			not\_p(\bar{X},T_0,T_m) \leftarrow p^{*1}(\bar{X},T_0,T_1), \textellipsis , p^{*1}(\bar{X},T_{m-1},T_m).
+		\end{displaymath}
+		dengan $T_i, i \leq i \leq m$ adalah variabel baru yang disediakan sebagai \textit{abductive context}.
+		\item \textit{Second layer dual rule} didefinisikan sebagai $\tau^*(p) = \bigcup\limits_{i=1}^{m} \tau^{*i}(p)$, dengan $\tau^{*i}(p)$ merupakan himpunan terkecil yang mengandung \textit{rule-rule} sebagai berikut:
+		\begin{flalign*}
+			p^{*i}(\bar{X},I,I)	& \leftarrow \bar{X} \neq \bar{t}_i. \\
+			p^{*i}(\bar{X},I,O) & \leftarrow \sigma(L_{i1},I,O). \\
+			& \vdots \\
+			p^{*i}(\bar{X},I,O) & \leftarrow \sigma(L_{in_i},I,O).
+		\end{flalign*}
+		dengan $\sigma$ didefinisikan sebagai berikut:
+		\begin{displaymath}
+		\sigma(L_{ij},I,O) = 
+		\begin{cases}
+		l_{ij}(\bar{t}_{ij},I,O) 	& \text{jika $L_i$ adalah \textit{default} literal $not \ l_{ij}(\bar{t}_{ij})$} \\
+									& \text{atau \textit{abducible} negatif $l_{ij}^*(\bar{t}_{ij})$} \\
+		not\_l_{ij}(\bar{t}_{ij},I,O) & \text{jika $L_i$ adalah atom $l_{ij}(\bar{t}_{ij})$} \\
+		l_{ij}^*(\bar{t}_{ij},I,O)	& \text{jika $L_i$ adalah \textit{abducible} positif $l_{ij}(\bar{t}_{ij})$}
+		\end{cases}
+		\end{displaymath}
+		Untuk kasus $p/0$, \textit{rule} $p^{*i}(\bar{X},I,I) \leftarrow \bar{X} \neq \bar{t}_i$ dihilangkan karena $\bar{X}$ dan $\bar{t}_i$ merupakan $[]$.
+	\end{enumerate}
+	
+	\item Untuk setiap predikat $r/n$ pada $P^+ (n \geq 0)$ yang tidak memiliki \textit{rule}, didefinisikan $\tau^-(r)$:
+	\begin{displaymath}
+		not\_r(\bar{X},I,I).
+	\end{displaymath}
+	Secara khusus, jika $\mathcal{IC} = \emptyset$, didefinisikan $\tau^-(r): not\_\bot(I,I)$. 
+\end{enumerate}
+
+\subsection{\textit{Transformasi \textit{Abducible}}}
+
+\textit{Abduction} pada \textsc{Tabdual} dilakukan dengan melakukan transformasi pada setiap \textit{abducible} menjadi \textit{rule} yang dapat menambahkan \textit{abducible} pada \textit{abductive context} yang sudah ada. Spesifikasi untuk melakukan transformasi terhadap \textit{abducible} akan diberikan secara formal pada Definisi \thebabTigaNum.3.
+\\
+
+\noindent \textbf{Definisi \thebabTigaNum.\stepcounter{defBabTiga}\thedefBabTiga: Transformasi\ \textit{abducible}.} Diberikan sebuah \textit{abductive framework} $\langle  P,\mathcal{AB},\mathcal{IC} \rangle$. Untuk setiap $a/n \in \mathcal{AB}$, didefinisikan $\tau^\circ(a)$ yaitu himpunan terkecil yang mengandung \textit{rule}:
+\begin{flalign*}
+	a(X_1, \textellipsis , X_n,I,O) & \leftarrow insert\_abducible(a(X_1, \textellipsis , X_n),I,O). \\
+	a^*(X_1, \textellipsis , X_n,I,O) & \leftarrow insert\_abducible(a^*(X_1, \textellipsis , X_n),I,O).
+\end{flalign*}
+dengan $insert\_abducible(A,I,O)$ merupakan predikat sistem \textsc{Tabdual} yang menambahkan \textit{abducible A} ke \textit{input context I} dan menghasilkan \textit{output context O}. Predikat ini juga mempertahankan konsistensi dari \textit{abductive context I} jika ditambahkan oleh \textit{abducible A}.
+\\
+
+Spesifikasi program transformation \textsc{Tabdual} secara utuh akan diberikan pada Definisi \thebabTigaNum.4.
+\\
+
+\noindent \textbf{Definisi \thebabTigaNum.\stepcounter{defBabTiga}\thedefBabTiga: Transformasi\ \textsc{Tabdual}.} Diberikan \textit{abductive framework} $\mathcal{F} = \langle  P,\mathcal{AB},\mathcal{IC} \rangle$, $\mathcal{P}$ adalah himpunan predikat yang terdapat pada \textit{P}, dan $P^+ = P \cup \mathcal{IC}$. Menggunakan definisi-definisi transformasi sebelumnya didapatkan:
+
+\begin{itemize}
+	\item $\tau'(\mathcal{F}) = \{\tau'(r) \ | \ r \in P  \}$
+	\item $\tau^+(\mathcal{F}) = \{\tau^+(p) \ | \ p \in \mathcal{P} \ \text{yang memiliki \textit{rule} pada} \ P \}$
+	\item $\tau^-(\mathcal{F}) = \{\tau^-(p) \ | \ p \in \mathcal{P} \cup \{ \bot\} \}$
+	\item $\tau^*(\mathcal{F}) = \{\tau^*(p) \ | \ p \in \mathcal{P} \cup \{ \bot\} \ \text{yang memiliki \textit{rule} pada} \ P \}$
+	\item $\tau^\circ(\mathcal{F}) = \{\tau^\circ(a) \ | \ a \in \mathcal{AB} \}$
+\end{itemize}
+
+maka transformasi \textsc{Tabdual} didefinisikan sebagai:
+\begin{displaymath}
+	\tau(\mathcal{F}) = \tau'(\mathcal{F}) \cup \tau^+(\mathcal{F}) \cup \tau^-(\mathcal{F}) \cup \tau^*(\mathcal{F}) \cup \tau^\circ(\mathcal{F})
+\end{displaymath}
+
+\subsection{\textit{Transformasi \textit{Query}}}
+
+Sebagai konsekuensi dari transformasi \textsc{Tabdual}, \textit{query} terhadap program juga harus di-\textit{transform}:
+
+\begin{itemize}
+	\item \textit{Goal} positif $G$ cukup di-\textit{transform} dengan menambahkan dua buah argumen untuk menyatakan \textit{input context} dan \textit{putput context}.
+	\item \textit{Goal} negatif $not \ G$ di-\textit{transform} dengan mengubah namanya menjadi $not\_G$ serta ditambahkan dua buah argumen untuk menyatakan \textit{input context} dan \textit{putput context}.
+\end{itemize}
+
+Selanjutnya, \textit{query} yang diberikan juga harus memenuhi seluruh \textit{integrity constraint} yang ada. Hal ini dapat dilakukan dengan menambahkan \textit{goal} $not\_\bot/2$ yang menyatakan \textit{dual rule} dari \textit{integrity constraint}. Definisi \thebabTigaNum.5 memberikan definisi formal untuk melakukan transformasi pada \textit{query}.
+\\
+
+\noindent \textbf{Definisi \thebabTigaNum.\stepcounter{defBabTiga}\thedefBabTiga: Transformasi\ \textit{query}.} Diberikan \textit{abductive framework} $\mathcal{F} = \langle  P,\mathcal{AB},\mathcal{IC} \rangle$ dan query \textit{Q}:
+\begin{displaymath}
+	\text{\texttt{?}}- \ G_1, \textellipsis , G_m.
+\end{displaymath}
+\textsc{Tabdual} melakukan transformasi $query \ Q$ menjadi $\Delta(Q)$:
+\begin{displaymath}
+	\text{\texttt{?}}- \ \delta(G_1), \textellipsis , \delta(G_m), not\_\bot(T_m,O).
+\end{displaymath}
+dengan $\delta$ didefinisikan sebagai:
+\begin{displaymath}
+\alpha(L_i) = 
+\begin{cases}
+g_i(\bar{t}_i,T_{i-1},T_i) 		& \text{jika $G_i = g_i(\bar{t}_i)$} \\
+not\_g_i(\bar{t}_i,E_{i-1},T_i) 	& \text{jika $G_i = not \ g_i(\bar{t}_i)$}
+\end{cases}
+\end{displaymath}
+
+\section{Aspek Implementasi}
+
+\textsc{Tabdual} diimplementasikan menggunakan XSB Prolog \citep{swift2012xsb}, sehingga dapat memanfaatkan fitur-fitur yang sudah ada. Namun di sisi lain, sebagai konsekuensinya implementasi yang dibuat juga harus disesuaikan dengan \textit{behavior} yang dimiliki XSB Prolog.
+
+\subsection{\textit{Grounding Dualized Negated Subgoals}}
+
+\textit{Contoh \thebabTigaNum.\stepcounter{contohBabTiga}\thecontohBabTiga}. Misal terdapat \textit{abductive framework} $\langle  P_4,\{a/1 \},\mathcal{IC}_4 \rangle$ dengan program $P_4$ sebagai berikut:
+\begin{flalign*}
+	q(1) & .  \\
+	r(X) &\leftarrow a(X).
+\end{flalign*}
+dan $\mathcal{IC}_4$:
+\begin{flalign*}
+	\bot & \leftarrow q(X),r(X).
+\end{flalign*}
+Transformasi \textsc{Tabdual} akan menghasilkan program:
+\begin{flalign*}
+&&&&&& 1. \ & q_{ab}(1,[ \ ]). & & \\
+&&&&&& 2. \ & q(X,I,O) & \leftarrow & \ q_{ab}(X,E),produce\_context(O,I,E). &&&&&& \\
+&&&&&& 3. \ & not\_q(X,I,O) & \leftarrow & \ q^{*1}(X,I,O). &&&&&& \\
+&&&&&& 4. \ & q^{*1}(X,I,I) &  \leftarrow & \ X \ \backslash = 1. &&&&&& \\
+\\
+&&&&&& 5. \ & r_{ab}(X,[a(X)]). & & \\
+&&&&&& 6. \ & r(X,I,O) & \leftarrow & \ r_{ab}(X,E),produce\_context(O,I,E). &&&&&& \\
+&&&&&& 7. \ & not\_r(X,I,O) & \leftarrow & \ r^{*1}(X,I,O). &&&&&& \\
+&&&&&& 8. \ & r^{*1}(X,I,O) & \leftarrow & \ X \ \backslash = \_. &&&&&& \\
+&&&&&& 9. \ & r^{*1}(X,I,O) & \leftarrow & \ a^{*}(X,I,O). &&&&&& \\
+\\
+&&&&&& 10. \ & not\_\bot(I,O) & \leftarrow & \ \bot^{*1}(I,O). &&&&&& \\
+&&&&&& 11. \ & \bot^{*1}(I,O) & \leftarrow & \ not\_q(X,I,O). &&&&&& \\
+&&&&&& 12. \ & \bot^{*1}(I,O) & \leftarrow & \ not\_r(X,I,O). &&&&&& 
+\end{flalign*}
+Lalu diberikan \textit{query} $q(1)$, yang di-\textit{transform} menjadi:
+\begin{displaymath}
+	\text{\texttt{?}}- q(1,[ \ ],T),not\_\bot(T,O).
+\end{displaymath}
+progam akan memberikan \textit{abductive solution} $[a^*(X)]$ (tidak \textit{ground}), tidak sesuai dengan \textit{abductive solution} yang seharusnya diberikan yaitu $[a^*(1)]$. Kesalahan ini disebabkan karena ketika program mencari solusi, \textit{fail}-nya \textit{subgoal} dari \textit{rule} 11 $not\_q(X,I,O)$ menyebabkan program mengekesekusi $not\_r(X,I,O)$ pada \textit{rule} 12 sebagai alternatif lain dari \textit{goal} $\bot^{*1}(I,O)$, namun dengan $X$ yang tidak \textit{ground} karena memang belum diinstansiasi.
+
+Untuk memperbaiki kesalahan ini, \textit{dualized negated subgoal} (pada contoh di atas yaitu \textit{subgoal} dari \textit{rule} 4, 8, 9, 11, 12) perlu untuk di-\textit{ground}-kan terlebih dahulu. \textit{Grounding subgoal} ini dapat dilakukan dengan tetap mengikutsertakan pada \textit{second layer dual rule} literal-literal positif yang pada \textit{rule} aslinya terdapat sebelum predikat yang sedang di-\textit{dual}-kan. Dengan begitu, \textit{rule} 12 pada program di atas akan menjadi:
+\begin{displaymath}
+	\bot^{*1}(I,O) \leftarrow q(X,I,T),not\_r(X,T,O).
+\end{displaymath}
+Adanya $q(X,I,T)$ sebagai \textit{subgoal} sebelum $not\_r(X,T,O)$ pada \textit{rule} 12 menyebabkan $X$ akan diinstansiasi terlebih dahulu menggunakan \textit{rule} 4 sehingga \textit{query} $q(1)$ menghasilkan \textit{abductive solution} yang sesuai yaitu $[a^*(1)]$
+
+\subsection{\textit{Non-Ground Negative Goal}}
+
+\textit{Contoh \thebabTigaNum.\stepcounter{contohBabTiga}\thecontohBabTiga}. Misal terdapat \textit{abductive framework} $\langle  P_5,\{a/1 \},\emptyset \rangle$ dengan program $P_5$ sebagai berikut:
+\begin{flalign*}
+	p(1) & \leftarrow a(1) .  \\
+	p(2) & \leftarrow a(2) .  
+\end{flalign*}
+
+\textit{Query} $p(X)$ pada program diatas akan memberikan \textit{abductive solution} yang sesuai yaitu $[a(1)]$ untuk $X = 1$ dan $[a(2)]$ untuk $X = 2$. Sementara itu, \textit{query} $not \ p(X)$ memberikan hasil yang tidak sesuai. \textit{Abuctive solution} seharusnya yang dihasilkan yaitu $[a^*(1),a^*(2)]$ untuk apa pun instansiasi $X$, namun \textsc{Tabdual} memberikan \textit{abductive solution} $[a*(1)]$ untuk $X = 1$. 
+
+Berikut ini merupakan definisi predikat $not\_p/3$:
+\begin{flalign*}
+	&&&&&& 1. \ & not\_p(X,I,O) & \leftarrow & \ p^{*1}(X,I,T), p^{*2}(X,T,O). &&&&&& \\
+	&&&&&& 2. \ & p^{*1}(X,I,O) & \leftarrow & \ X \ \backslash = 1. &&&&&& \\
+	&&&&&& 3. \ & p^{*1}(X,I,O) & \leftarrow & \ a^*(1,I,O). &&&&&& \\
+	&&&&&& 4. \ & p^{*2}(X,I,O) & \leftarrow & \ X \ \backslash = 2. &&&&&& \\
+	&&&&&& 5. \ & p^{*2}(X,I,O) & \leftarrow & \ a^*(2,I,O). &&&&&&
+\end{flalign*}
+dan query $not \ p(X)$ yang dihasilkan oleh transformasi \textsc{Tabdual}:
+\begin{displaymath}
+\text{\texttt{?}}- not\_p(X,[ \ ],N),not\_\bot(N,O).
+\end{displaymath}
+Goal $not\_p(X,[ \ ],N)$ pertama-tama mengeksekusi $p^{*1}(X,I,O)$ dengan $I = [ \ ]$, lalu dengan menggunakan \textit{rule} 3 berhasil memberikan $T = [a^*(1)]$ dengan $X$ diinstansiasi dengan 1. Selanjutnya, \textit{subgoal} kedua yaitu $p^{*2}(X,I,O)$, dieksekusi dengan instansiasi $X$ dan $T$ yang sama ($X = 1$ dan $T = [a^*(1)]$), dan dengan menggunakan \textit{rule} 4, $p^{*2}(X,I,O)$ berhasil memberikan $O = [a^*(1)]$, tetap dengan $X$ yang diinstansiasi dengan 1. $[a^*(1)]$ yang merupakan \textit{abductive solution} dari \textit{goal} pertama pada \textit{query} dibawa sebagai $N$ ke \textit{goal} berikutnya yaitu $not\_\bot(N,O)$. Dikarenakan tidak terdapat \textit{integrity constraint}, \textit{subgoal} $not\_\bot(N,O)$ menghasilkan $O$ yang sama dengan $N$, menghasilkan $[a^*(1)]$ sebagai \textit{abductve solution} dari \textit{query} $not \ p(X)$.
+
+Dapat dilihat bahwa ketidaksesuaian \textit{abductive solution} yang dihasilkan terjadi karena terdapat \textit{shared variable} pada kedua \textit{subgoal} dari $not\_p(X,I,O)$, yaitu $X$, menyebabkan $p^{*1}(X,I,O)$ dan $p^{*2}(X,I,O)$ dieksekusi dengan $X$ yang sama. Seharusnya, kedua \textit{subgoal} ini dieksekusi dengan $X$ yang saling independen satu sama lain. Ketidaksesuaian ini dapat diatasi dengan mengubah definisi dari predikat $not\_p/3$ menjadi:
+\begin{flalign*}
+	not\_p(X,I,O) \leftarrow & \ copy\_term([X],[X_1]),p^{*1}(X_1,I,T), \\
+	& copy\_term([X],[X_2]) p^{*2}(X_2,T,O).
+\end{flalign*}
+dengan predikat \textit{copy\_term$/$}2 merupakan predikat \textit{built-in} yang disediakan oleh Prolog. \textit{copy\_term$/$}2 ditambahkan sebelum masing-masing \textit{subgoal} dari \textit{first layer dual rule} (dalam kasus ini sebelum $p^{*1}(X,I,O)$ dan $p^{*2}(X,I,O)$), digunakan untuk memberikan \textit{varian} baru terhadap $X$ agar dapat digunakan secara independen.
+\subsection{Transformasi Fakta}
+
+\textsc{Tabdual} melakukan transformasi pada seluruh predikat yang ada pada program, termasuk predikat yang sebenarnya hanya berupa fakta yang bahkan tidak menginduksikan \textit{abduction} sama sekali. Oleh karena itu, transformasi yang lebih sederhana dapat diterapkan pada predikat-predikat yang hanya berupa fakta.
+
+Misalkan terdapat predikat $q/1$ yang hanya berupa fakta seperti berikut:
+\begin{flalign*}
+	q(1). \quad \quad q(2). \quad \quad q(3).
+\end{flalign*}
+\textit{Rule} transformasi untuk $q/1$ yang telah didefinisikan pada Definisi 3.1, yaitu $q_{ab}/1$ dan $q/3$ dapat digantikan dengan satu buah \textit{rule} berikut:
+\begin{flalign*}
+	q(X,I,I) \leftarrow q(X).
+\end{flalign*}
+dan \textit{dual rule} untuk $q/1$ yang telah didefinisikan pada Definisi 3.2 juga cukup digantikan dengan satu buah \textit{rule} berikut:
+\begin{flalign*}
+	not\_q(X,I,I) \leftarrow not \ q(X).
+\end{flalign*}
+
+Transformasi untuk fakta seperti predikat $q/1$ bersifat independen terhadap jumlah fakta yang ada, sehingga dapat dipisahkan dari keseluruhan program dan dikelompokkan menjadi bagian yang bersifat \textit{non-abductive} untuk diproses secara khusus. Pada \textsc{Tabdual}, bagian program yang bersifat \textit{non-abductive} dapat dipisahkan dengan \textit{indentifier} \textit{beginProlog} dan \textit{endProlog}. Program yang terdapat diantara kedua identifier ini tidak akan di-\textit{transform} oleh \textsc{Tabdual}, melainkan hanya akan dibaca dan ditulis ulang ke program \textit{output}.
+
+\subsection{\textit{Dual Transformation by Need}}
+
+Transformasi yang dilakukan oleh \textsc{Tabdual} bersifat \textit{once for all}, yaitu men-\textit{transform} seluruh predikat, atom, dan \textit{abducible} yang terdapat pada program, tanpa pertimbangan apakah predikat/atom/\textit{abducible} yang di-\textit{transform} akan digunakan pada fase \textit{abduction} atau tidak. Praktis, transformasi seperti ini harus dihindari dikarenakan \textit{cost} yang diperlukan terlalu besar untuk melakukan transformasi yang belum tentu digunakan. Salah satu solusi untuk mengatasi permasalahan ini yaitu dengan melakukan transformasi \textit{dual rule} secara \textit{by need}, yaitu dengan tidak membentuk \textit{dual rule} pada fase transformasi, melainkan pada saat fase \textit{abduction} ketika \textit{dual rule} tersebut dibutuhkan untuk dieksekusi. Program \textit{output} yang dihasilkan tetap mengandung \textit{first layer dual rule}, namun tidak \textit{second layer dual rule}. \textit{Second layer dual rule} akan dibentuk pada fase \textit{abduction} dengan bantuan predikat sistem \textsc{Tabdual} yang dikhususkan untuk membentuk definisi konkrit dari \textit{second layer dual rule} ini.
+
