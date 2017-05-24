@@ -11,7 +11,7 @@
 Pada bab ini penulis menjelaskan hal, teori, dan konsep yang berkaitan dengan implementasi \textit{tabling} pada \textit{contextual abduction} menggunakan \textit{answer subsumption}. Penulis mengawali penjelasan dengan konsep dasar-dasar yang diperlukan dalam pemrograman logika, dilanjutkan dengan konsep mengenai \textit{abduction}, \textit{tabling}, lalu yang terakhir yaitu \textit{answer subsumption}.
 %-----------------------------------------------------------------------------%
 \section{Pendahuluan}
-Diberikan himpunan alfabet $\mathcal{A}$ dari bahasa $\mathcal{L}$, dapat dibentuk himpunan berhingga yang saling \f{disjoint} yaitu himpunan konstanta, himpunan simbol fungsi, dan himpunan simbol predikat. Selain itu, diasumsikan pada himpunan alfabet juga mengandung himpunan simbol variabel. Simbol \f{underscore} (\_) secara khusus untuk menyatakan sebuah variabel \f{anonymous}. Sebuah term pada $\mathcal{A}$ didefinisikan secara rekursif sebagai salah satu dari variabel, konstanta, atau ekspresi dengan bentuk \f{f}(\textit{$t_{1}$}$, \textellipsis,$ \textit{$t_{n}$}) dengan \f{f} adalah sebuah simbol fungsi pada $\mathcal{A}$ dan \f{t$_{i}$} adalah term. Sebuah \f{atom} pada $\mathcal{A}$ adalah ekspresi dengan bentuk \f{p}(\textit{$t_{1}$}$, \textellipsis,$ \textit{$t_{n}$}) dengan \textit{p} adalah sebuah simbol predikat pada $\mathcal{A}$ dan \f{$t_{i}$} adalah term. Pada tulisan ini, notasi \f{p$/$n} digunakan untuk menyatakan sebuah simbol \f{p} yang memiliki arity \f{n}. Sebuah \f{literal} yaitu sebuah atom \f{a} atau negasinya \f{not a}. Literal negatif (misalnya \textit{not a}) disebut juga sebagai \f{default} literal. 
+Diberikan himpunan alfabet $\mathcal{A}$ dari bahasa $\mathcal{L}$, dapat dibentuk himpunan berhingga yang saling \f{disjoint} yaitu himpunan konstanta, himpunan simbol fungsi, dan himpunan simbol predikat. Selain itu, diasumsikan pada himpunan alfabet juga mengandung himpunan simbol variabel. Simbol \f{underscore} (\_) secara khusus untuk menyatakan sebuah variabel \f{anonymous}. Sebuah term pada $\mathcal{A}$ didefinisikan secara rekursif sebagai salah satu dari variabel, konstanta, atau ekspresi dengan bentuk \f{f}(\textit{$t_{1}$}$, \textellipsis,$ \textit{$t_{n}$}) dengan \f{f} merupakan sebuah simbol fungsi pada $\mathcal{A}$ dan \f{t$_{i}$} merupakan term. Sebuah \f{atom} pada $\mathcal{A}$ adalah ekspresi dengan bentuk \f{p}(\textit{$t_{1}$}$, \textellipsis,$ \textit{$t_{n}$}) dengan \textit{p} merupakan sebuah simbol predikat pada $\mathcal{A}$ dan \f{$t_{i}$} merupakan term. Pada tulisan ini, notasi \f{p$/$n} digunakan untuk menyatakan sebuah simbol \f{p} yang memiliki arity \f{n}. Sebuah \f{literal} yaitu sebuah atom \f{a} atau negasinya \f{not a}. Literal negatif (misalnya \textit{not a}) disebut juga sebagai \f{default} literal. 
 
 Sebuah term (atom maupun literal) dikatakan \f{ground} jika term tersebut tidak mengandung variabel. Himpunan seluruh \textit{ground} term (yaitu \textit{ground} atom) pada \( \mathcal{A} \) disebut sebagai \textit{Herbrand universe} (atau \textit{Herbrand base}) dari \( \mathcal{A} \).
 \\
@@ -24,7 +24,7 @@ Sebuah term (atom maupun literal) dikatakan \f{ground} jika term tersebut tidak 
 dengan \f{H} adalah sebuah atom, $m \geq 0$, dan $L_i$ adalah literal.
 \\
 
-Operator koma pada sebuah \textit{rule} dibaca sebagai konjungsi. Sebuah program logika dikatakan \f{definit}  jika tidak terdapat \textit{rule} yang mengandung \textit{default} literal. Agar menyesuaikan dengan standar yang ada, \textit{rule} yang memiliki bentuk $H \leftarrow $ cukup ditulis sebagai $H$. \textit{Rule} yang memiliki bentuk seperti ini disebut sebagai sebuah \f{fakta}.
+Operator koma pada sebuah \textit{rule} dibaca sebagai konjungsi. Sebuah program logika dikatakan \f{definit}  jika tidak terdapat \textit{rule} yang mengandung \textit{default} literal. Menyesuaikan dengan standar yang ada, \textit{rule} yang memiliki bentuk $H \leftarrow $ cukup ditulis sebagai $H$. \textit{Rule} seperti ini disebut sebagai sebuah \f{fakta}.
 
 Himpunan alfabet $\mathcal{A}$ yang membentuk program logika \textit{P} diasumsikan mencakup seluruh konstanta, serta simbol fungsi dan simbol predikat yang muncul pada \textit{P}. Herbrand \textit{universe} (atau \textit{base}) dari \textit{P} dapat diartikan sebagai Herbrand \textit{universe} (atau \textit{base}) dari $\mathcal{A}$. Herbrand \textit{base} dari \textit{P} dinyatakan sebagai $\mathcal{H}_P$. Diberikan program logika yang \textit{ground}, dapat dibentuk himpunan \textit{ground rule} pada \textit{P} dengan melakukan substitusi terhadap variabel-variabel pada \textit{P} dengan setiap elemen pada Herbrand \textit{universe}-nya.
 
@@ -62,8 +62,9 @@ Interpretasi \textit{I} pada program logika \textit{P} juga dapat dilihat sebaga
 	\end{cases}
 \end{displaymath}
 Dapat dilihat bahwa pada interpretasi \textit{two-valued} tidak terdapat atom \textit{A} sedemikian sehingga $I(A) = 0.5$.
+\\
 
-Model didefinisikan seperti biasanya, yaitu dengan menggunakan fungsi \textit{truth valuation}.
+Model didefinisikan seperti pada umumnya, yaitu dengan menggunakan fungsi \textit{truth valuation}.
 \\
 
 \noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: \textit{Truth Valuation}}. Jika \textit{I} adalah sebuah interpretasi, \textit{truth valuation} $\hat{I}$ terhadap \textit{I} adalah sebuah fungsi $\hat{I} : \mathcal{F} \rightarrow \mathcal{V}$, dengan $\mathcal{F}$ adalah himpunan \textit{ground} literal, konjungsi dari literal-literal, dan \textit{rule} yang dibentuk dari $\mathcal{L}$. $\hat{I}$ didefinisikan sebagai berikut:
@@ -85,21 +86,23 @@ Model didefinisikan seperti biasanya, yaitu dengan menggunakan fungsi \textit{tr
 \noindent Untuk setiap $F \in \mathcal{F}$, nilai 0, 0.5, dan 1 dari $\hat{I}(F)$ secara berturut-turut menyatakan nilai \textit{false}, \textit{undefined}, dan \textit{true}. Dapat dituliskan $I \models F$, untuk $F \in \mathcal{F}$, jika dan hanya jika $\hat{I}(F) = 1$.
 \\
 
-\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: Model}. Sebuah interpretasi \textit{I} (\textit{two-valued} ataupun \textit{three-valued}) dikatakan sebagai model dari program \textit{P} jika dan hanya jika untuk setiap \textit{ground instance} $H \leftarrow B$ dari sebuah rule pada program \textit{P}, $\hat{I}(H \leftarrow B) = 1$.  
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: Model}. Sebuah interpretasi \textit{I} (\textit{two-valued} ataupun \textit{three-valued}) dikatakan sebagai \textit{model} dari program \textit{P} jika dan hanya jika untuk setiap \textit{ground instance} $H \leftarrow B$ dari sebuah \textit{rule} pada program \textit{P}, berlaku $\hat{I}(H \leftarrow B) = 1$.  
 \\
 
-Selanjutnya didefinisikan pengurutan (\textit{ordering}) terhadap interpretasi dan model seperti berikut.
+Selanjutnya didefinisikan pengurutan (\textit{ordering}) terhadap interpretasi dan model.
 \\
 
-\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: \textit{Classical Ordering}}. Jika \textit{I} dan \textit{J} merupakan interpretasi maka dapat dikatakan bahwa $I \preceq J$ jika $I(A) \leq J(A)$ untuk setiap atom \textit{ground A}. Jika $\mathcal{I}$ merupakan kumpulan interpretasi, maka suatu interpretasi $I \in \mathcal{I}$ dikatakan \textit{minimal} di $\mathcal{I}$ jika tidak terdapat interpretasi $J \in \mathcal{I}$ sedemikian sehingga $J \preceq I$ dan $J \neq I$. Suatu interpretasi \textit{I} dikatakan \textit{least} di $\mathcal{I}$ jika $I \preceq J$ untuk setiap interpretasi lainnya $J \in \mathcal{I}$. Suatu model \textit{M} disebut sebagai \textit{minimal} model jika model tersebut \textit{minimal} di antara seluruh model untuk \textit{P}. Suatu model \textit{M} disebut sebagai \textit{least} model jika model tersebut \textit{least} di antara seluruh model untuk \textit{P}.
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: \textit{Classical Ordering}}. Jika \textit{I} dan \textit{J} merupakan interpretasi, maka dapat dikatakan bahwa $I \preceq J$ jika $I(A) \leq J(A)$ untuk setiap atom \textit{ground A}. Jika $\mathcal{I}$ merupakan kumpulan interpretasi, maka suatu interpretasi $I \in \mathcal{I}$ dikatakan \textit{minimal} di $\mathcal{I}$ jika tidak terdapat interpretasi $J \in \mathcal{I}$ sedemikian sehingga $J \preceq I$ dan $J \neq I$. Suatu interpretasi \textit{I} dikatakan \textit{least} di $\mathcal{I}$ jika $I \preceq J$ untuk setiap interpretasi lainnya $J \in \mathcal{I}$. Suatu model \textit{M} disebut sebagai \textit{minimal} model jika model tersebut \textit{minimal} di antara seluruh model untuk \textit{P}. Suatu model \textit{M} disebut sebagai \textit{least} model jika model tersebut \textit{least} di antara seluruh model untuk \textit{P}.
 \\
 
-\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: \textit{Fitting Ordering}}. Jika \textit{I} dan \textit{J} merupakan interpretasi maka dapat dikatakan bahwa $I \preceq_F J$ jika dan hanya jika $I \subseteq J$. Jika $\mathcal{I}$ merupakan kumpulan interpretasi, maka suatu interpretasi $I \in \mathcal{I}$ dikatakan \textit{F-minimal} di $\mathcal{I}$ jika tidak terdapat interpretasi $J \in \mathcal{I}$ sedemikian sehingga $J \preceq_F I$ dan $J \neq I$. Suatu interpretasi \textit{I} dikatakan \textit{F-least} di $\mathcal{I}$ jika $I \preceq_F J$ untuk setiap interpretasi lainnya $J \in \mathcal{I}$. Suatu model \textit{M} disebut sebagai \textit{F-minimal} model jika model tersebut \textit{F-minimal} di antara seluruh model untuk \textit{P}. Suatu model \textit{M} disebut sebagai \textit{F-least} model jika model tersebut \textit{F-least} di antara seluruh model untuk \textit{P}.
+\noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: \textit{Fitting Ordering}}. Jika \textit{I} dan \textit{J} merupakan interpretasi, maka dapat dikatakan bahwa $I \preceq_F J$ jika dan hanya jika $I \subseteq J$. Jika $\mathcal{I}$ merupakan kumpulan interpretasi, maka suatu interpretasi $I \in \mathcal{I}$ dikatakan \textit{F-minimal} di $\mathcal{I}$ jika tidak terdapat interpretasi $J \in \mathcal{I}$ sedemikian sehingga $J \preceq_F I$ dan $J \neq I$. Suatu interpretasi \textit{I} dikatakan \textit{F-least} di $\mathcal{I}$ jika $I \preceq_F J$ untuk setiap interpretasi lainnya $J \in \mathcal{I}$. Suatu model \textit{M} disebut sebagai \textit{F-minimal} model jika model tersebut \textit{F-minimal} di antara seluruh model untuk \textit{P}. Suatu model \textit{M} disebut sebagai \textit{F-least} model jika model tersebut \textit{F-least} di antara seluruh model untuk \textit{P}.
 \\
 
 Dapat dilihat bahwa \textit{classical ordering} berkaitan dengan derajat kebenaran (\textit{degree of truth}) mengenai \textit{I}, sedangkan \textit{fitting ordering} berkaitan dengan derajat informasi (degree of information). Pada \textit{fitting ordering}, \textit{undefined} bernilai lebih kecil dibandingkan dengan \textit{true} ataupun dengan \textit{false}, menyebabkan nilai \textit{true} dan \textit{false} tidak dapat dibandingkan.
 
-Pada \citep{van1976semantics} telah ditunjukkan bahwa setiap program definit memiliki tepat satu buah \textit{least model}, yang memberikan semantik pada program definit tersebut, disebut sebagai \textit{least model semantic}. Semantik untuk program yang tidak definit, yaitu program yang memperbolehkan terdapatnya \textit{default} literal pada \textit{body} dari sebuah rule, juga telah diperkenalkan pada \citep{gelfond1988stable} sebagai \textit{Stable Model Semantic}. Sebelumnya, akan dijelaskan terlebih dahulu operator Gelfond-Lifschitz $\Gamma$ yang dapat digunakan pada interpretasi \textit{two-values} dari suatu program \textit{P}.
+Pada \citep{van1976semantics} telah ditunjukkan bahwa setiap program definit memiliki tepat satu buah \textit{least model}, yang memberikan semantik pada program definit tersebut, disebut sebagai \textit{least model semantic}. Semantik untuk program yang tidak definit, yaitu program yang memperbolehkan terdapatnya \textit{default} literal pada \textit{body} dari sebuah rule, juga telah diperkenalkan pada \citep{gelfond1988stable} sebagai \textit{Stable Model Semantic}. 
+
+Sebelumnya, akan dijelaskan terlebih dahulu operator Gelfond-Lifschitz $\Gamma$ yang dapat digunakan pada interpretasi \textit{two-values} dari suatu program \textit{P}.
 \\
 
 \noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: Operator Gelfond-Lifschitz}. Misal \textit{P} merupakan sebuah program logika dan \textit{I} merupakan interpretasi \textit{two-valued} terhadap \textit{P}. \textit{GL Transformation} dari \textit{P modulo I} yaitu program $\frac{P}{I}$ yang didapat dari \textit{P} dengan melakukan operasi-operasi berikut:
@@ -108,8 +111,8 @@ Pada \citep{van1976semantics} telah ditunjukkan bahwa setiap program definit mem
 	\item Hapus \textit{rule} pada \textit{P} yang mengandung \textit{default} literal $L = not \ A$ sedemikian sehingga $\hat{I}(L) = 0$.
 	\item Hapus dari \textit{rule-rule} yang tersisa \textit{default} literal $L = not \ A$ yang memenuhi $\hat{I}(A) = 1$.
 \end{enumerate} 
-
-Karena program $\frac{P}{I}$ yang dihasilkan merupakan program \textit{definit}, $\frac{P}{I}$ memiliki tepat satu \textit{least model} \textit{J}, dituliskan sebagai $\Gamma(I) = J$.
+Karena program $\frac{P}{I}$ yang dihasilkan merupakan program definit, $\frac{P}{I}$ memiliki tepat satu \textit{least model} \textit{J}, dituliskan sebagai $\Gamma(I) = J$.
+\\
 
 Pada \citep{gelfond1988stable} telah ditunjukkan bahwa \textit{fixed point} dari operator Gelfond-Lifschitz $\Gamma$ terhadap program \textit{P} merupakan \textit{minimal model} dari \textit{P}.
 \\
@@ -117,7 +120,7 @@ Pada \citep{gelfond1988stable} telah ditunjukkan bahwa \textit{fixed point} dari
 \noindent \textbf{Definisi \thebabDuaNum.\stepcounter{defBabDua}\thedefBabDua: Stable Model Semantics}. Suatu interpretasi \textit{two-valued I} terhadap program logika \textit{P} merupakan \textit{stable model} dari \textit{P} jika $\Gamma(I) = I$.
 \\
 
-\noindent \textit{Contoh 1.} Sebagai ilustrasi, program \textit{P}:
+\noindent \textit{Contoh \thebabDuaNum.\stepcounter{contohBabDua}\thecontohBabDua } Sebagai ilustrasi, program \textit{P}:
 \begin{flalign*}
 & a \leftarrow not \ b.  \\
 & b \leftarrow not \ a. \\
@@ -145,13 +148,14 @@ dan program $\frac{P}{I_2}$:
 & p \leftarrow b.
 \end{flalign*}
 
-\noindent Seperti yang sudah dijelaskan sebelumnya, Stable Model Semantics dapat memberikan makna pada program yang memperbolehkan terdapatnya \textit{default} literal pada \textit{body} dari sebuah \textit{rule}. Namun, untuk beberapa program yang cukup "unik", Stable Model Semantics tetap tidak dapat menemukan \textit{stable model}-nya, misalnya program $p \leftarrow not \ p$. Selain itu, beberapa program yang memiliki \textit{stable model}, semantiknya terkadang tidak sesuai dengan semantik yang sesungguhnya diharapkan (lihat \citep{alferes1996reasoning}).
+\noindent Seperti yang sudah dijelaskan sebelumnya, Stable Model Semantics dapat memberikan makna pada program yang memperbolehkan terdapatnya \textit{default} literal pada \textit{body} dari sebuah \textit{rule}. Namun, untuk beberapa program yang cukup "unik", Stable Model Semantics tetap tidak dapat menemukan \textit{stable model}-nya. Sebagai contoh, program $p \leftarrow not \ p$. Selain itu, pada beberapa program yang memiliki \textit{stable model}, semantiknya terkadang tidak sesuai dengan semantik yang diharapkan (lihat \citep{alferes1996reasoning}).
 
-Pada \citep{van1991well}, \textit{Well-Founded Semantics} diperkenalkan untuk mengatasi masalah yang ditemukan pada Stable Model Semantics. Well-Founded Semantics dapat dilihat sebagai \textit{three-valued Stable Model Semantics} \cite{przymusinska1990semantic}. Agar dapat memberikan formalisasi terhadap ide mengenai \textit{three-valued stable model}, pada bahasa $\mathcal{L}$ yang digunakan oleh program ditambahkan konstanta proposisi \textit{\textbf{u}} yang menyatakan nilai \textit{undefined} untuk interpretasi manapun. Oleh karena itu, setiap interpretasi memenuhi:
+Pada \citep{van1991well}, \textit{Well-Founded Semantics} diperkenalkan untuk mengatasi masalah yang ditemukan pada Stable Model Semantics. Well-Founded Semantics dapat dilihat sebagai \textit{three-valued Stable Model Semantics} \cite{przymusinska1990semantic}. Agar dapat memberikan formalisasi terhadap ide mengenai \textit{three-valued stable model}, pada bahasa $\mathcal{L}$ yang digunakan oleh program, ditambahkan konstanta proposisi \textit{\textbf{u}} yang menyatakan nilai \textit{undefined}. Oleh karena itu, setiap interpretasi $I$ memenuhi:
 \begin{displaymath}
 \hat{I}(\mathbf{u}) = \hat{I}(not \ \mathbf{u}) = 0.5
 \end{displaymath}
-Program \textit{non-negative} merupakan program yang \textit{body} pada \textit{rule-rule}-nya hanya dibentuk oleh atom atau \textit{\textbf{u}}. Telah dibuktikan di \citep{przymusinska1990semantic} bahwa setiap program logika \textit{non-negative} pasti memliki tepat satu \textit{least three-valued model}.
+
+Program \textit{non-negative} merupakan program yang \textit{body} pada \textit{rule-rule}-nya hanya dibentuk oleh atom atau \textit{\textbf{u}}. Telah dibuktikan pada \citep{przymusinska1990semantic} bahwa setiap program logika \textit{non-negative} pasti memliki tepat satu \textit{least three-valued model}.
 
 Selanjutnya akan didefinisikan operator $\Gamma^*$, yaitu perluasan dari operator Gelfond-Lifschitz terhadap interpretasi \textit{three-valued}.
 \\
@@ -216,7 +220,7 @@ Didapatkan \textit{well-founded model} dari \textit{P} yaitu $I_3 = \{d,not \ c,
 
 \section{\textit{Abduction}}
 
-Istilah \textit{abduction} pertama kali diperkenalkan oleh Peirce \citep{quine1933collected}, yaitu suatu bentuk penalaran logika yang berawal dengan diberikan observasi lalu mencari penjelasan yang paling baik berdasarkan hipotesis-hipotesis yang ada. Pada pemrograman logika, proses \textit{abduction} diwujudkan dengan menambahkan \textit{abduction hypotheses} sebagai elemen baru pada pemrogaman logika, disebut sebagai \textit{abducible}. Sebuah \textit{abducible} dinyatakan sebagai sebuah atom \textit{Ab}, disebut sebagai \textit{positive abducible}, atau negasinya $Ab^*$, disebut sebagai \textit{negative abducible}.
+Istilah \textit{abduction} pertama kali diperkenalkan oleh Peirce \citep{quine1933collected}, yaitu suatu bentuk penalaran logika yang berawal dengan diberikan observasi lalu mencari penjelasan yang paling baik berdasarkan hipotesis-hipotesis yang ada. Pada pemrograman logika, proses \textit{abduction} direalisasikan dengan menambahkan \textit{abduction hypotheses} sebagai elemen baru pada program logika, disebut sebagai \textit{abducible}. Sebuah \textit{abducible} dinyatakan sebagai sebuah atom \textit{Ab}, disebut sebagai \textit{positive abducible}, atau negasinya $Ab^*$, disebut sebagai \textit{negative abducible}.
 
 Selanjutnya, akan dijelaskan mengenai \textit{abductive framework} pada pemrograman logika \citep{kakas1992abductive} yang didalamnya terdapat \textit{integrity constraint} yang digunakan untuk membatasi \textit{abduction}. Definisi-definisi yang diberikan mengacu kepada \citep{alferes2004abduction}.
 \\

@@ -7,47 +7,59 @@
 \section{Latar Belakang}
 %-----------------------------------------------------------------------------%
 
-Menurut terdapat 3 buah contoh untuk membuat enumerate pada latex : 
-\begin{enumerate}
-\item Makan
-\item Minum
-\end{enumerate}\paragraph{}
-
-Menurut, pemodelan yang sama apabila dijalankan dengan komputer \f{Dual Core} maka akan membutuhkan waktu 1 tahun dengan asumsi memori yang dibutuhkan cukup .
-
-%-----------------------------------------------------------------------------%
-\section{Perumusan Masalah}
-%-----------------------------------------------------------------------------%
-Pada bagian ini akan dijelaskan mengenai definisi permasalahan yang dihadapi dan ingin diselesaikan serta asumsi dan batasan yang digunakan dalam menyelesaikannya.
-
-%-----------------------------------------------------------------------------%
-\section{Tujuan dan Manfaat Penelitian}
-%-----------------------------------------------------------------------------%
-Dibawah ini adalah contoh itemize : 
-\begin{itemize}
-\item Terimplementasinya .
-\item Menyelesaikan masalah .
-\end{itemize}
 \paragraph{}
+\textit{Di suatu tempat, terdapat sebuah kereta yang mengalami kerusakan sehingga tidak dapat mengerem. Kereta tersebut meluncur dengan sangat cepat menuju lima orang yang saat itu sedang menyeberangi rel. Saking cepatnya, dapat dipastikan kelima orang tersebut tidak akan sampai ke seberang dengan selamat. Untungnya, seseorang bernama Gita sedang berdiri di sebelah tuas yang dapat mengubah arah lajunya kereta menuju rel lain. Namun, pada rel lain tersebut, Gita melihat seseorang yang sedang berdiri di sana, menghadap ke arah yang berlawanan dan tidak melihat datangnya kereta. Gita pun galau. Haruskah ia menarik tuas tersebut agar dapat menyelamatkan lima orang yang sedang menyeberang dengan mengorbankan satu orang yang 'tidak tahu apa-apa', atau tetap membiarkan kelima orang tersebut bertemu dengan 'takdirnya'? Apakah secara moral Gita diperbolehkan menarik tuas tersebut? }
+\\
+
+Persoalan moral di atas dikenal sebagai \textit{the trolley problem}, pertama kali dikenalkan oleh Foot pada \cite{foot1967problem}, dan pada \cite{mikhail2007universal} telah diperluas menjadi beberapa variasi yang menceritakan kasus-kasus yang berbeda. Persoalan ini mengilustrasikan dilema yang dialami seseorang ketika dihadapkan dengan pilihan yang menyangkut moralitas, yaitu apakah keputusan tertentu, menurut prinsip-prinsip moralitas yang ia anut, dapat diterima atau tidak. Untuk membantu seseorang agar tidak salah dalam mengambil keputusan moral, dibutuhkan penalaran yang tepat yang dapat memodelkan persoalan moral tersebut.
+
+Dikutip dari \cite{burks1946peirce}, Peirce mengidentifikasi beberapa jenis penalaran logika seperti berikut:
+
+\begin{itemize}
+	\item \textit{Deductive reasoning}, yaitu penalaran untuk menurunkan \textit{kesimpulan} berdasarkan \textit{hipotesis} yang diberikan, dengan menggunakan \textit{aturan} tertentu.
+	\item \textit{Inductive reasoning}, yaitu penalaran untuk mengkonstruksi \textit{aturan} yang dapat dibentuk, berdasarkan \textit{hipotesis} yang ada dan \textit{kesimpulan} apa yang dihasilkan.
+	\item \textit{Abductive reasoning}, yaitu penalaran untuk mencari \textit{hipotesis} yang menjelaskan \textit{kesimpulan} yang didapatkan berdasarkan \textit{aturan} yang ada.
+	\\ aaa
+\end{itemize}
+Ketiga konsep di atas dapat diilustrasikan menggunakan tiga formula logika $\alpha$, $\beta$, dan $\alpha \rightarrow \beta$. Diberikan $\alpha$ dan $\alpha \rightarrow \beta$, \textit{deductive reasoning} dapat menurunkan $\beta$. Diberikan $\alpha$ dan $\beta$, \textit{inductive reasoning} dapat menurunkan $\alpha \rightarrow \beta$. Diberikan $\beta$ dan $\alpha \rightarrow \beta$, \textit{abductive reasoning} dapat menurunkan $\alpha$.
+
+Persoalan moralitas seperti \textit{the trolley problem} terlihat cocok untuk dimodelkan menggunakan \textit{abductive reasoning}. Menggunakan \textit{abductive reasoning}, yang lebih dikenal sebagai \textit{abduction}, persoalan moral di atas dapat dimodelkan sebagai berikut: keputusan yang sebaiknya diambil merupakan \textit{hipotesis}, prinsip-prinsip moralitas yang dianut merupakan \textit{aturan}, dan diterima atau tidaknya keputusan tersebut merupakan \textit{kesimpulan}. Melihat \textit{abduction} cocok digunakan dalam persoalan ini, tidak menutup kemungkinan bahwa \textit{abduction} juga dapat memodelkan persoalan serupa lainnya, khususnya persoalan menurunkan \textit{hipotesis} berdasarkan \textit{kesimpulan} dari pengamatan yang ada \cite{menzies1996applications}.
+
+Dalam beberapa dekade terakhir, \textit{abduction} banyak dipelajari lebih lanjut pada bidang \textit{computational logic}, juga pada bidang \textit{logic programming} khususnya \cite{eiter1997abduction,kakas1992abductive,saptawijaya2015tabdual}, menyebabkan berkembangnya paradigma pemrograman \textit{abductive logic programming} yang merupakan turunan dari \textit{logic programming}. \textit{Abductive logic programming} memberikan formalisasi untuk memodelkan dan menyelesaikan persoalan \textit{abduction} secara deklaratif, disebut sebagai \textit{abductive framework}, yang dapat diselesaikan pada salah satu semantik logika yang disebut sebagai \textit{Well-Founded Semantic} \cite{pereira2016programming}. \textit{Abductive logic programming} itu sendiri telah dimanfaatkan secara luas untuk menyelesaikan berbagai permasalahan di berbagai bidang, misalnya \textit{decision-making}, diagnosis, penjadwalan, \textit{belief revision}, dan \textit{hypothetical reasoning} \cite{kakas2001abductive,de2004abductive,gartner2000psychiatric,kowalski2011abductive}.
+
+Pada \textit{abduction}, seringkali ditemukan bahwa hipotesis (biasa disebut sebagai \textit{abductive solution}) yang didapatkan pada suatu konteks \textit{abduction} ternyata relevan dengan konteks \textit{abduction} lainnya. Fenomena ini dikenal sebagai \textit{contextual abduction} \cite{pereira2014contextual}. \textit{Abductive solution} yang relevan ini dapat dipergunakan kembali tanpa harus mengulangi proses \textit{abduction}. Pada \textit{logic programming}, teknik menggunakan kembali solusi yang sudah didapat biasa disebut sebagai \textit{tabling}. Secara konsep, \textit{tabling} juga dapat digunakan ketika melakukan \textit{abudction}, yaitu untuk menggunakan kembali \textit{abductive solution} yang sudah didapat. Teknik menggunakan kembali \textit{abductive solution} yang didapatkan pada suatu konteks \textit{abduction} pada konteks lainnya disebut sebagai \textit{tabling in contextual abduction} \cite{pereira2016programming}. Dengan teknik ini, \textit{abductive solution} yang didapatkan pada suatu konteks \textit{abduction} dapat dipergunakan kembali pada konteks \textit{abduction} lainnya yang relevan.
+
+Namun, ketika melakukan \textit{abduction}, terkadang seseorang hanya tertarik untuk mendapat \textit{abductive solution} yang minimal, yaitu \textit{abductive solution} yang tidak di-\textit{subsume} oleh \textit{abductive solution} lainnya \cite{kakas1992abductive}. Hal ini dapat dilakukan dengan memanfaatkan fitur \textit{answer subsumption} \cite{swift2010tabling} ketika melakukan \textit{tabling} untuk menyeleksi solusi-solusi yang redundan. Menariknya, dengan diseleksinya solusi-solusi yang redundan, penggunaan \textit{answer subsumption} ini dapat sekaligus meningkatkan performa dari \textit{tabling abductive solution} itu sendiri, baik dari segi \textit{space} ataupun \textit{time}.
+
+%-----------------------------------------------------------------------------%
+\section{Tujuan dan Manfaat}
+%-----------------------------------------------------------------------------%
+Penelitian pada Tugas Akhir ini bertujuan membuat implementasi \textit{tabling} pada \textit{contextual abduction}, yang dilengkapi dengan fitur \textit{answer subsumption}, sehingga dapat memodelkan dan menyelesaikan persoalan mengenai \textit{abduction}, misalnya seperti \textit{the trolley problem} yang telah dideskripsikan sebelumnya. Penulis juga melakukan pengujian dan evaluasi terhadap kebenaran proses \textit{abduction} dan penggunaan \textit{tabling} dan \textit{answer subsumptioon} dari implementasi yang dibuat. Penelitian dan implementasi yang dibuat penulis diharapkan dapat memberi manfaat pada komunitas \textit{computer science} secara luas dan komunitas \textit{computational logic} secara khusus. Penerapan \textit{answer subsumption} untuk melakukan \textit{tabling} pada \textit{contextual abduction} merupakan hal yang belum pernah dilakukan sebelumnya \citep{pereira2016programming}. Program implementasi yang dibuat diharapkan dapat digunakan oleh komunitas luas untuk memodelkan dan menyelesaika persoalan \textit{abduction}. Salah satu penelitian terdahulu yang dapat mempergunakan implementasi ini yaitu \cite{lazarou2012logical}.
 
 %-----------------------------------------------------------------------------%
 \section{Tahapan Penelitian}
 %-----------------------------------------------------------------------------%
-\todo{Tuliskan tujuan penelitian.}
+Penulis mengerjakan Tugas Akhir dalam dua tahap. Pada tahap pertama penulis membuat implementasi \textit{tabling} pada \textit{contextual abduction} menggunakan \textit{answer subsumption}, sedangkan pada tahap kedua penulis melakukan evaluasi dan analisis serta beberapa \textit{refinement} terhadap implementasi yang dibuat, sambil menulis laporan Tugas Akhir ini.
 %-----------------------------------------------------------------------------%
-\section{Ruang Lingkup Penelitian}
+\section{Ruang Lingkup}
+%-----------------------------------------------------------------------------%
+Implementasi \textit{tabling} pada \textit{contextual abduction} menggunakan \textit{answer subsumption} yang dibuat oleh penulis dibatasi hanya untuk digunakan dengan program logika normal, dengan Well-Founded Semantic sebagai semantik logika yang digunakan. \textit{Tabling} yang digunakan secara spesifik menggunakan \textit{partial order answer subsumption}.
+
+\section{Metode yang Digunakan}
 %-----------------------------------------------------------------------------%
 
-%-----------------------------------------------------------------------------%
 \section{Sistematika Penulisan}
 %-----------------------------------------------------------------------------%
-Sistematika penulisan laporan adalah sebagai berikut:
+Sistematika penulisan laporan Tugas Akhir ini adalah sebagai berikut:
 \begin{itemize}
 	\item Bab 1 \babSatu \\
+	Pada bab ini penulis menjelaskan latar belakang, tujuan, manfaat, tahapan penelitian, ruang lingkup, dan metode yang digunakan dalam melakukan implementasi \textit{tabling} pada \textit{contextual abduction} menggunakan \textit{answer subsumption}.
 	\item Bab 2 \babDua \\
+	Pada bab ini penulis menjelaskan hal, teori, dan konsep yang berkaitan dengan implementasi \textit{tabling} pada \textit{contextual abduction} menggunakan \textit{answer subsumption}. Penulis mengawali penjelasan dengan konsep dasar-dasar yang diperlukan dalam pemrograman logika, dilanjutkan dengan konsep mengenai \textit{abduction}, \textit{tabling}, lalu yang terakhir yaitu \textit{answer subsumption}.
 	\item Bab 3 \babTiga \\
+	Pada bab ini penulis menjelaskan teknik untuk mempergunakan kembali \textit{abductive solution} yang didapat dari suatu \textit{abductive context} pada \textit{abductive context} lainnya dengan memanfaatkan \textit{tabling}. Penulis akan memulai menjelaskan dengan memberikan motivasi dan ide dasar diperlukannya \textit{tabling} dan \textit{abduction}, kemudian menunjukkan bagaimana konsep dan realisasi \textit{tabling} dan \textit{abduction} pada implementasi yang dibuat.
 	\item Bab 4 \babEmpat \\
+	Pada bab ini penulis menjelaskan bagaimana implementasi \textit{tabling} pada \textit{contextual abduction} menggunakan \textit{answer subsumption} yang dibuat menggunakan XSB Prolog.
 	\item Bab 5 \babLima \\
+	Penjelasan bab 
 \end{itemize}
-
-\todo{Tambahkan penjelasan singkat mengenai isi masing-masing bab.}

@@ -8,7 +8,7 @@
 
 \label{bab3}
 
-Pada \textit{abduction}, sering kali ditemukan bahwa \textit{abductive solution} yang didapatkan pada suatu proses \textit{abduction} ternyata memiliki relevansi dengan proses \textit{abduction} lainnya, menyebabkan bahwa sebenarnya \textit{abductive solution} tersebut dapat dipergunakan kembali. Seperti yang sudah dijelaskan pada bagian sebelumnya, teknik \textit{tabling}, terlepas dari \textit{abduction}, dapat dipergunakan untuk mempergunakan kembali solusi yang sudah didapatkan \citep{swift1999tabling}. Secara konsep, \textit{tabling} tampaknya juga dapat diterapkan pada \textit{abduction}, yaitu untuk mempergunakan kembali \textit{abductive solution} yang sudah didapat. Namun praktisnya, \textit{abductive solution} dari \textit{goal G} tidak serta-merta dapat di-\textit{tabling} karena solusi tersebut secara khusus terkait dengan konteks pada proses \textit{abduction} jika diberikan \textit{goal G}. \textit{Abductive context} dari \textit{goal G} dapat diartikan sebagai himpunan \textit{abducible} yang memberikan informasi mengenai konteks dari proses \textit{abduction} yang digunakan untuk mencari \textit{abductive solution} dari \textit{goal G}.
+Pada \textit{abduction}, sering kali ditemukan bahwa \textit{abductive solution} yang didapatkan pada suatu proses \textit{abduction} ternyata memiliki relevansi dengan proses \textit{abduction} lainnya, mengindikasikan bahwa sebenarnya \textit{abductive solution} tersebut dapat dipergunakan kembali. Seperti yang sudah dijelaskan pada bagian sebelumnya, teknik \textit{tabling}, terlepas dari \textit{abduction}, dapat dipergunakan untuk mempergunakan kembali solusi yang sudah didapatkan \citep{swift1999tabling}. Secara konsep, \textit{tabling} tampaknya juga dapat diterapkan pada \textit{abduction}, yaitu untuk mempergunakan kembali \textit{abductive solution} yang sudah didapat. Namun praktisnya, \textit{abductive solution} dari \textit{goal G} tidak serta-merta dapat di-\textit{tabling} karena solusi tersebut secara khusus terkait dengan konteks pada proses \textit{abduction} jika diberikan \textit{goal G}. \textit{Abductive context} dari \textit{goal G} dapat diartikan sebagai himpunan \textit{abducible} yang memberikan informasi mengenai konteks dari proses \textit{abduction} yang digunakan untuk mencari \textit{abductive solution} dari \textit{goal G}.
 
 Pada bagian ini, penulis akan menjelaskan teknik untuk mempergunakan kembali \textit{abductive solution} yang didapat dari suatu \textit{abductive context} pada \textit{abductive context} lainnya dengan memanfaatkan \textit{tabling}. Teknik melakukan \textit{tabling abductive solution} pada \textit{contextual abduction} ini disebut sebagai \textsc{Tabdual} \citep{saptawijaya2015tabdual}. Teknik ini didasari oleh \textsc{Abdual} \citep{alferes2004abduction}, yaitu suatu pendekatan yang dapat digunakan untuk melakukan komputasi terhadap \textit{abduction} pada Well-Founded Semantic. \textsc{Tabdual} merealisasikan teori transformasi program yang diberikan pada \textsc{Abdual} yaitu \textit{dual program transformation}, ditambah dengan adanya  \textit{tabling} untuk menyimpan \textit{abductive solution}, sekaligus mengatasi permasalahan yang ditemukan ketika melakukan \textit{abduction} pada \textit{goal} negatif. 
 
@@ -164,6 +164,7 @@ maka transformasi \textsc{Tabdual} didefinisikan sebagai:
 \end{displaymath}
 
 \subsection{\textit{Transformasi \textit{Query}}}
+\label{transquery}
 
 Sebagai konsekuensi dari transformasi \textsc{Tabdual}, \textit{query} terhadap program juga harus di-\textit{transform}:
 
@@ -267,6 +268,7 @@ Dapat dilihat bahwa ketidaksesuaian \textit{abductive solution} yang dihasilkan 
 \end{flalign*}
 dengan predikat \textit{copy\_term$/$}2 merupakan predikat \textit{built-in} yang disediakan oleh Prolog. \textit{copy\_term$/$}2 ditambahkan sebelum masing-masing \textit{subgoal} dari \textit{first layer dual rule} (dalam kasus ini sebelum $p^{*1}(X,I,O)$ dan $p^{*2}(X,I,O)$), digunakan untuk memberikan \textit{varian} baru terhadap $X$ agar dapat digunakan secara independen.
 \subsection{Transformasi Fakta}
+\label{transfact}
 
 \textsc{Tabdual} melakukan transformasi pada seluruh predikat yang ada pada program, termasuk predikat yang sebenarnya hanya berupa fakta yang bahkan tidak menginduksikan \textit{abduction} sama sekali. Oleh karena itu, transformasi yang lebih sederhana dapat diterapkan pada predikat-predikat yang hanya berupa fakta.
 
@@ -274,11 +276,11 @@ Misalkan terdapat predikat $q/1$ yang hanya berupa fakta seperti berikut:
 \begin{flalign*}
 	q(1). \quad \quad q(2). \quad \quad q(3).
 \end{flalign*}
-\textit{Rule} transformasi untuk $q/1$ yang telah didefinisikan pada Definisi 3.1, yaitu $q_{ab}/1$ dan $q/3$ dapat digantikan dengan satu buah \textit{rule} berikut:
+\textit{Rule} transformasi untuk $q/1$ yang telah didefinisikan pada Definisi 3.1, yaitu $q_{ab}/1$ dan $q/3$ dapat digantikan dengan satu buah \textit{rule} positif berikut:
 \begin{flalign*}
 	q(X,I,I) \leftarrow q(X).
 \end{flalign*}
-dan \textit{dual rule} untuk $q/1$ yang telah didefinisikan pada Definisi 3.2 juga cukup digantikan dengan satu buah \textit{rule} berikut:
+dan \textit{dual rule} untuk $q/1$ yang telah didefinisikan pada Definisi 3.2 juga cukup digantikan dengan satu buah \textit{rule} negatif berikut:
 \begin{flalign*}
 	not\_q(X,I,I) \leftarrow not \ q(X).
 \end{flalign*}
@@ -286,6 +288,30 @@ dan \textit{dual rule} untuk $q/1$ yang telah didefinisikan pada Definisi 3.2 ju
 Transformasi untuk fakta seperti predikat $q/1$ bersifat independen terhadap jumlah fakta yang ada, sehingga dapat dipisahkan dari keseluruhan program dan dikelompokkan menjadi bagian yang bersifat \textit{non-abductive} untuk diproses secara khusus. Pada \textsc{Tabdual}, bagian program yang bersifat \textit{non-abductive} dapat dipisahkan dengan \textit{indentifier} \textit{beginProlog} dan \textit{endProlog}. Program yang terdapat diantara kedua identifier ini tidak akan di-\textit{transform} oleh \textsc{Tabdual}, melainkan hanya akan dibaca dan ditulis ulang ke program \textit{output}.
 
 \subsection{\textit{Dual Transformation by Need}}
+\label{dualbyneed}
 
-Transformasi yang dilakukan oleh \textsc{Tabdual} bersifat \textit{once for all}, yaitu men-\textit{transform} seluruh predikat, atom, dan \textit{abducible} yang terdapat pada program, tanpa pertimbangan apakah predikat/atom/\textit{abducible} yang di-\textit{transform} akan digunakan pada fase \textit{abduction} atau tidak. Praktis, transformasi seperti ini harus dihindari dikarenakan \textit{cost} yang diperlukan terlalu besar untuk melakukan transformasi yang belum tentu digunakan. Salah satu solusi untuk mengatasi permasalahan ini yaitu dengan melakukan transformasi \textit{dual rule} secara \textit{by need}, yaitu dengan tidak membentuk \textit{dual rule} pada fase transformasi, melainkan pada saat fase \textit{abduction} ketika \textit{dual rule} tersebut dibutuhkan untuk dieksekusi. Program \textit{output} yang dihasilkan tetap mengandung \textit{first layer dual rule}, namun tidak \textit{second layer dual rule}. \textit{Second layer dual rule} akan dibentuk pada fase \textit{abduction} dengan bantuan predikat sistem \textsc{Tabdual} yang dikhususkan untuk membentuk definisi konkrit dari \textit{second layer dual rule} ini.
+Transformasi yang dilakukan oleh \textsc{Tabdual} bersifat \textit{once for all}, yaitu men-\textit{transform} seluruh predikat, atom, dan \textit{abducible} yang terdapat pada program, tanpa pertimbangan apakah predikat/atom/\textit{abducible} yang di-\textit{transform} akan digunakan pada fase \textit{abduction} atau tidak. Praktis, transformasi seperti ini harus dihindari dikarenakan \textit{cost} yang diperlukan terlalu besar untuk melakukan transformasi yang belum tentu digunakan. Salah satu solusi untuk mengatasi permasalahan ini yaitu dengan melakukan transformasi \textit{dual rule} secara \textit{by need}, yaitu dengan tidak membentuk \textit{dual rule} pada fase transformasi, melainkan pada saat fase \textit{abduction} ketika \textit{dual rule} tersebut dibutuhkan untuk dieksekusi. Program \textit{output} yang dihasilkan tetap mengandung \textit{first layer dual rule}, namun tidak \textit{second layer dual rule} yang jumlahnya relatif lebih banyak. \textit{Second layer dual rule} akan dibentuk \textit{on-the-fly} pada fase \textit{abduction} dengan bantuan predikat sistem \textsc{Tabdual} yang dikhususkan untuk membentuk definisi konkrit dari \textit{second layer dual rule} ini.
+\\
 
+\noindent \textit{Contoh \thebabTigaNum.\stepcounter{contohBabTiga}\thecontohBabTiga}. Lihat kembali Contoh 3.2. Transformasi \textit{dual by need} menghasilkan \textit{first layer dual rule} yang sama yaitu $not\_p(X,I,O) \leftarrow p^{*1}(X,I,T), p^{*2}(X,T,O)$, sementara \textit{second layer dual rule} yang dihasilkan menjadi, untuk setiap $i \in \{1,2\}$:
+\begin{flalign*}
+	p^{*i}(X,I,O) \leftarrow dual(i,p,I,O).
+\end{flalign*}
+dengan predikat $dual/4$ merupakan predikat sistem \textsc{Tabdual} yang didefinisikan untuk memudahkan \textit{dual transformation by need}. Eksekusi $dual(i,p,I,O)$ di atas akan membentuk \textit{dual rule} yang bersifat \textit{generic}, yaitu \textit{dual rule} yang belum diberikan \textit{context} berdasarkan \textit{rule} ke-$i$ dari $p/0$. Setelah \textit{dual rule} dibentuk pada fase \textit{abduction}, $dual/4$ akan melakukan instansiasi dengan \textit{input context} diberikan kemudian melakukan eksekusi terhadap \textit{dual rule} yang telah diinstansiasi.
+
+Meskipun \textit{dual transformation by need} dapat mengurangi jumlah \textit{second layer dual rule} pada program \textit{output}, melakukan transformasi \textit{on-the-fly} menyebabkan dibutuhkannya \textit{cost} tambahan pada fase \textit{abduction}. \textit{Cost} tambahan ini dapat dikurangi dengan menyimpan \textit{dual rule} yang sudah pernah dibentuk agar dapat dipergunakan kembali. 
+
+Menariknya, XSB Prolog menyediakan mekanisme untuk menyimpan dan memanipulasi fakta-fakta pada progam logika dengan menggunakan \textit{trie} \citep{swift2015xsb}. \textit{Trie} merupakan sebuah struktur data yang dapat digunakan untuk menyimpan data, misalnya \textit{string}, secara kompak dengan memanfaatkan representasi \textit{prefix-prefix} dari data yang disimpan. Kumpulan fakta berikut:
+\begin{displaymath}
+	\{rt(a,f(a,b),a), rt(a,f(a,X),Y), rt(b,V,d) \}
+\end{displaymath}
+disimpan pada \textit{trie} seperti pada gambar di bawah ini.
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.7]
+	{trie.png}
+	\caption{Fakta yang disimpan pada \textit{trie} \citep{swift2015xsb}.}
+	\label{trie}
+\end{figure}
+
+\textit{Dual rule} yang dibentuk dapat direpresentasikan sebagai sebuah fakta, memungkinkan untuk disimpan di dalam sebuah \textit{trie} sehingga dapat dipergunakan kembali tanpa harus me-\textit{transform} ulang. XSB Prolog sudah menyediakan predikat untuk menyimpan term ke dalam \textit{trie}, melakukan unifikasi dengan sebuah term pada \textit{trie}, dan beberapa predikat lainnya yang dapat digunakan untuk memanipulasi isi serta bentuk dari \textit{trie}.

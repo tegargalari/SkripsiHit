@@ -1,7 +1,7 @@
 %-----------------------------------------------------------------------------%
 \chapter{\babEmpat}
 %-----------------------------------------------------------------------------%
-Pada bab ini penulis akan menjelaskan implementasi \textsc{Tabdual} yang dibuat oleh penulis.
+Pada bab ini akan dijelaskan implementasi \textsc{Tabdual} yang dibuat oleh penulis.
 
 \section{Terminologi}
 
@@ -11,7 +11,7 @@ Pada bagian ini penulis menjelaskan beberapa ketentuan dan istilah yang digunaka
 	\item Pada Prolog, variabel diawali dengan huruf kapital sedangkan term dan predikat diawali dengan huruf non-kapital.
 	\item \textit{Consult} berarti melakukan kompilasi program Prolog dan memuat hasil kompilasi program tersebut ke dalam \textit{database} XSB sehingga program tersebut menjadi \textit{knowledge base}.
 	\item \textit{Database} berarti kumpulan predikat-predikat yang disimpan pada \textit{environment} XSB dan dijadikan sebagai \textit{knowledge base} selama eksekusi. Predikat-predikat yang ada pada \textit{database} dapat berasal dari program yang di-\textit{consult} (membentuk \textit{database} statis) ataupun ditambahkan selama eksekusi suatu program (membentuk \textit{database} dinamis). Selama eksekusi, predikat yang sudah ditambahkan ke dalam \textit{database} dinamis dapat dimanipulasi sesuai kebutuhan program.
-	\item \textit{Dual transformation by need} mengacu pada proses transformasi dual \textit{by need} yang sudah dijelaskan pada bagian ???.
+	\item \textit{Dual transformation by need} mengacu pada proses transformasi dual \textit{by need} yang sudah dijelaskan pada \hyperref[dualbyneed]{\textcolor{blue}{bagian 3.3.4}}.
 \end{itemize}
 
 \section{Spesifikasi \textsc{Tabdual}}
@@ -21,7 +21,7 @@ Pada bagian ini penulis menjelaskan beberapa ketentuan dan istilah yang digunaka
 Seperti yang sudah dijelaskan pada \hyperref[fase]{\textcolor{blue}{bagian 3.1}}, secara garis besar, \textsc{Tabdual} terbagi menjadi 2 fase:
 
 \begin{enumerate}
-	\item \textbf{Transformasi}. Pada fase ini, \textsc{Tabdual} akan melakukan transformasi program \textit{input} \textit{P} menjadi program \textit{output} \textit{P$'$} yang dapat mengaplikasikan \textit{contextual abduction}. Transformasi dilakukan sesuai dengan aturan-aturan transformasi yang sudah dijelaskan pada \hyperref[bab2]{\textcolor{blue}{bagian 2}}.
+	\item \textbf{Transformasi}. Pada fase ini, \textsc{Tabdual} akan melakukan transformasi program \textit{input} \textit{P} menjadi program \textit{output} \textit{P$'$} yang dapat mengaplikasikan \textit{contextual abduction}. Transformasi dilakukan sesuai dengan aturan-aturan transformasi yang sudah dijelaskan pada \hyperref[bab3]{\textcolor{blue}{bagian 3}}.
 	\item \textbf{Abduction}. \textit{Contextual abduction} dapat dilakukan setelah program \textit{input} \textit{P} berhasil di-\textit{transform} menjadi program \textit{output} \textit{P$'$}. Praktis, \textit{P$'$} harus di-\textit{consult} terlebih dahulu sebelum kita dapat memberikan \textit{query} dan melakukan \textit{contextual abduction}.
 \end{enumerate}
 
@@ -48,7 +48,7 @@ Program \textit{input} yang ingin di-\textit{transform} menggunakan \textsc{Tabd
 	\item Setiap \textit{rule} dan fakta yang ditulis diakhiri dengan tanda titik (".").
 \end{itemize}
 
-\noindent Agar lebih jelas, berikut ini merupakan contoh program yang diterima sebagai program \textit{input} untuk \textsc{Tabdual}.
+\noindent Sebagai contoh, berikut ini merupakan program yang diterima sebagai program \textit{input} untuk \textsc{Tabdual}.
 \\
 
 \begin{lstlisting}[
@@ -98,7 +98,7 @@ Bagian ini menjelaskan bagian implementasi \textsc{Tabdual} yang berkaitan denga
 
 \subsection{\textit{Directive}}
 
-Pada Prolog, \textit{directive} merupakan anotasi dan predikat pada program yang akan dieksekusi langsung oleh \textit{compiler} ketika program tersebut di-\textit{consult}. Berbeda dengan predikat biasa pada program, \textit{directive} tidak akan disimpan sebagai \textit{knowledge base} di \textit{database}, melainkan langsung dieksekusi. Pada \textsc{Tabdual}, \textit{directive-directive} yang ada dapat dikelompokkan menjadi beberapa kelompok.
+Pada Prolog, \textit{directive} merupakan anotasi dan predikat pada program yang akan dieksekusi langsung oleh \textit{compiler} ketika program tersebut di-\textit{consult}. Berbeda dengan predikat biasa pada program, \textit{directive} tidak disimpan sebagai \textit{knowledge base} di \textit{database}, melainkan langsung dieksekusi. Pada \textsc{Tabdual}, \textit{directive-directive} yang ada dapat dikelompokkan menjadi beberapa kelompok.
 
 \subsubsection{\textit{Import}}
 
@@ -119,7 +119,7 @@ Predikat \textit{append$/$}3, \textit{member$/$}2, dan \textit{length$/$}2 yang 
 \subsubsection{Operator}
 
 Pada Prolog, pengguna dapat mendefinisikan operator logika baru menggunakan predikat \textit{built-in} \textit{op$/$}3. Predikat \textit{op$/$}3 memiliki tiga buah argumen. Argumen pertama menyatakan presedensi, argumen kedua menyatakan tipe, dan argumen ketiga menyatakan nama dari operator tersebut. Presedensi dari operator dinyatakan sebagai sebuah bilangan bulat antara 1 sampai 1200 (1 adalah presedensi dari sebuah term), semakin kecil nilainya semakin kuat presedensinya. Tipe operator menentukan apakah operator tersebut merupakan operator \textit{prefix}, \textit{infix}, atau \textit{suffix}, sekaligus menyatakan sifat assosiatif yang dimilikinya, apakah assosiatif kanan, assosiatif kiri, atau tidak assosiatif. Tipe operator yang dapat digunakan untuk operator \textit{prefix} yaitu \textit{fx} dan \textit{fy}, tipe operator yang dapat digunakan untuk operator \textit{infix} yaitu \textit{yfx}, \textit{xfy}, dan \textit{xfx}, dan tipe operator yang dapat digunakan untuk operator \textit{suffix} yaitu \textit{xf} dan \textit{yf}. Simbol \textit{f} pada tipe operator merepresentasikan posisi operator sedangkan simbol \textit{x} dan \textit{y} merepresentasikan argumen-argumennya. Simbol \textit{x} menyatakan bahwa argumen tersebut harus memiliki presedensi kurang dari presedensi operator \textit{f}, sedangkan simbol \textit{y} menyatakan bahwa argumen tersebut harus memiliki presedensi kurang dari atau sama dengan presedensi operator \textit{f}. Dengan kata lain, simbol \textit{y} menyatakan bahwa operator tersebut bersifat assosiatif, sedangkan simbol \textit{x} menyatakan bahwa operator tersebut bersifat tidak assosiatif. 
-\\ \\
+
 \textsc{Tabdual} mendeklarasikan dua buah operator baru yaitu \textit{not} dan $\leftarrow$ seperti di bawah ini.
 \\
 
@@ -146,7 +146,7 @@ style=prolog
 :- dynamic has_rules/1, rule/2, rule/3, abds/1.
 \end{lstlisting}
 
-Predikat \textit{has\_rules$/$}1 digunakan untuk menyimpan informasi mengenai predikat yang memiliki \textit{rule}, dengan kata lain, predikat-predikat yang menjadi \textit{head} pada program. Argumen dari \textit{has\_rules$/$}1 yaitu \textit{R} yang menyatakan \textit{head} yang ada pada program. \textit{Head-head} ini disimpan pada \textit{database} menggunakan predikat dinamis \textit{has\_rules$/$}1 secara \textit{distinct}. Predikat \textit{rule$/$}2 dan \textit{rule$/$}3 digunakan untuk menyimpan informasi mengenai sebuah \textit{rule} yang ada pada program. Dua buah argumen pertama dari \textit{rule$/$}2 dan \textit{rule$/$}3 yaitu \textit{H} dan \textit{B}, berturut-turut menyatakan \textit{head} dan \textit{body} dari \textit{rule} tersebut. Argumen ketiga dari \textit{rule$/$}3 yaitu sebuah bilangan \textit{N} yang menyatakan bahwa \textit{$H \leftarrow B$} adalah \textit{rule} ke-\textit{N} mengenai \textit{H}.\label{rule2to3} Penjelasan mengapa diperlukan dua buah predikat dinamis untuk menyimpan \textit{rule-rule} pada program input akan dijelaskan pada \hyperref[subsec:add_indices]{\textcolor{blue}{bagian 3.4.7}}. Predikat \textit{abds$/$}1 digunakan untuk menyimpan informasi mengenai himpunan \textit{abducible} yang direpresentasikan sebagai sebuah \textit{list}. Predikat \textit{abds$/$}1 memiliki satu buah argumen yaitu \textit{list} \textit{abducible} itu sendiri.
+Predikat \textit{has\_rules$/$}1 digunakan untuk menyimpan informasi mengenai predikat yang memiliki \textit{rule}, dengan kata lain, predikat-predikat yang menjadi \textit{head} pada program. Argumen dari \textit{has\_rules$/$}1 yaitu \textit{R} yang menyatakan \textit{head} yang ada pada program. \textit{Head-head} ini disimpan pada \textit{database} menggunakan predikat dinamis \textit{has\_rules$/$}1 secara \textit{distinct}. Predikat \textit{rule$/$}2 dan \textit{rule$/$}3 digunakan untuk menyimpan informasi mengenai sebuah \textit{rule} yang ada pada program. Dua buah argumen pertama dari \textit{rule$/$}2 dan \textit{rule$/$}3 yaitu \textit{H} dan \textit{B}, berturut-turut menyatakan \textit{head} dan \textit{body} dari \textit{rule} tersebut. Argumen ketiga dari \textit{rule$/$}3 yaitu sebuah bilangan \textit{N} yang menyatakan bahwa \textit{$H \leftarrow B$} adalah \textit{rule} ke-\textit{N} mengenai \textit{H}.\label{rule2to3} Penjelasan mengapa diperlukan dua buah predikat dinamis untuk menyimpan \textit{rule-rule} pada program input akan dijelaskan pada \hyperref[subsec:add_indices]{\textcolor{blue}{bagian 4.4.7}}. Predikat \textit{abds$/$}1 digunakan untuk menyimpan informasi mengenai himpunan \textit{abducible} yang direpresentasikan sebagai sebuah \textit{list}. Predikat \textit{abds$/$}1 memiliki satu buah argumen yaitu \textit{list} \textit{abducible} itu sendiri.
 
 \subsubsection{\textit{Directive} Lainnya}
 
@@ -160,7 +160,7 @@ style=prolog
 :- consult_files, retractall(mode/1), assert(mode(normal)).
 \end{lstlisting}
 
-Predikat \textit{consult\_files$/$}0 digunakan untuk men-\textit{consult} berkas-berkas implementasi \textsc{Tabdual} lainnya, yaitu berkas \textit{system.p}, \textit{read\_clause.p}, dan \textit{write\_clause.p}. Predikat \textit{retractall}(\textit{mode$/$}1) dan \textit{assert}(\textit{mode}(\textit{normal})) digunakan untuk me-inisialisasi ulang mode yang digunakan untuk transformasi. Penjelasan mengenai mode transformasi akan dijelaskan lebih jauh pada \hyperref[subsec:mode]{\textcolor{blue}{bagian 3.4.8}}.
+Predikat \textit{consult\_files$/$}0 digunakan untuk men-\textit{consult} berkas-berkas implementasi \textsc{Tabdual} lainnya, yaitu berkas \textit{system.p}, \textit{read\_clause.p}, dan \textit{write\_clause.p}. Predikat \textit{retractall}(\textit{mode$/$}1) dan \textit{assert}(\textit{mode}(\textit{normal})) digunakan untuk me-inisialisasi ulang mode yang digunakan untuk transformasi. Penjelasan mengenai mode transformasi akan dijelaskan lebih lanjut pada \hyperref[subsec:mode]{\textcolor{blue}{bagian 4.4.8}}.
 
 \subsection{Predikat \textit{wrapper} \textit{transform$/$}1}
 
@@ -180,7 +180,7 @@ transform(Filename) :-
 	told.
 \end{lstlisting}
 
-Terdapat enam buah \textit{goal} yang harus dieksekusi pada predikat \textit{transform$/$}1. Predikat \textit{see\_input\_file$/$}1 menentukan \textit{input stream} untuk fase transformasi \textsc{Tabdual} yaitu program \textit{input} yang ingin di-\textit{transform}. Predikat \textit{tell\_output\_file$/$}1 menentukan \textit{output stream} untuk fase transformasi \textsc{Tabdual}, yaitu program \textit{output} yang akan dihasilkan. Program \textit{input} harus memiliki ekstensi \textit{.ab} dan program \textit{output} yang dihasilkan akan memiliki nama yang sama namun dengan ekstensi \textit{.p}. Predikat \textit{pre\_transform$/$}0 melakukan beberapa hal yang harus dilakukan sebelum memulai transformasi (akan dijelaskan pada \hyperref[subsec:pre_transform]{\textcolor{blue}{bagian 3.4.3}}) dan predikat \textit{transform$/$}0 adalah predikat yang akan melakukan  transformasi (akan dijelaskan pada \hyperref[transform]{\textcolor{blue}{bagian 3.4}}). Predikat \textit{seen$/$}0 dan \textit{told$/$}0 berturut-turut mengembalikan input \textit{stream} dan output \textit{stream} menjadi seperti semula yaitu \textit{prompt} Prolog.
+Terdapat enam buah \textit{goal} yang harus dieksekusi pada predikat \textit{transform$/$}1. Predikat \textit{see\_input\_file$/$}1 menentukan \textit{input stream} untuk fase transformasi \textsc{Tabdual} yaitu program \textit{input} yang ingin di-\textit{transform}. Predikat \textit{tell\_output\_file$/$}1 menentukan \textit{output stream} untuk fase transformasi \textsc{Tabdual}, yaitu program \textit{output} yang akan dihasilkan. Program \textit{input} harus memiliki ekstensi \textit{.ab} dan program \textit{output} yang dihasilkan akan memiliki nama yang sama namun dengan ekstensi \textit{.p}. Predikat \textit{pre\_transform$/$}0 melakukan beberapa hal yang harus dilakukan sebelum memulai transformasi (akan dijelaskan pada \hyperref[subsec:pre_transform]{\textcolor{blue}{bagian 4.4.3}}) dan predikat \textit{transform$/$}0 adalah predikat yang akan melakukan  transformasi (akan dijelaskan pada \hyperref[transform]{\textcolor{blue}{bagian 4.4}}). Predikat \textit{seen$/$}0 dan \textit{told$/$}0 berturut-turut mengembalikan input \textit{stream} dan output \textit{stream} menjadi seperti semula yaitu \textit{prompt} Prolog.
 
 \subsection{Predikat \textit{pre\_transform/}0}
 \label{subsec:pre_transform}
@@ -275,12 +275,12 @@ load_just_facts :-
 	).
 \end{lstlisting}
 
-Sama seperti predikat \textit{load\_rules$/$}0, \textit{goal} pertama yang dieksekusi pada predikat \textit{load\_just\_facts$/$}0  yaitu predikat \textit{built-in} \textit{read$/$}1 yang digunakan untuk membaca satu term pada input \textit{stream} yang diberikan. Selanjutnya, potongan kode dari baris 3 hingga 14 merupakan \textit{statement} kondisional yang terdiri dari dua buah kondisi yang saling \textit{mutually exclusive}, atau dengan kata lain, dapat dibaca sebagai kondisional \textit{if\textendash else}. Kondisi pertama merupakan \textit{base case}, yaitu ketika term yang dibaca adalah term \textit{endProlog$/$}0. Artinya, seluruh term yang terdapat di antara predikat \textit{beginProlog$/$}0 dan \textit{endProlog$/$}0 sudah dibaca dan disimpan ke dalam \textit{database} sehingga dapat digunakan oleh predikat \textit{transform\_just\_facts$/$}0 \label{justfacts2} untuk ditransformasikan sesuai dengan aturan transformasi pada bagian ???. Penjelasan lebih lanjut mengenai predikat \textit{transform\_just\_facts$/$}0 akan dijelaskan pada \hyperref[justfacts]{\textcolor{blue}{bagian 3.4.4}}. Selanjutnya, kondisi kedua merupakan \textit{recursive case}. Sama seperti pada predikat \textit{load\_rules$/$}0, predikat \textit{load\_rule$/$}1 akan dieksekusi sebagai sebuah \textit{goal}. Setelah eksekusi predikat \textit{load\_rule$/$}1, terjadi pemanggilan rekursif terhadap predikat \textit{load\_just\_facts$/$}0 yang terus diulang hingga bertemu dengan term \textit{endProlog$/$}0.
+Sama seperti predikat \textit{load\_rules$/$}0, \textit{goal} pertama yang dieksekusi pada predikat \textit{load\_just\_facts$/$}0  yaitu predikat \textit{built-in} \textit{read$/$}1 yang digunakan untuk membaca satu term pada input \textit{stream} yang diberikan. Selanjutnya, potongan kode dari baris 3 hingga 14 merupakan \textit{statement} kondisional yang terdiri dari dua buah kondisi yang saling \textit{mutually exclusive}, atau dengan kata lain, dapat dibaca sebagai kondisional \textit{if\textendash else}. Kondisi pertama merupakan \textit{base case}, yaitu ketika term yang dibaca adalah term \textit{endProlog$/$}0. Artinya, seluruh term yang terdapat di antara predikat \textit{beginProlog$/$}0 dan \textit{endProlog$/$}0 sudah dibaca dan disimpan ke dalam \textit{database} sehingga dapat digunakan oleh predikat \textit{transform\_just\_facts$/$}0 \label{justfacts2} untuk ditransformasikan sesuai dengan aturan transformasi pada bagian \hyperref[transfact]{\textcolor{blue}{bagian 3.3.3}}. Penjelasan lebih lanjut mengenai predikat \textit{transform\_just\_facts$/$}0 akan dijelaskan pada \hyperref[justfacts]{\textcolor{blue}{bagian 4.4.4}}. Selanjutnya, kondisi kedua merupakan \textit{recursive case}. Sama seperti pada predikat \textit{load\_rules$/$}0, predikat \textit{load\_rule$/$}1 akan dieksekusi sebagai sebuah \textit{goal}. Setelah eksekusi predikat \textit{load\_rule$/$}1, terjadi pemanggilan rekursif terhadap predikat \textit{load\_just\_facts$/$}0 yang terus diulang hingga bertemu dengan term \textit{endProlog$/$}0.
 
 \subsection{Predikat \textit{add\_indices/}0}
 \label{subsec:add_indices}
 
-Pada \hyperref[rule2to3]{\textcolor{blue}{bagian sebelumnya}} telah dijelaskan bahwa diperlukan dua buah predikat dinamis untuk menyimpan \textit{rule-rule} pada program input, yaitu predikat dinamis \textit{rule$/$}2 dan \textit{rule$/$}3. Predikat dinamis \textit{rule$/$}3 merupakan ekstensi dari predikat dinamis \textit{rule$/$}2 dengan penambahan satu buah argumen yang menyatakan urutan definisi mengenai \textit{rule} tersebut. Informasi mengenai urutan ini diperlukan untuk mengimplementasikan \textit{dual transformation by need}. Predikat \textit{add\_indices$/$}0 memanfaatkan \textit{rule$/$}2 yang sudah disimpan pada \textit{database} untuk membentuk \textit{rule$/$}3 yang sesuai. Berikut ini definisi dari predikat \textit{add\_indices$/$}0 pada \textsc{Tabdual}.
+Pada \hyperref[rule2to3]{\textcolor{blue}{bagian 4.3.1.3}} telah dijelaskan bahwa diperlukan dua buah predikat dinamis untuk menyimpan \textit{rule-rule} pada program input, yaitu predikat dinamis \textit{rule$/$}2 dan \textit{rule$/$}3. Predikat dinamis \textit{rule$/$}3 merupakan ekstensi dari predikat dinamis \textit{rule$/$}2 dengan penambahan satu buah argumen yang menyatakan urutan definisi mengenai \textit{rule} tersebut. Informasi mengenai urutan ini diperlukan untuk mengimplementasikan \textit{dual transformation by need}. Predikat \textit{add\_indices$/$}0 memanfaatkan \textit{rule$/$}2 yang sudah disimpan pada \textit{database} untuk membentuk \textit{rule$/$}3 yang sesuai. Berikut ini definisi dari predikat \textit{add\_indices$/$}0 pada \textsc{Tabdual}.
 \\
 
 \begin{lstlisting}[
@@ -318,11 +318,13 @@ transform :-
 	transform_abducibles.
 \end{lstlisting}
 
-Terdapat tiga buah \textit{goal} yang harus dieksekusi oleh predikat \textit{transform$/$}0. Predikat \textit{transform\_per\_rule$/$}0 membentuk transformasi $\tau'$, $\tau^+$, dan $\tau^-$ untuk program input \textit{P} (transformasi $\tau^*$  dibentuk secara \textit{on-the-fly} saat fase \textit{abduction} menggunakan \textit{dual transformation by need}). Predikat \textit{transform\_if\_no\_ic$/$}0 membentuk transformasi $\tau^- = \textit{not}\_\bot(\textit{I},\textit{I})$ jika pada program input \textit{P} tidak terdapat \textit{integrity constraint}. Predikat \textit{transform\_abducibles$/$}0 membentuk transformasi $\tau^\circ$ untuk program input \textit{P}. Bagian berikutnya akan menjelaskan lebih lanjut mengenai ketiga predikat di atas serta predikat \textit{transform\_just\_facts$/$}0.
+Terdapat tiga buah \textit{goal} yang harus dieksekusi oleh predikat \textit{transform$/$}0. Predikat \textit{transform\_per\_rule$/$}0 membentuk transformasi $\tau'$, $\tau^+$, dan $\tau^-$ untuk program input \textit{P} (transformasi $\tau^*$  dibentuk secara \textit{on-the-fly} saat fase \textit{abduction} menggunakan \textit{dual transformation by need}). Predikat \textit{transform\_if\_no\_ic$/$}0 membentuk transformasi $\tau^- = \textit{not}\_\bot(\textit{I},\textit{I})$ jika pada program input \textit{P} tidak terdapat \textit{integrity constraint}. Predikat \textit{transform\_abducibles$/$}0 membentuk transformasi $\tau^\circ$ untuk program input \textit{P}. 
+
+Bagian berikutnya akan menjelaskan lebih lanjut mengenai ketiga predikat di atas serta predikat \textit{transform\_just\_facts$/$}0.
 
 \subsection{Predikat \textit{transform\_per\_rule$/$}0}
 
-Predikat \textit{transform\_per\_rule$/$}0 digunakan untuk membentuk transformasi $\tau'$, $\tau^+$, dan $\tau^-$. Transformasi ini dilakukan setelah seluruh program input dibaca dan sudah disimpan di dalam \textit{database} menggunakan predikat-predikat dinamis yang sesuai. Berikut ini definisi dari predikat \textit{transform\_per\_rule$/$}0 yang diberikan oleh \textsc{Tabdual}.
+Predikat \textit{transform\_per\_rule$/$}0 membentuk transformasi untuk \textit{tabling abductive solution} ($\tau'$ dan $\tau^+$) dan transformasi untuk membentuk \textit{dual rule} ($\tau^-$). Transformasi ini dilakukan setelah seluruh program input dibaca dan sudah disimpan di dalam \textit{database} menggunakan predikat-predikat dinamis yang sesuai. Berikut ini definisi dari predikat \textit{transform\_per\_rule$/$}0 yang diberikan oleh \textsc{Tabdual}.
 \\
 
 \begin{lstlisting}[
@@ -342,7 +344,7 @@ Predikat \textit{retract$/$}1 menghapus informasi mengenai \textit{rule H} dari 
 
 \subsection{Predikat \textit{transform\_if\_no\_ic$/$}0}
 
-Predikat \textit{transform\_if\_no\_ic$/$}0 digunakan untuk membentuk \textit{not}\_$\bot(\textit{I},\textit{I}$) sebagai hasil transformasi $\tau^-$ ketika tidak terdapat \textit{integrity constraint} pada program input. Predikat \textit{transform\_if\_no\_ic$/$}0 didefinisikan oleh \textsc{Tabdual} seperti berikut.
+Predikat \textit{transform\_if\_no\_ic$/$}0 digunakan untuk membentuk fakta $not\_\bot(I,I)$ sebagai hasil transformasi $\tau^-$ ketika tidak terdapat \textit{integrity constraint} pada program input. Predikat \textit{transform\_if\_no\_ic$/$}0 didefinisikan oleh \textsc{Tabdual} seperti berikut.
 \\
 
 \begin{lstlisting}[
@@ -355,11 +357,11 @@ transform_if_no_ic :-
 	generate_dual_rules_no_ic.
 \end{lstlisting}
 
-Predikat \textit{find\_rules$/$}2 mengoleksikan seluruh \textit{rule} yang merupakan \textit{integrity constraint}, yaitu \textit{rule} yang \textit{head}-nya adalah predikat \textit{false}, dan mengumpulkan hasil koleksi ke dalam \textit{list R}. Untuk mengecek terdapat atau tidaknya \textit{integrity constraint}, predikat \textit{built-in length$/$}2 digunakan untuk melakukan pengecekan apakah panjang dari \textit{R} sama dengan nol. Jika ya, maka hasil transformasi $\tau^- = \textit{not}\_\bot(\textit{I},\textit{I})$ akan dibentuk oleh predikat \textit{generate\_dual\_rules\_no\_ic$/$}0.
+Predikat \textit{find\_rules$/$}2 mengoleksikan seluruh \textit{rule} yang merupakan \textit{integrity constraint}, yaitu \textit{rule} yang \textit{head}-nya adalah predikat \textit{false}, dan mengumpulkan hasil koleksi ke dalam \textit{list R}. Untuk mengecek terdapat atau tidaknya \textit{integrity constraint}, predikat \textit{built-in length$/$}2 digunakan untuk melakukan pengecekan apakah panjang dari \textit{R} sama dengan nol. Jika ya, maka hasil transformasi $\tau^- : not\_\bot(I,I)$ akan dibentuk oleh predikat \textit{generate\_dual\_rules\_no\_ic$/$}0.
 
 \subsection{Predikat \textit{transform\_abducibles$/$}0}
 
-Predikat \textit{transform\_abducibles$/$}0 digunakan untuk membentuk transformasi $\tau^\circ$. \textsc{Tabdual} memberikan definisi untuk predikat \textit{transform\_abducibles$/$}0 seperti di bawah ini.
+Predikat \textit{transform\_abducibles$/$}0 digunakan untuk membentuk transformasi terhadap \textit{abducible} $(\tau^\circ)$. \textsc{Tabdual} memberikan definisi untuk predikat \textit{transform\_abducibles$/$}0 seperti di bawah ini.
 \\
 
 \begin{lstlisting}[
@@ -376,7 +378,7 @@ Predikat \textit{get\_abducibles$/$}1 mengoleksikan seluruh \textit{abducible} y
 \subsection{Predikat \textit{transform\_just\_facts$/$}0}
 \label{justfacts}
 
-Pada \hyperref[justfacts2]{\textcolor{blue}{bagian sebelumnya}} telah dijelaskan bahwa predikat \textit{transform\_just\_facts$/$}0 melakukan transformasi terhadap term-term yang terdapat di antara predikat \textit{beginProlog$/$}0 dan \textit{endProlog$/$}0 sesuai dengan aturan transformasi pada bagian ???.  \textsc{Tabdual} melakukan transformasi terhadap term-term tersebut tepat setelah membaca predikat \textit{endProlog$/$}0 pada program input. Berikut ini definisi dari predikat \textit{transform\_just\_facts$/$}0 yang pada \textsc{Tabdual}.
+Pada \hyperref[justfacts2]{\textcolor{blue}{bagian 4.3.6}} telah dijelaskan bahwa predikat \textit{transform\_just\_facts$/$}0 melakukan transformasi terhadap term-term yang terdapat di antara predikat \textit{beginProlog$/$}0 dan \textit{endProlog$/$}0 sesuai dengan aturan transformasi pada bagian \hyperref[transfact]{\textcolor{blue}{bagian 3.3.3}}.  \textsc{Tabdual} melakukan transformasi terhadap term-term tersebut tepat setelah membaca predikat \textit{endProlog$/$}0 pada program input. Berikut ini definisi dari predikat \textit{transform\_just\_facts$/$}0 yang pada \textsc{Tabdual}.
 \\
 
 \begin{lstlisting}[
@@ -390,19 +392,19 @@ transform_just_facts :-
 	transform_just_facts.
 \end{lstlisting}
 
-Predikat \textit{retract$/$}1 menghapus informasi mengenai \textit{rule F} dari \textit{database}. Predikat \textit{generate\_pos\_fact$/$}1 dan \textit{generate\_neg\_fact$/$}1 menggunakan \textit{F} yang didapat untuk melakukan transformasi terhadap \textit{F}, berturut-turut untuk membentuk \textit{rule} hasil transformasi \textit{F$'$} positif dan negatif sesuai dengan aturan transformasi pada bagian ???. Selanjutnya terjadi pemanggilan rekursif terhadap predikat \textit{transform\_just\_facts$/$}0 yang terus dilakukan hingga seluruh term yang terdapat di antara \textit{beginProlog$/$}0 dan \textit{endProlog$/$}0 ditransformasikan.
+Predikat \textit{retract$/$}1 menghapus informasi mengenai fakta \textit{F} dari \textit{database}. Predikat \textit{generate\_pos\_fact$/$}1 dan \textit{generate\_neg\_fact$/$}1 menggunakan \textit{F} yang didapat untuk melakukan transformasi terhadap \textit{F}, berturut-turut untuk membentuk \textit{rule} hasil transformasi \textit{F$'$} positif dan negatif. Selanjutnya terjadi pemanggilan rekursif terhadap predikat \textit{transform\_just\_facts$/$}0 yang terus dilakukan hingga seluruh term yang terdapat di antara \textit{beginProlog$/$}0 dan \textit{endProlog$/$}0 ditransformasikan.
 
 \section{\textit{Abduction}}
 
-Bagian ini menjelaskan implementasi \textsc{Tabdual} yang berkaitan dengan fase \textit{abduction}. Pada fase ini, konsep \textit{abduction} digunakan untuk memberikan jawaban terhadap suatu \textit{query} yang diberikan. Seperti yang sudah dijelaskan pada bagian ???, \textsc{Tabdual} juga melakukan transformasi terhadap \textit{query} yang diberikan sehingga \textit{contextual abduction} dapat diterapkan pada \textit{query} tersebut. Selain itu, sebelum dapat memberikan \textit{query}, program output yang dihasilkan oleh fase transformasi perlu di-\textit{consult} terlebih dahulu.
+Bagian ini menjelaskan implementasi \textsc{Tabdual} yang berkaitan dengan fase \textit{abduction}. Pada fase ini, konsep \textit{abduction} digunakan untuk memberikan jawaban terhadap suatu \textit{query} yang diberikan. Seperti yang sudah dijelaskan pada \hyperref[transquery]{\textcolor{blue}{bagian 3.2.4}}, \textsc{Tabdual} juga melakukan transformasi terhadap \textit{query} yang diberikan. Selain itu, sebelum dapat memberikan \textit{query}, program output yang dihasilkan oleh fase transformasi perlu di-\textit{consult} terlebih dahulu.
 
-\subsection{Men-\textit{consult} Program Output}
+\subsection{Me-\textit{consult} Program Output}
 
-Agar dimuat ke dalam \textit{database}, program output yang dihasilkan dari transformasi perlu untuk di-\textit{consult} terlebih dahulu. \textsc{Tabdual} mendefinisikan predikat \textit{load$/$}1 untuk men-\textit{consult} program output yang dihasilkan. Argumen dari predikat \textit{load$/$}1 yaitu nama program input yang ditransformasikan. Predikat \textit{load$/$}1 dapat menggunakan nama program input sebagai argumennya karena \textsc{Tabdual} menyimpan hasil transformasi ke program output dengan nama berkas yang sama dengan program input, hanya berbeda pada ekstensi berkasnya saja. Sebagai contoh, jika ingin men-\textit{consult} program output hasil dari transformasi program input yang nama berkasnya adalah \textit{in.ab}, maka cukup gunakan \textit{load}(\textit{in}).
+Agar dimuat ke dalam \textit{database}, program output yang dihasilkan dari transformasi perlu untuk di-\textit{consult} terlebih dahulu. \textsc{Tabdual} mendefinisikan predikat \textit{load$/$}1 untuk men-\textit{consult} program output yang dihasilkan. Argumen dari predikat \textit{load$/$}1 yaitu nama program input yang di-\textit{transform}. Predikat \textit{load$/$}1 dapat menggunakan nama program input sebagai argumennya karena \textsc{Tabdual} menyimpan hasil transformasi ke program output dengan nama berkas yang sama dengan program input, hanya berbeda pada ekstensi berkasnya saja. Sebagai contoh, jika ingin men-\textit{consult} program output hasil dari transformasi program input yang nama berkasnya adalah \textit{in.ab}, maka cukup gunakan \textit{load}(\textit{in}).
 
 \subsection{Transformasi \textit{Query}}
 
-Pada bagian ??? telah dijelaskan bahwa \textit{query} yang diberikan juga perlu ditransformasikan. \textsc{Tabdual} mendefinisikan predikat \textit{ask$/$}2 yang dapat digunakan untuk memberikan \textit{query}. Argumen pertama dari predikat \textit{ask$/$}2 adalah \textit{query} yang ingin dieksekusi dan argumen keduanya adalah jawaban yang diberikan \textsc{Tabdual} atas \textit{query} tersebut. Sebelum \textit{query} yang diberikan dieksekusi, predikat \textit{ask$/$}2 melakukan transformasi terhadap \textit{query} tersebut sesuai dengan aturan transformasi yang sudah dijelaskan pada bagian ???. Selain predikat \textit{ask$/$}2, \textsc{Tabdual} juga mendefinisikan predikat \textit{ask$/$}3 yang dapat digunakan untuk memberikan \textit{query} dengan \textit{input context} tertentu. Argumen pertama dari \textit{ask$/$}3 yaitu \textit{query} yang ingin dieksekusi, argumen keduanya yaitu \textit{input context} yang ingin diberikan dan direpresentasikan sebagai sebuah \textit{list}, dan argumen ketiganya yaitu jawaban yang diberikan \textsc{Tabdual} atas \textit{query} tersebut. Berikut ini merupakan definisi dari predikat \textit{ask$/$}2 dan \textit{ask$/$}3 yang didefinisikan oleh \textsc{Tabdual}.
+Pada \hyperref[transquery]{\textcolor{blue}{bagian 3.2.4}} telah dijelaskan bahwa \textit{query} yang diberikan juga perlu di-\textit{transform}. \textsc{Tabdual} mendefinisikan predikat \textit{ask$/$}2 yang dapat digunakan untuk memberikan \textit{query}. Argumen pertama dari predikat \textit{ask$/$}2 merupakan \textit{query} yang ingin dieksekusi dan argumen keduanya merupakan jawaban yang diberikan \textsc{Tabdual} atas \textit{query} tersebut. Sebelum \textit{query} yang diberikan dieksekusi, predikat \textit{ask$/$}2 melakukan transformasi terhadap \textit{query} tersebut. Selain predikat \textit{ask$/$}2, \textsc{Tabdual} juga mendefinisikan predikat \textit{ask$/$}3 yang dapat digunakan untuk memberikan \textit{query} dengan \textit{input context} tertentu. Argumen pertama dari \textit{ask$/$}3 yaitu \textit{query} yang ingin dieksekusi, argumen keduanya yaitu \textit{input context} yang ingin diberikan dan direpresentasikan sebagai sebuah \textit{list}, dan argumen ketiganya yaitu jawaban yang diberikan \textsc{Tabdual} atas \textit{query} tersebut. Berikut ini merupakan definisi dari predikat \textit{ask$/$}2 dan \textit{ask$/$}3 yang didefinisikan oleh \textsc{Tabdual}.
 \\
 
 \begin{lstlisting}[
@@ -432,7 +434,7 @@ style=prolog
 :- table t_ab(_,_,po(subset/2)).
 \end{lstlisting}
 
-Predikat \textit{po}(\textit{subset$/$}2) ditambahkan sebagai argumen pada \textit{directive} yang mendefinisikan \textit{tabled predicate}, bersesuaian dengan argumen yang menyatakan \textit{output context} dari \textit{tabled predikat} tersebut. Predikat \textit{po}(\textit{subset$/$}2) menyatakan bahwa \textit{tabled predicate} tersebut akan di-\textit{tabling} menggunakan \textit{partial order answer subsumption} dengan predikat \textit{subset$/$}2 sebagai relasi terurut parsial yang digunakan. Definisi predikat \textit{subset$/$}2 akan dijelaskan pada \hyperref[subset]{\textcolor{blue}{bagian 3.7.4}}
+Predikat \textit{po}(\textit{subset$/$}2) ditambahkan sebagai argumen pada \textit{directive} yang mendefinisikan \textit{tabled predicate}, bersesuaian dengan argumen yang menyatakan \textit{output context} dari \textit{tabled predikat} tersebut. Predikat \textit{po}(\textit{subset$/$}2) menyatakan bahwa \textit{tabled predicate} tersebut akan di-\textit{tabling} menggunakan \textit{partial order answer subsumption} dengan predikat \textit{subset$/$}2 sebagai relasi terurut parsial yang digunakan. Definisi predikat \textit{subset$/$}2 akan dijelaskan pada \hyperref[subset]{\textcolor{blue}{bagian 4.7.4}}
 
 \section{Predikat Sistem}
 
@@ -482,7 +484,7 @@ Terdapat dua buah definisi untuk predikat \textit{insert\_abducible$/$}3. Defini
 
 \subsection{Predikat \textit{dual}/4}
 
-Predikat \textit{dual$/$}4 digunakan untuk melakukan \textit{dual transformation by need} yang telah dijelaskan pada bagian ???, yaitu dengan membuat transformasi $\tau^*$ secara \textit{on-the-fly} ketika memang \textit{rule} spesifik dari $\tau^*$ diperlukan saat fase \textit{abduction} dan menyimpan $\tau^*$ yang sudah ditransformasikan ke dalam \textit{trie} agar dapat dipergunakan kembali. \textit{Dual rule} yang disimpan pada \textit{trie} direpresentasikan secara \textit{generic} menggunakan predikat \textit{d}(\textit{N}, \textit{P}, \textit{Dual}, \textit{Pos}), menyimpan informasi bahwa \textit{Dual} adalah \textit{dual rule} ke-\textit{N} dari \textit{rule P} disertai dengan \textit{Pos} yang menyimpan informasi mengenai posisi \textit{goal} mana pada \textit{P} yang sedang dan belum di-\textit{dual}-kan. \textsc{Tabdual} memberikan definisi untuk predikat \textit{dual$/$}4 sebagai berikut.
+Predikat \textit{dual$/$}4 digunakan untuk melakukan \textit{dual transformation by need} yang telah dijelaskan pada \hyperref[dualbyeed]{\textcolor{blue}{3.3.4}}, yaitu dengan membentuk \textit{second layer dual rule} secara \textit{on-the-fly} ketika memang \textit{dual rule} tersebut diperlukan saat fase \textit{abduction}. \textit{Second layer dual rule} yang telah dibentuk disimpan ke dalam \textit{trie} agar dapat dipergunakan kembali. Pada \textit{trie}, \textit{second layer dual rule} yang disimpan direpresentasikan secara \textit{generic} sebagai sebuah fakta menggunakan predikat \textit{d}(\textit{N}, \textit{P}, \textit{Dual}, \textit{Pos}), menyimpan informasi bahwa \textit{Dual} adalah \textit{dual rule} ke-\textit{N} dari \textit{rule P} disertai dengan \textit{Pos} yang menyimpan informasi mengenai posisi \textit{goal} mana pada \textit{P} yang sedang dan belum di-\textit{dual}-kan. \textsc{Tabdual} memberikan definisi untuk predikat \textit{dual$/$}4 sebagai berikut.
 \\
 
 \begin{lstlisting}[
@@ -570,33 +572,12 @@ subset([L|L1], L2):-
 %-----------------------------------------------------------------------------%
 
 %-----------------------------------------------------------------------------%
-\subsection{INI BELOM}
-%-----------------------------------------------------------------------------%
-Berwarna!
-\begin{lstlisting}[caption=Potongan skrip submisi \f{job} melalui torqace,label={lst:grotorqace},style=shell]
-# Go To working directory
-cd $PBS_O_WORKDIR
+Part ini belum selesai.
 
-#openMPI prerequisite
-. /opt/torque/etc/openmpi-setup.sh
-
-mpirun -np 5 -machinefile $PBS_NODEFILE mdrun -v -s \ 
-	curcum400ps.tpr -o md_prod_curcum400_5np.trr -c lox_pr.gro
-...
-\end{lstlisting}
+\subsection{Pengujian Transformasi}
 %-----------------------------------------------------------------------------%
-\subsection{INI JUG BELOM}
-%-----------------------------------------------------------------------------%
-Contoh skrip yang dimasukkan pada \f{form} yang disediakan dapat dilihat pada kode \ref{lst:makebzip}.
-\begin{lstlisting}[caption={Potongan \co{Makefile} \f{project}}, label={lst:makebzip},style=shell]
-# Make file for MPI
-SHELL=/bin/sh
+Belum ada.
 
-# Compiler to use
-# You may need to change CC to something like CC=mpiCC
-# openmpi : mpiCC
-# mpich2  : /opt/mpich2/gnu/bin/mpicxx
-CC=mpiCC
-...
-...
-\end{lstlisting}
+\subsection{Pengujian \textit{Answer Subsumption}}
+
+Pengujian 
