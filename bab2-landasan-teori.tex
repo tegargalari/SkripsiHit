@@ -33,11 +33,93 @@ Pada bab ini akan dijelaskan teori - teori yang akan digunakan \saya dalam penel
 		\item Teknologi
 			\subitem Elemen ini merupakan struktur bagaimana permainan ini dibuat. Dalam pengembangan \textit{game} 
 		\item Mekanik
+			\subitem Mekanik adalah sebuah elemen dari game yang berperan sebagai prosedur dan peraturan dari permainan tersebut. Mekanik mendeskripsikan tujuan dari game tersebut, bagaimana pemain bisa mencapai tujuan tersebut, konsekuensi apa yang diterima.
 		\item Naratif
+			\subitem Naratif adalah sebuah elemen dari game yang berperan sebagai cerita dari game tersebut. Naratif ini bisa dibagi menjadi Linear \& Prescripted, dan Branching \& Emergent. Linear \& Prescripted dimaksudkan sebagai naratif yang hanya memiliki satu cerita atau makna yang sudah dipersiapkan sebelumnya, sedangkan Branching \& Emergent dimaksudkan sebagai naratif yang memiliki lebih dari satu cabang cerita sehingga setiap pemain dapat memiliki cerita dan makna yang berbeda, tidak dipersiapkan mungkin bisa diatasi dengan Artificial Intelligence yang memperhatikan input dari pemain.
 	\end{itemize}
 	
 \section{Teori Pembelajaran}
 	\subsection{Definisi Pembelajaran}
+		Untuk mengetahui bagaimana cara korelasi antara pembelajaran dan \textit{game}, maka kita harus mengetahui terlebih dahulu bagaimana definisi dari pembelajaran secara umum. terdapat 4 aspek dalam teori pembelajaran yaitu Behaviourist,Cognitivist, Humanist, dan Social \& Situational (Kirriemuir \& Mcfarlane 2008).
+		\tablename{Definisi Pembelajaran}
+		\begin{table}
+			\centering
+			\caption{Perbandingan setiap aspek dari beberapa teori pembelajaran}
+			\label{tab:tab1}
+			\begin{tabular}{| c | c | c | c | c |}
+				\hline
+				Aspek & \textit{Behaviourist} & \textit{Cognitivistt} & \textit{Humanist} & \multicolumn{1}{p{2cm}|}{\textit{Social and Situational}} \\
+				\hline
+				\multicolumn{1}{|p{2cm}|}{\raggedright Proses Pembelajaran} & \multicolumn{1}{p{2.5cm}|}{\raggedright Penggantian perilaku} & \multicolumn{1}{p{2.5cm}|}{\raggedright Semua proses terjadi di dalam kepala pelajar seperti (insight, information processing, memory, perception)} & \multicolumn{1}{p{2.5cm}|}{\raggedright Perkembangan terhadap potensial pribadi} & \multicolumn{1}{p{2.5cm}|}{\raggedright Interaksi dan observasi di dalam grup} \\
+				\hline
+				\multicolumn{1}{|p{2cm}|}{Tujuan edukasi} & \multicolumn{1}{p{2.5cm}|}{\raggedright Mencari perubahan perilaku kepada arah yang ditentukan} & \multicolumn{1}{p{2.5cm}|}{\raggedright Melakukan pengembangan kemampuan untuk belajar yang lebih baik} & \multicolumn{1}{p{2.5cm}|}{Mandiri} & \multicolumn{1}{p{2.5cm}|}{\raggedright Partisipasi yang penuh terhadap komunitas} \\
+				\hline
+				\multicolumn{1}{|p{2cm}|}{Sumber Pembelajaran} & \multicolumn{1}{p{2.5cm}|}{\raggedright Sumber eksternal dan tugas} & \multicolumn{1}{p{2.5cm}|}{\raggedright Membuat koneksi terhadap pengetahuan yang sudah diketahui} & \multicolumn{1}{p{2.5cm}|}{\raggedright Emosi, perilaku, dan pemikiran} & \multicolumn{1}{p{2.5cm}|}{\raggedright Hubungan antara orang dan lingkungan} \\
+				\hline
+			\end{tabular}
+		\end{table}
+	
+	\subsection{Bloom’s Taxonomy with revision (Anderson \& Krathwohl, 2001)}
+	Bloom taxonomy merupakan suatu taksonomi yang diciptakan pertama kali oleh beberapa peneliti yang diketuai oleh Bloom ( Bloom et all 1956) yang dikenal dalam artikelnya yang berjudul \textit{"Bloom Taxonomy of the Cognitive Domain"}. Pada awalnya terdapat enam tingkat yang dikenal dengan Bloom’s Taxonomy yaitu Knowledge, Comprehension, Application, Analysis, Synthesis, dan Evaluation. 
+	\linebreak \linebreak
+	Terdapat revisi dari Bloom’s taxonomy yang dikerjakan oleh Anderson \& Krathwohl (2001) , dengan perubahan menjadi :
+	\begin{itemize}
+		\item Create
+			\subitem Tingkat paling atas dari Bloom’s taxonomy ini merupakan create atau membuat, yang memiliki penjelasan tentang bagaimana menentukan beberapa hipotesis terhadap beberapa kriteria, melakukan desain prosedur untuk menyelesaikan tugas tertentu. Lalu membuat innovasi untuk menyelesaikan tugas tertentu.
+		\item Evaluate
+			\subitem Tingkatan kedua merupakan evaluate atau evaluasi, yang memiliki penjelasan tentang bagaimana uji coba terhadap konsistensi, kelayakan, maupun efektifitas dalam prinsip maupun prosedur. Selanjutnya melakukan kritik terhadap konsistensi, kelayakan, dan efektifitas dari prinsip maupun posedur. Kritik terebut berdasar kepada uji coba yang layak
+		\item Analyze
+			\subitem Tingkatan ketiga merupakan analyze atau analisis, yang memiliki penjelasan tentang bagaimana membedakan materi yang relevan maupun tidak relevan dan menentukan porsi kepentingan dari suatu materi yang diberikan ataupun ditemukan
+		\item Apply
+			\subitem Tingkatan keempat merupakan apply atau menerapkan, yang memiliki penjelasan tentang bagaimana penerapan prosedur yang sesuai dari tugas yang memiiki kemiripan satu dan lainnya. Misalkan kita sudah mengetahui prosedur yang harus dilakukan dalam suatu masalah, maka kita bisa mencoba menerapkan prosedur yang sama kepada tugas yang mirip dengan yang kita telah selesaikan
+		\item Understand
+			\subitem Tingkatan kelima merupakan understand atau pengertian, yang memiliki penjelasan tentang bagaimana setelah menerapkan maka langkah selanjutkan untuk pengertian konsep, meringkas materi tersebut, melakukan klasifikasi terhadap materi tersebut, mendalami prinsip, dan membandingkan beberapa materi dengan materi lainnya untuk sebagai pengertian
+		\item Remenber
+			\subitem Tingkatan terbawah dari Bloom’s taxonomy ini merupakan remember atau mengingat, yang memiliki penjelasan tentang bagaimana setelah pengertian maka langkah selanjutnya adalah untuk mengingat beberapa pengertian yang telah dihasilkan pada tahap sebelumnya. Melakukan mapping terhadap pengetahuan yang sudah diketahui dengan satu dan lainnya
+		
+	\end{itemize}
+	Terdapat penjelasan lebih lanjut yang dikerjakan oleh Anderson \& Karthwohl (2001) mengenai Knowledge Dimension atau Dimensi Pengetahuan yang berbasis pada Bloom’s Taxonomy seperti:
+	\begin{table}
+		\centering
+		\caption{Dimensi Pengetahuan}
+		\label{tab:tab1}
+		\begin{tabular}{| p{1.2cm} | p{1.2cm} | p{1.2cm} | p{1.2cm} | p{1.2cm} | p{1.2cm} | p{1.2cm} | p{1.2cm} |}
+			\hline
+			\multicolumn{2}{| p{3cm} |}{\multirow{2}{*}{\scriptsize Knowledge Dimension}} & \multicolumn{6}{| c |}{\small Dimensi Proses Kognitif} \\
+			\multicolumn{2}{|c|}{}  & \scriptsize Remember & \scriptsize Understand & \scriptsize Apply & \scriptsize Analyze & \scriptsize Evaluate & \scriptsize Create \\
+			\hline
+			\scriptsize Factual Knowledge & \scriptsize Terminologi, Komponen \& Element & \raggedright \scriptsize List nama Label map &\raggedright \scriptsize  Intepretasi suatu materi di buku & \raggedright \scriptsize Memakai Algoritma & \raggedright \scriptsize Kategori kata & \raggedright \scriptsize Kritik Artikel & \scriptsize Membuat cerita pendek \\
+			\hline
+			\scriptsize Conceptual Knowledge & \scriptsize Kategori, Prinsip, Teori & \raggedright \scriptsize Definisi tingkatan konsep &\raggedright \scriptsize  Deskripsi sesuai pemahaman & \raggedright \scriptsize Tuliskan objektif konsep & \raggedright \scriptsize Perbedaan setiap konsep & \raggedright \scriptsize Kritik dari objektif konsep & \scriptsize Membuat suatu klasifikasi baru \\
+			\hline
+			\scriptsize Procedural Knowledge & \scriptsize Kemampuan Spesifik, Teknik  \& kriteria penggunaan & \raggedright \scriptsize List langkah yang digunakan &\raggedright \scriptsize  Memahami proses problem solving dengan kata kata sendiri & \raggedright \scriptsize Menggunakan proses problem solving untuk menyelesaikan permasalahan & \raggedright \scriptsize Melakukan komparasi beberapa teknik & \raggedright \scriptsize Kritik terhadap kelayakan dalam teknik yang digunakan & \scriptsize Membuat suatu pendekatan baru dalam penyelesaian masalah \\
+			\hline
+			\scriptsize Meta-Cognitive Knowledge & \scriptsize Pengetahuan terhadap diri sendiri & \raggedright \scriptsize List elementt dari cara pembelajaran mandiri &\raggedright \scriptsize  Melakukan deksripsi terhadap implikasi dari cara pembelajaran tersebut & \raggedright \scriptsize Mengembangkan suatu kemampuan pembelajaran dari cara pembelajaran tersebut & \raggedright \scriptsize Melakukan komparasi terhadap dimensi cara pembelajaran & \raggedright \scriptsize Kritik terhadap kelayakan dalam beberapa cara pembelajaran dengan cara pembelajaran yang digunakan & \scriptsize Membuat suatu cara baru dalam pembelajaran \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	
+	\subsection{\textit{Expectation Effect}}
+	Terdapat suatu teori dalam pembelajaran yaitu \textit{Pygmalion Effect} atau disebut juga \textit{Expectation Effect}. \textit{Expectation Effect} tersebut menjelaskan tentang bagaimana suatu ekspektasi dari seorang guru terhadap siswa, dapat mempengaruhi prestasi siswa tersebut [x]. Teori tersebut pertama kali dipelopori oleh seorang psikolog dari Harvard bernama Robert Rosenthal yang bekerja sama dengan beberapa kepala sekolah untuk menjalankan suatu eksperimen di beberapa sekolah dasar pada tahun  1964 - 1965. Dalam penelitiannya tersebut Robert melakukan klasifikasi terhadap siswa yang memiliki potensi akademis yang tinggi, tetapi tidak terlihat berprestasi pada nilai akademisnya atau disebut juga dengan “late bloomer” [x]. Robert Rosenthal ingin meneliti efek apakah yang terjadi ketika seseorang diberikan ekspektasi yang positif kepada dirinya, yang merupakan berkebalikan dengan apa yang dilakukan oleh Jane Elliot, dimana melaksanakan hal yang mirip dengan yang dilakukan Robert Rosenthal tetapi perbedaannya adalah seseorang diberikan suatu ekspektasi yang negatif kepada dirinya.
+	\linebreak \linebreak
+	Terdapat beberapa teori penting dalam \textit{Expectation Effect} yang bisa menjadi basis pendukung dari \textit{Game Based Learning}, yaitu:
+	\begin{enumerate}
+		\item Placebo Effect
+			\subitem Teori ini dipelopori oleh seorang medis bernama Henry Beecher pada masa perang dunia 2, beliau menemukan efek ini ketika menangani para prajurit di perang dunia 2. Herny Beecher memberikan morfin untuk menangani para prajurit yang terluka, ketika beliau kehabisan morfin maka Herny Beecher memberikan larutan saline tetapi tetap memberitahukan bahwa yang diberikannya adalah morfin.Teori ini menjelaskan tentang bagaimana teknologi mempunyai efek terhadap suatu individu dikarenakan karena individu tersebut mempercayai bahwa teknologi tersebut dapat mempunyai efek terhadapnya.
+		\item Halo Effect
+			\subitem Teori ini dipelopori oleh Edward Thorndike pada tahun 1920, merupakan studi yang beliau lanjutkan dari studi yang dia buat pada tahun 1915. Edward Thorndike melakukan interview pada saat perang dunia, dimana dia menayakan kepada atasan militer bagaimana atasan tersebut melakukan evaluasi setiap anggota tentara yang mereka pimpin [x]. Aspek yang Thorndike tanyakan adalah kualitas fisik, intelektual, kepemimpinan, maupun secara pribadi.Maksud dari penelitian ini adalah bagaimana penilaian dari satu karakteristik mempengaruhi karakteristik yang lain . Teori dari halo effect ini menjelaskan tentang bagaimana kesan dari satu aspek dalam teknologi memberikan suatu makna terhadap bagaimana teknologi tersebut digunakan.
+		\item Hawthrone Effect
+			\subitem Teori ini dipelopori oleh Henry A. Landsberger pada tahun 1958, ketika sedang melakukan analisa terhadap eksperimen pada perusahaan Hawtrhone Works yang pada saat itu adalah sebuah perusahaan listrik di daerah Chicago, Amerika Serikat [x]. Pada saat itu, perusahaan tersebut ingin mempelajari apakah pekerja mereka akan lebih produktif bekerja di tempat gelap atau terang. Studi tersebut membuktikan bahwa ketika periode perubahan dari gelap ke terang dilakukan terjadi peningkatan kerja, tetapi ketika eksperimen berakhir maka tidak terjadi peningkatan sama sekali [x]. Teori ini menemukan bahwa peningkatan kerja tersebut adalah sebuah hasil efek motivasi dari pekerja karena tertarik dengan teori bahwa perubahan yang terjadi menyebabkan mereka akan lebih giat bekerja. Teori ini membuktikan bahwa ketika terdapat seseorang diperkenalkan dengan suatu perubahan teknologi maka akan mempengaruhi bagaimana seseorang tersebut bekerja, tanpa mempedulikan tentang seberapa besar ataupun kecil perubahan yang terjadi [x].
+		\item John Henry Effect
+			\subitem Teori ini dipelopori leh Gary Saretsky pada tahun 1972 [x]. Teori ini dinamakan setelah seorang legenda pengusaha besi pada tahun 1870, yang dimana hasil produk dari John Henry ini sering dibandingkan dengan mesin. John henry bekerja dengan sangat keras untuk mengalahkan mesin tersebut sampai dia merelakan nyawanya sendiri [x] . Teori ini menjelaskan tentang bagaimana ketika terdapat dua kelompok dan hanya satu yang diberikan suatu teknologi saja, maka kelompok lainnya akan bekerja keras untuk mengejar ketinggalan tersebut seperti yang dilakukan oleh John Henry untuk mengalahkan mesin produksi besi.
+	\end{enumerate}
+	Jadi kesimpulan yang bisa diambil dari teori pembelajaran ini dan relevansinya terhadap penelitian ini adalah:
+	\begin{itemize}
+		\item Terdapat beberapa teori pembelajaran terkait pembelajaran berbasis komputer, dalam penelitian ini teori pembelajaran yang dipakai adalah \textit{Behaviorist} dan \textit{Cognitivist}
+		\item Bloom’s Taxonomy yang dipakai adalah sampai pada tingkat Apply, dimana pada tabel Knowledge Dimension memakai \textit{Procedural Knowledge} target sisi kognitifnya meliputi List langkah yang digunakan untuk tingkat Remember, memahami proses problem solving dengan kata kata sendiri dan menggunakan proses problem-solving untuk menyelesaikan permasalahan
+		\item Terdapat tiga buah teori tambahan yang bisa menjadi pendukung dalam kaitan antara teori pembelajaran dengan pembelajaran berbasis game. Pertama Placebo Effect yang menjelaskan tentang bagaimana teknologi mempunyai efek terhadap suatu individu dikarenakan karena individu tersebut mempercayai bahwa teknologi tersebut dapat mempunyai efek terhadapnya. Kedua Hawthrone Effect yang membuktikan bahwa ketika terdapat seseorang diperkenalkan dengan suatu perubahan teknologi maka akan mempengaruhi bagaimana seseorang tersebut bekerja, tanpa mempedulikan tentang seberapa besar ataupun kecil perubahan yang terjadi. Ketiga John Henry Effect yang membuktikan bahwa ketika terdapat seseorang diperkenalkan dengan suatu perubahan teknologi maka akan mempengaruhi bagaimana seseorang tersebut bekerja
+	\end{itemize}
 	
 \section{Pembelajaran Berbasis Game}
 	\subsection{Definisi Pembelajaran Berbasis Game}
