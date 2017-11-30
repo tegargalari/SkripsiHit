@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.4)  13 OCT 2017 09:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.4)  29 NOV 2017 08:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -578,7 +578,7 @@ Package caption Info: End \AtBeginDocument code.
 \openout2 = `sampul.aux'.
 
 
-(./sampul.tex <pics/makara.png, id=272, 154.86429pt x 154.34807pt>
+(./sampul.tex <pics/makara.png, id=280, 154.86429pt x 154.34807pt>
 File: pics/makara.png Graphic file (type png)
 
 <use pics/makara.png>
@@ -728,7 +728,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--27
 ]) (./skripsi.toc [8
 
 
-])
+]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 72.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 72.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 8.99994pt on input line 72.
+[9])
 \tf@toc=\write5
 \openout5 = `skripsi.toc'.
 
@@ -739,31 +752,25 @@ Package Fancyhdr Warning: \headheight is too small (0.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 84.
-LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 84.
-LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 8.99994pt on input line 84.
-[9] (./skripsi.lof)
+[10] (./skripsi.lof)
 \tf@lof=\write6
 \openout6 = `skripsi.lof'.
 
- [10
+ [11
 
 
 ] (./skripsi.lot)
 \tf@lot=\write7
 \openout7 = `skripsi.lot'.
 
- [11
+ [12
 
 
 ] (./skripsi.lol)
 \tf@lol=\write8
 \openout8 = `skripsi.lol'.
 
- [12
+ [13
 
 
 ]
@@ -1481,11 +1488,71 @@ Underfull \hbox (badness 2435) in paragraph at lines 9--12
 -jaran ma-ha-
  []
 
-) [17
+
+Underfull \hbox (badness 1721) in paragraph at lines 33--38
+\T1/ptm/m/n/12 Dalam peneli-tian ini, penulis melakukan teknik data anal-i-sis 
+\T1/ptm/m/it/12 sim-ple qual-i-
+ []
+
+
+Underfull \hbox (badness 2165) in paragraph at lines 33--38
+\T1/ptm/m/n/12 lang-sung oleh re-spon-den akan di-hi-tung fre-quensi pemil-i-h-
+nya. Data yang
+ []
+
+
+Underfull \hbox (badness 3158) in paragraph at lines 33--38
+\T1/ptm/m/n/12 berupa isian akan dikelom-pokan berdasarkan unik re-spon dari re
+-spon-den.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--38
+
+ []
+
+
+Underfull \hbox (badness 1546) in paragraph at lines 33--38
+\T1/ptm/m/n/12 Hasil dari anal-i-sis eval-u-asi ke-mu-dian di-lan-jutkan ke-ta-
+hap im-ple-men-tasi sis-
+ []
+
+
+Underfull \hbox (badness 1009) in paragraph at lines 33--38
+\T1/ptm/m/n/12 tem. Dalam taha-pan ini, di-gu-nakan \T1/ptm/m/it/12 Eight Golde
+n Rules of User In-ter-face
+ []
+
+
+Underfull \hbox (badness 3333) in paragraph at lines 33--38
+\T1/ptm/m/it/12 De-sign \T1/ptm/m/n/12 yang diru-muskan oleh Shnei-der-man dan 
+Plaisant(2010) dan di-gu-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--38
+
+ []
+
+[17
 
 
 
 ]
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[18])
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[19]
 \openout2 = `bab4-rancangan-dan-analisis.aux'.
 
  (./bab4-rancangan-dan-analisis.tex
@@ -1494,7 +1561,7 @@ BAB 4.
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\uppercase' on input line 2.
 
-[18
+[20
 
 
 
@@ -1510,7 +1577,7 @@ Package Fancyhdr Warning: \headheight is too small (0.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[19]
+[21]
 \openout2 = `bab5-implementasi-dan-pengujian.aux'.
 
  (./bab5-implementasi-dan-pengujian.tex
@@ -1521,7 +1588,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <14.4> not available
 (Font)              Font shape `T1/ptm/b/it' tried instead on input line 6.
-[20
+[22
 
 
 
@@ -1541,7 +1608,7 @@ Package Fancyhdr Warning: \headheight is too small (0.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[21]
+[23]
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <8> not available
 (Font)              Font shape `T1/pcr/b/n' tried instead on input line 132.
 
@@ -1551,7 +1618,7 @@ Package Fancyhdr Warning: \headheight is too small (0.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[22] (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+[24] (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -1568,14 +1635,14 @@ Package Fancyhdr Warning: \headheight is too small (0.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[23])
+[25])
 
 Package Fancyhdr Warning: \headheight is too small (0.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[24]
+[26]
 \openout2 = `bab6-hasil-dan-evaluasi.aux'.
 
  (./bab6-hasil-dan-evaluasi.tex
@@ -1584,13 +1651,13 @@ BAB 6.
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\uppercase' on input line 2.
 
-<pics/5np-gromacs-chart.pdf, id=737, 12848.80281pt x 7227.80281pt>
+<pics/5np-gromacs-chart.pdf, id=761, 12848.80281pt x 7227.80281pt>
 File: pics/5np-gromacs-chart.pdf Graphic file (type pdf)
 
 <use pics/5np-gromacs-chart.pdf>
 Package pdftex.def Info: pics/5np-gromacs-chart.pdf used on input line 41.
 (pdftex.def)             Requested size: 398.3386pt x 223.9934pt.
- [25
+ [27
 
 
 
@@ -1601,7 +1668,7 @@ Package Fancyhdr Warning: \headheight is too small (0.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[26 <./pics/5np-gromacs-chart.pdf>]
+[28 <./pics/5np-gromacs-chart.pdf>]
 \openout2 = `bab7-kesimpulan.aux'.
 
  (./bab7-kesimpulan.tex
@@ -1610,11 +1677,11 @@ BAB 7.
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\uppercase' on input line 2.
 
-) [27
+) [29
 
 
 
-] (./skripsi.bbl) [28
+] (./skripsi.bbl) [30
 
 
 ]
@@ -1891,25 +1958,19 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 129.
 (./bab7-kesimpulan.aux) (./markLampiran.aux) (./lampiran.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 129.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 129.
+Package rerunfilecheck Info: File `skripsi.out' has not changed.
+(rerunfilecheck)             Checksum: 1694B3A798CC7F7C7F8EA4EC279B3A18;4994.
 
-
-Package rerunfilecheck Warning: File `skripsi.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `skripsi.out':
-(rerunfilecheck)             Before: 714D05A9D992734CCD83350733113148;4824
-(rerunfilecheck)             After:  1F05F96E616A7F486A7F8D751C6959B6;4964.
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 129.
  ) 
 Here is how much of TeX's memory you used:
- 11965 strings out of 493014
- 174835 string characters out of 6133352
- 406053 words of memory out of 5000000
- 14837 multiletter control sequences out of 15000+600000
+ 11971 strings out of 493014
+ 174900 string characters out of 6133352
+ 406056 words of memory out of 5000000
+ 14839 multiletter control sequences out of 15000+600000
  58402 words of font info for 79 fonts, out of 8000000 for 9000
  1239 hyphenation exceptions out of 8191
  44i,14n,56p,1164b,1861s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1922,10 +1983,10 @@ onts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/ty
 pe1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/ti
 mes/utmbi8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/utmr8
 a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on skripsi.pdf (51 pages, 221620 bytes).
+Output written on skripsi.pdf (54 pages, 225043 bytes).
 PDF statistics:
- 917 PDF objects out of 1000 (max. 8388607)
- 840 compressed objects within 9 object streams
- 247 named destinations out of 1000 (max. 500000)
- 555 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 940 PDF objects out of 1000 (max. 8388607)
+ 860 compressed objects within 9 object streams
+ 251 named destinations out of 1000 (max. 500000)
+ 571 words of extra memory for PDF output out of 10000 (max. 10000000)
 
