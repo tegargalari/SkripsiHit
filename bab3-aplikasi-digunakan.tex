@@ -9,49 +9,86 @@ Bagian ini menjelaskan metodologi penelitian termasuk di dalamnya pendekatan pen
 Penelitian ini penulis menggunakan pendekatan peneltian studi kasus. Cresswell (2013), pendekatan studi kasus adalah penelitian tentang suatu program, peristiwa, aktivitas, proses, atau kelompok individu.
 \linebreak\linebreak
 Pendekatan studi kasus yang dilakukan adalah proses pembelajaran mahasiswa fakultas ilmu komputer di Universitas Indonesia pada mata kuliah {\ddp}. Penelitian ini berusaha memahami perasaan responden terhadap suatu masalah. Penelitian ini dilakukan tanpa faktor - faktor eksternal sehingga tidak mempengaruhi pemikiran responden.
+\linebreak\linebreak
+Penelitian yang dilakukan menggunakan pendekatan \textit{Mixed method} sebagai research design. \textit{Mixed method} merupakan metode yang menggabungkan pendeketan kuantitatif dan kualitatif (Creswell, 2013). Pendekatan yang bersifat kualitatif dilakukan dengan cara menyusun kuesioner yang mencampur pertanyaan \textit{close-ended} dan \textit{open-ended} dengan tujuan untuk mendapatkan requirement yang paling sesuai untuk diterapkan pada situs pembelajaran yang akan dikembangkan. Pendekatan yang bersifat kuantitatif dilakukan dalam pengolahan data dengan tujuan untuk membantu pengambilan keputusan.
+\linebreak\linebreak
+Dalam pengembangan sistem ini penulis menggunakan pendekatan model ADDIE  (Morisson et al., 2010). Secara singkat model pengembangan ADDIE merupakan kepanjangan dari \textit{Analyze, Design, Develop, Implement, and Evaluate.}
 
 %-----------------------------------------------------------------------------%
 \section{Tahapan Penelitian}
 %-----------------------------------------------------------------------------%
 
 Dalam penelitian ini penulis melakukan beberapa tahapan sesuai dengan Gambar 3.1.
+
+\begin{figure}
+	\includegraphics{pics/flow-pembuatan}
+	\caption{Alur tahapan penelitian}
+	\centering
+\end{figure}
 \
 
-%-----------------------------------------------------------------------------%
-\subsection{Instrumen penelitian}
-%-----------------------------------------------------------------------------%
+	%-----------------------------------------------------------------------------%
+	\subsection{Studi literatur}
+	%-----------------------------------------------------------------------------%
+	
+	Untuk memulai penelitian, penulis terlebih dahulu melakukan studi literatur dengan
+	mengacu kepada konsep Game and Learning yang
+	diperkenalkan oleh Kirriemuir (2004) dan membaca penelitian serupa yang sebelumnya telah dilakukan. Penulis juga mengumpulkan sumber-sumber pendukung latar belakang dan tujuan penelitian menggunakan online library, seperti IEEE Xplore, Google Scholar. Serta penulis juga menggunakan buku yang dipinjam dari lab Digital Library and Distance Learning.
+	
+	%-----------------------------------------------------------------------------%
+	\subsection{Instrumen penelitian}
+	%-----------------------------------------------------------------------------%
+	
+	Dalam pelaksanaan penelitian ini, dibutukan beberapa instrumen penelitian yang perlu dipersiapkan, antara lain
+	
+	\begin{enumerate}
+		\item Kuesioner \textit{online} yang memuat waktu, kesulitan, cara, dan tingkat pemahaman responden dalam memahami materi dasar dasar pemograman.
+		\item Daftar pertanyaan wawancara untuk mengetahui pendapat yang telah menajalani pembelajaran pada mata kuliah dasar dasar pemograman.
+	\end{enumerate}
 
-Dalam pelaksanaan penelitian ini, dibutukan beberapa instrumen penelitian yang perlu dipersiapkan, antara lain
-\begin{enumerate}
-	\item Skenario \textit{usability testing} dan daftar wawancara untuk memudah pengguna
-\end{enumerate}
+	Dari instrumen penelitian ini dipersiapkan pada tahap awal perencanaan evaluasi. Instrumen ini dibutuhkan untuk menggali \textit{requirement} dalam membangun sistem interaksi pembelajaran berbasis permainan.
+	
+	%-----------------------------------------------------------------------------%
+	\subsection{Analisis dan Representasi Data}
+	%-----------------------------------------------------------------------------%
+	
+	Dalam penelitian ini, penulis melakukan teknik data analisis \textit{simple qualitative analysis} dengan mengkategorisasikan data. Data yang berupa pilihan langsung oleh responden akan dihitung frequensi pemilihnya. Data yang berupa isian akan dikelompokan berdasarkan unik respon dari responden. 
+	\linebreak\linebreak
+	Hasil dari analisis evaluasi kemudian dilanjutkan ketahap implementasi sistem. Dalam tahapan ini, digunakan \textit{Eight Golden Rules of User Interface Design} yang dirumuskan oleh Shneiderman dan Plaisant(2010) dan digunakan dasar teori pengembangan \textit{Game Base Learning} oleh Kirriemuir (2002).
+	\linebreak\linebreak
+	Kedelapan aturan emas sebagai berikut.
+	
+	\begin{itemize}
+		\item \textit{Strive For Consistency}
+		\subitem Konsistensi pada desain, tindakan, perintah dan bahasa.
+		\item \textit{Cater To Universal Usability}
+		\subitem Pemberian alternatif cara untuk pengguna dalam melakukan suatu hal. Hal seperti ini biasa disebut dengan \textit{shortcut}. Sehingga pengguna dapat lebih mudah dan cepat dalam menggunakannya.
+		\item \textit{Offer Informative Feedback}
+		\subitem Pemberian respon dari setiap aksi yang dilakukan oleh pengguna. Respon yang diberikan haruslah informatif dan dapat dimengerti oleh pengguna.
+		\item \textit{Design Dialogs to Yield Closure}
+		\subitem Membuat informasi dalam proses yang telah dilakukan oleh pengguna yang memuat banyaknya langkah yang harus ditempuh.
+		\item \textit{Prevents Errors}
+		\subitem Meminimalisasi terjadinya kesalahan saat pengguna menggunakan sistem.
+		\item \textit{Permit Easy Reversal of Actions}
+		\subitem Pemberian solusi yang mudah dimengerti dan cepat untuk pengguna apabila terjadi kesalahan.
+		\item \textit{Support Internal Locus of Control}
+		\subitem Menjadikan pengguna sebagai seseorang yang memegang penuh akan kontrol dalam sistem.
+		\item \textit{Reduce Short-term Memory Load}
+		\subitem Meminimalisasi hal yang harus diingat oleh pengguna saat menggunakan sistem.
+	\end{itemize}
 
-%-----------------------------------------------------------------------------%
-\subsection{Analisis dan Representasi Data}
-%-----------------------------------------------------------------------------%
-
-Dalam penelitian ini, penulis melakukan teknik data analisis \textit{simple qualitative analysis} dengan mengkategorisasikan data. Data yang berupa pilihan langsung oleh responden akan dihitung frequensi pemilihnya. Data yang berupa isian akan dikelompokan berdasarkan unik respon dari responden. 
-\linebreak\linebreak
-Hasil dari analisis evaluasi kemudian dilanjutkan ketahap implementasi sistem. Dalam tahapan ini, digunakan \textit{Eight Golden Rules of User Interface Design} yang dirumuskan oleh Shneiderman dan Plaisant(2010) dan digunakan dasar teori pengembangan \textit{Game Base Learning} oleh Kirriemuir (2002).
-\linebreak\linebreak
-Kedelapan aturan emas sebagai berikut.
-\begin{itemize}
-	\item \textit{Strive For Consistency}
-	\subitem Konsistensi pada desain, tindakan, perintah dan bahasa.
-	\item \textit{Cater To Universal Usability}
-	\subitem Pemberian alternatif cara untuk pengguna dalam melakukan suatu hal. Hal seperti ini biasa disebut dengan \textit{shortcut}. Sehingga pengguna dapat lebih mudah dan cepat dalam menggunakannya.
-	\item \textit{Offer Informative Feedback}
-	\subitem Pemberian respon dari setiap aksi yang dilakukan oleh pengguna. Respon yang diberikan haruslah informatif dan dapat dimengerti oleh pengguna.
-	\item \textit{Design Dialogs to Yield Closure}
-	\subitem Membuat informasi dalam proses yang telah dilakukan oleh pengguna yang memuat banyaknya langkah yang harus ditempuh.
-	\item \textit{Prevents Errors}
-	\subitem Meminimalisasi terjadinya kesalahan saat pengguna menggunakan sistem.
-	\item \textit{Permit Easy Reversal of Actions}
-	\subitem Pemberian solusi yang mudah dimengerti dan cepat untuk pengguna apabila terjadi kesalahan.
-	\item \textit{Support Internal Locus of Control}
-	\subitem Menjadikan pengguna sebagai seseorang yang memegang penuh akan kontrol dalam sistem.
-	\item \textit{Reduce Short-term Memory Load}
-	\subitem Meminimalisasi hal yang harus diingat oleh pengguna saat menggunakan sistem.
-\end{itemize}
-Shneiderman dan Plaisant (2010) mengatakan depalan aturan emas ini telah dirumuskan sejak 1985, dan merupakan panduan dasar perancangan desain interaksi yang paling sering digunakan
+	Shneiderman dan Plaisant (2010) mengatakan depalan aturan emas ini telah dirumuskan sejak 1985, dan merupakan panduan dasar perancangan desain interaksi yang paling sering digunakan
+	
+	%-----------------------------------------------------------------------------%
+	\subsection{Pengujian Prototipe Sistem dengan \textit{Usability Testing}}
+	%-----------------------------------------------------------------------------%
+	
+	Setelah tahap pembuatan prototipe selesai, penulis melakukan uji sistem dengan menggunakan \textit{usability testing} dan disertai kuisoner untuk saran dan kritik terhadap sistem yang telah penulis rangkai. Dari hasil pengujian, penulis menggunakan data tersebut untuk melakukan proses penarikan kesimpulan.
+	
+	%-----------------------------------------------------------------------------%
+	\subsection{Pengambilan Kesimpulan Penelitian}
+	%-----------------------------------------------------------------------------%
+	
+	Setelah melalui tahap \textit{usability testing}, penulis melakukan penarikan kesimpulan yang menghasilkan jawaban yang menjawab rumusan masalah yang dijabarkan pada bab satu. Tahapan ini akan dijelaskan pada bab keempat, dan kesimpulan akan dijabarkan pada bab kelima, bersama dengan saran untuk penelitian yang akan dilakukan di masa mendatang.
+	
 

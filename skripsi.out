@@ -21,50 +21,47 @@
 \BOOKMARK [2][-]{subsection.2.1.3}{2.1.3 Elemen Game}{section.2.1}% 21
 \BOOKMARK [1][-]{section.2.2}{2.2 Teori Pembelajaran}{chapter.2}% 22
 \BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 Definisi Pembelajaran}{section.2.2}% 23
-\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Bloom’s Taxonomy with revision \(Anderson \046 Krathwohl, 2001\)}{section.2.2}% 24
+\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Bloom's Taxonomy with revision \(Anderson \046 Krathwohl, 2001\)}{section.2.2}% 24
 \BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 Expectation Effect}{section.2.2}% 25
 \BOOKMARK [1][-]{section.2.3}{2.3 Pembelajaran Berbasis Game}{chapter.2}% 26
 \BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Definisi Pembelajaran Berbasis Game}{section.2.3}% 27
 \BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 Prinsip dan Penggunaan Game Sebagai Pembelajaran}{section.2.3}% 28
-\BOOKMARK [2][-]{subsection.2.3.3}{2.3.3 Karakteristik Desain Pembelajaran Berbasis Game}{section.2.3}% 29
-\BOOKMARK [1][-]{section.2.4}{2.4 Fundamental Programming}{chapter.2}% 30
-\BOOKMARK [2][-]{subsection.2.4.1}{2.4.1 Definisi Fundamental Programming}{section.2.4}% 31
-\BOOKMARK [2][-]{subsection.2.4.2}{2.4.2 Tujuan dari Fundamental Programming}{section.2.4}% 32
-\BOOKMARK [2][-]{subsection.2.4.3}{2.4.3 Topik Pengajaran Fundamental Programming}{section.2.4}% 33
-\BOOKMARK [1][-]{section.2.5}{2.5 Proses Pengembangan Perangkat Lunak}{chapter.2}% 34
-\BOOKMARK [2][-]{subsection.2.5.1}{2.5.1 Definisi Pengembangan Perangkat Lunak}{section.2.5}% 35
-\BOOKMARK [2][-]{subsection.2.5.2}{2.5.2 Model Pengembangan Perangkat Lunak}{section.2.5}% 36
-\BOOKMARK [2][-]{subsection.2.5.3}{2.5.3 Waterfall Model}{section.2.5}% 37
-\BOOKMARK [2][-]{subsection.2.5.4}{2.5.4 Data Flow Diagram}{section.2.5}% 38
-\BOOKMARK [0][-]{chapter.3}{3 Metodologi Penelitian}{}% 39
-\BOOKMARK [1][-]{section.3.1}{3.1 Pendekatan Penelitian}{chapter.3}% 40
-\BOOKMARK [1][-]{section.3.2}{3.2 Tahapan Penelitian}{chapter.3}% 41
-\BOOKMARK [2][-]{subsection.3.2.1}{3.2.1 Instrumen penelitian}{section.3.2}% 42
-\BOOKMARK [2][-]{subsection.3.2.2}{3.2.2 Analisis dan Representasi Data}{section.3.2}% 43
-\BOOKMARK [0][-]{chapter.4}{4 Perancangan Implementasi dan Analisis}{}% 44
-\BOOKMARK [1][-]{section.4.1}{4.1 Membuat Tabel}{chapter.4}% 45
-\BOOKMARK [1][-]{section.4.2}{4.2 thesis.tex}{chapter.4}% 46
-\BOOKMARK [1][-]{section.4.3}{4.3 laporan\137setting.tex}{chapter.4}% 47
-\BOOKMARK [1][-]{section.4.4}{4.4 istilah.tex}{chapter.4}% 48
-\BOOKMARK [1][-]{section.4.5}{4.5 hype.indonesia.tex}{chapter.4}% 49
-\BOOKMARK [0][-]{chapter.5}{5 Implementasi dan Pengujian}{}% 50
-\BOOKMARK [1][-]{section.5.1}{5.1 Implementasi Cluster}{chapter.5}% 51
-\BOOKMARK [2][-]{subsection.5.1.1}{5.1.1 Instalasi Frontend}{section.5.1}% 52
-\BOOKMARK [2][-]{subsection.5.1.2}{5.1.2 Konfigurasi}{section.5.1}% 53
-\BOOKMARK [3][-]{subsubsection.5.1.2.1}{5.1.2.1 semakin ke dalam}{subsection.5.1.2}% 54
-\BOOKMARK [1][-]{section.5.2}{5.2 Pengujian}{chapter.5}% 55
-\BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 Kasus Uji}{section.5.2}% 56
-\BOOKMARK [2][-]{subsection.5.2.2}{5.2.2 Kasus Uji}{section.5.2}% 57
-\BOOKMARK [0][-]{chapter.6}{6 Hasil Implementasi dan Evaluasi}{}% 58
-\BOOKMARK [1][-]{section.6.1}{6.1 Hasil Pengujian}{chapter.6}% 59
-\BOOKMARK [2][-]{subsection.6.1.1}{6.1.1 Hasil Pengujian Kasus Uji 1}{section.6.1}% 60
-\BOOKMARK [1][-]{section.6.2}{6.2 Evaluasi Hasil Kasus Uji}{chapter.6}% 61
-\BOOKMARK [2][-]{subsection.6.2.1}{6.2.1 Evaluasi Kasus Uji 1}{section.6.2}% 62
-\BOOKMARK [0][-]{chapter.7}{7 Kesimpulan dan Saran}{}% 63
-\BOOKMARK [1][-]{section.7.1}{7.1 Kesimpulan}{chapter.7}% 64
-\BOOKMARK [1][-]{section.7.2}{7.2 Saran}{chapter.7}% 65
-\BOOKMARK [0][-]{section.7.2}{Daftar Referensi}{}% 66
-\BOOKMARK [0][-]{section*.23}{LAMPIRAN}{}% 67
-\BOOKMARK [0][-]{section*.24}{Lampiran 1 : Kode Sumber}{}% 68
-\BOOKMARK [0][-]{section*.27}{Lampiran 2 : Berkas Konfigurasi}{}% 69
-\BOOKMARK [0][-]{section*.29}{Lampiran 8 : UAT dan Kuesioner}{}% 70
+\BOOKMARK [1][-]{section.2.4}{2.4 Fundamental Programming}{chapter.2}% 29
+\BOOKMARK [1][-]{section.2.5}{2.5 Usability Testing dan System Usability Scale}{chapter.2}% 30
+\BOOKMARK [2][-]{subsection.2.5.1}{2.5.1 Usability Testing}{section.2.5}% 31
+\BOOKMARK [2][-]{subsection.2.5.2}{2.5.2 System Usability Scale}{section.2.5}% 32
+\BOOKMARK [0][-]{chapter.3}{3 Metodologi Penelitian}{}% 33
+\BOOKMARK [1][-]{section.3.1}{3.1 Pendekatan Penelitian}{chapter.3}% 34
+\BOOKMARK [1][-]{section.3.2}{3.2 Tahapan Penelitian}{chapter.3}% 35
+\BOOKMARK [2][-]{subsection.3.2.1}{3.2.1 Studi literatur}{section.3.2}% 36
+\BOOKMARK [2][-]{subsection.3.2.2}{3.2.2 Instrumen penelitian}{section.3.2}% 37
+\BOOKMARK [2][-]{subsection.3.2.3}{3.2.3 Analisis dan Representasi Data}{section.3.2}% 38
+\BOOKMARK [2][-]{subsection.3.2.4}{3.2.4 Pengujian Prototipe Sistem dengan Usability Testing}{section.3.2}% 39
+\BOOKMARK [2][-]{subsection.3.2.5}{3.2.5 Pengambilan Kesimpulan Penelitian}{section.3.2}% 40
+\BOOKMARK [0][-]{chapter.4}{4 Perancangan Implementasi dan Analisis}{}% 41
+\BOOKMARK [1][-]{section.4.1}{4.1 Membuat Tabel}{chapter.4}% 42
+\BOOKMARK [1][-]{section.4.2}{4.2 thesis.tex}{chapter.4}% 43
+\BOOKMARK [1][-]{section.4.3}{4.3 laporan\137setting.tex}{chapter.4}% 44
+\BOOKMARK [1][-]{section.4.4}{4.4 istilah.tex}{chapter.4}% 45
+\BOOKMARK [1][-]{section.4.5}{4.5 hype.indonesia.tex}{chapter.4}% 46
+\BOOKMARK [0][-]{chapter.5}{5 Implementasi dan Pengujian}{}% 47
+\BOOKMARK [1][-]{section.5.1}{5.1 Implementasi Cluster}{chapter.5}% 48
+\BOOKMARK [2][-]{subsection.5.1.1}{5.1.1 Instalasi Frontend}{section.5.1}% 49
+\BOOKMARK [2][-]{subsection.5.1.2}{5.1.2 Konfigurasi}{section.5.1}% 50
+\BOOKMARK [3][-]{subsubsection.5.1.2.1}{5.1.2.1 semakin ke dalam}{subsection.5.1.2}% 51
+\BOOKMARK [1][-]{section.5.2}{5.2 Pengujian}{chapter.5}% 52
+\BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 Kasus Uji}{section.5.2}% 53
+\BOOKMARK [2][-]{subsection.5.2.2}{5.2.2 Kasus Uji}{section.5.2}% 54
+\BOOKMARK [0][-]{chapter.6}{6 Hasil Implementasi dan Evaluasi}{}% 55
+\BOOKMARK [1][-]{section.6.1}{6.1 Hasil Pengujian}{chapter.6}% 56
+\BOOKMARK [2][-]{subsection.6.1.1}{6.1.1 Hasil Pengujian Kasus Uji 1}{section.6.1}% 57
+\BOOKMARK [1][-]{section.6.2}{6.2 Evaluasi Hasil Kasus Uji}{chapter.6}% 58
+\BOOKMARK [2][-]{subsection.6.2.1}{6.2.1 Evaluasi Kasus Uji 1}{section.6.2}% 59
+\BOOKMARK [0][-]{chapter.7}{7 Kesimpulan dan Saran}{}% 60
+\BOOKMARK [1][-]{section.7.1}{7.1 Kesimpulan}{chapter.7}% 61
+\BOOKMARK [1][-]{section.7.2}{7.2 Saran}{chapter.7}% 62
+\BOOKMARK [0][-]{section.7.2}{Daftar Referensi}{}% 63
+\BOOKMARK [0][-]{section*.25}{LAMPIRAN}{}% 64
+\BOOKMARK [0][-]{section*.26}{Lampiran 1 : Kode Sumber}{}% 65
+\BOOKMARK [0][-]{section*.29}{Lampiran 2 : Berkas Konfigurasi}{}% 66
+\BOOKMARK [0][-]{section*.31}{Lampiran 8 : UAT dan Kuesioner}{}% 67
