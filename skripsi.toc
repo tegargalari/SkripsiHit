@@ -5,9 +5,8 @@
 \contentsline {chapter}{LEMBAR PERSETUJUAN PUBLIKASI ILMIAH}{v}{section*.7}
 \contentsline {chapter}{ABSTRAK}{vi}{section*.8}
 \contentsline {chapter}{Daftar Isi}{viii}{section*.8}
-\contentsline {chapter}{Daftar Gambar}{xi}{section*.8}
-\contentsline {chapter}{Daftar Tabel}{xii}{section*.8}
-\contentsline {chapter}{Daftar Kode}{xiii}{section*.8}
+\contentsline {chapter}{Daftar Gambar}{x}{section*.8}
+\contentsline {chapter}{Daftar Tabel}{xi}{section*.8}
 \contentsline {chapter}{\numberline {1}\uppercase {Pendahuluan}}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Latar Belakang}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Perumusan Masalah}{4}{section.1.2}
@@ -22,48 +21,30 @@
 \contentsline {section}{\numberline {2.2}Teori Pembelajaran}{9}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Definisi Pembelajaran}{9}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Bloom's Taxonomy with revision (Anderson \& Krathwohl, 2001)}{10}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}\textit {Expectation Effect}}{12}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.3}\textit {Expectation Effect}}{13}{subsection.2.2.3}
 \contentsline {section}{\numberline {2.3}Pembelajaran Berbasis Game}{15}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Definisi Pembelajaran Berbasis Game}{15}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Prinsip dan Penggunaan Game Sebagai Pembelajaran}{16}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Fundamental Programming}{18}{section.2.4}
-\contentsline {section}{\numberline {2.5}Usability Testing dan System Usability Scale}{19}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Usability Testing}{19}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}System Usability Scale}{20}{subsection.2.5.2}
-\contentsline {chapter}{\numberline {3}\uppercase {Metodologi Penelitian}}{21}{chapter.3}
-\contentsline {section}{\numberline {3.1}Pendekatan Penelitian}{21}{section.3.1}
-\contentsline {section}{\numberline {3.2}Tahapan Penelitian}{22}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Studi literatur}{23}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Instrumen penelitian}{23}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Analisis dan Representasi Data}{23}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Pengujian Prototipe Sistem dengan \textit {Usability Testing}}{25}{subsection.3.2.4}
-\contentsline {subsection}{\numberline {3.2.5}Pengambilan Kesimpulan Penelitian}{25}{subsection.3.2.5}
-\contentsline {chapter}{\numberline {4}\uppercase {Perancangan Implementasi dan Analisis}}{26}{chapter.4}
-\contentsline {section}{\numberline {4.1}Membuat Tabel}{26}{section.4.1}
-\contentsline {section}{\numberline {4.2}thesis.tex}{27}{section.4.2}
-\contentsline {section}{\numberline {4.3}laporan\_setting.tex}{27}{section.4.3}
-\contentsline {section}{\numberline {4.4}istilah.tex}{27}{section.4.4}
-\contentsline {section}{\numberline {4.5}hype.indonesia.tex}{27}{section.4.5}
-\contentsline {chapter}{\numberline {5}\uppercase {Implementasi dan Pengujian}}{28}{chapter.5}
-\contentsline {section}{\numberline {5.1}Implementasi \textit {Cluster}}{28}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Instalasi \textit {Frontend}}{28}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Konfigurasi}{30}{subsection.5.1.2}
-\contentsline {paragraph}{}{30}{section*.19}
-\contentsline {subsubsection}{\numberline {5.1.2.1}semakin ke dalam}{31}{subsubsection.5.1.2.1}
-\contentsline {section}{\numberline {5.2}Pengujian}{31}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Kasus Uji}{31}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Kasus Uji}{32}{subsection.5.2.2}
-\contentsline {chapter}{\numberline {6}\uppercase {Hasil Implementasi dan Evaluasi}}{33}{chapter.6}
-\contentsline {section}{\numberline {6.1}Hasil Pengujian}{33}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Hasil Pengujian Kasus Uji 1}{33}{subsection.6.1.1}
-\contentsline {section}{\numberline {6.2}Evaluasi Hasil Kasus Uji}{33}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Evaluasi Kasus Uji 1}{33}{subsection.6.2.1}
-\contentsline {paragraph}{}{34}{section*.24}
-\contentsline {chapter}{\numberline {7}\uppercase {Kesimpulan dan Saran}}{35}{chapter.7}
-\contentsline {section}{\numberline {7.1}Kesimpulan}{35}{section.7.1}
-\contentsline {section}{\numberline {7.2}Saran}{35}{section.7.2}
-\contentsline {chapter}{Daftar Referensi}{36}{section.7.2}
-\contentsline {chapter}{LAMPIRAN}{1}{section*.25}
-\contentsline {chapter}{Lampiran 1 : Kode Sumber}{2}{section*.26}
-\contentsline {chapter}{Lampiran 2 : Berkas Konfigurasi}{2}{section*.29}
-\contentsline {chapter}{Lampiran 8 : UAT dan Kuesioner}{3}{section*.31}
+\contentsline {section}{\numberline {2.4}\textit {Fundamental Programming}}{19}{section.2.4}
+\contentsline {section}{\numberline {2.5}\textit {Usability Testing} dan \textit {System Usability Scale}}{19}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}\textit {Usability Testing}}{20}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}\textit {System Usability Scale}}{20}{subsection.2.5.2}
+\contentsline {chapter}{\numberline {3}\uppercase {Metodologi Penelitian}}{22}{chapter.3}
+\contentsline {section}{\numberline {3.1}Pendekatan Penelitian}{22}{section.3.1}
+\contentsline {section}{\numberline {3.2}Tahapan Penelitian}{23}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Studi literatur}{24}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Instrumen penelitian}{24}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Analisis dan Representasi Data}{24}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Pengujian Prototipe Sistem dengan \textit {Usability Testing}}{26}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Pengambilan Kesimpulan Penelitian}{26}{subsection.3.2.5}
+\contentsline {chapter}{\numberline {4}\uppercase {Perancangan Implementasi dan Analisis}}{27}{chapter.4}
+\contentsline {section}{\numberline {4.1}Membuat Tabel}{27}{section.4.1}
+\contentsline {section}{\numberline {4.2}thesis.tex}{35}{section.4.2}
+\contentsline {section}{\numberline {4.3}laporan\_setting.tex}{35}{section.4.3}
+\contentsline {section}{\numberline {4.4}istilah.tex}{35}{section.4.4}
+\contentsline {section}{\numberline {4.5}hype.indonesia.tex}{35}{section.4.5}
+\contentsline {chapter}{Daftar Referensi}{36}{section.4.5}
+\contentsline {chapter}{LAMPIRAN}{1}{section*.34}
+\contentsline {chapter}{Lampiran 1 : Kode Sumber}{2}{section*.35}
+\contentsline {chapter}{Lampiran 2 : Berkas Konfigurasi}{2}{section*.38}
+\contentsline {chapter}{Lampiran 8 : UAT dan Kuesioner}{3}{section*.40}
