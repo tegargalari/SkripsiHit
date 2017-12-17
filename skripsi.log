@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.4)  7 DEC 2017 06:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.4)  14 DEC 2017 11:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -577,7 +577,7 @@ Package caption Info: End \AtBeginDocument code.
 \openout2 = `sampul.aux'.
 
 
-(./sampul.tex <pics/makara.png, id=201, 154.86429pt x 154.34807pt>
+(./sampul.tex <pics/makara.png, id=213, 154.86429pt x 154.34807pt>
 File: pics/makara.png Graphic file (type png)
 
 <use pics/makara.png>
@@ -840,15 +840,15 @@ u-pakan se-
  []
 
 
-Underfull \hbox (badness 2213) in paragraph at lines 10--33
+Underfull \hbox (badness 1540) in paragraph at lines 10--33
 \T1/ptm/m/n/12 bukan men-ga-jarkan bagaimana cara meng-gu-nakan se-buah ba-hasa
- pe-mogra-
+ pem-ro-gra-
  []
 
 
-Underfull \hbox (badness 1590) in paragraph at lines 10--33
-\T1/ptm/m/n/12 man. Logika matem-atika mem-buat perkem-ban-gan pe-mogra-man jau
-h lebih
+Underfull \hbox (badness 1168) in paragraph at lines 10--33
+\T1/ptm/m/n/12 man. Logika matem-atika mem-buat perkem-ban-gan pem-ro-gra-man j
+auh lebih
  []
 
 
@@ -1479,9 +1479,9 @@ n-tang pe-serta didik mengerti
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <14.4> not available
 (Font)              Font shape `T1/ptm/b/it' tried instead on input line 187.
 
-Underfull \hbox (badness 3623) in paragraph at lines 189--192
-\T1/ptm/m/n/12 Menurut Man-nell (2009), pe-mogra-man adalah se-buah proses dari
- penye-
+Underfull \hbox (badness 2809) in paragraph at lines 189--192
+\T1/ptm/m/n/12 Menurut Man-nell (2009), pem-ro-gra-man adalah se-buah proses da
+ri penye-
  []
 
 
@@ -1491,9 +1491,9 @@ kedalam no-
  []
 
 
-Underfull \hbox (badness 5533) in paragraph at lines 189--192
-\T1/ptm/m/n/12 tasi atau ba-hasa pe-mogra-man se-hingga da-pat di-jalankan oleh
- kom-puter.
+Underfull \hbox (badness 4416) in paragraph at lines 189--192
+\T1/ptm/m/n/12 tasi atau ba-hasa pem-ro-gra-man se-hingga da-pat di-jalankan ol
+eh kom-puter.
  []
 
 
@@ -1548,7 +1548,7 @@ Package Fancyhdr Warning: \headheight is too small (0.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[19] <pics/susscore.png, id=533, 421.575pt x 132.495pt>
+[19] <pics/susscore.png, id=535, 421.575pt x 132.495pt>
 File: pics/susscore.png Graphic file (type png)
 
 <use pics/susscore.png>
@@ -1716,7 +1716,7 @@ Underfull \hbox (badness 3907) in paragraph at lines 9--16
 an model
  []
 
-<pics/flow-pembuatan.png, id=548, 422.57875pt x 472.76625pt>
+<pics/flow-pembuatan.png, id=550, 422.57875pt x 472.76625pt>
 File: pics/flow-pembuatan.png Graphic file (type png)
 
 <use pics/flow-pembuatan.png>
@@ -1739,48 +1739,19 @@ Package Fancyhdr Warning: \headheight is too small (0.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [23 <./pics/flow-pembuatan.png>]
-Underfull \hbox (badness 1721) in paragraph at lines 55--60
-\T1/ptm/m/n/12 Dalam peneli-tian ini, penulis melakukan teknik data anal-i-sis 
-\T1/ptm/m/it/12 sim-ple qual-i-
+Underfull \hbox (badness 2717) in paragraph at lines 59--62
+[]\T1/ptm/m/n/12 Hasil dari anal-i-sis eval-u-asi ke-mu-dian di-lan-jutkan ke-t
+a-hap im-ple-men-tasi
  []
 
 
-Underfull \hbox (badness 2165) in paragraph at lines 55--60
-\T1/ptm/m/n/12 lang-sung oleh re-spon-den akan di-hi-tung fre-quensi pemil-i-h-
-nya. Data yang
- []
-
-
-Underfull \hbox (badness 3158) in paragraph at lines 55--60
-\T1/ptm/m/n/12 berupa isian akan dikelom-pokan berdasarkan unik re-spon dari re
--spon-den.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--60
-
- []
-
-
-Underfull \hbox (badness 1546) in paragraph at lines 55--60
-\T1/ptm/m/n/12 Hasil dari anal-i-sis eval-u-asi ke-mu-dian di-lan-jutkan ke-ta-
-hap im-ple-men-tasi sis-
- []
-
-
-Underfull \hbox (badness 1009) in paragraph at lines 55--60
-\T1/ptm/m/n/12 tem. Dalam taha-pan ini, di-gu-nakan \T1/ptm/m/it/12 Eight Golde
-n Rules of User In-ter-face
- []
-
-
-Underfull \hbox (badness 3333) in paragraph at lines 55--60
+Underfull \hbox (badness 3333) in paragraph at lines 59--62
 \T1/ptm/m/it/12 De-sign \T1/ptm/m/n/12 yang diru-muskan oleh Shnei-der-man dan 
 Plaisant(2010) dan di-gu-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--60
+Underfull \hbox (badness 10000) in paragraph at lines 59--62
 
  []
 
@@ -1813,106 +1784,64 @@ BAB 4.
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\uppercase' on input line 2.
 
-<pics/angkatan.png, id=573, 416.55624pt x 218.8175pt>
+<pics/angkatan.png, id=576, 416.55624pt x 218.8175pt>
 File: pics/angkatan.png Graphic file (type png)
  <use pics/angkatan.png>
-Package pdftex.def Info: pics/angkatan.png used on input line 9.
+Package pdftex.def Info: pics/angkatan.png used on input line 11.
 (pdftex.def)             Requested size: 416.55522pt x 218.81696pt.
 
-Overfull \hbox (18.21663pt too wide) in paragraph at lines 9--10
+Overfull \hbox (18.21663pt too wide) in paragraph at lines 11--12
 [][] 
  []
 
-<pics/contoh-langsung.png, id=574, 684.5575pt x 219.82124pt>
-File: pics/contoh-langsung.png Graphic file (type png)
 
-<use pics/contoh-langsung.png>
-Package pdftex.def Info: pics/contoh-langsung.png used on input line 14.
-(pdftex.def)             Requested size: 398.3386pt x 127.91566pt.
+Underfull \hbox (badness 7558) in paragraph at lines 7--14
+\T1/ptm/m/n/12 Terdapat 128 tang-ga-pan dalam survei de-mografi dan mi-nat ma-h
+a-siswa
+ []
 
-<pics/kapan-pernah-belajarnya.png, id=575, 675.52374pt x 264.99pt>
-File: pics/kapan-pernah-belajarnya.png Graphic file (type png)
 
-<use pics/kapan-pernah-belajarnya.png>
-Package pdftex.def Info: pics/kapan-pernah-belajarnya.png used on input line 19
+Underfull \hbox (badness 3919) in paragraph at lines 7--14
+\T1/ptm/m/n/12 fasilkom pada mata ku-liah Dasar Dasar Pem-ro-gra-man. Hasil dar
+i de-
+ []
+
+
+Underfull \hbox (badness 1400) in paragraph at lines 7--14
+\T1/ptm/m/n/12 mografi re-spon-den dan anal-i-sis kuisoner akan diba-has pada b
+agian berikut.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--14
+
+ []
+
+<pics/pernah-ikut-ddp-sebelum.png, id=577, 416.55624pt x 276.03125pt>
+File: pics/pernah-ikut-ddp-sebelum.png Graphic file (type png)
+
+<use pics/pernah-ikut-ddp-sebelum.png>
+Package pdftex.def Info: pics/pernah-ikut-ddp-sebelum.png used on input line 17
 .
-(pdftex.def)             Requested size: 398.3386pt x 156.26187pt.
-
-<pics/lama-belajar.png, id=576, 424.58624pt x 219.82124pt>
-File: pics/lama-belajar.png Graphic file (type png)
-
-<use pics/lama-belajar.png>
-Package pdftex.def Info: pics/lama-belajar.png used on input line 24.
-(pdftex.def)             Requested size: 398.3386pt x 206.24289pt.
+(pdftex.def)             Requested size: 398.3386pt x 263.97191pt.
  [27
 
 
 
- <./pics/angkatan.png> <./pics/contoh-langsung.png>] <pics/lebih-senang-bermain
--game.png, id=583, 396.48125pt x 211.79124pt>
-File: pics/lebih-senang-bermain-game.png Graphic file (type png)
+ <./pics/angkatan.png>]
+<pics/kapan-pernah-belajarnya.png, id=583, 597.23125pt x 358.33875pt>
+File: pics/kapan-pernah-belajarnya.png Graphic file (type png)
 
-<use pics/lebih-senang-bermain-game.png>
-Package pdftex.def Info: pics/lebih-senang-bermain-game.png used on input line 
-29.
-(pdftex.def)             Requested size: 398.3386pt x 212.7893pt.
+<use pics/kapan-pernah-belajarnya.png>
+Package pdftex.def Info: pics/kapan-pernah-belajarnya.png used on input line 23
+.
+(pdftex.def)             Requested size: 398.3386pt x 239.00308pt.
 
-<pics/menggali-lebih-dalam-sendiri.png, id=584, 676.5275pt x 218.8175pt>
-File: pics/menggali-lebih-dalam-sendiri.png Graphic file (type png)
-
-<use pics/menggali-lebih-dalam-sendiri.png>
-Package pdftex.def Info: pics/menggali-lebih-dalam-sendiri.png used on input li
-ne 34.
-(pdftex.def)             Requested size: 398.3386pt x 128.8441pt.
-
-
-Package Fancyhdr Warning: \headheight is too small (0.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[28 <./pics/kapan-pernah-belajarnya.png> <./pics/lama-belajar.png>]
-<pics/mengulang-ddp.png, id=591, 391.4625pt x 220.825pt>
-File: pics/mengulang-ddp.png Graphic file (type png)
-
-<use pics/mengulang-ddp.png>
-Package pdftex.def Info: pics/mengulang-ddp.png used on input line 39.
-(pdftex.def)             Requested size: 398.3386pt x 224.71623pt.
-
-<pics/menikmati-cara-belajar-sekarang.png, id=592, 684.5575pt x 228.855pt>
-File: pics/menikmati-cara-belajar-sekarang.png Graphic file (type png)
-
-<use pics/menikmati-cara-belajar-sekarang.png>
-Package pdftex.def Info: pics/menikmati-cara-belajar-sekarang.png used on input
- line 44.
-(pdftex.def)             Requested size: 398.3386pt x 133.17249pt.
-
-
-Package Fancyhdr Warning: \headheight is too small (0.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[29 <./pics/lebih-senang-bermain-game.png> <./pics/menggali-lebih-dalam-sendiri
-.png>] <pics/mudah-memahami.png, id=599, 679.53876pt x 224.84pt>
-File: pics/mudah-memahami.png Graphic file (type png)
-
-<use pics/mudah-memahami.png>
-Package pdftex.def Info: pics/mudah-memahami.png used on input line 49.
-(pdftex.def)             Requested size: 398.3386pt x 131.79675pt.
-
-<pics/nilai-pemograman.png, id=600, 694.595pt x 243.91125pt>
-File: pics/nilai-pemograman.png Graphic file (type png)
-
-<use pics/nilai-pemograman.png>
-Package pdftex.def Info: pics/nilai-pemograman.png used on input line 54.
-(pdftex.def)             Requested size: 398.3386pt x 139.88313pt.
-
-<pics/passion-pemograman.png, id=601, 427.5975pt x 224.84pt>
+<pics/passion-pemograman.png, id=584, 427.5975pt x 224.84pt>
 File: pics/passion-pemograman.png Graphic file (type png)
 
 <use pics/passion-pemograman.png>
-Package pdftex.def Info: pics/passion-pemograman.png used on input line 59.
+Package pdftex.def Info: pics/passion-pemograman.png used on input line 29.
 (pdftex.def)             Requested size: 398.3386pt x 209.45583pt.
 
 
@@ -1921,85 +1850,67 @@ Package Fancyhdr Warning: \headheight is too small (0.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[30 <./pics/mengulang-ddp.png> <./pics/menikmati-cara-belajar-sekarang.png> <./
-pics/mudah-memahami.png>]
-<pics/perlu-waktu-luar-kelas.png, id=609, 671.50874pt x 215.80624pt>
+[28 <./pics/pernah-ikut-ddp-sebelum.png> <./pics/kapan-pernah-belajarnya.png>]
+<pics/lama-belajar.png, id=591, 424.58624pt x 219.82124pt>
+File: pics/lama-belajar.png Graphic file (type png)
+
+<use pics/lama-belajar.png>
+Package pdftex.def Info: pics/lama-belajar.png used on input line 35.
+(pdftex.def)             Requested size: 398.3386pt x 206.24289pt.
+
+<pics/nilai-pemograman.png, id=592, 694.595pt x 243.91125pt>
+File: pics/nilai-pemograman.png Graphic file (type png)
+
+<use pics/nilai-pemograman.png>
+Package pdftex.def Info: pics/nilai-pemograman.png used on input line 41.
+(pdftex.def)             Requested size: 398.3386pt x 139.88313pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[29 <./pics/passion-pemograman.png> <./pics/lama-belajar.png>]
+<pics/mengulang-ddp.png, id=599, 391.4625pt x 220.825pt>
+File: pics/mengulang-ddp.png Graphic file (type png)
+
+<use pics/mengulang-ddp.png>
+Package pdftex.def Info: pics/mengulang-ddp.png used on input line 47.
+(pdftex.def)             Requested size: 398.3386pt x 224.71623pt.
+
+<pics/contoh-langsung.png, id=600, 684.5575pt x 219.82124pt>
+File: pics/contoh-langsung.png Graphic file (type png)
+
+<use pics/contoh-langsung.png>
+Package pdftex.def Info: pics/contoh-langsung.png used on input line 53.
+(pdftex.def)             Requested size: 398.3386pt x 127.91566pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[30 <./pics/nilai-pemograman.png> <./pics/mengulang-ddp.png>]
+<pics/perlu-waktu-luar-kelas.png, id=607, 671.50874pt x 215.80624pt>
 File: pics/perlu-waktu-luar-kelas.png Graphic file (type png)
 
 <use pics/perlu-waktu-luar-kelas.png>
-Package pdftex.def Info: pics/perlu-waktu-luar-kelas.png used on input line 64.
+Package pdftex.def Info: pics/perlu-waktu-luar-kelas.png used on input line 59.
 
 (pdftex.def)             Requested size: 398.3386pt x 128.01608pt.
 
-<pics/pernah-ikut-ddp-sebelum.png, id=610, 416.55624pt x 276.03125pt>
-File: pics/pernah-ikut-ddp-sebelum.png Graphic file (type png)
-
-<use pics/pernah-ikut-ddp-sebelum.png>
-Package pdftex.def Info: pics/pernah-ikut-ddp-sebelum.png used on input line 69
-.
-(pdftex.def)             Requested size: 398.3386pt x 263.97191pt.
-
-<pics/slide-show-x-buku.png, id=611, 677.53125pt x 229.85875pt>
-File: pics/slide-show-x-buku.png Graphic file (type png)
-
-<use pics/slide-show-x-buku.png>
-Package pdftex.def Info: pics/slide-show-x-buku.png used on input line 74.
-(pdftex.def)             Requested size: 398.3386pt x 135.14548pt.
-
-
-Package Fancyhdr Warning: \headheight is too small (0.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[31 <./pics/nilai-pemograman.png> <./pics/passion-pemograman.png> <./pics/perlu
--waktu-luar-kelas.png>]
-<pics/suka-bermain-game.png, id=620, 393.47pt x 211.79124pt>
+<pics/suka-bermain-game.png, id=608, 393.47pt x 211.79124pt>
 File: pics/suka-bermain-game.png Graphic file (type png)
 
 <use pics/suka-bermain-game.png>
-Package pdftex.def Info: pics/suka-bermain-game.png used on input line 79.
+Package pdftex.def Info: pics/suka-bermain-game.png used on input line 65.
 (pdftex.def)             Requested size: 398.3386pt x 214.4116pt.
 
-<pics/tidak-suka-teori-saja.png, id=621, 680.5425pt x 217.81375pt>
-File: pics/tidak-suka-teori-saja.png Graphic file (type png)
-
-<use pics/tidak-suka-teori-saja.png>
-Package pdftex.def Info: pics/tidak-suka-teori-saja.png used on input line 84.
-(pdftex.def)             Requested size: 398.3386pt x 127.49197pt.
-
-
-Package Fancyhdr Warning: \headheight is too small (0.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[32 <./pics/pernah-ikut-ddp-sebelum.png> <./pics/slide-show-x-buku.png>]
-<pics/waktu-bermain-game.png, id=628, 406.51875pt x 208.78pt>
-File: pics/waktu-bermain-game.png Graphic file (type png)
-
-<use pics/waktu-bermain-game.png>
-Package pdftex.def Info: pics/waktu-bermain-game.png used on input line 89.
-(pdftex.def)             Requested size: 398.3386pt x 204.58705pt.
-
-
-Package Fancyhdr Warning: \headheight is too small (0.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[33 <./pics/suka-bermain-game.png> <./pics/tidak-suka-teori-saja.png> <./pics/w
-aktu-bermain-game.png>]
-
-Package Fancyhdr Warning: \headheight is too small (0.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[34])
-Underfull \hbox (badness 1484) in paragraph at lines 200--104
-\T1/ptm/m/n/12 Berkas ini berisi cara pe-meng-galan be-be-rapa kata dalam ba-ha
-sa In-done-sia.
+Underfull \hbox (badness 1308) in paragraph at lines 63--68
+[]\T1/ptm/m/n/12 Sebanyak 100 re-spon-den (78,1%)suka bermain game, dan 28 re-s
+pon-den
  []
 
 
@@ -2008,7 +1919,62 @@ Package Fancyhdr Warning: \headheight is too small (0.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[35] (./skripsi.bbl) [36
+[31 <./pics/contoh-langsung.png> <./pics/perlu-waktu-luar-kelas.png>]
+<pics/waktu-bermain-game.png, id=616, 406.51875pt x 208.78pt>
+File: pics/waktu-bermain-game.png Graphic file (type png)
+
+<use pics/waktu-bermain-game.png>
+Package pdftex.def Info: pics/waktu-bermain-game.png used on input line 71.
+(pdftex.def)             Requested size: 398.3386pt x 204.58705pt.
+
+<pics/lebih-senang-bermain-game.png, id=617, 396.48125pt x 211.79124pt>
+File: pics/lebih-senang-bermain-game.png Graphic file (type png)
+
+<use pics/lebih-senang-bermain-game.png>
+Package pdftex.def Info: pics/lebih-senang-bermain-game.png used on input line 
+77.
+(pdftex.def)             Requested size: 398.3386pt x 212.7893pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[32 <./pics/suka-bermain-game.png> <./pics/waktu-bermain-game.png>]
+<pics/pesona1.png, id=624, 963.6pt x 1003.49907pt>
+File: pics/pesona1.png Graphic file (type png)
+ <use pics/pesona1.png>
+Package pdftex.def Info: pics/pesona1.png used on input line 135.
+(pdftex.def)             Requested size: 398.3386pt x 414.82126pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[33 <./pics/lebih-senang-bermain-game.png>]
+<pics/pesona2.png, id=630, 963.6pt x 986.9372pt>
+File: pics/pesona2.png Graphic file (type png)
+ <use pics/pesona2.png>
+Package pdftex.def Info: pics/pesona2.png used on input line 140.
+(pdftex.def)             Requested size: 398.3386pt x 407.975pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[34 <./pics/pesona1.png>])
+
+Package Fancyhdr Warning: \headheight is too small (0.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[35 <./pics/pesona2.png>] (./skripsi.bbl) [36
 
 
 ]
@@ -2292,7 +2258,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 129.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 129.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 129.
 Package rerunfilecheck Info: File `skripsi.out' has not changed.
-(rerunfilecheck)             Checksum: A66D86C5E8F1103FB5AFEA1EFE77A21A;3532.
+(rerunfilecheck)             Checksum: 92FDAD09C56954E27EBFCDFF24EA9D77;3860.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -2300,11 +2266,11 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 129.
  ) 
 Here is how much of TeX's memory you used:
- 11574 strings out of 493014
- 171385 string characters out of 6133352
- 341791 words of memory out of 5000000
- 14535 multiletter control sequences out of 15000+600000
- 65678 words of font info for 95 fonts, out of 8000000 for 9000
+ 11555 strings out of 493014
+ 170749 string characters out of 6133352
+ 341562 words of memory out of 5000000
+ 14522 multiletter control sequences out of 15000+600000
+ 62956 words of font info for 93 fonts, out of 8000000 for 9000
  1239 hyphenation exceptions out of 8191
  44i,14n,53p,1152b,1181s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -2316,10 +2282,10 @@ onts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1
 /urw/times/utmbi8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/time
 s/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on skripsi.pdf (58 pages, 668168 bytes).
+Output written on skripsi.pdf (58 pages, 656092 bytes).
 PDF statistics:
- 783 PDF objects out of 1000 (max. 8388607)
- 668 compressed objects within 7 object streams
- 170 named destinations out of 1000 (max. 500000)
- 501 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 778 PDF objects out of 1000 (max. 8388607)
+ 669 compressed objects within 7 object streams
+ 168 named destinations out of 1000 (max. 500000)
+ 510 words of extra memory for PDF output out of 10000 (max. 10000000)
 

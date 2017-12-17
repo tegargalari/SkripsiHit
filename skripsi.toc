@@ -38,13 +38,16 @@
 \contentsline {subsection}{\numberline {3.2.4}Pengujian Prototipe Sistem dengan \textit {Usability Testing}}{26}{subsection.3.2.4}
 \contentsline {subsection}{\numberline {3.2.5}Pengambilan Kesimpulan Penelitian}{26}{subsection.3.2.5}
 \contentsline {chapter}{\numberline {4}\uppercase {Perancangan Implementasi dan Analisis}}{27}{chapter.4}
-\contentsline {section}{\numberline {4.1}Membuat Tabel}{27}{section.4.1}
-\contentsline {section}{\numberline {4.2}thesis.tex}{35}{section.4.2}
-\contentsline {section}{\numberline {4.3}laporan\_setting.tex}{35}{section.4.3}
-\contentsline {section}{\numberline {4.4}istilah.tex}{35}{section.4.4}
-\contentsline {section}{\numberline {4.5}hype.indonesia.tex}{35}{section.4.5}
-\contentsline {chapter}{Daftar Referensi}{36}{section.4.5}
-\contentsline {chapter}{LAMPIRAN}{1}{section*.34}
-\contentsline {chapter}{Lampiran 1 : Kode Sumber}{2}{section*.35}
-\contentsline {chapter}{Lampiran 2 : Berkas Konfigurasi}{2}{section*.38}
-\contentsline {chapter}{Lampiran 8 : UAT dan Kuesioner}{3}{section*.40}
+\contentsline {section}{\numberline {4.1}Hasil Survei dan Demografi Responden}{27}{section.4.1}
+\contentsline {section}{\numberline {4.2}Mendefinisikan Persona dan Spesifikasi Sistem}{33}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Persona}{34}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Spesifikasi Sistem}{35}{subsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.2.1}Estetika}{35}{subsubsection.4.2.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2.2}Mekanik}{35}{subsubsection.4.2.2.2}
+\contentsline {subsubsection}{\numberline {4.2.2.3}Teknologi}{35}{subsubsection.4.2.2.3}
+\contentsline {subsubsection}{\numberline {4.2.2.4}Naratif}{35}{subsubsection.4.2.2.4}
+\contentsline {chapter}{Daftar Referensi}{36}{subsubsection.4.2.2.4}
+\contentsline {chapter}{LAMPIRAN}{1}{section*.29}
+\contentsline {chapter}{Lampiran 1 : Kode Sumber}{2}{section*.30}
+\contentsline {chapter}{Lampiran 2 : Berkas Konfigurasi}{2}{section*.33}
+\contentsline {chapter}{Lampiran 8 : UAT dan Kuesioner}{3}{section*.35}
