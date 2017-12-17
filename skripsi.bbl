@@ -1,10 +1,14 @@
 \begin{thebibliography}{}
 
-\bibitem[Jackson et~al., 2001]{paper.jackson}
-Jackson, D.~B., Snell, Q., dan Clement, M.~J. (2001).
-\newblock Core algorithms of the maui scheduler.
-\newblock In {\em Revised Papers from the 7th International Workshop on Job
-  Scheduling Strategies for Parallel Processing}, JSSPP '01, pages 87--102,
-  London, UK, UK. Springer-Verlag.
+\bibitem[art, 2017]{article.simak}
+ (2017).
+\newblock Daftar program studi s1 reguler ta 2017.
+\newblock \url{http://simak.ui.ac.id/reguler.html}.
+
+\bibitem[Aaron~Bangor, 2009]{paper.bangor}
+Aaron~Bangor, Philip~Kortum, J.~M. (2009).
+\newblock Determining what individual sus scores mean: Adding an adjective
+  rating scale.
+\newblock In {\em Journal of Usability Studies}, vol.4.
 
 \end{thebibliography}

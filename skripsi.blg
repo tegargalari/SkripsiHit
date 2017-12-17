@@ -13,51 +13,55 @@ A level-1 auxiliary file: bab1-pendahuluan.aux
 A level-1 auxiliary file: bab2-landasan-teori.aux
 A level-1 auxiliary file: bab3-aplikasi-digunakan.aux
 A level-1 auxiliary file: bab4-rancangan-dan-analisis.aux
-A level-1 auxiliary file: bab5-implementasi-dan-pengujian.aux
-A level-1 auxiliary file: bab6-hasil-dan-evaluasi.aux
-A level-1 auxiliary file: bab7-kesimpulan.aux
 The style file: apalikerd.bst
 A level-1 auxiliary file: markLampiran.aux
 A level-1 auxiliary file: lampiran.aux
-Database file #1: bib.bib
-You've used 1 entry,
+Database file #1: bib.bib.bib
+I was expecting a `,' or a `}'---line 176 of file bib.bib.bib
+ :   
+ :   note={[Diakses 17 Desember 2017]}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in article.simak
+You've used 2 entries,
             1935 wiz_defined-function locations,
-            497 strings with 4257 characters,
-and the built_in function-call counts, 553 in all, are:
-= -- 58
-> -- 18
+            495 strings with 4186 characters,
+and the built_in function-call counts, 523 in all, are:
+= -- 50
+> -- 7
 < -- 1
-+ -- 6
-- -- 6
-* -- 41
-:= -- 90
-add.period$ -- 4
-call.type$ -- 1
-change.case$ -- 8
-chr.to.int$ -- 1
-cite$ -- 1
-duplicate$ -- 25
-empty$ -- 41
-format.name$ -- 7
-if$ -- 118
++ -- 2
+- -- 2
+* -- 34
+:= -- 93
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 11
+chr.to.int$ -- 2
+cite$ -- 4
+duplicate$ -- 28
+empty$ -- 48
+format.name$ -- 3
+if$ -- 103
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 1
-newline$ -- 8
+newline$ -- 13
 num.names$ -- 3
-pop$ -- 8
+pop$ -- 12
 preamble$ -- 1
-purify$ -- 8
+purify$ -- 11
 quote$ -- 0
-skip$ -- 20
+skip$ -- 18
 stack$ -- 0
-substring$ -- 39
-swap$ -- 8
-text.length$ -- 1
+substring$ -- 25
+swap$ -- 1
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 6
-warning$ -- 0
-while$ -- 5
+type$ -- 12
+warning$ -- 1
+while$ -- 2
 width$ -- 0
-write$ -- 18
+write$ -- 26
+(There was 1 error message)

@@ -26,7 +26,8 @@
 \contentsline {subsection}{\numberline {2.3.1}Definisi Pembelajaran Berbasis Game}{15}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Prinsip dan Penggunaan Game Sebagai Pembelajaran}{16}{subsection.2.3.2}
 \contentsline {section}{\numberline {2.4}\textit {Fundamental Programming}}{19}{section.2.4}
-\contentsline {section}{\numberline {2.5}\textit {Usability Testing} dan \textit {System Usability Scale}}{19}{section.2.5}
+\contentsline {subsection}{\numberline {2.4.1}\textit {Computational Thinking}}{20}{subsection.2.4.1}
+\contentsline {section}{\numberline {2.5}\textit {Usability Testing} dan \textit {System Usability Scale}}{20}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}\textit {Usability Testing}}{20}{subsection.2.5.1}
 \contentsline {subsection}{\numberline {2.5.2}\textit {System Usability Scale}}{20}{subsection.2.5.2}
 \contentsline {chapter}{\numberline {3}\uppercase {Metodologi Penelitian}}{22}{chapter.3}
@@ -39,15 +40,20 @@
 \contentsline {subsection}{\numberline {3.2.5}Pengambilan Kesimpulan Penelitian}{26}{subsection.3.2.5}
 \contentsline {chapter}{\numberline {4}\uppercase {Perancangan Implementasi dan Analisis}}{27}{chapter.4}
 \contentsline {section}{\numberline {4.1}Hasil Survei dan Demografi Responden}{27}{section.4.1}
-\contentsline {section}{\numberline {4.2}Mendefinisikan Persona dan Spesifikasi Sistem}{33}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Persona}{34}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Spesifikasi Sistem}{35}{subsection.4.2.2}
-\contentsline {subsubsection}{\numberline {4.2.2.1}Estetika}{35}{subsubsection.4.2.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2.2}Mekanik}{35}{subsubsection.4.2.2.2}
-\contentsline {subsubsection}{\numberline {4.2.2.3}Teknologi}{35}{subsubsection.4.2.2.3}
-\contentsline {subsubsection}{\numberline {4.2.2.4}Naratif}{35}{subsubsection.4.2.2.4}
-\contentsline {chapter}{Daftar Referensi}{36}{subsubsection.4.2.2.4}
-\contentsline {chapter}{LAMPIRAN}{1}{section*.29}
-\contentsline {chapter}{Lampiran 1 : Kode Sumber}{2}{section*.30}
-\contentsline {chapter}{Lampiran 2 : Berkas Konfigurasi}{2}{section*.33}
-\contentsline {chapter}{Lampiran 8 : UAT dan Kuesioner}{3}{section*.35}
+\contentsline {section}{\numberline {4.2}Relevansi Landasan Teori}{34}{section.4.2}
+\contentsline {section}{\numberline {4.3}Mendefinisikan Persona dan Spesifikasi Sistem}{36}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Persona}{36}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Spesifikasi Sistem}{38}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Pembuatan Prototipe}{40}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Implementasi Halaman \textit {Main Menu}}{40}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Implementasi Tahap 1}{41}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Implementasi Tahap 2}{41}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Implementasi Tahap 3}{41}{subsection.4.4.4}
+\contentsline {subsection}{\numberline {4.4.5}Implementasi Tahap 4}{41}{subsection.4.4.5}
+\contentsline {subsection}{\numberline {4.4.6}Implementasi Tahap 5}{41}{subsection.4.4.6}
+\contentsline {subsection}{\numberline {4.4.7}Implementasi Tahap 6}{41}{subsection.4.4.7}
+\contentsline {chapter}{Daftar Referensi}{42}{subsection.4.4.7}
+\contentsline {chapter}{LAMPIRAN}{1}{section*.32}
+\contentsline {chapter}{Lampiran 1 : Kode Sumber}{2}{section*.33}
+\contentsline {chapter}{Lampiran 2 : Berkas Konfigurasi}{2}{section*.36}
+\contentsline {chapter}{Lampiran 8 : UAT dan Kuesioner}{3}{section*.38}
