@@ -152,7 +152,10 @@ Pada subbab ini akan diberikan hasil relevansi teori dengan sistem yang akan dib
 \begin{longtable}{| p{2cm} | p{5cm} | p{5cm} |}
 	%\centering
 	\caption{Relevansi landasan teori} \\
-	%\label{tab:tab1}
+	\hline
+	\textbf{Landasan teori} & \textbf{Deskripsi singkat yang didapatkan} & \textbf{Requirement yang dapat disimpulkan} \\
+	\hline
+	\endfirsthead
 	%\begin{tabular}{| p{2cm} | p{5cm} | p{5cm} |}
 		\hline
 		\textbf{Landasan teori} & \textbf{Deskripsi singkat yang didapatkan} & \textbf{Requirement yang dapat disimpulkan} \\
@@ -168,7 +171,10 @@ Pada subbab ini akan diberikan hasil relevansi teori dengan sistem yang akan dib
 		\hline
 		& Terdapat empat model pembelajaran berbasis komputer (Budianto 2014) yaitu \textit{drill}, tutorial, simulasi, dan \textit{instructional game}. & Berbasis pada metode \textit{drill}, tantangan dalam  game ini harus mampu memberikan pelatihan berulang kepada peserta didik sehingga diharapkan materi tersebut tertanam dan menjadi kebiasaan. Berbasis pada metode \textit{instructional game}, maka harus terdapat tujuan pembelajaran yang dicapai, aturan game yang didefinisikan dalam requirement, dan kompetisi terhadap diri sendiri untuk maju ke level selanjutnya. Tantangan yang harus mendefinisikan tujuan. \\
 		\hline
-		\textit{Computational Thinking} & Tiga permasalahan utama \textit{Computational Thinking} adalah permasalahan yang dihadapi, membuat desain solusi yang sistematis, dan pendekatan solusi berdasarkan perilaku manusia. & Permasalahan yang dihadapi adalah tantangan setiap tahap. Pengguna akan membuat solusi yang sistematis dari setiap tantangan yang ada. Solusi dari tantangan setiap tahap harus berbasis pada perilaku manusia dan terdapat pemanfaatan dari teori dalam ilmu komputer. \\ \hline
+		\textit{Computational Thinking} & Tiga permasalahan utama \textit{Computational Thinking} adalah permasalahan yang dihadapi, membuat desain solusi yang sistematis, dan pendekatan solusi berdasarkan perilaku manusia. & Permasalahan yang dihadapi adalah tantangan setiap tahap. Pengguna akan membuat solusi yang sistematis dari setiap tantangan yang ada. Solusi dari tantangan setiap tahap harus berbasis pada perilaku manusia dan terdapat pemanfaatan dari teori dalam ilmu komputer. \\ 
+		\hline
+		Desain Antarmuka & Terdapat delapan aturan emas yang menjadi pedoman dalam membuat desain interaksi. & Setiap poin akan menjadi pertimbangan dalam menentukan desain antarmuka yang akan dibuat. Seperti poin \textit{Strive For Consistency} menentukan jika telah menggunakan \textit{font} satu maka akan digunakan diberbagai tempat tempat dan jika suatu tombol memiliki perintah tertentu maka disetiap tempat akan memiliki perintah yang sama \\ 
+		\hline
 	%\end{tabular}
 \end{longtable}
 
@@ -207,12 +213,23 @@ Pada subbab ini akan diberikan hasil dari hasil survei dan demografi yang dipapa
 			\item Mekanik
 				\subitem Mekanik yang dikembangkan akan didasari oleh \textit{puzzle game}. Hal ini juga tergambarkan pada kuisoner kode JG yang memiliki frekuensi paling banyak yaitu \textit{puzzle game}. Pemain akan diminta menyelesaikan sebuah masalah yang terdapat pada setiap tahap untuk mencapai tahap selanjutnya.
 				\subitem Pemain akan mendapatkan poin dari setiap tahap yang diselesaikan. Pemain akan memiliki kontrol yaitu \textit{tap} dan menulis kode.
-				\subitem Terdapat tiga buah kotak yang menjadi pokok utama permainan. Pada kotak sebelah kanan akan ditampilkan sebuah masalah yaitu sebuah mobil yang harus berjalan sesuai lintasan dan juga harus mendapatkan semua koin yang tersebebar dalam lintasan tersebut. Pada kotak bagian tengah pemain dapat menuliskan kode yang harus Pemain harus menuliskan kode pada bagian \textit{input field}, lalu menjalankan dengan menekan tombol "\textit{run}". Dengan menekan tombol tersebut, maka sang pembalap akan bergerak sesuai dengen kode yang ditulis oleh pemain.
+				\subitem Terdapat tiga buah kotak yang menjadi pokok utama permainan. Pada kotak sebelah kanan akan ditampilkan sebuah masalah yaitu sebuah mobil yang harus berjalan sesuai lintasan dan juga harus mendapatkan semua koin yang tersebebar dalam lintasan tersebut. Pada kotak bagian tengah pemain dapat menuliskan kode yang harus Pemain harus menuliskan kode pada bagian \textit{input field}, lalu menjalankan dengan menekan tombol "\textit{run}". Dengan menekan tombol tersebut, maka sang pembalap akan bergerak sesuai dengen kode yang ditulis oleh pemain. Kotak paling kanan sebagai \textit{Head-Up Display} (HUD) yang menampilkan nilai, tahap, jumlah koin tersisa dan tulisan bantuan untuk mengerjakan 
 			\item Teknologi
-				\subitem Pada sistem digunakan \textit{game engine} Unity 5 sebagai alat bantu utama. Pemilihan Unity 2017 karena \saya lebih terbiasa dengan Unity 2017 dari \textit{game engine} yang lainnya. Memilih \textit{game engine} yang paling terbiasa akan menyebabkan tingkat \textit{development} lebih cepat. Selain itu Unity 2017 juga memiliki banyak \textit{library} dan aset gratis.
+				\subitem Pada sistem digunakan \textit{game engine} Unity 2017 sebagai alat bantu utama. Pemilihan Unity 2017 karena \saya lebih terbiasa dengan Unity 2017 dari \textit{game engine} yang lainnya. Memilih \textit{game engine} yang paling terbiasa akan menyebabkan tingkat \textit{development} lebih cepat. Selain itu Unity 2017 juga memiliki banyak \textit{library} dan aset gratis. Unity 2017 juga menyediakan \textit{Integrated Development Environment} (IDE) yaitu Mono Develop.
 				\subitem Kemudian Git digunakan sebagai \textit{source code management} dan \textit{version control system} serta Github sebagai \textit{repository hosting service}-nya. Penggunaan Git sangat membantu dalam pengerjaan dibeberapa gawai.
 				\subitem Alat bantu lainnya adalah Google Drive yang digunakan sebagai \textit{cloud storage}. Penyimpanan awan ini digunakan untuk menyimpan versi dari prototipe yang telah selesai.
 		\end{itemize}
+
+\section{Perancangan Desain Prototipe}
+
+	\subsection{Perancangan Menu Utama}
+	
+	\subsection{Perancangan Menu Pengaturan}
+	
+	\subsection{Perancangan Halaman Utama Bermain}
+	
+	\subsection{Perancangan Halaman Setelah Menyelesaikan Tahap}
+	
 
 \section{Pembuatan Prototipe}
 
@@ -221,12 +238,71 @@ Pembuatan prototipe dilakukan di atas \textit{platform desktop} dengan menggunak
 	\subsection{Implementasi Halaman \textit{Main Menu}}
 	Pada halaman \textit{main menu} terdapat beberapa tombol, yaitu tombol \textit{play}, tombol pengaturan, tombol keluar permainan, tombol kembali, tombol perbesar volume suara, dan tombol perkecil volume suara. Tombol \textit{play}, tombol pengaturan, dan tombol keluar permainan terdapat pada tampilan awal halaman \textit{main menu}. Tombol kembali, tombol perbesar volume suara, dan tombol perkecil volume suara terdapat pada halaman setelah pengguna menekan tombol pengaturan.
 	\subsection{Implementasi Tahap 1}
-	
+	Pada tahap pertama dalam permainan, pengguna hanya diminta untuk menekan tombol "\textit{run}" yang berada dibawah sebelah kanan kotak bagian tengah. Tujuan dari tahap ini adalah mengenalkan cara bermain kepada pengguna yaitu dengan menekan tombol hijau dibawah kanan kotak bagian tengah akan menjalankan apa yang ditulis dalam kotak bagian tengah.
+	\linebreak\linebreak
+	Setelah pengguna menyelesaikan ini diharapkan pengguna tau cara menjalankan perintah yang telah ditulis. Setelah menyelesaikan tahap pertama, pengguna akan ditampilkan halaman untuk menentukan apakah ingin melanjutkan ke tahap berikutnya, kembali ke tahap pertama, atau kembali kehalaman \textit{main menu}. Semua perintah tersebut dibuat menggunakan tombol pada bagian bawah penanda berhasil atau tidak pengguna mengerjakan tahap pertama. Terdapat juga penjelasan dari apa yang telah dikerjakan pada tombol rahasia yang ada pada tampilan agar pengguna dapat lebih memahami maksud dari tahap ini.
 	\subsection{Implementasi Tahap 2}
+	Pada tahap ini, pengguna hanya diminta untuk menekan tombol "\textit{run}" kembali. Namun pada tahap ini ditampilkan sebuah perintah baru dalam tulisan kode kotak bagian tengah. Perintah yang baru adalah "\textit{turn(L)}" dan sebuah tulisan bantuan baru yang menjelaskan perintah tersebut. Tujuan dari tahap ini adalah mengenalkan perintah baru dan membuat pengguna terbiasa akan menjalankan fitur dari setiap tahap. Untuk bagian setelah selesai tahap maka digunakan hal yang sama pada tahap pertama.
 	\subsection{Implementasi Tahap 3}
+	Pada tahap tiga pengguna diminta untuk menyelesaikan masalah yang sedang dihadapi oleh pembalap. Pada tahap ini pengguna diminta untuk menuliskan kode pada kotak bagian tengah. Pada tahap ini user harus menuliskan perintah dari pada yang telah ditampilkan oleh tahap sebelumnya. Tujuan dari tahap ini adalah mengenalkan cara penyelesaian masalah secara utuh, melatih daya ingat hingga melakukan menerapan solusi dari masalah yang telah dipaparkan pada tahap ini. Bagian selesai tahap ini tetap menggunakan tampilan yang sama seperti pada tahap sebelumnya.
 	\subsection{Implementasi Tahap 4}
+	Pada tahap ini pengguna ditampilkan sebuah perintah baru yaitu "\textit{loop}". Perintah ini untuk memotong beberapa perintah jika terjadi pengulangan. Pengguna hanya diminta menekan tombol "\textit{run}" saja. Untuk bagian setelah selesai tahap maka digunakan hal yang sama pada tahap pertama.
 	\subsection{Implementasi Tahap 5}
+	Pada tahap ini pengguna diberikan sebuah masalah yang memiliki solusi jika pengguna menggabungkan pengetahuan yang didapat dari beberapa tahap sebelumnya. Untuk bagian setelah selesai tahap maka digunakan hal yang sama pada tahap pertama.
 	\subsection{Implementasi Tahap 6}
+	Pada tahap ini pengguna diberikan sebuah masalah yang paling rumit diantara semua tahap yang ada. Selain pengguna harus mengingat dan menerapkan beberapa pengetahuan dari tahap sebelumnya, pengguna juga harus memikirkan tiap langkah yang diambil. Untuk bagian setelah selesai tahap maka digunakan hal yang sama pada tahap pertama.
 	
+\section{Pengujian Prototipe dengan \textit{Usability Evaluation}}
+Pengujian prototipe dilakukan melalui dua pendekatan, yaitu kualitatif dan kuantitatif. Pendekatan kualitatif dilakukan dengan mengadakan usability testing dengan tujuan agar dapat mengukur efektivitas video permainan dan mendapatkan \textit{design insight}. Sedangkan pengkuran kuantitatif dilakukan melalui kuesioner SUS dengan tujuan untuk mengukur tingkat usability dan kenyamanan menurut pengguna terhadap video permainan.
 
-
+	\subsection{Perancangan \textit{Usability Testing}}
+	Sebelum melakukan UT, terlebih dahulu dibuat skenario. Skenario dibuat berdasarkan pengembangan yang telah disebutkan pada subbab sebelum ini dan apa yang terdapat pada video permainan ini. UT dilakukan secara \textit{task-based} dengan jumlah \textit{task} sebanyak tujuh. Penulis akan memberitahukan tugas apa yang harus dilakukan pengguna, lalu pengguna dibiarkan melakukan sendiri tugas yang diberikan hingga selesai. Setelah selesai, pengguna akan diberikan pertanyaan terkait tugas tersebut. Pertanyaan meliputi perasaan pengguna saat mengerjakan tugas tersebut, apa kesulitan menjalankan tugas tersebut, dan adakah saran pengguna untuk tugas yang telah dilakukannya. Tugas apa saja yang harus dilakukan oleh pengguna akan dirangkum dalam tabel .
+	\begin{longtable}{| c | p{7cm} |}
+		\caption{Daftar tugas yang digunakan untuk \textit{Usability Testing}} \\
+		\hline
+		No & Deskripsi Tugas \\ 
+		\hline
+		\endhead
+		1 & Mengeksplorasi halaman menu utama \\ 
+		\hline
+		2 & Menyelesaikan tahap 1 \\ \hline
+		3 & Menyelesaikan tahap 2 \\ \hline
+		4 & Menyelesaikan tahap 3 \\ \hline
+		5 & Menyelesaikan tahap 4 \\ \hline
+		4 & Menyelesaikan tahap 5 \\ \hline
+		5 & Menyelesaikan tahap 6 \\ \hline
+	\end{longtable}
+	\subsection{Perancangan \textit{System Usability Scale} (SUS)}
+	Pengujian dilakukan menggunakan SUS terjemahan bahasa Indonesia oleh Sharfina dan Santoso (2016). Penulis menginstruksikan partisipan untuk mengisi kuesioner SUS setelah UT selesai dilakukan. Untuk daftar pertanyaan SUS dapat dilihat pada Lampiran.
+	\subsection{Hasil \textit{Usability Evaluation}}
+	Pengujian melalui usability evaluation dilakukan terhadap tiga puluh partisipan dengan karakterisik sesuai dengan persona yang telah dirumuskan sebelumnya. Sebagai rincian, dari delapan responden, diantaranya terdapat 4 yang termasuk persona 1 dan empat orang termasuk persona 2. Persentase jumlah persona dalam partisipan \textit{usability evaluation} dapat dilihat pada Gambar 4.17.
+	\begin{figure}
+		\includegraphics[width=\linewidth]{pics/persentase-jumlah-persona}
+		\caption{Persentase jumlah persona partisipan UT}
+		\centering
+	\end{figure}
+	\subsubsection{\textit{Usability Testing}}
+	Hasil UT terdapat pada Lampiran X menunjukkan bahwa partisipan cukup tertarik menggunakan video permainan ini sebagai media pembelajaran pemrograman. Alasan yang dapat disimpulkan dari jawaban partisipan adalah merasa diberikan contoh langsung dalam mengerjakan penyelesaian masalah pemrograman, tampilan yang \textit{to the point}, memberikan efek tantangan yang membuat pengguna sangat ingin mencoba menyelesaikan masalah yang dihadapkan dan desain yang interaktif dan menarik secara visual. Partisipan memberikan saran yang akan digunakan sebagai \textit{design insight} untuk pembuatan prototipe selanjutnya.
+	\linebreak\linebreak
+	Menurut Sauro (dalam Mifsud, 2015), efektivitas suatu produk dapat diukur melalui UT, dengan cara menandai partisipan yang berhasil melakukan \textit{task} dengan nilai \textit{binary} "1" dan "0" untuk setiap partisipan yang gagal melakukan \textit{task}, kemudian hasilnya dijumlahkan dan dihitung menggunakan rumus efektivitas yaitu ((jumlah tugas yang selesai / total tugas yang harus diselesaikan) * 100\%).
+	\subsection{\textit{System Usability Scale} (SUS)}
+	Penilaian SUS dari hasil evaluasi ini dihitung menggunakan nilai ukur yang ada pada Subbab 2.5. Hasil dari perhitungan terlihat pada Tabel 4.5
+	\begin{table}
+		\includegraphics[width=\linewidth]{pics/hasil-sus}
+		\caption{Hasil SUS}
+		\centering
+	\end{table}
+	Dengan hasil tersebut dan berdasarkan teori yang disebutkan pada Subbab 2.6.2 nilai akhir yang didapat adalah 62,89. Maka pembelajaran Dasar Dasar Pemrograman menggunakan metode pembelajaran berbasis video game memiliki nilai \textit{grade scale grade} D, \textit{adjective rating "Between OK and Good"}, dan \textit{acceptability range "Marginal High"}.
+	
+	\subsection{Rekomendasi}
+	Saat melakukan UT, responden memberikan saran sebagai \textit{design insight} untuk memperbaiki sistem yang telah dibuat. \textit{Design insight} yang didapat akan berguna untuk penelitian selanjutnya atau pengembangan selanjutnya dari prototipe ini. Rekomendasi dari responden sebagai berikut:
+	\begin{enumerate}
+		\item Pengaturan yang ada dalam permainan ini sebaiknya tambah lagi. Penambahan bisa berupa resolusi layar, tentang penulis, cara bermain, dan lain-lain.
+		\item Berikan \textit{pop-up} untuk meyakinkan pengguna apakah ingin keluar dari permainan.
+		\item Pada bagian \textit{text editor} sebaiknya diberikan nomor baris, \textit{scroll bar}.
+		\item Pada saat ingin memulai permainan, sebaiknya diberikan pilihan tahap yang mau dimainkan.
+		\item Pada saat mulai melakukan penulisan kode, sebaiknya diberikan indikator apakah terdapat penulisan yang salah dalam kode dengan merubah warna tombol tertentu.
+		\item Berikan hasil evaluasi apakah itu yang terbaik atau bukan meskipun sama sama berhasil.
+		\item Cari aset yang lebih manarik.
+	\end{enumerate}
+	
