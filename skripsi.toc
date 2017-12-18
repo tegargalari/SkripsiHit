@@ -52,21 +52,21 @@
 \contentsline {subsection}{\numberline {4.4.4}Perancangan Halaman Setelah Menyelesaikan Tahap}{40}{subsection.4.4.4}
 \contentsline {section}{\numberline {4.5}Pembuatan Prototipe}{40}{section.4.5}
 \contentsline {subsection}{\numberline {4.5.1}Implementasi Halaman \textit {Main Menu}}{41}{subsection.4.5.1}
-\contentsline {subsection}{\numberline {4.5.2}Implementasi Tahap 1}{41}{subsection.4.5.2}
-\contentsline {subsection}{\numberline {4.5.3}Implementasi Tahap 2}{41}{subsection.4.5.3}
-\contentsline {subsection}{\numberline {4.5.4}Implementasi Tahap 3}{42}{subsection.4.5.4}
-\contentsline {subsection}{\numberline {4.5.5}Implementasi Tahap 4}{42}{subsection.4.5.5}
-\contentsline {subsection}{\numberline {4.5.6}Implementasi Tahap 5}{42}{subsection.4.5.6}
-\contentsline {subsection}{\numberline {4.5.7}Implementasi Tahap 6}{42}{subsection.4.5.7}
-\contentsline {section}{\numberline {4.6}Pengujian Prototipe dengan \textit {Usability Evaluation}}{42}{section.4.6}
-\contentsline {subsection}{\numberline {4.6.1}Perancangan \textit {Usability Testing}}{43}{subsection.4.6.1}
-\contentsline {subsection}{\numberline {4.6.2}Perancangan \textit {System Usability Scale} (SUS)}{43}{subsection.4.6.2}
-\contentsline {subsection}{\numberline {4.6.3}Hasil \textit {Usability Evaluation}}{43}{subsection.4.6.3}
-\contentsline {subsubsection}{\numberline {4.6.3.1}\textit {Usability Testing}}{44}{subsubsection.4.6.3.1}
-\contentsline {subsection}{\numberline {4.6.4}\textit {System Usability Scale} (SUS)}{45}{subsection.4.6.4}
-\contentsline {subsection}{\numberline {4.6.5}Rekomendasi}{45}{subsection.4.6.5}
-\contentsline {chapter}{Daftar Referensi}{46}{Item.27}
-\contentsline {chapter}{LAMPIRAN}{1}{section*.34}
-\contentsline {chapter}{Lampiran 1 : Kode Sumber}{2}{section*.35}
-\contentsline {chapter}{Lampiran 2 : Berkas Konfigurasi}{2}{section*.38}
-\contentsline {chapter}{Lampiran 8 : UAT dan Kuesioner}{3}{section*.40}
+\contentsline {subsection}{\numberline {4.5.2}Implementasi Tahap 1}{42}{subsection.4.5.2}
+\contentsline {subsection}{\numberline {4.5.3}Implementasi Tahap 2}{43}{subsection.4.5.3}
+\contentsline {subsection}{\numberline {4.5.4}Implementasi Tahap 3}{44}{subsection.4.5.4}
+\contentsline {subsection}{\numberline {4.5.5}Implementasi Tahap 4}{45}{subsection.4.5.5}
+\contentsline {subsection}{\numberline {4.5.6}Implementasi Tahap 5}{45}{subsection.4.5.6}
+\contentsline {subsection}{\numberline {4.5.7}Implementasi Tahap 6}{46}{subsection.4.5.7}
+\contentsline {section}{\numberline {4.6}Pengujian Prototipe dengan \textit {Usability Evaluation}}{47}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Perancangan \textit {Usability Testing}}{47}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Perancangan \textit {System Usability Scale} (SUS)}{47}{subsection.4.6.2}
+\contentsline {subsection}{\numberline {4.6.3}Hasil \textit {Usability Evaluation}}{48}{subsection.4.6.3}
+\contentsline {subsubsection}{\numberline {4.6.3.1}\textit {Usability Testing}}{48}{subsubsection.4.6.3.1}
+\contentsline {subsection}{\numberline {4.6.4}\textit {System Usability Scale} (SUS)}{49}{subsection.4.6.4}
+\contentsline {subsection}{\numberline {4.6.5}Rekomendasi}{49}{subsection.4.6.5}
+\contentsline {chapter}{Daftar Referensi}{51}{Item.27}
+\contentsline {chapter}{LAMPIRAN}{1}{section*.44}
+\contentsline {chapter}{Lampiran 1 : Kode Sumber}{2}{section*.45}
+\contentsline {chapter}{Lampiran 2 : Berkas Konfigurasi}{2}{section*.48}
+\contentsline {chapter}{Lampiran 8 : UAT dan Kuesioner}{3}{section*.50}
