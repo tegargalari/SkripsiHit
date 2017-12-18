@@ -47,26 +47,29 @@
 \contentsline {subsection}{\numberline {4.3.2}Spesifikasi Sistem}{38}{subsection.4.3.2}
 \contentsline {section}{\numberline {4.4}Perancangan Desain Prototipe}{40}{section.4.4}
 \contentsline {subsection}{\numberline {4.4.1}Perancangan Menu Utama}{40}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Perancangan Menu Pengaturan}{40}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Perancangan Halaman Utama Bermain}{40}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Perancangan Halaman Setelah Menyelesaikan Tahap}{40}{subsection.4.4.4}
-\contentsline {section}{\numberline {4.5}Pembuatan Prototipe}{40}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Implementasi Halaman \textit {Main Menu}}{41}{subsection.4.5.1}
-\contentsline {subsection}{\numberline {4.5.2}Implementasi Tahap 1}{42}{subsection.4.5.2}
-\contentsline {subsection}{\numberline {4.5.3}Implementasi Tahap 2}{43}{subsection.4.5.3}
-\contentsline {subsection}{\numberline {4.5.4}Implementasi Tahap 3}{44}{subsection.4.5.4}
-\contentsline {subsection}{\numberline {4.5.5}Implementasi Tahap 4}{45}{subsection.4.5.5}
-\contentsline {subsection}{\numberline {4.5.6}Implementasi Tahap 5}{45}{subsection.4.5.6}
-\contentsline {subsection}{\numberline {4.5.7}Implementasi Tahap 6}{46}{subsection.4.5.7}
-\contentsline {section}{\numberline {4.6}Pengujian Prototipe dengan \textit {Usability Evaluation}}{47}{section.4.6}
-\contentsline {subsection}{\numberline {4.6.1}Perancangan \textit {Usability Testing}}{47}{subsection.4.6.1}
-\contentsline {subsection}{\numberline {4.6.2}Perancangan \textit {System Usability Scale} (SUS)}{47}{subsection.4.6.2}
-\contentsline {subsection}{\numberline {4.6.3}Hasil \textit {Usability Evaluation}}{48}{subsection.4.6.3}
-\contentsline {subsubsection}{\numberline {4.6.3.1}\textit {Usability Testing}}{48}{subsubsection.4.6.3.1}
-\contentsline {subsection}{\numberline {4.6.4}\textit {System Usability Scale} (SUS)}{49}{subsection.4.6.4}
-\contentsline {subsection}{\numberline {4.6.5}Rekomendasi}{49}{subsection.4.6.5}
-\contentsline {chapter}{Daftar Referensi}{51}{Item.27}
-\contentsline {chapter}{LAMPIRAN}{1}{section*.44}
-\contentsline {chapter}{Lampiran 1 : Kode Sumber}{2}{section*.45}
-\contentsline {chapter}{Lampiran 2 : Berkas Konfigurasi}{2}{section*.48}
-\contentsline {chapter}{Lampiran 8 : UAT dan Kuesioner}{3}{section*.50}
+\contentsline {subsection}{\numberline {4.4.2}Perancangan Menu Pengaturan}{41}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Perancangan Halaman Utama Bermain}{42}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Perancangan Halaman Setelah Menyelesaikan Tahap}{42}{subsection.4.4.4}
+\contentsline {section}{\numberline {4.5}Pembuatan Prototipe}{43}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Implementasi Halaman \textit {Main Menu}}{43}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Implementasi Tahap 1}{44}{subsection.4.5.2}
+\contentsline {subsection}{\numberline {4.5.3}Implementasi Tahap 2}{46}{subsection.4.5.3}
+\contentsline {subsection}{\numberline {4.5.4}Implementasi Tahap 3}{47}{subsection.4.5.4}
+\contentsline {subsection}{\numberline {4.5.5}Implementasi Tahap 4}{47}{subsection.4.5.5}
+\contentsline {subsection}{\numberline {4.5.6}Implementasi Tahap 5}{48}{subsection.4.5.6}
+\contentsline {subsection}{\numberline {4.5.7}Implementasi Tahap 6}{48}{subsection.4.5.7}
+\contentsline {section}{\numberline {4.6}Pengujian Prototipe dengan \textit {Usability Evaluation}}{49}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Perancangan \textit {Usability Testing}}{49}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Perancangan \textit {System Usability Scale} (SUS)}{50}{subsection.4.6.2}
+\contentsline {subsection}{\numberline {4.6.3}Hasil \textit {Usability Evaluation}}{50}{subsection.4.6.3}
+\contentsline {subsubsection}{\numberline {4.6.3.1}\textit {Usability Testing}}{51}{subsubsection.4.6.3.1}
+\contentsline {subsection}{\numberline {4.6.4}\textit {System Usability Scale} (SUS)}{51}{subsection.4.6.4}
+\contentsline {subsection}{\numberline {4.6.5}Rekomendasi}{52}{subsection.4.6.5}
+\contentsline {chapter}{\numberline {5}\uppercase {Kesimpulan dan Saran}}{53}{chapter.5}
+\contentsline {section}{\numberline {5.1}Kesimpulan}{53}{section.5.1}
+\contentsline {section}{\numberline {5.2}Saran}{53}{section.5.2}
+\contentsline {chapter}{Daftar Referensi}{55}{Item.32}
+\contentsline {chapter}{LAMPIRAN}{1}{section*.48}
+\contentsline {chapter}{Lampiran 1 : Kode Sumber}{2}{section*.49}
+\contentsline {chapter}{Lampiran 2 : Berkas Konfigurasi}{2}{section*.52}
+\contentsline {chapter}{Lampiran 8 : UAT dan Kuesioner}{3}{section*.54}
