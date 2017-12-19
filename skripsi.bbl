@@ -1,17 +1,5 @@
 \begin{thebibliography}{}
 
-\bibitem[art, 2017]{article.simak}
- (2017).
-\newblock Daftar program studi s1 reguler ta 2017.
-\newblock \url{http://simak.ui.ac.id/reguler.html}.
-\newblock [Diakses 17 Desember 2017].
-
-\bibitem[Aaron~Bangor, 2009]{paper.bangor}
-Aaron~Bangor, Philip~Kortum, J.~M. (2009).
-\newblock Determining what individual sus scores mean: Adding an adjective
-  rating scale.
-\newblock In {\em Journal of Usability Studies}, vol.4.
-
 \bibitem[Creswell, 2013]{papper.Creswell}
 Creswell, J.~W. (2013).
 \newblock Research design: Qualitative, quantitative, and mixed method
@@ -22,6 +10,12 @@ Creswell, J.~W. (2013).
 Gee, J.~P. (2003).
 \newblock What video games have to teach us about learning and literacy.
 \newblock New York: Palgrave/Macmillan.
+
+\bibitem[Indonesia, 2017]{article.simak}
+Indonesia, U. (2017).
+\newblock Daftar program studi s1 reguler ta 2017.
+\newblock \url{http://simak.ui.ac.id/reguler.html}.
+\newblock [Diakses 17 Desember 2017].
 
 \bibitem[John~Kirriemuir, 2004]{paper.Kirriemuir}
 John~Kirriemuir, A.~M. (2004).
@@ -45,5 +39,17 @@ Sauro, J. (2011).
 \newblock What is a good task-completion rate?
 \newblock \url{https://measuringu.com/task-completion/}.
 \newblock [Diakses 18 Desember 2017].
+
+\bibitem[Sauro dan Lewis, 2012]{papper.lewis}
+Sauro, J. dan Lewis, J. (2012).
+\newblock Quantifying the user experience: Practical statistics for user
+  research.
+\newblock Waltham, MA: Morgan Kaufmann.
+
+\bibitem[Shneiderman et~al., 2016]{papper.shneiderman}
+Shneiderman, B., Plaisant, C., Cohen, M., JAcobs, dan Elmqvist (2016).
+\newblock \textit{Designing the User Interface: Strategies for Effective
+  Human-Computer Interaction: Sixth Edition}.
+\newblock Pearson.
 
 \end{thebibliography}
