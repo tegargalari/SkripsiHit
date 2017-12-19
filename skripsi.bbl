@@ -4,6 +4,7 @@
  (2017).
 \newblock Daftar program studi s1 reguler ta 2017.
 \newblock \url{http://simak.ui.ac.id/reguler.html}.
+\newblock [Diakses 17 Desember 2017].
 
 \bibitem[Aaron~Bangor, 2009]{paper.bangor}
 Aaron~Bangor, Philip~Kortum, J.~M. (2009).
@@ -11,9 +12,38 @@ Aaron~Bangor, Philip~Kortum, J.~M. (2009).
   rating scale.
 \newblock In {\em Journal of Usability Studies}, vol.4.
 
-\bibitem[John~Kirriemuir, ]{paper.Kirriemuir}
-John~Kirriemuir, A.~M.
+\bibitem[Creswell, 2013]{papper.Creswell}
+Creswell, J.~W. (2013).
+\newblock Research design: Qualitative, quantitative, and mixed method
+  approaches.
+\newblock SAGA.
+
+\bibitem[Gee, 2003]{papper.jpgee}
+Gee, J.~P. (2003).
+\newblock What video games have to teach us about learning and literacy.
+\newblock New York: Palgrave/Macmillan.
+
+\bibitem[John~Kirriemuir, 2004]{paper.Kirriemuir}
+John~Kirriemuir, A.~M. (2004).
 \newblock Literature review in games and learning.
-\newblock A NESTA Futurelab Research.
+\newblock report 8. A NESTA Futurelab Research.
+
+\bibitem[Mifsud, 2015]{article.sauroMifsud}
+Mifsud, J. (2015).
+\newblock Usability metric - a guide to quantify the usability of any system.
+\newblock
+  http://usabilitygeek.com/usability-metrics-a-guide-to-quantify-system-usability/.
+\newblock [Diakses 18 Desember 2017].
+
+\bibitem[Morisson G.~R., 2010]{book.morisson}
+Morisson G.~R., Ross S.~M., K. J. E. K.~H. (2010).
+\newblock {\em Designing Effective Instruction}.
+\newblock Wiley.
+
+\bibitem[Sauro, 2011]{article.sauroWhat}
+Sauro, J. (2011).
+\newblock What is a good task-completion rate?
+\newblock \url{https://measuringu.com/task-completion/}.
+\newblock [Diakses 18 Desember 2017].
 
 \end{thebibliography}

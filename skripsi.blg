@@ -18,58 +18,55 @@ The style file: apalikerd.bst
 A level-1 auxiliary file: markLampiran.aux
 A level-1 auxiliary file: lampiran.aux
 Database file #1: bib.bib.bib
-I was expecting a `,' or a `}'---line 119 of file bib.bib.bib
- :  
- :  series = {report 8},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 184 of file bib.bib.bib
- :   
- :   note={[Diakses 17 Desember 2017]}
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 Warning--to sort, need author or key in article.simak
-Warning--empty year in paper.Kirriemuir
+Too many commas in name 1 of "Morisson G. R., Ross S. M., Kemp J. E., Kalman H" for entry book.morisson
+while executing---line 1020 of file apalikerd.bst
+Too many commas in name 1 of "Morisson G. R., Ross S. M., Kemp J. E., Kalman H" for entry book.morisson
+while executing---line 1020 of file apalikerd.bst
+Warning--empty booktitle in papper.Creswell
+Warning--empty booktitle in papper.jpgee
 Warning--empty booktitle in paper.Kirriemuir
-You've used 3 entries,
+Too many commas in name 1 of "Morisson G. R., Ross S. M., Kemp J. E., Kalman H" for entry book.morisson
+while executing---line 1095 of file apalikerd.bst
+You've used 8 entries,
             1935 wiz_defined-function locations,
-            501 strings with 4353 characters,
-and the built_in function-call counts, 817 in all, are:
-= -- 77
-> -- 14
-< -- 2
-+ -- 4
-- -- 4
-* -- 50
-:= -- 144
-add.period$ -- 9
-call.type$ -- 3
-change.case$ -- 17
-chr.to.int$ -- 3
-cite$ -- 7
-duplicate$ -- 45
-empty$ -- 75
-format.name$ -- 6
-if$ -- 162
+            533 strings with 5082 characters,
+and the built_in function-call counts, 2215 in all, are:
+= -- 218
+> -- 49
+< -- 7
++ -- 14
+- -- 14
+* -- 136
+:= -- 407
+add.period$ -- 28
+call.type$ -- 8
+change.case$ -- 46
+chr.to.int$ -- 8
+cite$ -- 13
+duplicate$ -- 113
+empty$ -- 182
+format.name$ -- 21
+if$ -- 434
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 2
-newline$ -- 18
-num.names$ -- 6
-pop$ -- 24
+missing$ -- 6
+newline$ -- 46
+num.names$ -- 21
+pop$ -- 51
 preamble$ -- 1
-purify$ -- 17
+purify$ -- 47
 quote$ -- 0
-skip$ -- 26
+skip$ -- 76
 stack$ -- 0
-substring$ -- 37
-swap$ -- 1
+substring$ -- 97
+swap$ -- 2
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 18
-warning$ -- 3
-while$ -- 4
+type$ -- 46
+warning$ -- 4
+while$ -- 14
 width$ -- 0
-write$ -- 37
-(There were 2 error messages)
+write$ -- 105
+(There were 3 error messages)

@@ -63,13 +63,13 @@
 \contentsline {subsection}{\numberline {4.6.2}Perancangan \textit {System Usability Scale} (SUS)}{50}{subsection.4.6.2}
 \contentsline {subsection}{\numberline {4.6.3}Hasil \textit {Usability Evaluation}}{50}{subsection.4.6.3}
 \contentsline {subsubsection}{\numberline {4.6.3.1}\textit {Usability Testing}}{51}{subsubsection.4.6.3.1}
-\contentsline {subsection}{\numberline {4.6.4}\textit {System Usability Scale} (SUS)}{51}{subsection.4.6.4}
-\contentsline {subsection}{\numberline {4.6.5}Rekomendasi}{52}{subsection.4.6.5}
-\contentsline {chapter}{\numberline {5}\uppercase {Kesimpulan dan Saran}}{53}{chapter.5}
-\contentsline {section}{\numberline {5.1}Kesimpulan}{53}{section.5.1}
-\contentsline {section}{\numberline {5.2}Saran}{53}{section.5.2}
-\contentsline {chapter}{Daftar Referensi}{55}{Item.32}
-\contentsline {chapter}{LAMPIRAN}{1}{section*.48}
-\contentsline {chapter}{Lampiran 1 : Kode Sumber}{2}{section*.49}
-\contentsline {chapter}{Lampiran 2 : Berkas Konfigurasi}{2}{section*.52}
-\contentsline {chapter}{Lampiran 8 : UAT dan Kuesioner}{3}{section*.54}
+\contentsline {subsection}{\numberline {4.6.4}\textit {System Usability Scale} (SUS)}{52}{subsection.4.6.4}
+\contentsline {subsection}{\numberline {4.6.5}Rekomendasi}{53}{subsection.4.6.5}
+\contentsline {chapter}{\numberline {5}\uppercase {Kesimpulan dan Saran}}{54}{chapter.5}
+\contentsline {section}{\numberline {5.1}Kesimpulan}{54}{section.5.1}
+\contentsline {section}{\numberline {5.2}Saran}{54}{section.5.2}
+\contentsline {chapter}{Daftar Referensi}{56}{Item.38}
+\contentsline {chapter}{LAMPIRAN}{1}{section*.49}
+\contentsline {chapter}{Lampiran 1 : Kode Sumber}{2}{section*.50}
+\contentsline {chapter}{Lampiran 2 : Berkas Konfigurasi}{8}{section*.51}
+\contentsline {chapter}{Lampiran 2 : Berkas Konfigurasi}{18}{section*.52}
