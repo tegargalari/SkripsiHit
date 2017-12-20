@@ -18,56 +18,57 @@ The style file: apalikerd.bst
 A level-1 auxiliary file: markLampiran.aux
 A level-1 auxiliary file: lampiran.aux
 Database file #1: bib.bib.bib
-Too many commas in name 1 of "Morisson G. R., Ross S. M., Kemp J. E., Kalman H" for entry book.morisson
-while executing---line 1020 of file apalikerd.bst
-Too many commas in name 1 of "Morisson G. R., Ross S. M., Kemp J. E., Kalman H" for entry book.morisson
-while executing---line 1020 of file apalikerd.bst
+Warning--empty booktitle in paper.karthwohl
+Warning--empty booktitle in papper.bloom
+Warning--empty booktitle in paper.anung
+Warning--empty booktitle in paper.christoper
 Warning--empty booktitle in papper.Creswell
 Warning--empty booktitle in papper.jpgee
+Warning--empty booktitle in article.herz
 Warning--empty booktitle in paper.Kirriemuir
-Too many commas in name 1 of "Morisson G. R., Ross S. M., Kemp J. E., Kalman H" for entry book.morisson
-while executing---line 1095 of file apalikerd.bst
+Warning--empty booktitle in paper.rosenthal
+Warning--empty journal in paper.Saretsky
 Warning--empty booktitle in papper.lewis
 Warning--empty booktitle in papper.shneiderman
-You've used 9 entries,
+You've used 26 entries,
             1935 wiz_defined-function locations,
-            538 strings with 5275 characters,
-and the built_in function-call counts, 2715 in all, are:
-= -- 261
-> -- 90
-< -- 8
-+ -- 28
-- -- 28
-* -- 177
-:= -- 504
-add.period$ -- 31
-call.type$ -- 9
-change.case$ -- 58
-chr.to.int$ -- 9
-cite$ -- 14
-duplicate$ -- 129
-empty$ -- 204
-format.name$ -- 39
-if$ -- 524
+            628 strings with 7432 characters,
+and the built_in function-call counts, 8819 in all, are:
+= -- 867
+> -- 292
+< -- 27
++ -- 96
+- -- 92
+* -- 586
+:= -- 1544
+add.period$ -- 88
+call.type$ -- 26
+change.case$ -- 172
+chr.to.int$ -- 26
+cite$ -- 38
+duplicate$ -- 434
+empty$ -- 663
+format.name$ -- 130
+if$ -- 1787
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 7
-newline$ -- 51
-num.names$ -- 27
-pop$ -- 68
+missing$ -- 24
+newline$ -- 136
+num.names$ -- 78
+pop$ -- 210
 preamble$ -- 1
-purify$ -- 59
+purify$ -- 176
 quote$ -- 0
-skip$ -- 87
+skip$ -- 310
 stack$ -- 0
-substring$ -- 108
-swap$ -- 1
-text.length$ -- 0
+substring$ -- 404
+swap$ -- 53
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 52
-warning$ -- 5
-while$ -- 18
+type$ -- 148
+warning$ -- 12
+while$ -- 60
 width$ -- 0
-write$ -- 117
-(There were 3 error messages)
+write$ -- 333
+(There were 12 warnings)
