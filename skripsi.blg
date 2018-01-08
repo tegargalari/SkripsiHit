@@ -18,6 +18,11 @@ The style file: apalikerd.bst
 A level-1 auxiliary file: markLampiran.aux
 A level-1 auxiliary file: lampiran.aux
 Database file #1: bib.bib.bib
+Unbalanced braces---line 381 of file bib.bib.bib
+ : 
+ : }
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Warning--empty booktitle in paper.karthwohl
 Warning--empty booktitle in papper.bloom
 Warning--empty booktitle in paper.anung
@@ -30,45 +35,46 @@ Warning--empty booktitle in paper.rosenthal
 Warning--empty journal in paper.Saretsky
 Warning--empty booktitle in papper.lewis
 Warning--empty booktitle in papper.shneiderman
+Warning--empty booktitle in brp.ddp1
 You've used 26 entries,
             1935 wiz_defined-function locations,
-            628 strings with 7432 characters,
-and the built_in function-call counts, 8819 in all, are:
-= -- 867
-> -- 292
+            625 strings with 7657 characters,
+and the built_in function-call counts, 8885 in all, are:
+= -- 868
+> -- 298
 < -- 27
-+ -- 96
-- -- 92
-* -- 586
-:= -- 1544
-add.period$ -- 88
++ -- 94
+- -- 94
+* -- 595
+:= -- 1549
+add.period$ -- 86
 call.type$ -- 26
-change.case$ -- 172
+change.case$ -- 173
 chr.to.int$ -- 26
-cite$ -- 38
-duplicate$ -- 434
-empty$ -- 663
-format.name$ -- 130
-if$ -- 1787
+cite$ -- 39
+duplicate$ -- 441
+empty$ -- 675
+format.name$ -- 134
+if$ -- 1805
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 24
-newline$ -- 136
+missing$ -- 25
+newline$ -- 134
 num.names$ -- 78
-pop$ -- 210
+pop$ -- 220
 preamble$ -- 1
-purify$ -- 176
+purify$ -- 177
 quote$ -- 0
-skip$ -- 310
+skip$ -- 311
 stack$ -- 0
-substring$ -- 404
+substring$ -- 400
 swap$ -- 53
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 148
-warning$ -- 12
+warning$ -- 13
 while$ -- 60
 width$ -- 0
-write$ -- 333
-(There were 12 warnings)
+write$ -- 329
+(There was 1 error message)
