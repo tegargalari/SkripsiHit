@@ -1,0 +1,72 @@
+\contentsline {chapter}{HALAMAN JUDUL}{i}{section*.2}
+\contentsline {chapter}{LEMBAR PERNYATAAN ORISINALITAS}{ii}{section*.4}
+\contentsline {chapter}{LEMBAR PENGESAHAN}{iii}{section*.5}
+\contentsline {chapter}{\uppercase {Kata Pengantar}}{iv}{section*.6}
+\contentsline {chapter}{LEMBAR PERSETUJUAN PUBLIKASI ILMIAH}{v}{section*.7}
+\contentsline {chapter}{ABSTRAK}{vi}{section*.8}
+\contentsline {chapter}{Daftar Isi}{viii}{section*.8}
+\contentsline {chapter}{Daftar Gambar}{xi}{section*.8}
+\contentsline {chapter}{Daftar Tabel}{xiii}{section*.8}
+\contentsline {chapter}{\numberline {1}\uppercase {Pendahuluan}}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Latar Belakang}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Perumusan Masalah}{4}{section.1.2}
+\contentsline {section}{\numberline {1.3}Tujuan dan Manfaat Penelitian}{4}{section.1.3}
+\contentsline {section}{\numberline {1.4}Batasan Penelitian}{5}{section.1.4}
+\contentsline {section}{\numberline {1.5}Sistematika Penulisan}{5}{section.1.5}
+\contentsline {chapter}{\numberline {2}\uppercase {Landasan Teori}}{7}{chapter.2}
+\contentsline {section}{\numberline {2.1}Teori Perancangan \textit {Game}}{7}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Definisi \textit {Game}}{7}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Kategori \textit {Game}}{7}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Elemen \textit {Game}}{8}{subsection.2.1.3}
+\contentsline {section}{\numberline {2.2}Teori Pembelajaran}{9}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Definisi Pembelajaran}{9}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Bloom's Taxonomy with revision (Anderson \& Krathwohl, 2001)}{10}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}\textit {Expectation Effect}}{13}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Pembelajaran Berbasis \textit {Game}}{14}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Definisi Pembelajaran Berbasis \textit {Game}}{15}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Prinsip dan Penggunaan \textit {Game} Sebagai Pembelajaran}{15}{subsection.2.3.2}
+\contentsline {section}{\numberline {2.4}\textit {Fundamental Programming}}{18}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}\textit {Computational Thinking}}{19}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Dasar Dasar Pemrograman 1}{20}{subsection.2.4.2}
+\contentsline {section}{\numberline {2.5}Desain Antarmuka}{21}{section.2.5}
+\contentsline {section}{\numberline {2.6}\textit {Usability Testing}}{22}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}\textit {Usability Testing}}{22}{subsection.2.6.1}
+\contentsline {chapter}{\numberline {3}\uppercase {Metodologi Penelitian}}{23}{chapter.3}
+\contentsline {section}{\numberline {3.1}Pendekatan Penelitian}{23}{section.3.1}
+\contentsline {section}{\numberline {3.2}Tahapan Penelitian}{24}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Studi literatur}{25}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Instrumen penelitian}{25}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Analisis dan Representasi Data}{25}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Pengujian Prototipe Sistem dengan \textit {Usability Testing}}{26}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Pengambilan Kesimpulan Penelitian}{26}{subsection.3.2.5}
+\contentsline {chapter}{\numberline {4}\uppercase {Perancangan Implementasi dan Analisis}}{27}{chapter.4}
+\contentsline {section}{\numberline {4.1}Hasil Survei dan Demografi Responden}{27}{section.4.1}
+\contentsline {section}{\numberline {4.2}Relevansi Landasan Teori}{34}{section.4.2}
+\contentsline {section}{\numberline {4.3}Mendefinisikan Persona dan Spesifikasi Sistem}{36}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Persona}{37}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Spesifikasi Sistem}{38}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Perancangan Desain Prototipe}{40}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Perancangan Menu Utama}{40}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Perancangan Menu Pengaturan}{41}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Perancangan Halaman Utama Bermain}{42}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Perancangan Halaman Setelah Menyelesaikan Tahap}{42}{subsection.4.4.4}
+\contentsline {section}{\numberline {4.5}Pembuatan Prototipe}{43}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Implementasi Halaman \textit {Main Menu}}{43}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Implementasi Tahap 1}{44}{subsection.4.5.2}
+\contentsline {subsection}{\numberline {4.5.3}Implementasi Tahap 2}{46}{subsection.4.5.3}
+\contentsline {subsection}{\numberline {4.5.4}Implementasi Tahap 3}{47}{subsection.4.5.4}
+\contentsline {subsection}{\numberline {4.5.5}Implementasi Tahap 4}{47}{subsection.4.5.5}
+\contentsline {subsection}{\numberline {4.5.6}Implementasi Tahap 5}{48}{subsection.4.5.6}
+\contentsline {subsection}{\numberline {4.5.7}Implementasi Tahap 6}{48}{subsection.4.5.7}
+\contentsline {section}{\numberline {4.6}Pengujian Prototipe dengan \textit {Usability Evaluation}}{49}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Perancangan \textit {Usability Testing}}{49}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Hasil \textit {Usability Evaluation}}{51}{subsection.4.6.2}
+\contentsline {subsection}{\numberline {4.6.3}Rekomendasi}{57}{subsection.4.6.3}
+\contentsline {chapter}{\numberline {5}\uppercase {Kesimpulan dan Saran}}{59}{chapter.5}
+\contentsline {section}{\numberline {5.1}Kesimpulan}{59}{section.5.1}
+\contentsline {section}{\numberline {5.2}Saran}{59}{section.5.2}
+\contentsline {chapter}{Daftar Referensi}{61}{Item.42}
+\contentsline {chapter}{LAMPIRAN}{1}{section*.55}
+\contentsline {chapter}{Lampiran 1 : Kuesoner \textit {Online}}{2}{section*.56}
+\contentsline {chapter}{Lampiran 2 : \textit {Form Usability Testing}}{8}{section*.57}
+\contentsline {chapter}{Lampiran 3 : Hasil \textit {Usability Testing}}{18}{section*.58}
