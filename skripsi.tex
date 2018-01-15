@@ -83,9 +83,17 @@
 %
 \tableofcontents
 \clearpage
-\listoffigures
+{%
+	\let\oldnumberline\numberline%
+	\renewcommand{\numberline}{Gambar \oldnumberline}%
+	\listoffigures%
+}
 \clearpage
-\listoftables
+{%
+	\let\oldnumberline\numberline%
+	\renewcommand{\numberline}{Tabel \oldnumberline}%
+	\listoftables%
+}
 \clearpage
 %\lstlistoflistings
 %\clearpage

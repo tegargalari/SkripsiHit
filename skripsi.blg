@@ -1,4 +1,6 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: skripsi.aux
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: skripsi.aux
 A level-1 auxiliary file: sampul.aux
 A level-1 auxiliary file: judul_dalam.aux
 A level-1 auxiliary file: orisinal.aux
@@ -12,40 +14,62 @@ A level-1 auxiliary file: bab2-landasan-teori.aux
 A level-1 auxiliary file: bab3-aplikasi-digunakan.aux
 A level-1 auxiliary file: bab4-rancangan-dan-analisis.aux
 A level-1 auxiliary file: bab5-implementasi-dan-pengujian.aux
-I couldn't open database file bib.bib.bib
----line 42 of file skripsi.aux
- : \bibdata{bib.bib
- :                 }
-I'm skipping whatever remains of this command
 The style file: apalikerd.bst
 A level-1 auxiliary file: markLampiran.aux
 A level-1 auxiliary file: lampiran.aux
-I found no database files---while reading file skripsi.aux
-Warning--I didn't find a database entry for "article.sauroWhat"
-Warning--I didn't find a database entry for "article.simak"
-Warning--I didn't find a database entry for "paper.christoper"
-Warning--I didn't find a database entry for "paper.lee"
-Warning--I didn't find a database entry for "paper.Kirriemuir"
-Warning--I didn't find a database entry for "book.lvlup"
-Warning--I didn't find a database entry for "book.artgamedesign"
-Warning--I didn't find a database entry for "book.ruleofplay"
-Warning--I didn't find a database entry for "article.herz"
-Warning--I didn't find a database entry for "papper.bloom"
-Warning--I didn't find a database entry for "paper.karthwohl"
-Warning--I didn't find a database entry for "paper.rosenthal"
-Warning--I didn't find a database entry for "paper.thorndike"
-Warning--I didn't find a database entry for "paper.landsberger"
-Warning--I didn't find a database entry for "paper.Saretsky"
-Warning--I didn't find a database entry for "paper.futurelab"
-Warning--I didn't find a database entry for "papper.jpgee"
-Warning--I didn't find a database entry for "paper.anung"
-Warning--I didn't find a database entry for "paper.mannell"
-Warning--I didn't find a database entry for "paper.wing"
-Warning--I didn't find a database entry for "brp.ddp1"
-Warning--I didn't find a database entry for "papper.shneiderman"
-Warning--I didn't find a database entry for "article.usability"
-Warning--I didn't find a database entry for "papper.lewis"
-Warning--I didn't find a database entry for "papper.Creswell"
-Warning--I didn't find a database entry for "book.morisson"
-Warning--I didn't find a database entry for "article.sauroMifsud"
-(There were 2 error messages)
+Database file #1: bib.bib.bib
+Warning--empty booktitle in paper.karthwohl
+Warning--empty booktitle in papper.bloom
+Warning--empty booktitle in paper.anung
+Warning--empty booktitle in paper.christoper
+Warning--empty booktitle in papper.Creswell
+Warning--empty booktitle in papper.jpgee
+Warning--empty booktitle in article.herz
+Warning--empty booktitle in paper.Kirriemuir
+Warning--empty booktitle in paper.rosenthal
+Warning--empty journal in paper.Saretsky
+Warning--empty booktitle in papper.lewis
+Warning--empty booktitle in papper.shneiderman
+Warning--empty booktitle in brp.ddp1
+You've used 27 entries,
+            1935 wiz_defined-function locations,
+            631 strings with 7793 characters,
+and the built_in function-call counts, 9139 in all, are:
+= -- 896
+> -- 305
+< -- 28
++ -- 96
+- -- 96
+* -- 610
+:= -- 1600
+add.period$ -- 90
+call.type$ -- 27
+change.case$ -- 179
+chr.to.int$ -- 27
+cite$ -- 40
+duplicate$ -- 451
+empty$ -- 690
+format.name$ -- 137
+if$ -- 1852
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 25
+newline$ -- 140
+num.names$ -- 81
+pop$ -- 222
+preamble$ -- 1
+purify$ -- 183
+quote$ -- 0
+skip$ -- 320
+stack$ -- 0
+substring$ -- 412
+swap$ -- 53
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 154
+warning$ -- 13
+while$ -- 62
+width$ -- 0
+write$ -- 343
+(There were 13 warnings)
