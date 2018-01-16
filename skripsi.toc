@@ -48,23 +48,23 @@
 \contentsline {subsection}{\numberline {4.4.1}Perancangan Menu Utama}{38}{subsection.4.4.1}
 \contentsline {subsection}{\numberline {4.4.2}Perancangan Menu Pengaturan}{39}{subsection.4.4.2}
 \contentsline {subsection}{\numberline {4.4.3}Perancangan Halaman Utama Bermain}{40}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Perancangan Halaman Setelah Menyelesaikan Tahap}{40}{subsection.4.4.4}
-\contentsline {section}{\numberline {4.5}Pembuatan Prototipe}{41}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Implementasi Halaman \textit {Main Menu}}{41}{subsection.4.5.1}
-\contentsline {subsection}{\numberline {4.5.2}Implementasi Tahap 1}{42}{subsection.4.5.2}
-\contentsline {subsection}{\numberline {4.5.3}Implementasi Tahap 2}{44}{subsection.4.5.3}
-\contentsline {subsection}{\numberline {4.5.4}Implementasi Tahap 3}{45}{subsection.4.5.4}
-\contentsline {subsection}{\numberline {4.5.5}Implementasi Tahap 4}{45}{subsection.4.5.5}
-\contentsline {subsection}{\numberline {4.5.6}Implementasi Tahap 5}{46}{subsection.4.5.6}
-\contentsline {subsection}{\numberline {4.5.7}Implementasi Tahap 6}{46}{subsection.4.5.7}
-\contentsline {section}{\numberline {4.6}Pengujian Prototipe dengan \textit {Usability Evaluation}}{47}{section.4.6}
-\contentsline {subsection}{\numberline {4.6.1}Perancangan \textit {Usability Testing}}{47}{subsection.4.6.1}
-\contentsline {subsection}{\numberline {4.6.2}Hasil \textit {Usability Evaluation}}{49}{subsection.4.6.2}
-\contentsline {subsection}{\numberline {4.6.3}Rekomendasi}{55}{subsection.4.6.3}
-\contentsline {chapter}{\numberline {5}\uppercase {Kesimpulan dan Saran}}{57}{chapter.5}
-\contentsline {section}{\numberline {5.1}Kesimpulan}{57}{section.5.1}
-\contentsline {section}{\numberline {5.2}Saran}{58}{section.5.2}
-\contentsline {chapter}{Daftar Referensi}{59}{Item.43}
+\contentsline {subsection}{\numberline {4.4.4}Perancangan Halaman Setelah Menyelesaikan Tahap}{41}{subsection.4.4.4}
+\contentsline {section}{\numberline {4.5}Pembuatan Prototipe}{42}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Implementasi Halaman \textit {Main Menu}}{42}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Implementasi Tahap 1}{43}{subsection.4.5.2}
+\contentsline {subsection}{\numberline {4.5.3}Implementasi Tahap 2}{45}{subsection.4.5.3}
+\contentsline {subsection}{\numberline {4.5.4}Implementasi Tahap 3}{46}{subsection.4.5.4}
+\contentsline {subsection}{\numberline {4.5.5}Implementasi Tahap 4}{46}{subsection.4.5.5}
+\contentsline {subsection}{\numberline {4.5.6}Implementasi Tahap 5}{47}{subsection.4.5.6}
+\contentsline {subsection}{\numberline {4.5.7}Implementasi Tahap 6}{47}{subsection.4.5.7}
+\contentsline {section}{\numberline {4.6}Pengujian Prototipe dengan \textit {Usability Evaluation}}{48}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Perancangan \textit {Usability Testing}}{48}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Hasil \textit {Usability Evaluation}}{50}{subsection.4.6.2}
+\contentsline {subsection}{\numberline {4.6.3}Rekomendasi}{56}{subsection.4.6.3}
+\contentsline {chapter}{\numberline {5}\uppercase {Kesimpulan dan Saran}}{58}{chapter.5}
+\contentsline {section}{\numberline {5.1}Kesimpulan}{58}{section.5.1}
+\contentsline {section}{\numberline {5.2}Saran}{59}{section.5.2}
+\contentsline {chapter}{Daftar Referensi}{60}{Item.43}
 \contentsline {chapter}{LAMPIRAN}{1}{section*.55}
 \contentsline {chapter}{Lampiran 1 : Kuesoner \textit {Online}}{2}{section*.56}
 \contentsline {chapter}{Lampiran 2 : \textit {Form Usability Testing}}{8}{section*.57}

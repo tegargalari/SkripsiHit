@@ -189,7 +189,7 @@ FUNCTION {completed.message}
 %% STRING CONSTANTS %%
 %%%%%%%%%%%%%%%%%%%%%%
 
-FUNCTION {bbl.and}{ "dan" } %%Perubahan oleh Thodo
+FUNCTION {bbl.and}{ "&" } %%Perubahan oleh Thodo
 FUNCTION {bbl.etal}{ "et~al." }
 FUNCTION {bbl.editors}{ "ed." }
 FUNCTION {bbl.editor}{ "ed." }
